@@ -2,10 +2,13 @@ package com.springmvc.service;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+import com.springmvc.entity.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.List;
 
 public class userTable {
 /*
@@ -14,7 +17,14 @@ id int NOT NULL primary key auto_increment,
 usingCondition varchar(20)  NOT NULL,
 rank int NOT NULL,
 password varchar(20),
-accompanyName varchar(100)) default charset = utf8;
+account varchar(20) NOT NULL,
+registerYear int NOT NULL,
+registerMonth int NOT NULL,
+registerDay int NOT NULL,
+unregisterYear int,
+unregisterMonth int,
+unregisterDay int,
+accompanyName varchar(100) NOT NULL) default charset = utf8;
 */
     public Connection getConnection() {
         java.sql.Connection conn = null;
@@ -30,88 +40,39 @@ accompanyName varchar(100)) default charset = utf8;
         return conn;
     }
 
-    public boolean insert_user(int rank, String password, String accompanyName) {
+    public boolean register(int rank, String password, String accompanyName) {
 
-        int end = check(accompanyName);
-        System.out.println(end);
+        User user = new User();
+        user.id = -1;
+        find(accompanyName, "accompanyName", user);
 
-        if(end == 1) {
-            String sql = "insert into userTable(usingCondition,rank,password,accompanyName) values(?,?,?,?)";
-            System.out.println(sql);
-            try {
-                Connection conn = getConnection();
-                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-                ps.setString(1, "online");
-                ps.setInt(2, rank);
-                ps.setString(3, password);
-                ps.setString(4, accompanyName);
-                int row = ps.executeUpdate();
-                ps.close();
-                conn.close();
-                if(row > 0) {
-                    System.out.println("ok");
-                    return true;
-                }else {
-                    System.out.println("fail");
-                    return false;
+        if(user.id == -1) {
+            user.accompanyName = accompanyName;
+            user.rank = rank;
+            user.password = password;
+            insert(user);
+            find("accompanyName", accompanyName, user);
+            int id = user.id;
+            String account = String.valueOf(id);
+            if (account.length() < 7){
+                for(int i = account.length(); i < 6; i++){
+                    account = "0" + account;
                 }
-            }catch(Exception e) {
-                e.printStackTrace();
+                account = "1" + account;
+                updateS(user.id, "account", account);
             }
         }
         else {
-            System.out.println("�ù�˾�ѱ�ע��");
+            System.out.println("failed");
         }
         return false;
-    }
-
-    public int check(String accompanyName) {
-        String sql = "select * from userTable where accompanyName='" + accompanyName + "'";
-        System.out.println(sql);
-        int ch = 0;
-        try {
-            Connection conn = getConnection();
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()) {
-                ch++;
-            }
-            System.out.println("ch = " + ch);
-            rs.close();
-            stmt.close();
-            ps.close();
-            conn.close();
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        if(ch == 0) {
-            return 1;
-        }else {
-            return 0;
-        }
-    }
-
-    public void update_password(int id, String password) {
-        try {
-            Connection conn = getConnection();
-            String sql = "update userTable set password=? where id=?";
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setString(1, password);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            ps.close();
-            conn.close();
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean login(String account, String password){
         try {
             Connection conn = getConnection();
-            String sql = "SELECT * from userTable WHERE accompanyName='" + account
-            + "' AND password='" + password + "'";
+            String sql = "SELECT * from userTable WHERE account='" + account
+                    + "' AND password='" + password + "' AND usingCondition='online'" ;
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -128,6 +89,82 @@ accompanyName varchar(100)) default charset = utf8;
             }else {
                 return false;
             }
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void insert(User user){
+        String sql = "insert into userTable(usingCondition,rank,password,account,registerYear,registerMonth,registerDay,accompanyName) values(?,?,?,?,?,?,?,?)";
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setString(1, "online");
+            ps.setInt(2, user.rank);
+            ps.setString(3, user.password);
+            ps.setString(4, "1000000");
+            ps.setInt(5, year);
+            ps.setInt(6, month);
+            ps.setInt(7, day);
+            ps.setString(8, user.accompanyName);
+            int row = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void find(String name, String data, User user) {
+        String sql = "select * from userTable where " + name +"='" + data + "'";
+        System.out.println(sql);
+        int ch = 0;
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            int length = rs.getRow();
+            if (length > 0){
+                rs.next();
+                user.id = rs.getInt("id");
+                user.rank = rs.getInt("rank");
+                user.usingCondition = rs.getString("usingCondition");
+                user.account = rs.getString("account");
+                user.password = rs.getString("password");
+                user.registerYear = rs.getInt("registerYear");
+                user.registerMonth = rs.getInt("registerMonth");
+                user.registerDay = rs.getInt("registerDay");
+                user.unregisterDay = rs.getInt("unregisterDay");
+                user.unregisterMonth = rs.getInt("unregisterMonth");
+                user.unregisterYear = rs.getInt("unregisterYear");
+                user.accompanyName = rs.getString("accompanyName");
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean updateS(int id, String name, String data) {
+        try {
+            Connection conn = getConnection();
+            String sql = "update userTable set " + name + "=? where id=?";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setString(1, data);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
         }catch(Exception e) {
             e.printStackTrace();
         }

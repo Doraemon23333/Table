@@ -10,20 +10,7 @@ import java.sql.ResultSet;
 public class companyDataTable {
     /*
 	 *
-create table ��ҵ����˵��(
-id int NOT NULL primary key,
-�����ھ�ҵ���� varchar(50) NOT NULL,
-�����ھ�ҵ���� varchar(50) NOT NULL,
-����ԭ�� varchar(50) NOT NULL,
-��ҵ������������ varchar(50),
-��Ҫԭ�� varchar(50),
-��Ҫԭ��˵�� varchar(50),
-��Ҫԭ�� varchar(50),
-��Ҫԭ��˵�� varchar(50),
-����ԭ�� varchar(50),
-����ԭ��˵�� varchar(50)) default charset = utf8;
-
-create table CompanyDataTable(
+create table companyDataTable(
 id int NOT NULL primary key,
 csPeople int NOT NULL,
 surveyPeople int NOT NULL,
@@ -34,7 +21,11 @@ mR_instruction varchar(50),
 secondReason varchar(50),
 sR_instructon varchar(50),
 thirdReason varchar(50),
-tR_instruction varchar(50)) default charset = utf8;
+tR_instruction varchar(50)
+accountYear int NOT NULL,
+accountMonth int NOT NULL,
+accountDay int NOT NULL,
+accountSeason int NOT NULL) default charset = utf8;
 	 */
     public Connection getConnection() {
         Connection conn = null;

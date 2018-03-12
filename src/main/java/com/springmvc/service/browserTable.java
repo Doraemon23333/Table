@@ -15,7 +15,9 @@ broswer_time varchar(50))
 create table borswerTable(
 id int NOT NULL primary key,
 notification_id int NOT NULL,
-broswerTime varchar(50) default charset=utf8;
+broswerYear int NOT NULL,
+broswerMonth int NOT NULL,
+broswerDay int NOT NULL) default charset=utf8;
  */
 	public Connection getConnection() {
 		Connection conn = null;

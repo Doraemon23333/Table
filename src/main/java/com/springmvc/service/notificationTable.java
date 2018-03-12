@@ -5,19 +5,15 @@ import java.sql.DriverManager;
 
 public class notificationTable {
     /*
-create table ֪ͨ(
-notification_id int NOT NULL primary key,
-֪ͨ���� char(100) NOT NULL,
-֪ͨ���� char(4000) NOT NULL,
-����ʱ�� varchar(50),
-������λ varchar(100))
 
 create table notificationTable(
 notification_id int NOT NULL primary key,
 title varchar(50) NOT NULL,
 content varchar(4000) NOT NULL,
-publishTime varchar(50),
-publishCompany varchar(50)) default charset = utf8;
+publishYear int NOT NULL,
+publishMonth int NOT NULL,
+publishDay int NOT NULL,
+id int NOT NULL) default charset = utf8;
  */
     public Connection getConnection() {
         Connection conn = null;
