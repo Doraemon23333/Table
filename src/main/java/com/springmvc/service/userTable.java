@@ -170,4 +170,21 @@ accompanyName varchar(100) NOT NULL) default charset = utf8;
         }
         return false;
     }
+
+    public boolean updateI(int id, String name, int data) {
+        try {
+            Connection conn = getConnection();
+            String sql = "update userTable set " + name + "=? where id=?";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setInt(1, data);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

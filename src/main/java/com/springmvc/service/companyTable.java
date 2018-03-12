@@ -2,6 +2,7 @@ package com.springmvc.service;
 
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+import com.springmvc.entity.Company;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,31 +38,29 @@ email varchar(50)) default charset = utf8;
         return conn;
     }
 
-    public void insert_companyMessage(String originalArea, int id, String name, String enterprisesNature, String industry,
-                                      String mainBusiness, String contactPeople, String contactAddress, String postalCode, String telephone,
-                                      String fax, String email){
-        if(check(id)) {
+    public void insert(Company company){
+        if(find(company.id)) {
             String sql = "insert into companyTable(originalArea,id,name,enterprisesNature,industry,"
-                    + "mainBusiness,contactPeople,contactAddress,postalCode,telephone,"
+                    + "mainBusiness,People,Address,postalCode,telephone,"
                     + "fax,email"
                     + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
             System.out.println(sql);
             try {
                 Connection conn = getConnection();
                 PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-                ps.setString(1, originalArea);
-                ps.setInt(2, id);
-                ps.setString(3, name);
-                ps.setString(4, enterprisesNature);
-                ps.setString(5, industry);
-                ps.setString(6, mainBusiness);
-                ps.setString(7, contactPeople);
-                ps.setString(8, contactAddress);
-                ps.setString(9, postalCode);
-                ps.setString(10, telephone);
-                ps.setString(11, fax);
-                ps.setString(12, email);
-                int row = ps.executeUpdate();
+                ps.setString(1, company.originalArea);
+                ps.setInt(2, company.id);
+                ps.setString(3, company.name);
+                ps.setString(4, company.enterprisesNature);
+                ps.setString(5, company.industry);
+                ps.setString(6, company.mainBusiness);
+                ps.setString(7, company.People);
+                ps.setString(8, company.Address);
+                ps.setString(9, company.postalCode);
+                ps.setString(10, company.telephone);
+                ps.setString(11, company.fax);
+                ps.setString(12, company.email);
+                ps.executeUpdate();
                 ps.close();
                 conn.close();
             }catch(Exception e) {
@@ -72,7 +71,7 @@ email varchar(50)) default charset = utf8;
         }
     }
 
-    public boolean check(int id) {
+    public boolean find(int id) {
         String sql = "select * from companyTable where id=" + id;
         System.out.println(sql);
         int ch = 0;
@@ -84,7 +83,6 @@ email varchar(50)) default charset = utf8;
             while(rs.next()) {
                 ch++;
             }
-            System.out.println("ch = " + ch);
             rs.close();
             stmt.close();
             ps.close();
@@ -93,11 +91,43 @@ email varchar(50)) default charset = utf8;
             e.printStackTrace();
         }
         if(ch == 0) {
-            System.out.println("ok");
             return true;
         }else {
-            System.out.println("fail");
             return false;
         }
+    }
+
+    public boolean updateS(int id, String name, String data){
+        try {
+            Connection conn = getConnection();
+            String sql = "update companyTable set " + name + "=? where id=?";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setString(1, data);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean updateI(int id, String name, int data) {
+        try {
+            Connection conn = getConnection();
+            String sql = "update companyTable set " + name + "=? where id=?";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setInt(1, data);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return true;
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
