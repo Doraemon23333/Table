@@ -162,6 +162,27 @@ accompanyName varchar(100) NOT NULL) default charset = utf8;
             ps.setString(1, data);
             ps.setInt(2, id);
             ps.executeUpdate();
+            if (name.equals("usingCondition") && data.equals("unonline")){
+                Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                String sql2 = "update userTable set unregisterYear=? where id=?";
+                ps = (PreparedStatement) conn.prepareStatement(sql2);
+                ps.setInt(1, year);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                String sql3 = "update userTable set unregisterMonth=? where id=?";
+                ps = (PreparedStatement) conn.prepareStatement(sql3);
+                ps.setInt(1, month);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                String sql4 = "update userTable set unregisterDay=? where id=?";
+                ps = (PreparedStatement) conn.prepareStatement(sql4);
+                ps.setInt(1, day);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+            }
             ps.close();
             conn.close();
             return true;

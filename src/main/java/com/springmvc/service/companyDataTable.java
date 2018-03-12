@@ -6,6 +6,7 @@ import com.mysql.jdbc.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.util.Calendar;
 
 public class companyDataTable {
     /*
@@ -52,7 +53,10 @@ accountSeason int NOT NULL) default charset = utf8;
             String sql = "insert into userTable(id,csPeople,surveyPeople,addtion, reduceType," +
                     "mainReason,mR_instruction,secondReason,sR_instruction,thridReaaon,tR_instruction) " +
                     "values(?,?,?,?,?,?,?,?,?,?,?)";
-            System.out.println(sql);
+            Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
             try {
                 Connection conn = getConnection();
                 PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);

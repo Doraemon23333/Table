@@ -67,7 +67,7 @@ email varchar(50)) default charset = utf8;
                 e.printStackTrace();
             }
         }else {
-            System.out.println("�ù�˾�Ѿ�����");
+            System.out.println("failed");
         }
     }
 
