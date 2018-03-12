@@ -1,9 +1,13 @@
 package com.springmvc.service;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
+import com.springmvc.entity.Browser;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.util.List;
 
 public class browserTable {
 /*
@@ -15,9 +19,9 @@ broswer_time varchar(50))
 create table borswerTable(
 id int NOT NULL primary key,
 notification_id int NOT NULL,
-broswerYear int NOT NULL,
-broswerMonth int NOT NULL,
-broswerDay int NOT NULL) default charset=utf8;
+browserYear int NOT NULL,
+browserMonth int NOT NULL,
+browserDay int NOT NULL) default charset=utf8;
  */
 	public Connection getConnection() {
 		Connection conn = null;
@@ -33,17 +37,18 @@ broswerDay int NOT NULL) default charset=utf8;
 		return conn;
 	}
 
-	public void insert(int id, int notification_id, String broswerTime) {
+	public void insert(Browser browser) {
 
-		String sql = "insert into userTable(id,notification_id, broswerTime) " +
-				"values(?,?,?)";
+		String sql = "insert into userTable(id, browserYear, browserMonth, browserDay) " +
+				"values(?,?,?,?,?)";
 		System.out.println(sql);
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setInt(2, notification_id);
-			ps.setString(3, broswerTime);
+			ps.setInt(1, browser.id);
+			ps.setInt(2, browser.broswerYear);
+			ps.setInt(3, browser.broswerMonth);
+			ps.setInt(4, browser.broswerDay);
 			int row = ps.executeUpdate();
 			ps.close();
 			conn.close();
@@ -52,6 +57,31 @@ broswerDay int NOT NULL) default charset=utf8;
 			}else {
 				System.out.println("fail");
 			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void find(String name, int data, List<Browser> browsers){
+		String sql = "select * from browser where " + name + "=?";
+		try {
+			Connection conn = getConnection();
+			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+			Statement stmt = (Statement) conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				Browser browser = new Browser();
+				browser.broswerDay = rs.getInt("broswerDay");
+				browser.broswerMonth = rs.getInt("broswerMonth");
+				browser.broswerYear = rs.getInt("broswerYear");
+				browser.id = rs.getInt("id");
+				browser.notification_id = rs.getInt("notification_id");
+				browsers.add(browser);
+			}
+			rs.close();
+			stmt.close();
+			ps.close();
+			conn.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -122,7 +122,6 @@ accompanyName varchar(100) NOT NULL) default charset = utf8;
 
     public void find(String name, String data, User user) {
         String sql = "select * from userTable where " + name +"='" + data + "'";
-        System.out.println(sql);
         int ch = 0;
         try {
             Connection conn = getConnection();

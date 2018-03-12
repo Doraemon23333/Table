@@ -1,5 +1,8 @@
 package com.springmvc.service;
 
+import com.mysql.jdbc.PreparedStatement;
+import com.springmvc.entity.Notification;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -27,5 +30,32 @@ id int NOT NULL) default charset = utf8;
             e.printStackTrace();
         }
         return conn;
+    }
+
+    public void insert(Notification notification){
+        String sql = "insert into userTable(notification_id,title,content,publishYear,publishMonth,publishDay,id) " +
+                "values(?,?,?,?,?,?,?)";
+        System.out.println(sql);
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setInt(1, notification.notification_id);
+            ps.setString(2, notification.title);
+            ps.setString(3, notification.content);
+            ps.setInt(4, notification.publishYear);
+            ps.setInt(5, notification.publishMonth);
+            ps.setInt(6, notification.publishDay);
+            ps.setInt(7, notification.id);
+            int row = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            if(row > 0) {
+                System.out.println("ok");
+            }else {
+                System.out.println("fail");
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }
