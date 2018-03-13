@@ -67,9 +67,10 @@
 
     <!--切换新闻 start-->
     <div class="index-header">
+
         <div id="switchable" class="container">
 
-            <div>
+            <div >
                 <ul>
                     <li>
                         <ul>
@@ -93,6 +94,7 @@
                 </ul>
             </div>
         </div>
+
     </div>
 </div>
 
