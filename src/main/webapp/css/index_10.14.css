@@ -1,0 +1,38 @@
+﻿.index_tzgg{ width:312px; float:left; display:inline;}
+.index_zxwj{ width:312px; float:left; display: inline; margin-left:15px;}
+#list { clear: both; height: 257px; margin-top:10px; overflow: hidden; }
+#list ul { list-style-image: url("../images/new-list-bg.png"); list-style-position: outside; margin-left: 15px; }
+#list li { border-bottom: 1px dotted #efefef; width:295px; height:40px; float: left; height: auto; margin: 0;  padding-top:5px; padding-bottom:5px; }
+#list #date { border-bottom: 1px dotted #efefef; color: #989898; float: right; list-style-image: none; list-style-type: none; margin: -28px 0 0; width: 45px; text-align:center; background:#fff; overflow:hidden;}
+#list ul li a { font-size: 14px; line-height: 21px; color:#000;}
+.index_zwgk_left{width:655px; float:left; display:inline; margin-top:10px; *margin-top:3px;}
+.gk_title{ height:30px; border-bottom:1px solid #f3f3f3;}
+.gk_title ul li{ float:left; display:inline; height:30px;  line-height:30px; font-family:微软雅黑; font-size:16px; color:#333; text-align:center; background:#9cbed6; padding-right:15px; margin-right:10px;}
+.gk_title ul li .zfxxgk{ color:#fff; background:url(../images/gk_icon.png) 0px  -8px no-repeat; padding-left:30px;}
+.gk_title ul li .wjcx{ color:#fff; background:url(../images/gk_icon.png) 0px  -58px no-repeat; padding-left:30px;}
+
+.gk_title ul li.current{ float:left; display:inline; height:30px; line-height:30px; font-family:微软雅黑; font-size:16px; color:#333; text-align:center; background:#4484b2;padding-right:15px; color:#fff;margin-right:10px;}
+.gk_title ul li a{color:#fff;}
+.zfxxgk_box{ height:125px; overflow:hidden; background:#fafafa;}
+.zf_xx{ width:153px; margin-left:10px; margin-top:7px; float:left; display:inline; height:30px; background:#fff; border:1px solid #ccc; line-height:30px; font-size:14px;}
+.zf_xx a{ color:#333;}
+.zf_xx .zf_1{ background: url(../images/gk_icon.png) 5px -100px no-repeat; padding-left:33px; }
+.zf_xx .zf_2{ background: url(../images/gk_icon.png) 5px -142px no-repeat; padding-left:33px; }
+.zf_xx .zf_3{ background: url(../images/gk_icon.png) 5px -183px no-repeat; padding-left:33px; }
+.zf_xx .zf_4{ background: url(../images/gk_icon.png) 5px -225px no-repeat; padding-left:33px; }
+.zf_xx .zf_5{ background: url(../images/gk_icon.png) 5px -267px no-repeat; padding-left:33px; }
+.zf_xx .zf_6{ background: url(../images/gk_icon.png) 5px -307px no-repeat; padding-left:33px; }
+
+.xf-banner{ height:160px; overflow:hidden; background:url(../images/xf-banner.png) center top no-repeat #5489af;}
+.xf-box{ margin-top:60px; margin-bottom:60px; height:200px; width:1002px; margin-left:auto; margin-right:auto;}
+.xf-box-one{ width:1000px;  text-align:center; height:80px; padding:10px; overflow:hidden; background:#5489af; color:#fff; }
+.xf-box-one a{ text-decoration: none;}
+.xf-box-one .xfo-p1{font-size:33px; font-weight:600; line-height:30px; padding-top:15px; color:#fff;}
+.xf-box-one .xfo-p2{font-size:12px; line-height:20px;color:#fff; margin-top:10px;}
+
+.xf-box-two{ width:1000px; margin-top:20px; text-align:center; height:80px; padding:10px; overflow:hidden; background:#ffa42f; color:#fff; }
+.xf-box-two a{ text-decoration: none;}
+.xf-box-two .xft-p1{font-size:33px; font-weight:600; line-height:30px; padding-top:15px; color:#fff;}
+.xf-box-two .xft-p2{font-size:12px; line-height:20px;color:#fff;margin-top:10px;;}
+.dating1{ width:315px; float:left; display:inline;} 
+.dating2{ width:315px; float:right; display:inline;} 

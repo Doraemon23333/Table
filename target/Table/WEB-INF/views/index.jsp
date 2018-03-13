@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
-<form action="main.jsp" method="post" onsubmit="return check(this);">
+<form action="/com/springmvc/controller/LoginServlet" method="post">
     <table align="center" width="250">
         <tr>
             <td align="center" colspan="2">
