@@ -45,27 +45,26 @@
         <li><a href="provincehome.jsp">首页</a></li>
         <li><a href="/">企业备案</a></li>
         <li><a href="/">报表管理</a></li>
-        <li><a href="/">数据汇总</a></li>
-        <li><a href="/">数据修改</a></li>
-        <li><a href="/">取样分析</a></li>
-        <li><a href="/">图表分析</a></li>
+        <!--为了美观，数据汇总和数据修改被我合并在了一起-->
+        <li><a href="/">数据管理</a></li>
+        <!--取样分析和图表分析两个合并为数据分析-->
+        <li><a href="/">数据分析</a></li>
         <li><a href="/">数据查询与导出</a></li>
-        <li><a href="/">发布通知</a></li>
-        <li><a href="/">浏览通知</a></li>
+        <!--发布通知和浏览通知放在了主页面-->
         <li><a href="/">系统管理</a></li>
+        <li><a href="/">数据上报</a></li>
     </ul>
 </div>
 <!--nav end-->
 <!--body start-->
 <div class="index-main index_box pt15">
+
     <div class="index_top_one">
 
         <div style="border-bottom:1px solid #c91006" class="title"><a style="text-decoration:none;"
-
                                                                       target="_blank" href="/"  title="" >
             请尽快完善企业备案信息</a></div>
         <div  class="title"><a style="text-decoration:none;"
-
                                target="_blank" href="/"  title="" >
             请按时上报就业数据</a></div>
 
@@ -80,12 +79,21 @@
                     <li>
                         <ul>
                             <li>
+                                &nbsp;
                                 <div class="clearfix">
                                     <div class="slider-img"></div>
                                     <div class="slider-text">
-                                        <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a></h3>
+                                        <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a>
+                                            &nbsp;&nbsp;&nbsp;
+                                            <i class="icon-new"></i><a target="_blank" style="color:#296b9b">发布通知</a>
+                                        </h3>
                                         <ul class="news-list">
-
+                                            <li>&nbsp;<span class="span1"><a  target="_blank">山东省省级创业型城市（县区）和创业型街道（乡镇）创建评估认定项目采购竞争性磋商公告</a></span><span class="span2">03-09</span></li>
+                                            <li>&nbsp;<span class="span1"><a  target="_blank">以更高境界更强担当全力推进高层次人才服务体系建设</a></span><span class="span2">03-07</span></li>
+                                            <li>&nbsp;<span class="span1"><a target="_blank">我省“新时代生态文明与地理发展”主题论坛入选全国博士后学术交流计划</a></span><span class="span2">03-07</span></li>
+                                            <li>&nbsp;<span class="span1"><a  target="_blank">关于公开征集山东省高层次人才绿色通道服务统一标识的通知</a></span><span class="span2">03-07</span></li>
+                                            <li>&nbsp;<span class="span1"><a  target="_blank">就业鲁渝行——“春风送岗助脱贫”活动在重庆市云阳县酉阳县同步启动</a></span><span class="span2">03-07</span></li>
+                                            <li>&nbsp;<span class="span1"><a  target="_blank">全省引进国外人才智力工作联席会议召开</a></span><span class="span2">03-05</span></li>
                                         </ul>
                                     </div>
                                 </div>
