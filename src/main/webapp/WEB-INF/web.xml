@@ -28,6 +28,15 @@
     <url-pattern>/com/springmvc/controller/LoginServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>CompanyDataServlet</servlet-name>
+    <servlet-class>com.springmvc.controller.CompanyDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CompanyDataServlet</servlet-name>
+    <url-pattern>/com/springmvc/controller/CompanyDataServlet</url-pattern>
+  </servlet-mapping>
+
   <!-- 配置springmvc的前端控制器 指向spring-mvc.xml 程序在启动的时候就加载springmvc 可以接受所有请求 load-on-startup：表示启动容器时初始化该Servlet； -->
   <servlet>
     <servlet-name>springServlet</servlet-name>

@@ -15,13 +15,14 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String account, password;
+        PrintWriter out = response.getWriter();
         userTable userTable = new userTable();
         User user = new User();
+        user.id = -1;
         account = request.getParameter("account");
         password = request.getParameter("password");
         boolean end = userTable.login(account, password);
         userTable.find("account", account, user);
-        PrintWriter out = response.getWriter();
         request.setCharacterEncoding("UTF-8");
         if(end == false){
             out.print("login failed, password Error");

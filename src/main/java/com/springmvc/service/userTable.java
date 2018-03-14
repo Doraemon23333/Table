@@ -129,8 +129,7 @@ accompanyName varchar(100) NOT NULL) default charset = utf8;
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             int length = rs.getRow();
-            if (length > 0){
-                rs.next();
+            while(rs.next()){
                 user.id = rs.getInt("id");
                 user.rank = rs.getInt("rank");
                 user.usingCondition = rs.getString("usingCondition");

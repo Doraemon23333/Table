@@ -39,12 +39,17 @@
     </div>
 </div>
 <!--header end-->
+<%! String userid = null;%>
+<%
+    String id = request.getParameter("id");
+    userid = id;
+%>
 <!--nav start-->
 <div class="nav-box">
     <ul class="container nav">
-        <li><a href="companyhome.jsp">首页</a></li>
-        <li><a href="companyRecordInfo.jsp">备案信息</a></li>
-        <li><a href="companyDataInsert.jsp">数据填报</a></li>
+        <li><a href="companyhome.jsp?id=<%=request.getParameter("id")%>">首页</a></li>
+        <li><a href="companyRecordInfo.jsp?id=<%=request.getParameter("id")%>">备案信息</a></li>
+        <li><a href="companyDataInsert.jsp?id=<%=request.getParameter("id")%>">数据填报</a></li>
         <li><a href="/">数据查询</a></li>
         <li><a href="/">退出</a></li>
     </ul>
