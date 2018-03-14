@@ -15,8 +15,8 @@
     <script src="js/companyRecordInfo.js" type="text/javascript" ></script>
     <link href="css/companyRecordInfo.css" type="text/css" rel="stylesheet" media="screen, projection" />
    <!--<link href="css/companyRecord2.css" type="text/css" rel="stylesheet" media="screen, projection" />
-   <link href="css/companyRecord3.css" type="text/css" rel="stylesheet" media="screen, projection" />
-   <link href="css/companyRecord4.css" type="text/css" rel="stylesheet" media="screen, projection" />-->
+   <link href="css/companyRecord3.css" type="text/css" rel="stylesheet" media="screen, projection" />-->
+   <link href="css/companyRecord4.css" type="text/css" rel="stylesheet" media="screen, projection" />
 
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/tool.css" type="text/css">
