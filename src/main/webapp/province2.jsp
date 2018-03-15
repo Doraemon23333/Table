@@ -9,6 +9,40 @@
 <html>
 <head>
     <title>查询企业</title>
+    <style>
+        .choose{
+            font-size: 30px;
+            font-family: "微软雅黑 Light";
+            text-align: center;
+            color: #1e347b;
+            position: relative;
+            height: 50px;
+        }
+        .City{
+            width: 80px;
+        }
+        .info{
+            font-size: medium;
+            font-family: "微软雅黑 Light";
+            color: #1e347b;
+            position: relative;
+            left: 70px;
+        }
+        .Xingzhi{
+            width: 150px;
+        }
+        .Hangye{
+            width: 80px;
+            height: 25px;
+        }
+        .search{
+            width: 50px;
+            height: 25px;
+        }
+        .result{
+            height: 400px;
+        }
+    </style>
 </head>
 <body>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,6 +55,8 @@
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <link rel="stylesheet" href="css/index_3.8.css" type="text/css">
     <link rel="stylesheet" href="css/index_10.14.css" type="text/css">
+    <link href="static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link href="static/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
     <script src="js/jquery-1.7.2.min.js"></script>
     <script src="js/jquery.placehold.min.js"></script>
     <script type="text/javascript" src="js/koala.min.1.5.js"></script>
@@ -56,9 +92,14 @@
 </div>
 <!--nav end-->
 <!--body start-->
-<div>
+
+
+<div class="choose">
     <td>请选择您要查找的企业</td>
-    <select name="Place" id="thisPlace" >
+</div>
+<div class="info">
+    <td>地区：</td>
+    <select name="Place" id="thisPlace" class="City" >
         <option value="济南" >济南</option>
         <option value="青岛" >青岛</option>
         <option value="淄博">淄博</option>
@@ -77,7 +118,29 @@
         <option value="莱芜">莱芜</option>
         <option value="聊城">聊城</option>
     </select>
-</div>
+    <td>&nbsp &nbsp &nbsp &nbsp 企业性质：</td>
+    <select class="Xingzhi" >
+        <option value="国有企业" >国有企业</option>
+        <option value="集体企业" >集体企业</option>
+        <option value="联营企业">联营企业</option>
+        <option value="股份合作制企业">股份合作制企业</option>
+        <option value="私营企业">私营企业</option>
+        <option value="个体户">个体户</option>
+        <option value="合伙企业">合伙企业</option>
+        <option value="有限责任公司">有限合作公司</option>
+        <option value="股份有限公司">股份有限公司</option>
+    </select>
+    <td>&nbsp &nbsp &nbsp &nbsp 所属行业：</td>
+    <select class="Hangye" >
+        <option value="制造业" >制造业</option>
+        <option value="服务业" >服务业</option>
+    </select>
+    <td>&nbsp &nbsp &nbsp &nbsp 精确搜索：</td>
+    <input type="text" id="num" name="Num" style="height: 30px;"value="请输入企业名称或编号" onfocus="javascript:if(this.value=='请输入企业名称或编号')this.value='';"/>
+    <button class="search">搜索</button>
+    </div>
+<div class="result"></div>
+</body>
 <!--body end-->
 <!--footer start-->
 <link rel="stylesheet" href="/css/nav.css?var=123456789" type="text/css">
