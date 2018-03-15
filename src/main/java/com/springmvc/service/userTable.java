@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.Calendar;
-import java.util.List;
 
 public class userTable {
 /*
@@ -24,10 +23,10 @@ registerDay int NOT NULL,
 unregisterYear int,
 unregisterMonth int,
 unregisterDay int,
-accompanyName varchar(100) NOT NULL) default charset = utf8;
+accompanyName varchar(100) NOT NULL) default charset=utf8;
 */
     public Connection getConnection() {
-        java.sql.Connection conn = null;
+        Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/company";

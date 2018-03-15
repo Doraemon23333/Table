@@ -63,7 +63,7 @@
                 <div class="content">
 
                     <!--<div class="hr dotted"></div>-->
-                    <form action="/userProject/saveInfo/5801" method="post" class="form-horizontal" >
+                    <form action="/com/springmvc/controller/CompanyDataServlet?id=<%=userid%>" method="post" class="form-horizontal" >
 
                         <input type="hidden" name="version" value="0" id="version" />
                         <table class="table table-striped">
@@ -115,6 +115,7 @@
                                 <td>主要原因</td>
                                 <td>
                                     <select name="mainReason" id="mainReason" >
+                                        <option value="" >无</option>
                                         <option value="产业结构调整" >产业结构调整</option>
                                         <option value="重大技术改革" >重大技术改革</option>
                                         <option value="节能减排、淘汰落后产能">节能减排、淘汰落后产能</option>
@@ -145,6 +146,7 @@
                                 <td>
 
                                     <select name="secReason" id="secReason" >
+                                        <option value="" >无</option>
                                         <option value="产业结构调整" >产业结构调整</option>
                                         <option value="重大技术改革" >重大技术改革</option>
                                         <option value="节能减排、淘汰落后产能">节能减排、淘汰落后产能</option>
@@ -174,6 +176,7 @@
                                 <td>第三原因</td>
                                 <td>
                                     <select name="thirdReason" id="thirdReason" >
+                                        <option value="" >无</option>
                                         <option value="产业结构调整" >产业结构调整</option>
                                         <option value="重大技术改革" >重大技术改革</option>
                                         <option value="节能减排、淘汰落后产能">节能减排、淘汰落后产能</option>

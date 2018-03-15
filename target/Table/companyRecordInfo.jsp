@@ -63,7 +63,7 @@
                 <div class="content">
 
                     <!--<div class="hr dotted"></div>-->
-                    <form action="/com/springmvc/controller/CompanyDataServlet" method="post" class="form-horizontal" >
+                    <form action="/com/springmvc/controller/CompanyServlet?id=<%=userid%>" method="post" class="form-horizontal" >
 
                         <input type="hidden" name="version" value="0" id="version" />
                         <table class="table table-striped">
@@ -127,7 +127,7 @@
 
                                 <td>主要经营业务：</td>
                                 <td>
-                                    <input type="text" id="email" name="email" style="height: 30px;" value="按实际情况填写" onfocus="javascript:if(this.value=='按实际情况填写')this.value='';" />
+                                    <input type="text" id="mainBusiness" name="mainBusiness" style="height: 30px;" value="按实际情况填写" onfocus="javascript:if(this.value=='按实际情况填写')this.value='';" />
                                     <b class="red">*</b></td>
                             </tr>
 

@@ -9,7 +9,7 @@ public class CompanyData {
     public String mainReason;//主要原因
     public String mR_instruction;//主要原因说明
     public String secondReason;//次要原因
-    public String sR_instructon;//次要原因说明
+    public String sR_instruction;//次要原因说明
     public String thirdReason;//第三原因
     public String tR_instruction;//第三原因说明
     public int accountYear;//建档年份

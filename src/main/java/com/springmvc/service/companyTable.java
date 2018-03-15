@@ -14,6 +14,7 @@ create table companyTable(
 originalArea varchar(50) NOT NULL,
 id int NOT NULL primary key,
 name varchar(50) NOT NULL,
+nameCode varchar(10) NOT NULL,
 enterprisesNature varchar(50) NOT NULL,
 industry varchar(50) NOT NULL,
 mainBusiness varchar(50) NOT NULL,
@@ -42,9 +43,8 @@ email varchar(50)) default charset = utf8;
         if(find(company.id)) {
             String sql = "insert into companyTable(originalArea,id,name,enterprisesNature,industry,"
                     + "mainBusiness,People,Address,postalCode,telephone,"
-                    + "fax,email"
-                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?)";
-            System.out.println(sql);
+                    + "fax,email,nameCode"
+                    + ") values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             try {
                 Connection conn = getConnection();
                 PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
@@ -60,6 +60,7 @@ email varchar(50)) default charset = utf8;
                 ps.setString(10, company.telephone);
                 ps.setString(11, company.fax);
                 ps.setString(12, company.email);
+                ps.setString(13, company.nameCode);
                 ps.executeUpdate();
                 ps.close();
                 conn.close();
