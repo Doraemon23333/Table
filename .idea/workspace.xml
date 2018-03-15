@@ -6,11 +6,44 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5b6c1f3-956b-47c9-b83f-0d833ca73dd9" name="Default" comment="修改省主页面，增加了省下公司信息页面">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../Table/.idea/vcs.xml" />
+    <list default="true" id="c5b6c1f3-956b-47c9-b83f-0d833ca73dd9" name="Default" comment="增加了公司搜索页面 （后续数据搜索页面建议保持相同格式）">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.eot" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/controller/CompanyServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/Test.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/companyDataSelect.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/province1.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/province2.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/js/npm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Table/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/controller/CompanyDataServlet.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/controller/CompanyDataServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/controller/LoginServlet.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/controller/LoginServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/entity/Company.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/entity/Company.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/entity/CompanyData.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/entity/CompanyData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyDataTable.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyDataTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyTable.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/userTable.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/userTable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/../Table/target/Table/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/companyDataInsert.jsp" afterPath="$PROJECT_DIR$/../Table/target/Table/companyDataInsert.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/companyRecordInfo.jsp" afterPath="$PROJECT_DIR$/../Table/target/Table/companyRecordInfo.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/provincehome.jsp" afterPath="$PROJECT_DIR$/../Table/target/Table/provincehome.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/../Table/out/" />
@@ -35,80 +68,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="province2.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Table/target/Table/province2.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2997">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1521123500458" expanded="true" signature="4490:5166" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="4525:5154" ph="{...}" />
+                <marker date="1521123500458" expanded="true" signature="4590:4809" ph="{...}" />
+                <marker date="1521123500458" expanded="true" signature="4853:4913" ph="{...}" />
+                <marker date="1521123500458" expanded="true" signature="4925:5146" ph="{...}" />
+                <marker date="1521123500458" expanded="true" signature="5191:5775" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="5201:5246" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="5276:5768" ph="..." />
+                <marker date="1521123500458" expanded="false" signature="5316:5344" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="5345:5757" ph="..." />
+                <marker date="1521123500458" expanded="false" signature="5371:5480" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="5481:5500" ph="..." />
+                <marker date="1521123500458" expanded="false" signature="5526:5600" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="5601:5742" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="5797:6007" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="6032:6338" ph="..." />
+                <marker date="1521123500458" expanded="true" signature="6057:6223" ph="{...}" />
+                <marker date="1521123500458" expanded="true" signature="6247:6329" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="province2.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4644">
+              <caret line="172" column="27" lean-forward="false" selection-start-line="172" selection-start-column="27" selection-end-line="172" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="companyDataInsert.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="province2.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="135" column="5" lean-forward="false" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
+            <state relative-caret-position="270">
+              <caret line="87" column="44" lean-forward="false" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="companyhome.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyhome.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="55" selection-end-column="6" />
-              <folding>
-                <marker date="1521076193778" expanded="true" signature="5870:5885" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="companyRecordInfo.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="56" column="49" lean-forward="true" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="provincehome.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#h3#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#h3#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="province1.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3394">
-              <caret line="180" column="8" lean-forward="false" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="8" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1521122073169" expanded="true" signature="10530:10570" ph="..." />
               </folding>
             </state>
           </provider>
@@ -146,11 +151,13 @@
         <option value="$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/province1.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/companyhome.jsp" />
-        <option value="$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/province2.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp" />
-        <option value="$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp" />
+        <option value="$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp" />
+        <option value="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/Test.jsp" />
+        <option value="$PROJECT_DIR$/../Table/src/main/webapp/Test.jsp" />
+        <option value="$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
       </list>
     </option>
@@ -182,8 +189,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="180" />
-    <option name="y" value="75" />
+    <option name="x" value="208" />
     <option name="width" value="1535" />
     <option name="height" value="1030" />
   </component>
@@ -204,6 +210,8 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,21 +249,11 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Table" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Table" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,17 +264,18 @@
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Table\src\main\webapp" />
-      <recent name="E:\Table\src\main\webapp\styles" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Table\src\main\webapp" />
       <recent name="E:\Table\src\main\webapp\WEB-INF\views" />
       <recent name="E:\Table\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Table\src\main\webapp\static" />
+      <recent name="E:\Table\src\main\webapp" />
+      <recent name="E:\Table\src\main\webapp\styles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -465,7 +464,8 @@
       <workItem from="1520921845904" duration="2123000" />
       <workItem from="1520995835183" duration="2066000" />
       <workItem from="1521075523660" duration="13104000" />
-      <workItem from="1521099498204" duration="2051000" />
+      <workItem from="1521099498204" duration="4548000" />
+      <workItem from="1521110178437" duration="11799000" />
     </task>
     <task id="LOCAL-00001" summary="ceshi">
       <created>1520687227326</created>
@@ -495,23 +495,36 @@
       <option name="project" value="LOCAL" />
       <updated>1521100545596</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="修改省主页面，增加了省下公司信息页面">
+      <created>1521101564997</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1521101564997</updated>
+    </task>
+    <task id="LOCAL-00006" summary="增加了公司搜索页面 （后续数据搜索页面建议保持相同格式）">
+      <created>1521122013751</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1521122013752</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34878000" />
+    <option name="totallyTimeSpent" value="49174000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4750594" sideWeight="0.50431967" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.033254158" sideWeight="0.5053996" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991362" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.122030236" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991362" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -522,11 +535,11 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.062945366" sideWeight="0.49568033" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.49784017" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.49568033" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.033254158" sideWeight="0.49460045" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24784017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26349893" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -606,10 +619,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ceshi" />
     <MESSAGE value="修改省主页面，增加了省下公司信息页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改省主页面，增加了省下公司信息页面" />
+    <MESSAGE value="增加了公司搜索页面 （后续数据搜索页面建议保持相同格式）" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了公司搜索页面 （后续数据搜索页面建议保持相同格式）" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -617,53 +633,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/views/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyhome.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1521076193778" expanded="true" signature="5870:5885" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/resources/generator.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="3" column="19" lean-forward="false" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1539">
-          <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/Table.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/company.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -901,69 +870,125 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/views/Company.jsp" />
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/views/Province.jsp" />
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#h3#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#h3#0;n#div#1;n#div#0;n#li#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3394">
-          <caret line="180" column="8" lean-forward="false" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="135" column="5" lean-forward="false" selection-start-line="135" selection-start-column="5" selection-end-line="135" selection-end-column="5" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyhome.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="55" selection-end-column="6" />
+        <state relative-caret-position="243">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
           <folding>
-            <marker date="1521076193778" expanded="true" signature="5870:5885" ph="..." />
+            <marker date="1521101713756" expanded="false" signature="3071:3084" ph="..." />
+            <marker date="1521101713756" expanded="false" signature="5439:5467" ph="..." />
+            <marker date="1521101713756" expanded="false" signature="5494:5603" ph="..." />
+            <marker date="1521101713756" expanded="false" signature="5649:5723" ph="..." />
+            <marker date="1521101713756" expanded="true" signature="5848:5863" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="56" column="49" lean-forward="true" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
+        <state relative-caret-position="81">
+          <caret line="42" column="2" lean-forward="true" selection-start-line="42" selection-start-column="2" selection-end-line="42" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyDataSelect.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/Test.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/static/bootstrap-3.3.7-dist/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="14" column="49" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="47" column="31" lean-forward="false" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="68" column="41" lean-forward="false" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="87" column="44" lean-forward="false" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+          <folding>
+            <marker date="1521122073169" expanded="true" signature="10530:10570" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/target/Table/province2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2997">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1521123500458" expanded="true" signature="4490:5166" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="4525:5154" ph="{...}" />
+            <marker date="1521123500458" expanded="true" signature="4590:4809" ph="{...}" />
+            <marker date="1521123500458" expanded="true" signature="4853:4913" ph="{...}" />
+            <marker date="1521123500458" expanded="true" signature="4925:5146" ph="{...}" />
+            <marker date="1521123500458" expanded="true" signature="5191:5775" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="5201:5246" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="5276:5768" ph="..." />
+            <marker date="1521123500458" expanded="false" signature="5316:5344" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="5345:5757" ph="..." />
+            <marker date="1521123500458" expanded="false" signature="5371:5480" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="5481:5500" ph="..." />
+            <marker date="1521123500458" expanded="false" signature="5526:5600" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="5601:5742" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="5797:6007" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="6032:6338" ph="..." />
+            <marker date="1521123500458" expanded="true" signature="6057:6223" ph="{...}" />
+            <marker date="1521123500458" expanded="true" signature="6247:6329" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4644">
+          <caret line="172" column="27" lean-forward="false" selection-start-line="172" selection-start-column="27" selection-end-line="172" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/Test.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
           <folding />
         </state>
       </provider>

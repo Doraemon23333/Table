@@ -45,7 +45,7 @@
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp">首页</a></li>
-        <li><a href="province1.jsp">企业信息</a></li>
+        <li><a href="province2.jsp">企业信息</a></li>
         <li><a href="/">岗位数据</a></li>
         <li><a href="/" >系统管理</a></li>
     </ul>
