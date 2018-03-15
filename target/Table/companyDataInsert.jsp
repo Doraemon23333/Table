@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>企业数据查询</title>
+     <title>企业数据查询</title>
 
     <meta name="description" content="This is page-header (.page-header &amp;gt; h1)"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
