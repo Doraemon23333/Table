@@ -43,16 +43,9 @@
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp">首页</a></li>
-        <li><a href="/">企业备案</a></li>
-        <li><a href="/">报表管理</a></li>
-        <!--为了美观，数据汇总和数据修改被我合并在了一起-->
-        <li><a href="/">数据管理</a></li>
-        <!--取样分析和图表分析两个合并为数据分析-->
-        <li><a href="/">数据分析</a></li>
-        <li><a href="/">数据查询与导出</a></li>
-        <!--发布通知和浏览通知放在了主页面-->
-        <li><a href="/">系统管理</a></li>
-        <li><a href="/">数据上报</a></li>
+        <li><a href="province1.jsp">企业信息</a></li>
+        <li><a href="/">岗位数据</a></li>
+        <li><a href="/" >系统管理</a></li>
     </ul>
 </div>
 <!--nav end-->

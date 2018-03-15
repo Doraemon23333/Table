@@ -1,10 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Daisia
-  Date: 2018/3/13
-  Time: 15:51
+  User: 工业
+  Date: 2018/3/15
+  Time: 14:45
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>查询企业</title>
+</head>
+<body>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head lang="en">
@@ -50,55 +56,10 @@
 </div>
 <!--nav end-->
 <!--body start-->
-<div class="index-main index_box pt15">
-
-    <div class="index_top_one">
-
-        <div style="border-bottom:1px solid #c91006" class="title"><a style="text-decoration:none;"
-                                                                      target="_blank" href="/"  title="" >
-            请尽快完善企业备案信息</a></div>
-        <div  class="title"><a style="text-decoration:none;"
-                               target="_blank" href="/"  title="" >
-            请按时上报就业数据</a></div>
-
-    </div>
-
-    <!--切换新闻 start-->
-    <div class="index-header">
-        <div id="switchable" class="container">
-
-            <div>
-                <ul>
-                    <li>
-                        <ul>
-                            <li>
-                                &nbsp;
-                                <div class="clearfix">
-                                    <div class="slider-img"></div>
-                                    <div class="slider-text">
-                                        <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a>
-                                            &nbsp;&nbsp;&nbsp;
-                                            <i class="icon-new"></i><a target="_blank" style="color:#296b9b">发布通知</a>
-                                        </h3>
-                                        <ul class="news-list">
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">山东省省级创业型城市（县区）和创业型街道（乡镇）创建评估认定项目采购竞争性磋商公告</a></span><span class="span2">03-09</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">以更高境界更强担当全力推进高层次人才服务体系建设</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a target="_blank">我省“新时代生态文明与地理发展”主题论坛入选全国博士后学术交流计划</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">关于公开征集山东省高层次人才绿色通道服务统一标识的通知</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">就业鲁渝行——“春风送岗助脱贫”活动在重庆市云阳县酉阳县同步启动</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">全省引进国外人才智力工作联席会议召开</a></span><span class="span2">03-05</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<div>
+    <td>请选择您要查找的企业</td>
 </div>
-
+<!--body end-->
 <!--footer start-->
 <link rel="stylesheet" href="/css/nav.css?var=123456789" type="text/css">
 <script type="text/javascript">
@@ -162,4 +123,6 @@
 <!--footer end-->
 </body>
 
+</html>
+</body>
 </html>
