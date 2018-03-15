@@ -58,6 +58,25 @@
 <!--body start-->
 <div>
     <td>请选择您要查找的企业</td>
+    <select name="Place" id="thisPlace" >
+        <option value="济南" >济南</option>
+        <option value="青岛" >青岛</option>
+        <option value="淄博">淄博</option>
+        <option value="德州">德州</option>
+        <option value="烟台">烟台</option>
+        <option value="潍坊">潍坊</option>
+        <option value="济宁">济宁</option>
+        <option value="泰安">泰安</option>
+        <option value="临沂">临沂</option>
+        <option value="菏泽">菏泽</option>
+        <option value="滨州">滨州</option>
+        <option value="东营">东营</option>
+        <option value="威海">威海</option>
+        <option value="枣庄">枣庄</option>
+        <option value="日照">日照</option>
+        <option value="莱芜">莱芜</option>
+        <option value="聊城">聊城</option>
+    </select>
 </div>
 <!--body end-->
 <!--footer start-->
@@ -121,8 +140,5 @@
 <script src="js/sdrs.js"></script>
 <script src="js/title.js"></script>
 <!--footer end-->
-</body>
-
-</html>
 </body>
 </html>

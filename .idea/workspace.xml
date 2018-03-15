@@ -6,27 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5b6c1f3-956b-47c9-b83f-0d833ca73dd9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/provincehome.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/views/Province.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/provincehome.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/views/Province.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/loginMiddlePage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/main.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/js/jquery-2.0.0.min.js" afterPath="" />
+    <list default="true" id="c5b6c1f3-956b-47c9-b83f-0d833ca73dd9" name="Default" comment="修改省主页面，增加了省下公司信息页面">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Table/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/resources/generator.properties" afterPath="$PROJECT_DIR$/../Table/src/main/resources/generator.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties" afterPath="$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/../Table/target/Table/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/generator.properties" afterPath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/generator.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/jdbc.properties" afterPath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/jdbc.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/provincehome.jsp" afterPath="$PROJECT_DIR$/../Table/target/Table/provincehome.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/classes/generator.properties" afterPath="$PROJECT_DIR$/../Table/target/classes/generator.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/classes/jdbc.properties" afterPath="$PROJECT_DIR$/../Table/target/classes/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/../Table/out/" />
     <ignored path="$PROJECT_DIR$/../Table/target/" />
@@ -50,31 +32,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="province1.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
+      <file leaf-file-name="companyDataInsert.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1242">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="53" selection-end-column="6" />
+            <state relative-caret-position="540">
+              <caret line="131" column="45" lean-forward="false" selection-start-line="116" selection-start-column="35" selection-end-line="131" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="provincehome.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="19" column="61" lean-forward="false" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="province2.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="province2.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+            <state relative-caret-position="-1169">
+              <caret line="78" column="13" lean-forward="false" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -116,6 +88,7 @@
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/province2.jsp" />
+        <option value="$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
       </list>
     </option>
@@ -429,7 +402,7 @@
       <workItem from="1520820067428" duration="7604000" />
       <workItem from="1520921845904" duration="2123000" />
       <workItem from="1520995835183" duration="2066000" />
-      <workItem from="1521075523660" duration="11365000" />
+      <workItem from="1521075523660" duration="12731000" />
     </task>
     <task id="LOCAL-00001" summary="ceshi">
       <created>1520687227326</created>
@@ -438,15 +411,21 @@
       <option name="project" value="LOCAL" />
       <updated>1520687227326</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改省主页面，增加了省下公司信息页面">
+      <created>1521097780028</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1521097780028</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31088000" />
+    <option name="totallyTimeSpent" value="32454000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4750594" sideWeight="0.50431967" order="7" side_tool="true" content_ui="tabs" />
@@ -466,10 +445,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.49784017" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4418052" sideWeight="0.49568033" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4904988" sideWeight="0.49568033" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20032397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20032397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -522,7 +501,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ceshi" />
-    <option name="LAST_COMMIT_MESSAGE" value="ceshi" />
+    <MESSAGE value="修改省主页面，增加了省下公司信息页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改省主页面，增加了省下公司信息页面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -805,14 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/provincehome.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
@@ -879,26 +851,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-648">
+          <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
+        <state relative-caret-position="-2160">
           <caret line="19" column="61" lean-forward="false" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/companyDataInsert.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="131" column="45" lean-forward="false" selection-start-line="116" selection-start-column="35" selection-end-line="131" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1242">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="53" selection-end-column="6" />
+        <state relative-caret-position="-1169">
+          <caret line="78" column="13" lean-forward="false" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
           <folding />
         </state>
       </provider>
