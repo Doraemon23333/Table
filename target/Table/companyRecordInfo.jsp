@@ -76,7 +76,7 @@
                             <tr class="">
                                 <td>所属地市、市县、区域：</td>
                                 <td>
-                                    <input type="text" id="owned" name="owned" value="提交后不可修改" onfocus="javascript:if(this.value=='提交后不可修改')this.value='';"/>
+                                    <input type="text" id="owned" name="owned" style="height: 30px;" value="提交后不可修改" onfocus="javascript:if(this.value=='提交后不可修改')this.value='';"/>
                                     <b class="red">*为必填</b>
                                 </td>
                             </tr>
@@ -84,7 +84,7 @@
                             <tr class="">
                                 <td>组织机构代码（只可输入字母、数字，不超过9位）：</td>
                                 <td>
-                                    <input type="text" id="number" name="number" value="" />
+                                    <input type="text" id="number" name="number" style="height: 30px;" value="" />
                                     <b class="red">*</b>
                                 </td>
                             </tr>
@@ -92,7 +92,7 @@
                             <tr class="">
                                 <td>企业名称（中文或英文）：</td>
                                 <td>
-                                    <input type="text" id="telNum" name="companyName" value="" />
+                                    <input type="text" id="telNum" name="companyName" style="height: 30px;" value="" />
                                     <b class="red">*</b>
                                 </td>
                             </tr>
@@ -101,8 +101,15 @@
                                 <td>企业性质：</td>
                                 <td>
                                     <select name="property" id="property" >
-                                        <option value="国有" >国有企业</option>
-                                        <option value="私有" >私有企业</option>
+                                        <option value="国有企业" >国有企业</option>
+                                        <option value="集体企业" >集体企业</option>
+                                        <option value="联营企业">联营企业</option>
+                                        <option value="股份合作制企业">股份合作制企业</option>
+                                        <option value="私营企业">私营企业</option>
+                                        <option value="个体户">个体户</option>
+                                        <option value="合伙企业">合伙企业</option>
+                                        <option value="有限责任公司">有限责任公司</option>
+                                        <option value="股份有限公司">股份有限公司</option>
                                     </select>
                                     <b class="red">*</b></td>
 
@@ -120,7 +127,7 @@
 
                                 <td>主要经营业务：</td>
                                 <td>
-                                    <input type="text" id="email" name="email" value="按实际情况填写" onfocus="javascript:if(this.value=='按实际情况填写')this.value='';" />
+                                    <input type="text" id="email" name="email" style="height: 30px;" value="按实际情况填写" onfocus="javascript:if(this.value=='按实际情况填写')this.value='';" />
                                     <b class="red">*</b></td>
                             </tr>
 
@@ -134,7 +141,7 @@
 
                                 <td>联系人(中文或英文）：</td>
                                 <td>
-                                    <input type="text" id="etsScore" name="contactName"/>
+                                    <input type="text" id="etsScore" name="contactName" style="height: 30px;"/>
                                     <b class="red">*</b></td>
                             </tr>
 
@@ -146,32 +153,46 @@
                                         <option value="济南" >济南</option>
                                         <option value="青岛" >青岛</option>
                                         <option value="烟台">烟台</option>
+                                        <option value="淄博">淄博</option>
+                                        <option value="德州">德州</option>
+                                        <option value="潍坊">潍坊</option>
+                                        <option value="济宁">济宁</option>
+                                        <option value="泰安">泰安</option>
+                                        <option value="临沂">临沂</option>
+                                        <option value="菏泽">菏泽</option>
+                                        <option value="滨州">滨州</option>
+                                        <option value="东营">东营</option>
+                                        <option value="威海">威海</option>
+                                        <option value="枣庄">枣庄</option>
+                                        <option value="日照">日照</option>
+                                        <option value="莱芜">莱芜</option>
+                                        <option value="聊城">聊城</option>
                                     </select>
                                     <b class="red">*</b></td>
                             </tr>
                             <tr class="">
 
                                 <td>邮政编码：</td>
-                                <td><input type="text" name="postalcode" value="只可填写6位数字" id="postalcode" onfocus="javascript:if(this.value=='只可填写6位数字')this.value='';">
+                                <td><input type="text" name="postalcode" value="只可填写6位数字" id="postalcode" style="height: 30px;" onfocus="javascript:if(this.value=='只可填写6位数字')this.value='';">
                                     <b class="red">*</b></td>
                             </tr>
 
                             <tr class="">
 
                             <td>联系电话：</td>
-                            <td><input type="text" name="telephone" value="格式为手机号码或区号+电话" id="telephone" onfocus="javascript:if(this.value=='格式为手机号码或区号+电话')this.value='';">
+                            <td><input type="text" name="telephone" value="格式为手机号码或区号+电话" id="telephone" style="height: 30px;" onfocus="javascript:if(this.value=='格式为手机号码或区号+电话')this.value='';">
                                 <b class="red">*</b></td>
                             </tr>
                             <tr class="">
 
                                 <td>传真：</td>
-                                <td><input type="text" name="fax" value="格式为区号+电话" id="fax" onfocus="javascript:if(this.value=='格式为区号+电话')this.value='';">
+                                <td><input type="text" name="fax" value="格式为区号+电话" id="fax" style="height: 30px;" onfocus="javascript:if(this.value=='格式为区号+电话')this.value='';">
                                     <b class="red">*</b></td>
                             </tr>
                             <tr class="">
 
                                 <td>电子邮箱：</td>
-                                <td><input type="text" name="email" value="格式为xxx@xxx.xxx" id="mail" onfocus="javascript:if(this.value=='格式为xxx@xxx.xxx')this.value='';">
+                                <td><input type="text" name="email" value="格式为xxx@xxx.xxx" id="mail" style="height: 30px;" onfocus="javascript:if(this.value=='格式为xxx@xxx.xxx')this.value='';">
                                     </td>
                             </tr>
 

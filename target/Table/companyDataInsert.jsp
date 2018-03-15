@@ -49,7 +49,7 @@
         <li><a href="companyhome.jsp?id=<%=request.getParameter("id")%>">首页</a></li>
         <li><a href="companyRecordInfo.jsp?id=<%=request.getParameter("id")%>">备案信息</a></li>
         <li><a href="companyDataInsert.jsp?id=<%=request.getParameter("id")%>">数据填报</a></li>
-        <li><a href="/">数据查询</a></li>
+        <li><a href="companyDataSelect.jsp?id=<%=request.getParameter("id")%>">数据查询</a></li>
         <li><a href="/">退出</a></li>
     </ul>
 </div>
@@ -76,7 +76,7 @@
                             <tr class="">
                                 <td>建档期就业人数</td>
                                 <td>
-                                    <input type="text" id="recordNum" name="RecordNum" value="初次将档时监测点就业人数" onfocus="javascript:if(this.value=='填写初次将档时监测点就业人数')this.value='';"/>
+                                    <input type="text" id="recordNum" name="RecordNum" style="height: 30px;"value="初次建档时监测点就业人数" onfocus="javascript:if(this.value=='初次建档时监测点就业人数')this.value='';"/>
                                     <b class="red">*为必填</b>
                                 </td>
                             </tr>
@@ -84,7 +84,7 @@
                             <tr class="">
                                 <td>调查期就业人数</td>
                                 <td>
-                                    <input type="text" id="resNum" name="resNum" value="本次调查期当时的监测点就业人数" onfocus="javascript:if(this.value=='填写本次调查期当时的监测点就业人数')this.value='';"/>
+                                    <input type="text" id="resNum" name="resNum" style="height: 30px;"value="本次调查期当时的监测点就业人数" onfocus="javascript:if(this.value=='本次调查期当时的监测点就业人数')this.value='';"/>
                                     <b class="red">*</b>
                                 </td>
                             </tr>
@@ -92,7 +92,7 @@
                             <tr class="">
                                 <td>其他原因</td>
                                 <td>
-                                    <input type="text" id="otherReason" name="otherReason" value="" />
+                                    <input type="text" id="otherReason" name="otherReason" style="height: 30px;"value="" />
                                     <b class="red">*</b>
                                 </td>
                             </tr>
@@ -100,7 +100,7 @@
                             <tr class="">
                                 <td>就业人数减少类型</td>
                                 <td>
-                                    <input type="text" id="decType" name="otherReason" value="" />
+                                    <input type="text" id="decType" name="otherReason" style="height: 30px;"value="" />
                                 </td>
                             </tr>
 
@@ -136,7 +136,7 @@
 
                                 <td>主要原因说明</td>
                                 <td>
-                                    <input type="text" name="mainReasonExplain" value="" id="mainReasonExplain"/>
+                                    <input type="text" name="mainReasonExplain" value="" id="mainReasonExplain"style="height: 30px;"/>
                                 </td>
                             </tr>
                             <tr class="">
@@ -166,7 +166,7 @@
 
                                 <td>次要原因说明</td>
                                 <td>
-                                    <input type="text" name="secReasonExplain" value="" id="secReasonExplain"/>
+                                    <input type="text" name="secReasonExplain" value="" id="secReasonExplain" style="height: 30px;"/>
                                 </td>
                             </tr>
                             <tr class="">
@@ -195,7 +195,7 @@
 
                                 <td>第三原因说明</td>
                                 <td>
-                                    <input type="text" name="thirdReasonExplain" value="" id="thirdReasonExplain"/>
+                                    <input type="text" name="thirdReasonExplain" value="" id="thirdReasonExplain" style="height: 30px;"/>
                                 </td>
                             </tr>
 

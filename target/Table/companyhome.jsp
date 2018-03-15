@@ -50,7 +50,7 @@
         <li><a href="companyhome.jsp?id=<%=request.getParameter("id")%>">首页</a></li>
         <li><a href="companyRecordInfo.jsp?id=<%=request.getParameter("id")%>">备案信息</a></li>
         <li><a href="companyDataInsert.jsp?id=<%=request.getParameter("id")%>">数据填报</a></li>
-        <li><a href="/">数据查询</a></li>
+        <li><a href="companyDataSelect.jsp?id=<%=request.getParameter("id")%>">数据查询</a></li>
         <li><a href="/">退出</a></li>
     </ul>
 </div>
@@ -59,13 +59,11 @@
 <div class="index-main index_box pt15">
     <div class="index_top_one">
 
-        <div style="border-bottom:1px solid #c91006" class="title"><a style="text-decoration:none;"
-
-                                                                      target="_blank" href="/"  title="" >
+        <div style="border-bottom:1px solid #c91006" class="title">
+            <a style="text-decoration:none;" target="_blank" href="/"  title="" >
             请尽快完善企业备案信息</a></div>
-        <div  class="title"><a style="text-decoration:none;"
-
-                               target="_blank" href="/"  title="" >
+        <div  class="title">
+            <a style="text-decoration:none;" target="_blank" href="/"  title="" >
             请按时上报就业数据</a></div>
 
     </div>
