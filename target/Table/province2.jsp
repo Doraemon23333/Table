@@ -80,16 +80,22 @@
 </div>
 <!--header end-->
 <!--nav start-->
+<%! String userid = null;%>
+<%
+    String id = request.getParameter("id");
+    userid = id;
+%>
 <div class="nav-box">
     <ul class="container nav">
-        <li><a href="provincehome.jsp">首页</a></li>
-        <li><a href="province1.jsp">企业信息</a></li>
+        <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>">首页</a></li>
+        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>">企业信息</a></li>
         <li><a href="/">岗位数据</a></li>
         <li><a href="/" >系统管理</a></li>
     </ul>
 </div>
 <!--nav end-->
 <!--body start-->
+<form action="/com/springmvc/controller/SearchCompanyServlet?id=<%=userid%>" method="post">
 <div class="choose"><td>请选择您要查找的企业</td></div>
 <div class="info">
     <td>城市：</td>
@@ -132,8 +138,9 @@
     </select>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;精确查找：</td>
     <input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/>
-    <button class="search">查找</button>
+    <button class="search" type="submit">查找</button>
 </div>
+</form>
 <div class="result"></div>
 <!--body end-->
 <!--footer start-->

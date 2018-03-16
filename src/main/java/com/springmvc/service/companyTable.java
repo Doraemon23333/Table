@@ -7,6 +7,7 @@ import com.springmvc.entity.Company;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.util.List;
 
 public class companyTable {
     /*
@@ -130,5 +131,43 @@ email varchar(50)) default charset = utf8;
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void search(Company company, List<Company> companies){
+        try{
+            Connection conn = getConnection();
+            String sql = "select * from companyTable where originalArea=" + company.originalArea +
+                    " and enterprisesNature=" + company.enterprisesNature +
+                    " and industry=" + company.industry +
+                    " and (name=" + company.name +
+                    "or nameCode=" + company.nameCode +
+                    ")";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                Company com = new Company();
+                com.originalArea = rs.getString("originalArea");
+                com.id = rs.getInt("id");
+                com.name = rs.getString("name");
+                com.nameCode = rs.getString("nameCode");
+                com.enterprisesNature = rs.getString("enterprisesNature");
+                com.industry = rs.getString("industry");
+                com.mainBusiness = rs.getString("mainBusiness");
+                com.People = rs.getString("People");
+                com.Address = rs.getString("Address");
+                com.postalCode = rs.getString("postalCode");
+                com.telephone = rs.getString("telephone");
+                com.fax = rs.getString("fax");
+                com.email = rs.getString("email");
+                companies.add(com);
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

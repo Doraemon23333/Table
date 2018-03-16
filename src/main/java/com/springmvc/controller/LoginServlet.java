@@ -23,11 +23,18 @@ public class LoginServlet extends HttpServlet {
         password = request.getParameter("password");
         boolean end = userTable.login(account, password);
         userTable.find("account", account, user);
-        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=utf-8");
         if(end == false){
             out.print("login failed, password Error");
         }else {
-            response.sendRedirect("/companyhome.jsp?id=" + user.id);
+            if(user.rank == 1)
+                response.sendRedirect("/companyhome.jsp?id=" + user.id);
+            else if (user.rank == 3){
+                response.sendRedirect("/provincehome.jsp?id=" + user.id);
+            }
+            else {
+                out.print("waiting for coming true");
+            }
         }
     }
 }
