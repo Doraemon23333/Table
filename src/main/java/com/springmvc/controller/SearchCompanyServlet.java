@@ -29,7 +29,7 @@ public class SearchCompanyServlet extends HttpServlet{
         //out.print("choose = " + choose);
         companyTable table = new companyTable();
         List<Company> companyList = new ArrayList<Company>();
-        table.search(company, companyList, choose);
+        table.search(company, companyList, choose, Integer.parseInt(id));
         //out.print("搜到结果" + companyList.size());
         if (companyList.size() == 0){
             out.print("没有找到符合条件的企业");

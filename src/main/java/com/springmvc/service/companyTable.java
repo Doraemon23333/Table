@@ -3,6 +3,7 @@ package com.springmvc.service;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 import com.springmvc.entity.Company;
+import com.springmvc.entity.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -41,7 +42,7 @@ email varchar(50)) default charset = utf8;
     }
 
     public void insert(Company company){
-        if(find(company.id)) {
+        if(find(company.id) && findTheSame(company.name) && findTheSame(company.nameCode)) {
             String sql = "insert into companyTable(originalArea,id,name,enterprisesNature,industry,"
                     + "mainBusiness,People,Address,postalCode,telephone,"
                     + "fax,email,nameCode"
@@ -73,7 +74,7 @@ email varchar(50)) default charset = utf8;
         }
     }
 
-    public boolean find(int id) {
+    public boolean find(int id) {//false为找到
         String sql = "select * from companyTable where id=" + id;
         int ch = 0;
         try {
@@ -98,24 +99,40 @@ email varchar(50)) default charset = utf8;
         }
     }
 
-    public boolean updateS(int id, String name, String data){
-        try {
-            Connection conn = getConnection();
-            String sql = "update companyTable set " + name + "=? where id=?";
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setString(1, data);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            ps.close();
-            conn.close();
-            return true;
-        }catch(Exception e) {
-            e.printStackTrace();
+    public boolean updateS(int id, String name, String data){//更新  false为失败 true为成功
+        int ch = 0;
+        if (name.equals("name") || name.equals("nameCode")){
+            if(findTheSame(data)){
+                ch = 0;
+            }else ch = 1;
         }
-        return false;
+        if (ch == 0){
+            try {
+                Connection conn = getConnection();
+                String sql = "update companyTable set " + name + "=? where id=?";
+                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+                ps.setString(1, data);
+                ps.setInt(2, id);
+                ps.executeUpdate();
+                ps.close();
+                conn.close();
+                return true;
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
+            return false;
+        }else {
+            return false;
+        }
     }
 
-    public void search(Company company, List<Company> companies, String choose){
+    public void search(Company company, List<Company> companies, String choose, int mainid){//查找company
+        User user = new User();
+        userTable table = new userTable();
+        table.findById(mainid, user);
+        Company com1 = new Company();
+        com1.id = mainid;
+        show(com1);
         try{
             Connection conn = getConnection();
             /*String sql = "select * from companyTable where originalArea=" + company.originalArea +
@@ -142,7 +159,13 @@ email varchar(50)) default charset = utf8;
                 com.email = rs.getString("email");
                 if ((com.nameCode.equals(choose) || com.name.equals(choose)) && com.industry.equals(company.industry) && com.enterprisesNature.equals(
                         company.enterprisesNature) && com.originalArea.equals(company.originalArea)){
-                    companies.add(com);
+                    if (user.rank == 2){
+                        if (com.originalArea.equals(com1.originalArea)){
+                            companies.add(com);
+                        }
+                    }else {
+                        companies.add(com);
+                    }
                 }
             }
             rs.close();
@@ -154,7 +177,7 @@ email varchar(50)) default charset = utf8;
         }
     }
 
-    public void show(Company com){
+    public void show(Company com){//调取company的信息
         if (find(com.id)){
 
         }else {
@@ -187,5 +210,46 @@ email varchar(50)) default charset = utf8;
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean findTheSame(String name){//检查name nameCode 是否重复
+        int ch = 0;
+        String sql = "select * from companyTable where name=" + name;
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                ch++;
+                break;
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        String sql1 = "select * from companyTable where nameCode=" + name;
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql1);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql1);
+            while (rs.next()){
+                ch++;
+                break;
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        if (ch == 0){
+            return true;
+        }else return false;
     }
 }

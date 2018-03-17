@@ -120,7 +120,39 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
     }
 
     public void find(String name, String data, User user) {
-        String sql = "select * from userTable where " + name +"='" + data + "'";
+        String sql = "select * from userTable where " + name +"=" + data;
+        int ch = 0;
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            int length = rs.getRow();
+            while(rs.next()){
+                user.id = rs.getInt("id");
+                user.rank = rs.getInt("rank");
+                user.usingCondition = rs.getString("usingCondition");
+                user.account = rs.getString("account");
+                user.password = rs.getString("password");
+                user.registerYear = rs.getInt("registerYear");
+                user.registerMonth = rs.getInt("registerMonth");
+                user.registerDay = rs.getInt("registerDay");
+                user.unregisterDay = rs.getInt("unregisterDay");
+                user.unregisterMonth = rs.getInt("unregisterMonth");
+                user.unregisterYear = rs.getInt("unregisterYear");
+                user.accompanyName = rs.getString("accompanyName");
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void findById(int id, User user) {
+        String sql = "select * from userTable where id=" + id;
         int ch = 0;
         try {
             Connection conn = getConnection();
