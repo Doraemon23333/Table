@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.springmvc.entity.Company" %>
+<%@ page import="com.springmvc.service.companyTable" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/13 0013
@@ -39,10 +40,16 @@
 </div>
 <!--header end-->
 <!--nav start-->
-<%! String userid = null;%>
+<%!
+    String userid = null;
+    Company company = new Company();
+%>
 <%
     String id = request.getParameter("id");
     userid = id;
+    company.id = Integer.parseInt(userid);
+    companyTable table = new companyTable();
+    table.show(company);
 %>
 <div class="nav-box">
     <ul class="container nav">
@@ -76,7 +83,7 @@
                             <tr class="">
                                 <td>所属地市、市县、区域：</td>
                                 <td>
-                                    <input type="text" id="owned" name="owned" style="height: 30px;" value="提交后不可修改" onfocus="javascript:if(this.value=='提交后不可修改')this.value='';"/>
+                                    <input type="text" id="owned" name="owned" style="height: 30px;" value="<%=company.originalArea%>" onfocus="javascript:if(this.value=='提交后不可修改')this.value='';"/>
                                     <b class="red">*为必填</b>
                                 </td>
                             </tr>
@@ -84,7 +91,7 @@
                             <tr class="">
                                 <td>组织机构代码（只可输入字母、数字，不超过9位）：</td>
                                 <td>
-                                    <input type="text" id="number" name="number" style="height: 30px;" value="" />
+                                    <input type="text" id="number" name="number" style="height: 30px;" value="<%=company.nameCode%>" />
                                     <b class="red">*</b>
                                 </td>
                             </tr>
@@ -92,7 +99,7 @@
                             <tr class="">
                                 <td>企业名称（中文或英文）：</td>
                                 <td>
-                                    <input type="text" id="telNum" name="companyName" style="height: 30px;" value="" />
+                                    <input type="text" id="telNum" name="companyName" style="height: 30px;" value="<%=company.name%>" />
                                     <b class="red">*</b>
                                 </td>
                             </tr>
@@ -101,6 +108,7 @@
                                 <td>企业性质：</td>
                                 <td>
                                     <select name="property" id="property" >
+                                        <option value="<%=company.enterprisesNature%>" ><%=company.enterprisesNature%></option>
                                         <option value="国有企业" >国有企业</option>
                                         <option value="集体企业" >集体企业</option>
                                         <option value="联营企业">联营企业</option>
@@ -118,6 +126,7 @@
                                 <td>所属行业：</td>
                                 <td>
                                     <select name="industry" id="industry" >
+                                        <option value="<%=company.industry%>" ><%=company.industry%></option>
                                         <option value="制造业" >制造业</option>
                                         <option value="服务业" >服务业</option>
                                     </select>
@@ -127,7 +136,7 @@
 
                                 <td>主要经营业务：</td>
                                 <td>
-                                    <input type="text" id="mainBusiness" name="mainBusiness" style="height: 30px;" value="按实际情况填写" onfocus="javascript:if(this.value=='按实际情况填写')this.value='';" />
+                                    <input type="text" id="mainBusiness" name="mainBusiness" style="height: 30px;" value="<%=company.mainBusiness%>" onfocus="javascript:if(this.value=='按实际情况填写')this.value='';" />
                                     <b class="red">*</b></td>
                             </tr>
 
@@ -141,7 +150,7 @@
 
                                 <td>联系人(中文或英文）：</td>
                                 <td>
-                                    <input type="text" id="etsScore" name="contactName" style="height: 30px;"/>
+                                    <input type="text" id="etsScore" name="contactName" style="height: 30px;" value="<%=company.People%>"/>
                                     <b class="red">*</b></td>
                             </tr>
 
@@ -150,6 +159,7 @@
                                 <td>联系地址：</td>
                                 <td>
                                     <select name="place" id="place" >
+                                        <option value="<%=company.Address%>" ><%=company.Address%></option>
                                         <option value="济南" >济南</option>
                                         <option value="青岛" >青岛</option>
                                         <option value="烟台">烟台</option>
@@ -173,26 +183,26 @@
                             <tr class="">
 
                                 <td>邮政编码：</td>
-                                <td><input type="text" name="postalcode" value="只可填写6位数字" id="postalcode" style="height: 30px;" onfocus="javascript:if(this.value=='只可填写6位数字')this.value='';">
+                                <td><input type="text" name="postalcode" value="<%=company.postalCode%>" id="postalcode" style="height: 30px;" onfocus="javascript:if(this.value=='只可填写6位数字')this.value='';">
                                     <b class="red">*</b></td>
                             </tr>
 
                             <tr class="">
 
                             <td>联系电话：</td>
-                            <td><input type="text" name="telephone" value="格式为手机号码或区号+电话" id="telephone" style="height: 30px;" onfocus="javascript:if(this.value=='格式为手机号码或区号+电话')this.value='';">
+                            <td><input type="text" name="telephone" value="<%=company.telephone%>" id="telephone" style="height: 30px;" onfocus="javascript:if(this.value=='格式为手机号码或区号+电话')this.value='';">
                                 <b class="red">*</b></td>
                             </tr>
                             <tr class="">
 
                                 <td>传真：</td>
-                                <td><input type="text" name="fax" value="格式为区号+电话" id="fax" style="height: 30px;" onfocus="javascript:if(this.value=='格式为区号+电话')this.value='';">
+                                <td><input type="text" name="fax" value="<%=company.fax%>" id="fax" style="height: 30px;" onfocus="javascript:if(this.value=='格式为区号+电话')this.value='';">
                                     <b class="red">*</b></td>
                             </tr>
                             <tr class="">
 
                                 <td>电子邮箱：</td>
-                                <td><input type="text" name="email" value="格式为xxx@xxx.xxx" id="mail" style="height: 30px;" onfocus="javascript:if(this.value=='格式为xxx@xxx.xxx')this.value='';">
+                                <td><input type="text" name="email" value="<%=company.email%>" id="mail" style="height: 30px;" onfocus="javascript:if(this.value=='格式为xxx@xxx.xxx')this.value='';">
                                     </td>
                             </tr>
 

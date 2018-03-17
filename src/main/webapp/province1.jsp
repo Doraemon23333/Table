@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.springmvc.service.companyTable" %>
+<%@ page import="com.springmvc.entity.Company" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -39,10 +40,17 @@
 </div>
 <!--header end-->
 <!--nav start-->
-<%! String userid = null;%>
+<%!
+    String userid = null;
+    Company company = new Company();
+%>
 <%
     String id = request.getParameter("id");
     userid = id;
+    String id2 = request.getParameter("companyid");
+    company.id = Integer.parseInt(id2);
+    companyTable table = new companyTable();
+    table.show(company);
 %>
 <div class="nav-box">
     <ul class="container nav">
@@ -75,77 +83,76 @@
                             <tr class="">
                                 <td>所属地市、市县、区域：</td>
                                 <td>
-                                    **********
+                                    <%=company.originalArea%>
                                 </td>
                             </tr>
 
                             <tr class="">
                                 <td>组织机构代码（只可输入字母、数字，不超过9位）：</td>
                                 <td>
-                                    **********
+                                    <%=company.nameCode%>
                                 </td>
                             </tr>
 
                             <tr class="">
                                 <td>企业名称（中文或英文）：</td>
                                 <td>
-                                    ************
+                                    <%=company.name%>
                                 </td>
                             </tr>
                             <tr class="">
                                 <td>企业性质：</td>
-                                <td>***********</td>
+                                <td><%=company.enterprisesNature%></td>
                             </tr>
                             <tr class="">
                                 <td>所属行业：</td>
                                 <td>
-                                    ************</td>
+                                    <%=company.industry%>/td>
                             </tr>
                             <tr class="">
 
                                 <td>主要经营业务：</td>
                                 <td>
-                                    ************</td>
+                                    <%=company.mainBusiness%></td>
                             </tr>
 
                             <tr class="">
 
                                 <td><b class="blue">联系方式</b></td>
-                                <td>*************</td>
 
                             </tr>
                             <tr class="">
 
                                 <td>联系人(中文或英文）：</td>
                                 <td>
-                                    **************</td>
+                                    <%=company.People%></td>
                             </tr>
 
                             <tr class="">
 
                                 <td>联系地址：</td>
-                                <td>************</td>
+                                <td><%=company.Address%></td>
                             </tr>
                             <tr class="">
 
                                 <td>邮政编码：</td>
-                                <td>***************</td>
+                                <td><%=company.postalCode%></td>
                             </tr>
 
                             <tr class="">
 
                                 <td>联系电话：</td>
-                                <td>***************</td>
+                                <td><%=company.telephone%></td>
                             </tr>
                             <tr class="">
 
                                 <td>传真：</td>
-                                <td>**************</td>
+                                <td><%=company.fax%></td>
                             </tr>
                             <tr class="">
 
                                 <td>电子邮箱：</td>
-                                <td>************</td>
+                                <td><%=company.email%></td>
                             </tr>
 
                         </table>

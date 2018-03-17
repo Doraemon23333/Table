@@ -75,7 +75,6 @@ email varchar(50)) default charset = utf8;
 
     public boolean find(int id) {
         String sql = "select * from companyTable where id=" + id;
-        System.out.println(sql);
         int ch = 0;
         try {
             Connection conn = getConnection();
@@ -116,32 +115,13 @@ email varchar(50)) default charset = utf8;
         return false;
     }
 
-    public boolean updateI(int id, String name, int data) {
-        try {
-            Connection conn = getConnection();
-            String sql = "update companyTable set " + name + "=? where id=?";
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setInt(1, data);
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            ps.close();
-            conn.close();
-            return true;
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public void search(Company company, List<Company> companies){
+    public void search(Company company, List<Company> companies, String choose){
         try{
             Connection conn = getConnection();
-            String sql = "select * from companyTable where originalArea=" + company.originalArea +
+            /*String sql = "select * from companyTable where originalArea=" + company.originalArea +
                     " and enterprisesNature=" + company.enterprisesNature +
-                    " and industry=" + company.industry +
-                    " and (name=" + company.name +
-                    "or nameCode=" + company.nameCode +
-                    ")";
+                    " and industry=" + company.industry;*/
+            String sql = "select * FROM companyTable";
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -160,7 +140,10 @@ email varchar(50)) default charset = utf8;
                 com.telephone = rs.getString("telephone");
                 com.fax = rs.getString("fax");
                 com.email = rs.getString("email");
-                companies.add(com);
+                if ((com.nameCode.equals(choose) || com.name.equals(choose)) && com.industry.equals(company.industry) && com.enterprisesNature.equals(
+                        company.enterprisesNature) && com.originalArea.equals(company.originalArea)){
+                    companies.add(com);
+                }
             }
             rs.close();
             stmt.close();
@@ -168,6 +151,41 @@ email varchar(50)) default charset = utf8;
             conn.close();
         }catch (Exception e){
             e.printStackTrace();
+        }
+    }
+
+    public void show(Company com){
+        if (find(com.id)){
+
+        }else {
+            String sql = "select * from companyTable where id=" + com.id;
+            try {
+                Connection conn = getConnection();
+                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+                Statement stmt = (Statement) conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while(rs.next()) {
+                    com.originalArea = rs.getString("originalArea");
+                    com.id = rs.getInt("id");
+                    com.name = rs.getString("name");
+                    com.nameCode = rs.getString("nameCode");
+                    com.enterprisesNature = rs.getString("enterprisesNature");
+                    com.industry = rs.getString("industry");
+                    com.mainBusiness = rs.getString("mainBusiness");
+                    com.People = rs.getString("People");
+                    com.Address = rs.getString("Address");
+                    com.postalCode = rs.getString("postalCode");
+                    com.telephone = rs.getString("telephone");
+                    com.fax = rs.getString("fax");
+                    com.email = rs.getString("email");
+                }
+                rs.close();
+                stmt.close();
+                ps.close();
+                conn.close();
+            }catch(Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

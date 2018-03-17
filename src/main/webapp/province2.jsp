@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.springmvc.entity.Company" %>
+<%@ page import="com.springmvc.service.companyTable" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -80,7 +81,9 @@
 </div>
 <!--header end-->
 <!--nav start-->
-<%! String userid = null;%>
+<%!
+    String userid = null;
+%>
 <%
     String id = request.getParameter("id");
     userid = id;

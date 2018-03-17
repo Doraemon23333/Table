@@ -21,22 +21,33 @@ public class SearchCompanyServlet extends HttpServlet{
         company.originalArea = request.getParameter("Place");
         company.enterprisesNature = request.getParameter("xz");
         company.industry = request.getParameter("hy");
-        company.nameCode = request.getParameter("num");
-        company.name = request.getParameter("num");
+        String choose = request.getParameter("num");
         PrintWriter out = response.getWriter();
-        out.print("originalArea = " + company.originalArea);
-        out.print("enterprisesNature = " + company.enterprisesNature);
-        out.print("industry = " + company.industry);
-        out.print("nameCode = " + company.nameCode);
-        out.print("name = " + company.name);
+        //out.print("originalArea = " + company.originalArea);
+        //out.print("enterprisesNature = " + company.enterprisesNature);
+        //out.print("industry = " + company.industry);
+        //out.print("choose = " + choose);
         companyTable table = new companyTable();
         List<Company> companyList = new ArrayList<Company>();
-        table.search(company, companyList);
-        out.print("搜到结果" + companyList.size());
-        if (companyList.size() < 1){
+        table.search(company, companyList, choose);
+        //out.print("搜到结果" + companyList.size());
+        if (companyList.size() == 0){
             out.print("没有找到符合条件的企业");
+        }else if (companyList.size() == 1){
+            Company com = null;
+            for (Company company1: companyList){
+                com = company1;
+            }
+            String direction = "/province1.jsp?id=" + id + "&companyid=" + com.id;
+            response.sendRedirect(direction);
+            /*for(Company company1: companyList){
+                out.print("originalArea = " + company1.originalArea);
+                out.print("enterprisesNature = " + company1.enterprisesNature);
+                out.print("industry = " + company1.industry);
+                out.print("<br>");
+            }*/
         }else {
-            response.sendRedirect("/province1.jsp?id=" + id);
+            out.print("Error, company number more than one");
         }
     }
 }

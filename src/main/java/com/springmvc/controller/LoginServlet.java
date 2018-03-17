@@ -29,11 +29,8 @@ public class LoginServlet extends HttpServlet {
         }else {
             if(user.rank == 1)
                 response.sendRedirect("/companyhome.jsp?id=" + user.id);
-            else if (user.rank == 3){
+            else{
                 response.sendRedirect("/provincehome.jsp?id=" + user.id);
-            }
-            else {
-                out.print("waiting for coming true");
             }
         }
     }
