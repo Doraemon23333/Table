@@ -1,7 +1,11 @@
 package com.springmvc.controller;
 
+import com.springmvc.entity.Browser;
 import com.springmvc.entity.Company;
+import com.springmvc.entity.User;
+import com.springmvc.service.browserTable;
 import com.springmvc.service.companyTable;
+import com.springmvc.service.userTable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 
 public class CompanyServlet extends HttpServlet{
     @Override
@@ -54,8 +59,23 @@ public class CompanyServlet extends HttpServlet{
                 company.id < 1){
             out.print("Error!!!, something needed to be written");
         }else {
+            browserTable table1 = new browserTable();
+            userTable table2 = new userTable();
+            User user = new User();
+            table2.findById(Integer.parseInt(request.getParameter("id")), user);
+            Browser browser = new Browser();
+            Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            browser.broswerDay = day;
+            browser.broswerYear = year;
+            browser.broswerMonth = month;
+
             if (table.find(company.id)){
                 table.insert(company);
+                browser.content = user.accompanyName + "提交了企业备案";
+                table1.insert(browser);
                 out.print("添加成功");
             }else {
                 table.updateS(company.id, "originalArea", company.originalArea);
@@ -73,6 +93,8 @@ public class CompanyServlet extends HttpServlet{
                 }else {
                     table.updateS(company.id, "email", company.email);
                 }
+                browser.content = user.accompanyName + "更新了企业备案";
+                table1.insert(browser);
                 out.print("更新成功");
             }
         }
