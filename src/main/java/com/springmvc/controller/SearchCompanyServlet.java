@@ -17,6 +17,7 @@ public class SearchCompanyServlet extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         String id = request.getParameter("id");
+        String rank = request.getParameter("rank");
         Company company = new Company();
         company.originalArea = request.getParameter("Place");
         company.enterprisesNature = request.getParameter("xz");
@@ -31,6 +32,17 @@ public class SearchCompanyServlet extends HttpServlet{
         List<Company> companyList = new ArrayList<Company>();
         table.search(company, companyList, choose, Integer.parseInt(id));
         //out.print("搜到结果" + companyList.size());
+        if (rank.equals("2") && companyList.size() > 0){
+            Company city = new Company();
+            city.id = Integer.parseInt(id);
+            table.show(city);
+            for (Company c: companyList){
+                if (c.originalArea.equals(city.originalArea)){
+                }else {
+                    companyList.remove(c);
+                }
+            }
+        }
         if (companyList.size() == 0){
             out.print("没有找到符合条件的企业");
         }else if (companyList.size() == 1){

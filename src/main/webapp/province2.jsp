@@ -91,22 +91,25 @@
 <!--nav start-->
 <%!
     String userid = null;
+    int rank = 0;
 %>
 <%
     String id = request.getParameter("id");
     userid = id;
+    String a = request.getParameter("rank");
+    rank = Integer.parseInt(a);
 %>
 <div class="nav-box">
     <ul class="container nav">
-        <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>">首页</a></li>
-        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>">企业信息</a></li>
+        <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">首页</a></li>
+        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">企业信息</a></li>
         <li><a href="/">岗位数据</a></li>
-        <li><a href="/" >系统管理</a></li>
+        <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>" >系统管理</a></li>
     </ul>
 </div>
 <!--nav end-->
 <!--body start-->
-<form action="/com/springmvc/controller/SearchCompanyServlet?id=<%=userid%>" method="post">
+<form action="/com/springmvc/controller/SearchCompanyServlet?id=<%=userid%>&rank=<%=rank%>" method="post">
 <div class="choose"><td>请选择您要查找的企业</td></div>
 <div class="info">
     <td>城市：</td>
@@ -171,8 +174,10 @@
         ResultSet rs = stmt.executeQuery(sql);
         while(rs.next()){
             Company com = new Company();
+            User userC = new User();
             com.originalArea = rs.getString("originalArea");
             com.id = rs.getInt("id");
+            table.findById(com.id, userC);
             com.name = rs.getString("name");
             com.nameCode = rs.getString("nameCode");
             com.enterprisesNature = rs.getString("enterprisesNature");
@@ -184,11 +189,12 @@
             com.telephone = rs.getString("telephone");
             com.fax = rs.getString("fax");
             com.email = rs.getString("email");
+            if (userC.rank == 1)
             companies.add(com);
         }
     }else if (user.rank == 2){
         Connection conn = table.getConnection();
-        String sql = "select * from companyTable WHERE originalArea=" + company.originalArea;
+        String sql = "select * from companyTable";
         PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
         Statement stmt = (Statement) conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
@@ -196,6 +202,8 @@
             Company com = new Company();
             com.originalArea = rs.getString("originalArea");
             com.id = rs.getInt("id");
+            User userC = new User();
+            table.findById(com.id, userC);
             com.name = rs.getString("name");
             com.nameCode = rs.getString("nameCode");
             com.enterprisesNature = rs.getString("enterprisesNature");
@@ -207,6 +215,7 @@
             com.telephone = rs.getString("telephone");
             com.fax = rs.getString("fax");
             com.email = rs.getString("email");
+            if (userC.rank == 1 && com.originalArea.equals(company.originalArea))
             companies.add(com);
         }
     }else {

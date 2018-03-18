@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
             if(user.rank == 1)
                 response.sendRedirect("/companyhome.jsp?id=" + user.id);
             else{
-                response.sendRedirect("/provincehome.jsp?id=" + user.id);
+                response.sendRedirect("/provincehome.jsp?id=" + user.id + "&rank=" + user.rank);
             }
         }
     }
