@@ -16,12 +16,11 @@ id int NOT NULL primary key,
 notification_id int NOT NULL,
 broswer_time varchar(50))
 
-create table borswerTable(
-id int NOT NULL primary key,
-notification_id int NOT NULL,
+create table browserTable(
 browserYear int NOT NULL,
 browserMonth int NOT NULL,
-browserDay int NOT NULL) default charset=utf8;
+browserDay int NOT NULL,
+content varchar(100)) default charset=utf8;
  */
 	public Connection getConnection() {
 		Connection conn = null;
@@ -39,16 +38,16 @@ browserDay int NOT NULL) default charset=utf8;
 
 	public void insert(Browser browser) {
 
-		String sql = "insert into userTable(id, browserYear, browserMonth, browserDay) " +
-				"values(?,?,?,?,?)";
+		String sql = "insert into browserTable(browserYear, browserMonth, browserDay, content) " +
+				"values(?,?,?,?)";
 		System.out.println(sql);
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-			ps.setInt(1, browser.id);
-			ps.setInt(2, browser.broswerYear);
-			ps.setInt(3, browser.broswerMonth);
-			ps.setInt(4, browser.broswerDay);
+			ps.setInt(1, browser.broswerYear);
+			ps.setInt(2, browser.broswerMonth);
+			ps.setInt(3, browser.broswerDay);
+			ps.setString(4, browser.content);
 			int row = ps.executeUpdate();
 			ps.close();
 			conn.close();
@@ -74,8 +73,7 @@ browserDay int NOT NULL) default charset=utf8;
 				browser.broswerDay = rs.getInt("broswerDay");
 				browser.broswerMonth = rs.getInt("broswerMonth");
 				browser.broswerYear = rs.getInt("broswerYear");
-				browser.id = rs.getInt("id");
-				browser.notification_id = rs.getInt("notification_id");
+				browser.content = rs.getString("content");
 				browsers.add(browser);
 			}
 			rs.close();
