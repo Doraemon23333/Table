@@ -1,5 +1,13 @@
 <%@ page import="com.springmvc.entity.Company" %>
-<%@ page import="com.springmvc.service.companyTable" %><%--
+<%@ page import="com.springmvc.service.companyTable" %>
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page import="com.springmvc.service.userTable" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.mysql.jdbc.PreparedStatement" %>
+<%@ page import="com.mysql.jdbc.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -144,6 +152,90 @@
     <button class="search" type="submit">查找</button>
 </div>
 </form>
+<%!
+    User user = new User();
+    Company company = new Company();
+    List <Company> companies = new ArrayList<Company>();
+%>
+<%
+    userTable table = new userTable();
+    companyTable table2 = new companyTable();
+    table.findById(Integer.parseInt(request.getParameter("id")), user);
+    company.id = Integer.parseInt(request.getParameter("id"));
+    table2.show(company);
+    if (user.rank == 3){
+        Connection conn = table.getConnection();
+        String sql = "select * from companyTable";
+        PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+        Statement stmt = (Statement) conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while(rs.next()){
+            Company com = new Company();
+            com.originalArea = rs.getString("originalArea");
+            com.id = rs.getInt("id");
+            com.name = rs.getString("name");
+            com.nameCode = rs.getString("nameCode");
+            com.enterprisesNature = rs.getString("enterprisesNature");
+            com.industry = rs.getString("industry");
+            com.mainBusiness = rs.getString("mainBusiness");
+            com.People = rs.getString("People");
+            com.Address = rs.getString("Address");
+            com.postalCode = rs.getString("postalCode");
+            com.telephone = rs.getString("telephone");
+            com.fax = rs.getString("fax");
+            com.email = rs.getString("email");
+            companies.add(com);
+        }
+    }else if (user.rank == 2){
+        Connection conn = table.getConnection();
+        String sql = "select * from companyTable WHERE originalArea=" + company.originalArea;
+        PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+        Statement stmt = (Statement) conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while(rs.next()){
+            Company com = new Company();
+            com.originalArea = rs.getString("originalArea");
+            com.id = rs.getInt("id");
+            com.name = rs.getString("name");
+            com.nameCode = rs.getString("nameCode");
+            com.enterprisesNature = rs.getString("enterprisesNature");
+            com.industry = rs.getString("industry");
+            com.mainBusiness = rs.getString("mainBusiness");
+            com.People = rs.getString("People");
+            com.Address = rs.getString("Address");
+            com.postalCode = rs.getString("postalCode");
+            com.telephone = rs.getString("telephone");
+            com.fax = rs.getString("fax");
+            com.email = rs.getString("email");
+            companies.add(com);
+        }
+    }else {
+
+    }
+%>
+
+
+
+<table border="2" align="center" width="1500">
+    <tr>
+        <td>城市</td>
+        <td>企业性质</td>
+        <td>所属行业</td>
+        <td>企业名称</td>
+        <td>企业编码</td>
+    </tr>
+    <%
+        for (Company company1: companies){
+    %>
+    <tr>
+        <td><%=company1.originalArea%></td>
+        <td><%=company1.enterprisesNature%></td>
+        <td><%=company1.industry%></td>
+        <td><%=company1.name%></td>
+        <td><%=company1.nameCode%></td>
+    </tr>
+    <%}%>
+</table>
 <div class="result"></div>
 <!--body end-->
 <!--footer start-->

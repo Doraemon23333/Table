@@ -107,7 +107,7 @@
                             <tr class="">
                                 <td>所属行业：</td>
                                 <td>
-                                    <%=company.industry%>/td>
+                                    <%=company.industry%></td>
                             </tr>
                             <tr class="">
 
