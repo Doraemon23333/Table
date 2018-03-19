@@ -78,7 +78,6 @@ public class CompanyServlet extends HttpServlet{
                 table1.insert(browser);
                 out.print("添加成功");
             }else {
-                table.updateS(company.id, "originalArea", company.originalArea);
                 table.updateS(company.id, "nameCode", company.nameCode);
                 table.updateS(company.id, "name", company.name);
                 table.updateS(company.id, "industry", company.industry);

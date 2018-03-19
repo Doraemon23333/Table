@@ -1,4 +1,13 @@
-<%--
+<%@ page import="com.springmvc.entity.Company" %>
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.springmvc.service.userTable" %>
+<%@ page import="com.springmvc.service.companyTable" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018
@@ -99,6 +108,96 @@
 <!--leftnav end-->
 <div class="div2">
     <!--数据库返回所有信息-->
+    <%!
+        User user = new User();
+        Company company = new Company();
+        List<Company> companies = new ArrayList<Company>();
+    %>
+    <%
+        userTable table = new userTable();
+        companyTable table2 = new companyTable();
+        table.findById(Integer.parseInt(request.getParameter("id")), user);
+        company.id = Integer.parseInt(request.getParameter("id"));
+        table2.show(company);
+        if (user.rank == 3){
+            Connection conn = table.getConnection();
+            String sql = "select * from companyTable";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Company com = new Company();
+                User userC = new User();
+                com.originalArea = rs.getString("originalArea");
+                com.id = rs.getInt("id");
+                table.findById(com.id, userC);
+                com.name = rs.getString("name");
+                com.nameCode = rs.getString("nameCode");
+                com.enterprisesNature = rs.getString("enterprisesNature");
+                com.industry = rs.getString("industry");
+                com.mainBusiness = rs.getString("mainBusiness");
+                com.People = rs.getString("People");
+                com.Address = rs.getString("Address");
+                com.postalCode = rs.getString("postalCode");
+                com.telephone = rs.getString("telephone");
+                com.fax = rs.getString("fax");
+                com.email = rs.getString("email");
+                if (userC.rank == 1)
+                    companies.add(com);
+            }
+        }else if (user.rank == 2){
+            Connection conn = table.getConnection();
+            String sql = "select * from companyTable";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Company com = new Company();
+                com.originalArea = rs.getString("originalArea");
+                com.id = rs.getInt("id");
+                User userC = new User();
+                table.findById(com.id, userC);
+                com.name = rs.getString("name");
+                com.nameCode = rs.getString("nameCode");
+                com.enterprisesNature = rs.getString("enterprisesNature");
+                com.industry = rs.getString("industry");
+                com.mainBusiness = rs.getString("mainBusiness");
+                com.People = rs.getString("People");
+                com.Address = rs.getString("Address");
+                com.postalCode = rs.getString("postalCode");
+                com.telephone = rs.getString("telephone");
+                com.fax = rs.getString("fax");
+                com.email = rs.getString("email");
+                if (userC.rank == 1 && com.originalArea.equals(company.originalArea))
+                    companies.add(com);
+            }
+        }else {
+
+        }
+    %>
+
+
+
+    <table border="2" align="center" width="1000">
+        <tr>
+            <td>城市</td>
+            <td>企业性质</td>
+            <td>所属行业</td>
+            <td>企业名称</td>
+            <td>企业编码</td>
+        </tr>
+        <%
+            for (Company company1: companies){
+        %>
+        <tr>
+            <td><%=company1.originalArea%></td>
+            <td><%=company1.enterprisesNature%></td>
+            <td><%=company1.industry%></td>
+            <td><%=company1.name%></td>
+            <td><%=company1.nameCode%></td>
+        </tr>
+        <%}%>
+    </table>
 </div>
 
 <!--footer start-->

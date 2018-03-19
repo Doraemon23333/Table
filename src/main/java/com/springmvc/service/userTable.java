@@ -101,7 +101,7 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
         try {
             Connection conn = getConnection();
             String sql = "SELECT * from userTable WHERE account='" + account
-                    + "' AND password='" + password + "' AND usingCondition='online'" ;
+                    + "' AND password='" + password + "' AND usingCondition='online'";
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
