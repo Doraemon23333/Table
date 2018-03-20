@@ -200,10 +200,10 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
                 user.account = rs.getString("account");
                 user.password = rs.getString("password");
                 user.registerYear = rs.getInt("registerYear");
-                user.registerMonth = rs.getInt("registerMonth");
+                user.registerMonth = rs.getInt("registerMouth");
                 user.registerDay = rs.getInt("registerDay");
                 user.unregisterDay = rs.getInt("unregisterDay");
-                user.unregisterMonth = rs.getInt("unregisterMonth");
+                user.unregisterMonth = rs.getInt("unregisterMouth");
                 user.unregisterYear = rs.getInt("unregisterYear");
                 user.accompanyName = rs.getString("accompanyName");
             }

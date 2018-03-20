@@ -101,15 +101,15 @@
 %>
 <div class="nav-box">
     <ul class="container nav">
-        <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">首页</a></li>
-        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">企业信息</a></li>
+        <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
+        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
         <li><a href="/">岗位数据</a></li>
-        <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>" >系统管理</a></li>
+        <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
     </ul>
 </div>
 <!--nav end-->
 <!--body start-->
-<form action="/com/springmvc/controller/SearchCompanyServlet?id=<%=userid%>&rank=<%=rank%>" method="post">
+<form action="/com/springmvc/controller/SearchCompanyServlet?id=<%=userid%>&rank=<%=request.getParameter("rank")%>" method="post">
 <div class="choose"><td>请选择您要查找的企业</td></div>
 <div class="info">
     <td>城市：</td>
@@ -158,7 +158,7 @@
 <%!
     User user = new User();
     Company company = new Company();
-    List <Company> companies = new ArrayList<Company>();
+    List <Company> companies;
 %>
 <%
     userTable table = new userTable();
@@ -166,7 +166,8 @@
     table.findById(Integer.parseInt(request.getParameter("id")), user);
     company.id = Integer.parseInt(request.getParameter("id"));
     table2.show(company);
-    if (user.rank == 3){
+    if (rank == 3){
+        companies = new ArrayList<Company>();
         Connection conn = table.getConnection();
         String sql = "select * from companyTable";
         PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
@@ -192,7 +193,8 @@
             if (userC.rank == 1)
             companies.add(com);
         }
-    }else if (user.rank == 2){
+    }else if (rank == 2){
+        companies = new ArrayList<Company>();
         Connection conn = table.getConnection();
         String sql = "select * from companyTable";
         PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);

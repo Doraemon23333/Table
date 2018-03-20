@@ -49,7 +49,7 @@
         <li><a href="companyhome.jsp?id=<%=request.getParameter("id")%>">首页</a></li>
         <li><a href="companyRecordInfo.jsp?id=<%=request.getParameter("id")%>">备案信息</a></li>
         <li><a href="companyDataInsert.jsp?id=<%=request.getParameter("id")%>">数据填报</a></li>
-        <li><a href="companyDataSelect.jsp?id=<%=request.getParameter("id")%>">数据查询</a></li>
+        <li><a href="companyDataSelect.jsp?id=<%=request.getParameter("id")%>&choose=0">数据查询</a></li>
         <li><a href="/">退出</a></li>
     </ul>
 </div>

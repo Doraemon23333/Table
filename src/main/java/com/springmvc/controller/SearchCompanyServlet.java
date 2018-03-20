@@ -50,7 +50,7 @@ public class SearchCompanyServlet extends HttpServlet{
             for (Company company1: companyList){
                 com = company1;
             }
-            String direction = "/province1.jsp?id=" + id + "&companyid=" + com.id;
+            String direction = "/province1.jsp?id=" + id + "&companyid=" + com.id + "&rank=" + rank;
             response.sendRedirect(direction);
             /*for(Company company1: companyList){
                 out.print("originalArea = " + company1.originalArea);

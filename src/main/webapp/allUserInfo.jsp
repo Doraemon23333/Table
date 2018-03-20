@@ -109,6 +109,7 @@
 <div class="div2">
     <!--数据库返回所有信息-->
     <%!
+        int show = 0;
         User user = new User();
         Company company = new Company();
         List<Company> companies = new ArrayList<Company>();
@@ -142,9 +143,10 @@
                 com.telephone = rs.getString("telephone");
                 com.fax = rs.getString("fax");
                 com.email = rs.getString("email");
-                if (userC.rank == 1)
+                if (userC.rank == 1 && show == 0)
                     companies.add(com);
             }
+            show = 1;
         }else if (user.rank == 2){
             Connection conn = table.getConnection();
             String sql = "select * from companyTable";
@@ -168,9 +170,10 @@
                 com.telephone = rs.getString("telephone");
                 com.fax = rs.getString("fax");
                 com.email = rs.getString("email");
-                if (userC.rank == 1 && com.originalArea.equals(company.originalArea))
+                if (userC.rank == 1 && com.originalArea.equals(company.originalArea) && show == 0)
                     companies.add(com);
             }
+            show = 1;
         }else {
 
         }
