@@ -42,11 +42,12 @@
 <!--nav start-->
 <%!
     String userid = null;
-    Company company = new Company();
+    Company company;
 %>
 <%
     String id = request.getParameter("id");
     userid = id;
+    company = new Company();
     company.id = Integer.parseInt(userid);
     companyTable table = new companyTable();
     table.show(company);
@@ -226,9 +227,6 @@
     </div><!--/#main-content-->
 </div><!--/.fluid-container#main-container-->
 
-<%
-
-%>
 
 <div class="footer-box">
     <!--<div class="footer-link clearfix">

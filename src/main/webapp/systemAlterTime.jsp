@@ -49,7 +49,7 @@
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">首页</a></li>
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">企业信息</a></li>
-        <li><a href="/">岗位数据</a></li>
+        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>" >系统管理</a></li>
     </ul>
 </div>
@@ -74,8 +74,8 @@
             <ul class="submenu">
                 <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">所有用户信息</a></li>
                 <li><a href="newUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">新增用户信息</a></li>
-                <li><a href="#">删除用户信息</a></li>
-                <li><a href="#">修改用户信息</a></li>
+                <li><a href="#deleteUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>>删除用户信息</a></li>
+                <li><a href="alterUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">修改用户信息</a></li>
             </ul>
         </li>
         <li>

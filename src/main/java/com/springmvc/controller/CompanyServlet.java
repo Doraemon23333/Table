@@ -70,7 +70,9 @@ public class CompanyServlet extends HttpServlet{
             int day = c.get(Calendar.DAY_OF_MONTH);
             browser.broswerDay = day;
             browser.broswerYear = year;
-            browser.broswerMonth = month;
+            browser.broswerMonth = month + 1;
+            browser.id = Integer.parseInt(id);
+            browser.rank = 1;
 
             if (table.find(company.id)){
                 table.insert(company);
@@ -78,6 +80,9 @@ public class CompanyServlet extends HttpServlet{
                 table1.insert(browser);
                 out.print("添加成功");
             }else {
+                if (company.originalArea.equals("山东")){
+                    table.updateS(company.id, "originalArea", company.nameCode);
+                }
                 table.updateS(company.id, "nameCode", company.nameCode);
                 table.updateS(company.id, "name", company.name);
                 table.updateS(company.id, "industry", company.industry);

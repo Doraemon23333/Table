@@ -18,6 +18,15 @@
             <td><input type="password" name="password"></td>
         </tr>
         <tr>
+            <td colspan="2" align="center">
+                <select name="rank" id="rank">
+                    <option value="1">企业</option>
+                    <option value="2">市</option>
+                    <option value="3">省</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
             <td colspan="2" align="center"><input type="submit" value="登陆"></td>
         </tr>
     </table>

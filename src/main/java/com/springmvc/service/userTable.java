@@ -18,10 +18,10 @@ rank int NOT NULL,
 password varchar(20),
 account varchar(20) NOT NULL,
 registerYear int NOT NULL,
-registerMouth int NOT NULL,
+registerMonth int NOT NULL,
 registerDay int NOT NULL,
 unregisterYear int,
-unregisterMouth int,
+unregisterMonth int,
 unregisterDay int,
 accompanyName varchar(100) NOT NULL) default charset=utf8;
 */
@@ -39,218 +39,142 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
         return conn;
     }
 
-    public boolean register(int rank, String password, String accompanyName) {
-
-        User user = new User();
-        user.id = -1;
-        find("accompanyName", accompanyName, user);
-        //System.out.println("id = " + user.id);
-        if(user.id == -1) {
-            user.accompanyName = accompanyName;
-            user.rank = rank;
-            user.password = password;
-            boolean end = insert(user);
-            if (end){
-                find("accompanyName", accompanyName, user);
-                int id = user.id;
-                String account = String.valueOf(id);
-                if (account.length() < 7){
-                    for(int i = account.length(); i < 6; i++){
-                        account = "0" + account;
-                    }
-                    account = "1" + account;
-                    updateS(user.id, "account", account);
+    public boolean insert(User user){
+        try {
+            Connection connection = getConnection();
+            String sql = "insert into userTable(accompanyName,password,account,usingCondition,registerYear,registerMonth,registerDay,unregisterYear" +
+                    ",unregisterMonth,unregisterDay,rank)" +
+                    " values(?,?,?,?,?,?,?,?,?,?,?)";
+            Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            ps.setString(1, user.accompanyName);
+            ps.setString(2, user.password);
+            ps.setString(3, "1000000000");//ten
+            ps.setString(4, "online");
+            ps.setInt(5, year);
+            ps.setInt(6, month);
+            ps.setInt(7, day);
+            ps.setInt(8, user.unregisterYear);
+            ps.setInt(9, user.unregisterMonth);
+            ps.setInt(10, user.unregisterDay);
+            ps.setInt(11, 1);
+            int row = ps.executeUpdate();
+            ps.close();
+            connection.close();
+            if (row > 0){
+                find("accompanyName", user.accompanyName, user);
+                String account = String.valueOf(user.id);
+                int length = account.length();
+                for (int i = length; i < 6; i++){
+                    account = "0" + account;
                 }
-                return true;
+                account = "1" + account;
+                boolean end = updateS("account", account, user.id);
+                if (end)
+                    return true;
+                else return false;
             }else return false;
-        }
-        else {
+        }catch (Exception e){
+            e.printStackTrace();
             return false;
         }
     }
 
-    public boolean unregister(int rank, String name){
-        User user = new User();
-        user.id = -1;
-        find("accompanyName", name, user);
-        System.out.println("id = " + user.id);
-        if (user.id != -1){
-            try {
-                Connection conn = getConnection();
-                String sql = "select * from userTable where accompanyName='" + name + "' and usingCondition='online'";
-                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-                Statement stmt = (Statement) conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-                while(rs.next()){
-                    int id = rs.getInt("id");
-                    updateS(id, "usingCondition", "unonline");
-                }
-                rs.close();
-                stmt.close();
-                ps.close();
-                conn.close();
-                return true;
-            }catch (Exception e){
-                e.printStackTrace();
-                return false;
-            }
-        }else return false;
-    }
-
-    public boolean login(String account, String password){
+    public boolean find(String name, String data, User user){
         try {
-            Connection conn = getConnection();
-            String sql = "SELECT * from userTable WHERE account='" + account
-                    + "' AND password='" + password + "' AND usingCondition='online'";
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
+            Connection connection = getConnection();
+            String sql = "select * from userTable where " + name +"='" + data + "'";
+            //System.out.println(sql);
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            Statement stmt = (Statement) connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            int ch = 0;
-            while(rs.next()) {
-                ch++;
+            int row = 0;
+            while (rs.next()){
+                user.id = rs.getInt("id");
+                user.account = rs.getString("account");
+                user.accompanyName = rs.getString("accompanyName");
+                user.password = rs.getString("password");
+                user.usingCondition = rs.getString("usingCondition");
+                user.registerYear = rs.getInt("registerYear");
+                user.registerMonth = rs.getInt("registerMonth");
+                user.registerDay = rs.getInt("registerDay");
+                user.unregisterYear = rs.getInt("unregisterYear");
+                user.unregisterMonth = rs.getInt("unregisterMonth");
+                user.unregisterDay = rs.getInt("unregisterDay");
+                user.rank = rs.getInt("rank");
+                row++;
             }
+            //System.out.println(row);
             rs.close();
             stmt.close();
             ps.close();
-            conn.close();
-            if (ch > 0){
-                return true;
-            }else {
-                return false;
-            }
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public boolean insert(User user){
-        String sql = "insert into userTable(usingCondition,rank,password,account,registerYear,registerMouth,registerDay,accompanyName) values(?,?,?,?,?,?,?,?)";
-        Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
-        try {
-            Connection conn = getConnection();
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setString(1, "online");
-            ps.setInt(2, user.rank);
-            ps.setString(3, user.password);
-            ps.setString(4, "1000000");
-            ps.setInt(5, year);
-            ps.setInt(6, month + 1);
-            ps.setInt(7, day);
-            ps.setString(8, user.accompanyName);
-            int row = ps.executeUpdate();
-            ps.close();
-            conn.close();
+            connection.close();
             if (row > 0){
                 return true;
             }else return false;
-        }catch(Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
             return false;
         }
     }
 
-    public void find(String name, String data, User user) {
-        String sql = "select * from userTable where " + name +"='" + data + "' AND usingCondition='online'";
-        System.out.println(sql);
+    public boolean findById(int id, User user){
         try {
-            Connection conn = getConnection();
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
+            Connection connection = getConnection();
+            String sql = "select * from userTable where id=" + id;
+            //System.out.println(sql);
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            Statement stmt = (Statement) connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
+            int row = 0;
+            while (rs.next()){
                 user.id = rs.getInt("id");
-                user.rank = rs.getInt("rank");
-                user.usingCondition = rs.getString("usingCondition");
                 user.account = rs.getString("account");
-                user.password = rs.getString("password");
-                user.registerYear = rs.getInt("registerYear");
-                user.registerMonth = rs.getInt("registerMouth");
-                user.registerDay = rs.getInt("registerDay");
-                user.unregisterDay = rs.getInt("unregisterDay");
-                user.unregisterMonth = rs.getInt("unregisterMouth");
-                user.unregisterYear = rs.getInt("unregisterYear");
                 user.accompanyName = rs.getString("accompanyName");
+                user.password = rs.getString("password");
+                user.usingCondition = rs.getString("usingCondition");
+                user.registerYear = rs.getInt("registerYear");
+                user.registerMonth = rs.getInt("registerMonth");
+                user.registerDay = rs.getInt("registerDay");
+                user.unregisterYear = rs.getInt("unregisterYear");
+                user.unregisterMonth = rs.getInt("unregisterMonth");
+                user.unregisterDay = rs.getInt("unregisterDay");
+                user.rank = rs.getInt("rank");
+                row++;
             }
+            //System.out.println(row);
             rs.close();
             stmt.close();
             ps.close();
-            conn.close();
-        }catch(Exception e) {
+            connection.close();
+            if (row > 0){
+                return true;
+            }else return false;
+        }catch (Exception e){
             e.printStackTrace();
+            return false;
         }
     }
 
-    public void findById(int id, User user) {
-        String sql = "select * from userTable where id=" + id;
-        int ch = 0;
-        try {
-            Connection conn = getConnection();
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            int length = rs.getRow();
-            while(rs.next()){
-                user.id = rs.getInt("id");
-                user.rank = rs.getInt("rank");
-                user.usingCondition = rs.getString("usingCondition");
-                user.account = rs.getString("account");
-                user.password = rs.getString("password");
-                user.registerYear = rs.getInt("registerYear");
-                user.registerMonth = rs.getInt("registerMouth");
-                user.registerDay = rs.getInt("registerDay");
-                user.unregisterDay = rs.getInt("unregisterDay");
-                user.unregisterMonth = rs.getInt("unregisterMouth");
-                user.unregisterYear = rs.getInt("unregisterYear");
-                user.accompanyName = rs.getString("accompanyName");
-            }
-            rs.close();
-            stmt.close();
-            ps.close();
-            conn.close();
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public boolean updateS(int id, String name, String data) {
+    public boolean updateS(String name, String data, int id){
         try {
             Connection conn = getConnection();
             String sql = "update userTable set " + name + "=? where id=?";
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             ps.setString(1, data);
             ps.setInt(2, id);
-            ps.executeUpdate();
-            if (name.equals("usingCondition") && data.equals("unonline")){
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                String sql2 = "update userTable set unregisterYear=? where id=?";
-                ps = (PreparedStatement) conn.prepareStatement(sql2);
-                ps.setInt(1, year);
-                ps.setInt(2, id);
-                ps.executeUpdate();
-                String sql3 = "update userTable set unregisterMonth=? where id=?";
-                ps = (PreparedStatement) conn.prepareStatement(sql3);
-                ps.setInt(1, month);
-                ps.setInt(2, id);
-                ps.executeUpdate();
-                String sql4 = "update userTable set unregisterDay=? where id=?";
-                ps = (PreparedStatement) conn.prepareStatement(sql4);
-                ps.setInt(1, day);
-                ps.setInt(2, id);
-                ps.executeUpdate();
-            }
+            int row = ps.executeUpdate();
             ps.close();
             conn.close();
-            return true;
-        }catch(Exception e) {
+            if (row > 0){
+                return true;
+            }else return false;
+        }catch (Exception e){
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
 }

@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.springmvc.service.companyTable" %>
+<%@ page import="com.springmvc.entity.Company" %>
+<%@ page import="com.springmvc.service.userTable" %>
+<%@ page import="com.springmvc.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018
@@ -39,17 +42,19 @@
 <%!
     String rank;
     String userid = null;
+    String choose = null;
 %>
 <%
     String id = request.getParameter("id");
     userid = id;
     rank = request.getParameter("rank");
+    choose = request.getParameter("choose");
 %>
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
-        <li><a href="/">岗位数据</a></li>
+        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
     </ul>
 </div>
@@ -75,7 +80,7 @@
                 <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">所有用户信息</a></li>
                 <li><a href="newUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">新增用户信息</a></li>
                 <li><a href="deleteUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">删除用户信息</a></li>
-                <li><a href="alterUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">修改用户信息</a></li>
+                <li><a href="alterUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">修改用户信息</a></li>
             </ul>
         </li>
         <li>
@@ -98,23 +103,63 @@
 <script src="js/systemNav.js"></script>
 <!--leftnav end-->
 
+<%!
+    Company company;
+    User user;
+%>
 <div class="div2">
     <table>
         <tr>
             <td style="color: #0e90d2">修改前：</td>
         </tr>
+
         <tr>
+            <form action="com/springmvc/controller/UpdateServlet?id=<%=request.getParameter("id")%>&rank=<%=rank%>" method="post">
             <td>用户名：</td>
-            <td><input type="text" id="beforename" value=""></td>
+            <td><input type="text" id="beforename" name="beforename" value=""></td>
             <td><button style="
-            text-align: center;color: #ffffff;background-color: #0e90d2;">查询</button></td>
+            text-align: center;color: #ffffff;background-color: #0e90d2;" type="submit">查询</button></td>
+            </form>
+        </tr>
+        <%
+            choose = request.getParameter("choose");
+            if (choose.equals("0")){
+            }else if (choose.equals("1")){
+                companyTable table = new companyTable();
+                userTable table1 = new userTable();
+                String name = request.getParameter("beforename");
+                company = new Company();
+                user = new User();
+                boolean end = table1.find("accompanyName", name, user);
+                company.id = user.id;
+                table.show(company);
+                if (end){
+        %>
+        <tr>
+            <td>用户名: </td>
+            <td><%=company.name%></td>
         </tr>
         <tr>
-            <!--返回信息-->
+            <td>密码: </td>
+            <td><%=user.password%></td>
         </tr>
+        <tr>
+            <td>企业代号: </td>
+            <td><%=company.nameCode%></td>
+        </tr>
+        <%
+                }
+                else {%>
+        <tr>
+            <td>未发现该用户</td>
+        </tr>
+        <%}
+            }
+        %>
         <tr>
             <td style="color: #0e90d2">修改后：</td>
         </tr>
+        <form action="" method="post">
         <tr>
             <td>用户名：</td>
             <td><input type="text" id="aftername" value=""></td>
@@ -127,13 +172,11 @@
             <td>企业代号：</td>
             <td><input type="text" id="afterid" value=""></td>
         </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="修改"></td>
+        </tr>
+        </form>
     </table>
-    <div class="form-actions" style="margin: 20px 100px ;">
-
-        <button type="submit" class="btn btn-primary">
-            修改
-        </button>
-    </div>
 </div>
 
 <!--footer start-->

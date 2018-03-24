@@ -5,4 +5,6 @@ public class Browser {
     public int broswerMonth;//月
     public int broswerDay;//日
     public String content;
+    public int rank;
+    public int id;
 }

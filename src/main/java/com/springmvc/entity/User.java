@@ -13,4 +13,6 @@ public class User {
     public int unregisterMonth;//注销月
     public int unregisterDay;//注销日
     public String accompanyName;//用户名称
+    public String area;
+    public String areaCode;
 }

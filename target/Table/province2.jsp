@@ -7,7 +7,8 @@
 <%@ page import="com.mysql.jdbc.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.springmvc.service.cityTable" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -103,7 +104,7 @@
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
-        <li><a href="/">岗位数据</a></li>
+        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
     </ul>
 </div>
@@ -157,15 +158,12 @@
 </form>
 <%!
     User user = new User();
-    Company company = new Company();
     List <Company> companies;
 %>
 <%
     userTable table = new userTable();
-    companyTable table2 = new companyTable();
-    table.findById(Integer.parseInt(request.getParameter("id")), user);
-    company.id = Integer.parseInt(request.getParameter("id"));
-    table2.show(company);
+    cityTable table1 = new cityTable();
+    table1.findById(Integer.parseInt(id), user);
     if (rank == 3){
         companies = new ArrayList<Company>();
         Connection conn = table.getConnection();
@@ -190,7 +188,7 @@
             com.telephone = rs.getString("telephone");
             com.fax = rs.getString("fax");
             com.email = rs.getString("email");
-            if (userC.rank == 1)
+            if (userC.rank == 1 && userC.usingCondition.equals("online"))
             companies.add(com);
         }
     }else if (rank == 2){
@@ -217,7 +215,7 @@
             com.telephone = rs.getString("telephone");
             com.fax = rs.getString("fax");
             com.email = rs.getString("email");
-            if (userC.rank == 1 && com.originalArea.equals(company.originalArea))
+            if (userC.rank == 1 && com.originalArea.equals(user.area) && userC.usingCondition.equals("online"))
             companies.add(com);
         }
     }else {

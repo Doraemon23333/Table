@@ -7,7 +7,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="com.springmvc.service.cityTable" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018
@@ -58,7 +59,7 @@
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
-        <li><a href="/">岗位数据</a></li>
+        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
     </ul>
 </div>
@@ -84,7 +85,7 @@
                 <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">所有用户信息</a></li>
                 <li><a href="newUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">新增用户信息</a></li>
                 <li><a href="deleteUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">删除用户信息</a></li>
-                <li><a href="alterUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">修改用户信息</a></li>
+                <li><a href="alterUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">修改用户信息</a></li>
             </ul>
         </li>
         <li>
@@ -108,101 +109,96 @@
 <!--leftnav end-->
 <div class="div2">
     <!--数据库返回所有信息-->
-    <%!
-        int show = 0;
-        User user = new User();
-        Company company = new Company();
-        List<Company> companies = new ArrayList<Company>();
-    %>
-    <%
-        userTable table = new userTable();
-        companyTable table2 = new companyTable();
-        table.findById(Integer.parseInt(request.getParameter("id")), user);
-        company.id = Integer.parseInt(request.getParameter("id"));
-        table2.show(company);
-        if (user.rank == 3){
-            Connection conn = table.getConnection();
-            String sql = "select * from companyTable";
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                Company com = new Company();
-                User userC = new User();
-                com.originalArea = rs.getString("originalArea");
-                com.id = rs.getInt("id");
-                table.findById(com.id, userC);
-                com.name = rs.getString("name");
-                com.nameCode = rs.getString("nameCode");
-                com.enterprisesNature = rs.getString("enterprisesNature");
-                com.industry = rs.getString("industry");
-                com.mainBusiness = rs.getString("mainBusiness");
-                com.People = rs.getString("People");
-                com.Address = rs.getString("Address");
-                com.postalCode = rs.getString("postalCode");
-                com.telephone = rs.getString("telephone");
-                com.fax = rs.getString("fax");
-                com.email = rs.getString("email");
-                if (userC.rank == 1 && show == 0)
-                    companies.add(com);
-            }
-            show = 1;
-        }else if (user.rank == 2){
-            Connection conn = table.getConnection();
-            String sql = "select * from companyTable";
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                Company com = new Company();
-                com.originalArea = rs.getString("originalArea");
-                com.id = rs.getInt("id");
-                User userC = new User();
-                table.findById(com.id, userC);
-                com.name = rs.getString("name");
-                com.nameCode = rs.getString("nameCode");
-                com.enterprisesNature = rs.getString("enterprisesNature");
-                com.industry = rs.getString("industry");
-                com.mainBusiness = rs.getString("mainBusiness");
-                com.People = rs.getString("People");
-                com.Address = rs.getString("Address");
-                com.postalCode = rs.getString("postalCode");
-                com.telephone = rs.getString("telephone");
-                com.fax = rs.getString("fax");
-                com.email = rs.getString("email");
-                if (userC.rank == 1 && com.originalArea.equals(company.originalArea) && show == 0)
-                    companies.add(com);
-            }
-            show = 1;
-        }else {
-
+<%!
+    User user = new User();
+    List <Company> companies;
+%>
+<%
+    userTable table = new userTable();
+    cityTable table1 = new cityTable();
+    table1.findById(Integer.parseInt(id), user);
+    if (rank.equals("3")){
+        companies = new ArrayList<Company>();
+        Connection conn = table.getConnection();
+        String sql = "select * from companyTable";
+        PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+        Statement stmt = (Statement) conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while(rs.next()){
+            Company com = new Company();
+            User userC = new User();
+            com.originalArea = rs.getString("originalArea");
+            com.id = rs.getInt("id");
+            table.findById(com.id, userC);
+            com.name = rs.getString("name");
+            com.nameCode = rs.getString("nameCode");
+            com.enterprisesNature = rs.getString("enterprisesNature");
+            com.industry = rs.getString("industry");
+            com.mainBusiness = rs.getString("mainBusiness");
+            com.People = rs.getString("People");
+            com.Address = rs.getString("Address");
+            com.postalCode = rs.getString("postalCode");
+            com.telephone = rs.getString("telephone");
+            com.fax = rs.getString("fax");
+            com.email = rs.getString("email");
+            if (userC.rank == 1 && userC.usingCondition.equals("online"))
+                companies.add(com);
         }
+    }else if (rank.equals("2")){
+        companies = new ArrayList<Company>();
+        Connection conn = table.getConnection();
+        String sql = "select * from companyTable";
+        PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+        Statement stmt = (Statement) conn.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while(rs.next()){
+            Company com = new Company();
+            com.originalArea = rs.getString("originalArea");
+            com.id = rs.getInt("id");
+            User userC = new User();
+            table.findById(com.id, userC);
+            com.name = rs.getString("name");
+            com.nameCode = rs.getString("nameCode");
+            com.enterprisesNature = rs.getString("enterprisesNature");
+            com.industry = rs.getString("industry");
+            com.mainBusiness = rs.getString("mainBusiness");
+            com.People = rs.getString("People");
+            com.Address = rs.getString("Address");
+            com.postalCode = rs.getString("postalCode");
+            com.telephone = rs.getString("telephone");
+            com.fax = rs.getString("fax");
+            com.email = rs.getString("email");
+            if (userC.rank == 1 && com.originalArea.equals(user.area) && userC.usingCondition.equals("online"))
+                companies.add(com);
+        }
+    }else {
+
+    }
+%>
+
+
+
+<table border="2" align="center" width="1000">
+    <tr>
+        <td>城市</td>
+        <td>企业性质</td>
+        <td>所属行业</td>
+        <td>企业名称</td>
+        <td>企业编码</td>
+    </tr>
+    <%
+        for (Company company1: companies){
     %>
-
-
-
-    <table border="2" align="center" width="1000">
-        <tr>
-            <td>城市</td>
-            <td>企业性质</td>
-            <td>所属行业</td>
-            <td>企业名称</td>
-            <td>企业编码</td>
-        </tr>
-        <%
-            for (Company company1: companies){
-        %>
-        <tr>
-            <td><%=company1.originalArea%></td>
-            <td><%=company1.enterprisesNature%></td>
-            <td><%=company1.industry%></td>
-            <td><%=company1.name%></td>
-            <td><%=company1.nameCode%></td>
-        </tr>
-        <%}%>
-    </table>
+    <tr>
+        <td><%=company1.originalArea%></td>
+        <td><%=company1.enterprisesNature%></td>
+        <td><%=company1.industry%></td>
+        <td><%=company1.name%></td>
+        <td><%=company1.nameCode%></td>
+    </tr>
+    <%}%>
+</table>
 </div>
-
 <!--footer start-->
 <div class="footer-box">
     <!--<div class="footer-link clearfix">
