@@ -1,7 +1,8 @@
 <%@ page import="com.springmvc.service.companyTable" %>
 <%@ page import="com.springmvc.entity.Company" %>
 <%@ page import="com.springmvc.service.userTable" %>
-<%@ page import="com.springmvc.entity.User" %><%--
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018

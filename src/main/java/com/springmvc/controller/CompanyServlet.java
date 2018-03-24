@@ -24,6 +24,10 @@ public class CompanyServlet extends HttpServlet{
         //out.println("id = " + id);
         Company company = new Company();
         company.id = Integer.parseInt(id);
+        companyTable tableT = new companyTable();
+        Company company1 = new Company();
+        company1.id = Integer.parseInt(id);
+        tableT.show(company1);
         company.originalArea = request.getParameter("owned");
         //out.println("originalArea = " + company.originalArea);
         company.nameCode = request.getParameter("number");
@@ -80,8 +84,8 @@ public class CompanyServlet extends HttpServlet{
                 table1.insert(browser);
                 out.print("添加成功");
             }else {
-                if (company.originalArea.equals("山东")){
-                    table.updateS(company.id, "originalArea", company.nameCode);
+                if (company1.originalArea.equals("山东")){
+                    table.updateS(company.id, "originalArea", company.name);
                 }
                 table.updateS(company.id, "nameCode", company.nameCode);
                 table.updateS(company.id, "name", company.name);
