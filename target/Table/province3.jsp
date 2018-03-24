@@ -243,6 +243,10 @@ if (companyDataList.size()>0){%>
         <td>企业名称</td>
         <td>企业性质</td>
         <td>所属行业</td>
+        <td>建档期就业人数</td>
+        <td>调查期就业</td>
+        <td>其他原因</td>
+        <td>就业人数减少类型</td>
         <td>年</td>
         <td>月</td>
         <td>日</td>
@@ -255,6 +259,10 @@ if (companyDataList.size()>0){%>
         <td><%=companyData.company.name%></td>
         <td><%=companyData.company.enterprisesNature%></td>
         <td><%=companyData.company.enterprisesNature%></td>
+        <td><%=companyData.csPeople%></td>
+        <td><%=companyData.surveyPeople%></td>
+        <td><%=companyData.addition%></td>
+        <td><%=companyData.reduceType%></td>
         <td><%=companyData.accountYear%></td>
         <td><%=companyData.accountMonth%></td>
         <td><%=companyData.accountDay%></td>

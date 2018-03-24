@@ -5,7 +5,8 @@
 <%@ page import="com.springmvc.service.userTable" %>
 <%@ page import="com.springmvc.entity.User" %>
 <%@ page import="com.springmvc.service.cityTable" %>
-<%@ page import="com.springmvc.service.provinceTable" %><%--
+<%@ page import="com.springmvc.service.provinceTable" %>
+<%@ page import="java.util.Collections" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018
@@ -118,6 +119,7 @@
         <td>内容</td>
     </tr>
 <%
+    Collections.reverse(browsers);
     for (Browser browser: browsers){
         String name = null, time = null, rank = null;
         if (browser.rank == 1){
