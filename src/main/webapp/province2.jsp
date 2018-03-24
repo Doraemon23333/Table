@@ -232,16 +232,18 @@
         <td>所属行业</td>
         <td>企业名称</td>
         <td>企业编码</td>
+        <td>详细信息</td>
     </tr>
     <%
         for (Company company1: companies){
     %>
     <tr>
-        <td href="/province1.jsp"><%=company1.originalArea%></td>
+        <td><%=company1.originalArea%></td>
         <td><%=company1.enterprisesNature%></td>
         <td><%=company1.industry%></td>
         <td><%=company1.name%></td>
         <td><%=company1.nameCode%></td>
+        <td><a href="/province1.jsp?id=<%=user.id%>&rank=<%=user.rank%>&companyid=<%=company1.id%>">查看</a></td>
     </tr>
     <%}%>
 </table>
