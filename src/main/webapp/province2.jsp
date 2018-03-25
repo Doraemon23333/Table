@@ -228,7 +228,7 @@
 
 
 
-<table border="2" width="1200">
+<table border="2" align="center" width="1200">
     <tr>
         <td>城市</td>
         <td>企业性质</td>

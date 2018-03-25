@@ -74,9 +74,8 @@
             请按时上报就业数据</a></div>
 
     </div>
-<%
-
-%>
+    <%
+    %>
     <!--切换新闻 start-->
     <div class="index-header">
         <div id="switchable" class="container">
@@ -117,8 +116,6 @@
 <link rel="stylesheet" href="/css/nav.css?var=123456789" type="text/css">
 <script type="text/javascript">
     $(document).ready(function() {
-
-
         //导航
         $(".mainProNav dl dt").click(function() {
             $(".mainProNav dl").removeClass("dlHover");
@@ -134,9 +131,7 @@
             $("#of_whole").removeClass("of_whole");
             $("#of_whole").addClass("of_whole2");
         })
-
     });
-
 </script>
 <div class="footer-box">
     <!--<div class="footer-link clearfix">

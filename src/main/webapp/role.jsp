@@ -138,13 +138,16 @@
             while (rs.next()){
             Role myrole = new Role();
             myrole.RoleNum = rs.getInt("RoleNum");
-            myrole.SearchCompany=rs.getBoolean("SearchCompany");
-            myrole.SearchData=rs.getBoolean("SearchData");
-            myrole.SetDate=rs.getBoolean("SetDate");
-            myrole.SetRole=rs.getBoolean("SetRole");
-            myrole.SetSystem=rs.getBoolean("SetSystem");
-            myrole.SetUser=rs.getBoolean("SetUser");
-            myrole.CreateNews=rs.getBoolean("CreateNews");
+            myrole.SearchCompany=rs.getInt("SearchCompany");
+            myrole.SearchData=rs.getInt("SearchData");
+            myrole.SetDate=rs.getInt("SetDate");
+            myrole.SetRole=rs.getInt("SetRole");
+            myrole.SetSystem=rs.getInt("SetSystem");
+            myrole.SetUser=rs.getInt("SetUser");
+            myrole.CreateNews=rs.getInt("CreateNews");
+            myrole.ifroot = rs.getInt("ifroot");
+            myrole.id = rs.getInt("id");
+            myrole.rank = rs.getInt("rank");
             RoleList.add(myrole);
             }
         %>

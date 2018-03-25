@@ -26,7 +26,7 @@ public class NotificationServlet extends HttpServlet{
         String title = request.getParameter("subject");
         String content = request.getParameter("message[text]");
         PrintWriter out = response.getWriter();
-        out.print(title + "," + content + "," + id);
+        //out.print(title + "," + content + "," + id);
 
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
