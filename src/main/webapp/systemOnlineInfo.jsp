@@ -100,24 +100,122 @@
 <!--leftnav end-->
 
 <div class="div2">
-    <table>
-        <tr>
-            <td>CPU： </td>
-            <td><!--返回cpu使用信息--></td>
-        </tr>
-        <tr>
-            <td>内存： </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>硬盘： </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>应用系统： </td>
-            <td></td>
-        </tr>
-    </table>
+    <script>
+        var info = allinfo();
+        //document.write(info);
+
+        var locator = new ActiveXObject ("WbemScripting.SWbemLocator");
+        var service = locator.ConnectServer(".");
+        info = pcInfo();
+
+        document.write(info);
+
+        //获取浏览器相关信息
+        function allinfo(){
+            var userLanguage = navigator.userLanguage;     // 用户在自己的操作系统上设置的语言（火狐没有）
+            var userAgent = navigator.userAgent;   //包含以下属性中所有或一部分的字符串：appCodeName,appName,appVersion,language,platform
+            var systemLanguage = navigator.systemLanguage;    // 用户操作系统 支持的默认语言（火狐没有）
+
+            info+="浏览器属性信息： "+userAgent+"<br />";
+            info+="用户设置的操作系统语言： "+userLanguage+"<br />";
+            info+="操作系统支持的默认语言： "+systemLanguage+"<br />";
+            return info;
+        }
+
+        /******************************************以上为浏览器信息，以下为pc信息************************************************/
+
+        function cpuInfo() {//CPU 信息
+            var properties = service.ExecQuery("SELECT * FROM Win32_Processor");
+            var e = new Enumerator (properties);
+            var info = "<table>";
+            info+="<tr style='font-weight: bold;' ><td width='450' >CPU 信息</td></tr>";
+            for (;!e.atEnd();e.moveNext ()) {
+                var p = e.item ();
+                info+="<tr><td >CPU序列号:" + p.ProcessorID + "</td></tr>";
+                info+="<tr><td >"+p.Caption+"</td></tr>";
+                info+="<tr><td >CPU编号："+p.DeviceID+"</td></tr>";
+                info+="<tr><td >CPU型号：" + p.Name + "</td></tr>";
+                info+="<tr><td >CPU状态：" + p.CpuStatus + "</td></tr>";
+                info+="<tr><td >CPU可用性：" + p.Availability + "</td></tr>";
+                info+="<tr><td >CUP Level：" + p.Level + "</td></tr>";
+                info+="<tr><td >主机名称：" + p.SystemName + "</td></tr>";
+                info+="<tr><td >Processor Type：" + p.ProcessorType + "</td></tr>";
+            }
+            info+="</table>";
+            return info;
+        }
+        function diskDrive() {//硬盘信息
+            var properties = service.ExecQuery("SELECT * FROM Win32_DiskDrive");
+            var e = new Enumerator (properties);
+            var info="<table>";
+            info+="<tr style='font-weight: bold;'><td width='450'>硬盘信息 </td></tr>";
+            for (;!e.atEnd();e.moveNext ()) {
+                var p = e.item ();
+                info+="<tr><td >DeviceID：" + p.DeviceID + "</td></tr>";
+                info+="<tr><td >Caption：" + p.Caption + "</td></tr>";
+                info+="<tr><td >Name：" + p.Name + "</td></tr>";
+                info+="<tr><td >Drive：" + p.Drive + "</td></tr>";
+                info+="<tr><td > Description：" + p.Description + "</td></tr>";
+                info+="<tr><td > Status：" + p. Status + "</td></tr>";
+                info+="<tr><td > SerialNumber：" + p.SerialNumber + "</td></tr>";
+                info+="<tr><td > InterfaceType：" + p.InterfaceType + "</td></tr>";
+                info+="<tr><td > Model：" + p.Model + "</td></tr>";
+                info+="<tr><td > Index：" + p.Index + "</td></tr>";
+                info+="<tr><td>Size："+p.Size+"</td></tr>"
+            }
+            info+="</table>";
+            return info;
+        }
+        //获取Ram信息
+        function raminfo(){
+            var system=new Enumerator (service.ExecQuery("SELECT * FROM Win32_ComputerSystem")).item();
+            var physicMenCap=Math.ceil(system.TotalPhysicalMemory/1024/1024);   //内存信息
+            var memory = new Enumerator (service.ExecQuery("SELECT * FROM Win32_PhysicalMemory"));
+            for (var mem=[],i=0;!memory.atEnd();memory.moveNext()){
+                mem[i++]={cap:memory.item().Capacity/1024/1024,speed:memory.item().Speed};
+            }
+            var info="<table>";
+            info+="<tr style='font-weight: bold;' ><td width='450'>内存信息 </td></tr>";
+            info+="<tr><td >内存总量：";
+            memDX = 0;
+            for(var mi=0;mi<mem.length;mi++){
+                memDX += mem[mi].cap;
+            }
+            info+= memDX + "M</td></tr>";
+            info+="<tr><td >可用物理内存：" +physicMenCap + "M</td></tr>";
+            info+="</table>";
+            return info;
+        }
+
+
+        //获取网络连接信息
+        function ipinfo(){
+            var properties = service.ExecQuery("SELECT * FROM Win32_NetworkAdapterConfiguration Where IPEnabled=TRUE");
+            var e = new Enumerator (properties);
+            var info="<table>";
+            info+="<tr style='font-weight: bold;' ><td width='450'>网络连接信息：</td></tr>";
+            var i=1;
+            for (;!e.atEnd();e.moveNext ()){
+                var p = e.item ();
+                info+="<tr><td >MAC地址"+i+"：" + p.MACAddress + "</td></tr>";
+                info+="<tr><td >IP地址"+i+"：" + p.IPAddress(0) + "</td></tr>";
+                i++;
+            }
+            info+="</table>";
+            return info;
+        }
+        /*
+        fnShowPrcName("Win32_StartupCommand")   // 系统自动启动程序
+        */
+
+        function pcInfo() { //所有信息
+            var info=cpuInfo();
+            info+=raminfo();
+            info+= diskDrive();
+            info+=ipinfo();
+            return info;
+        }
+    </script>
 </div>
 
 <!--footer start-->
