@@ -65,8 +65,8 @@ content varchar(100)) default charset=utf8;
 		}
 	}
 
-	public void find(String name, int data, List<Browser> browsers){
-		String sql = "select * from browser where " + name + "=?";
+	public void find(List<Browser> browsers){
+		String sql = "select * from browserTable";
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
@@ -74,9 +74,9 @@ content varchar(100)) default charset=utf8;
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				Browser browser = new Browser();
-				browser.broswerDay = rs.getInt("broswerDay");
-				browser.broswerMonth = rs.getInt("broswerMonth");
-				browser.broswerYear = rs.getInt("broswerYear");
+				browser.broswerDay = rs.getInt("browserDay");
+				browser.broswerMonth = rs.getInt("browserMonth");
+				browser.broswerYear = rs.getInt("browserYear");
 				browser.content = rs.getString("content");
 				browser.id = rs.getInt("id");
 				browser.rank = rs.getInt("rank");

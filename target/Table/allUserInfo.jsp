@@ -8,7 +8,8 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.springmvc.service.cityTable" %><%--
+<%@ page import="com.springmvc.service.cityTable" %><
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018
@@ -59,7 +60,7 @@
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
-        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
+        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
     </ul>
 </div>
@@ -185,6 +186,7 @@
         <td>所属行业</td>
         <td>企业名称</td>
         <td>企业编码</td>
+        <td>详细信息</td>
     </tr>
     <%
         for (Company company1: companies){
@@ -195,6 +197,7 @@
         <td><%=company1.industry%></td>
         <td><%=company1.name%></td>
         <td><%=company1.nameCode%></td>
+        <td><a href="/province1.jsp?id=<%=user.id%>&rank=<%=user.rank%>&companyid=<%=company1.id%>">查看</a></td>
     </tr>
     <%}%>
 </table>

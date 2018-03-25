@@ -110,9 +110,9 @@
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
-        <li><a href="province1.jsp">企业信息</a></li>
+        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
-        <li><a href="/" >系统管理</a></li>
+        <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
     </ul>
 </div>
 <!--nav end-->

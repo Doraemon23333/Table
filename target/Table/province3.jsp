@@ -1,4 +1,14 @@
-<%--
+<%@ page import="com.springmvc.service.companyTable" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.springmvc.entity.Company" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.mysql.jdbc.PreparedStatement" %>
+<%@ page import="com.mysql.jdbc.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="com.springmvc.service.companyDataTable" %>
+<%@ page import="com.springmvc.entity.CompanyData" %>
+<%@ page import="com.springmvc.other.AreaCode" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/23
@@ -91,7 +101,7 @@
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
-        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
+        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">系统管理</a></li>
     </ul>
 </div>
@@ -99,6 +109,7 @@
 <!--body start-->
 <div class="choose"><td>请选择您要查找的数据</td></div>
 <div class="info">
+    <form action="/com/springmvc/controller/ManageDataServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
     <td>城市：</td>
     <select class="City" name="Place" id="thisPlace" >
         <option value="济南" >济南</option>
@@ -147,6 +158,120 @@
     <td>&nbsp;&nbsp;&nbsp;&nbsp;精确查找：</td>
     <input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/>
     <button class="search" type="submit">查找</button>
+    </form>
 </div>
+<%
+    String choose = request.getParameter("choose");
+    if (choose.equals("1")){
+        String place = request.getParameter("placecode");
+        String enterpriseNature = request.getParameter("enterpriseNaturecode");
+        String industry = request.getParameter("industrycode");
+        int year = Integer.parseInt(request.getParameter("year"));
+        int month = Integer.parseInt(request.getParameter("month"));
+        companyTable table = new companyTable();
+        List<Company> companies = new ArrayList<Company>();
+        Connection connection = table.getConnection();
+        AreaCode areaCode = new AreaCode();
+        String sql = "select * from companyTable where enterprisesNature='" + areaCode.codeToEnterpriseNature(enterpriseNature) +
+                "' and industry='" + areaCode.codiToIndustry(industry) +
+                "' and originalArea='" + areaCode.toChinese(place) + "'";
+        //System.out.println(sql);
+        PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while (rs.next()){
+            Company com = new Company();
+            com.originalArea = rs.getString("originalArea");
+            com.id = rs.getInt("id");
+            com.name = rs.getString("name");
+            com.nameCode = rs.getString("nameCode");
+            com.enterprisesNature = rs.getString("enterprisesNature");
+            com.industry = rs.getString("industry");
+            com.mainBusiness = rs.getString("mainBusiness");
+            com.People = rs.getString("People");
+            com.Address = rs.getString("Address");
+            com.postalCode = rs.getString("postalCode");
+            com.telephone = rs.getString("telephone");
+            com.fax = rs.getString("fax");
+            com.email = rs.getString("email");
+            companies.add(com);
+        }
+        rs.close();
+        stmt.close();
+        ps.close();
+        connection.close();
+
+        companyDataTable table1 = new companyDataTable();
+        List<CompanyData> companyDataList = new ArrayList<CompanyData>();
+        for (Company company: companies){
+            CompanyData companyData = new CompanyData();
+            Connection connection1 = table1.getConnection();
+            String sql1 = "select * from companyDataTable where id=" + company.id;
+            System.out.println(sql1);
+            PreparedStatement ps1 = (PreparedStatement) connection1.prepareStatement(sql1);
+            Statement stmt1 = (Statement) connection1.createStatement();
+            ResultSet rs1 = stmt1.executeQuery(sql1);
+            while (rs1.next()){
+                companyData.id = rs1.getInt("id");
+                companyData.csPeople = rs1.getString("csPeople");
+                companyData.surveyPeople = rs1.getString("surveyPeople");
+                companyData.addition = rs1.getString("addition");
+                companyData.reduceType = rs1.getString("reduceType");
+                companyData.mainReason = rs1.getString("mainReason");
+                companyData.mR_instruction = rs1.getString("mR_instruction");
+                companyData.secondReason = rs1.getString("secondReason");
+                companyData.sR_instruction = rs1.getString("sR_instruction");
+                companyData.thirdReason = rs1.getString("thirdReason");
+                companyData.tR_instruction = rs1.getString("tR_instruction");
+                companyData.accountYear = rs1.getInt("accountYear");
+                companyData.accountMonth = rs1.getInt("accountMonth");
+                companyData.accountDay = rs1.getInt("accountDay");
+                companyData.accountSeason = rs1.getInt("accountSeason");
+                companyData.company = company;
+                if (companyData.accountYear == year && companyData.accountMonth == month){
+                    companyDataList.add(companyData);
+                }
+            }
+            rs1.close();
+            stmt1.close();
+            ps1.close();
+            connection1.close();
+        }
+if (companyDataList.size()>0){%>
+<table border="2" align="center" width="1200">
+    <tr>
+        <td>企业名称</td>
+        <td>企业性质</td>
+        <td>所属行业</td>
+        <td>建档期就业人数</td>
+        <td>调查期就业</td>
+        <td>其他原因</td>
+        <td>就业人数减少类型</td>
+        <td>年</td>
+        <td>月</td>
+        <td>日</td>
+        <td>详细信息</td>
+    </tr>
+<%
+        for (CompanyData companyData: companyDataList){
+%>
+    <tr>
+        <td><%=companyData.company.name%></td>
+        <td><%=companyData.company.enterprisesNature%></td>
+        <td><%=companyData.company.enterprisesNature%></td>
+        <td><%=companyData.csPeople%></td>
+        <td><%=companyData.surveyPeople%></td>
+        <td><%=companyData.addition%></td>
+        <td><%=companyData.reduceType%></td>
+        <td><%=companyData.accountYear%></td>
+        <td><%=companyData.accountMonth%></td>
+        <td><%=companyData.accountDay%></td>
+        <td><a href="#">查看</a></td>
+    </tr>
+    <%}
+        }
+    }
+%>
+</table>
 </body>
 </html>

@@ -83,12 +83,21 @@
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>UpdateServlet</servlet-name>
-    <servlet-class>com.springmvc.controller.UpdateServlet</servlet-class>
-  </servlet>
+  <servlet-name>UpdateServlet</servlet-name>
+  <servlet-class>com.springmvc.controller.UpdateServlet</servlet-class>
+</servlet>
   <servlet-mapping>
     <servlet-name>UpdateServlet</servlet-name>
     <url-pattern>/com/springmvc/controller/UpdateServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ManageDataServlet</servlet-name>
+    <servlet-class>com.springmvc.controller.ManageDataServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManageDataServlet</servlet-name>
+    <url-pattern>/com/springmvc/controller/ManageDataServlet</url-pattern>
   </servlet-mapping>
 
   <!-- 配置springmvc的前端控制器 指向spring-mvc.xml 程序在启动的时候就加载springmvc 可以接受所有请求 load-on-startup：表示启动容器时初始化该Servlet； -->
