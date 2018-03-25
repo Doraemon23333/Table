@@ -12,6 +12,6 @@ public class UpdateServlet extends HttpServlet{
         String id = request.getParameter("id");
         String rank = request.getParameter("rank");
         String beforename = request.getParameter("beforename");
-        response.sendRedirect("alterUserInfo.jsp?id=" + id + "&rank=" + rank + "&choose=1&beforename=" + beforename);
+        response.sendRedirect("/alterUserInfo.jsp?id=" + id + "&rank=" + rank + "&choose=1&beforename=" + beforename);
     }
 }

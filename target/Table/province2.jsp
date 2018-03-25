@@ -8,7 +8,8 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.springmvc.service.cityTable" %><%--
+<%@ page import="com.springmvc.service.cityTable" %>
+<%@ page import="com.springmvc.service.provinceTable" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -162,9 +163,9 @@
 %>
 <%
     userTable table = new userTable();
-    cityTable table1 = new cityTable();
-    table1.findById(Integer.parseInt(id), user);
     if (rank == 3){
+        provinceTable table1 = new provinceTable();
+        table1.findById(Integer.parseInt(id), user);
         companies = new ArrayList<Company>();
         Connection conn = table.getConnection();
         String sql = "select * from companyTable";
@@ -192,6 +193,8 @@
             companies.add(com);
         }
     }else if (rank == 2){
+        cityTable table1 = new cityTable();
+        table1.findById(Integer.parseInt(id), user);
         companies = new ArrayList<Company>();
         Connection conn = table.getConnection();
         String sql = "select * from companyTable";
@@ -243,7 +246,7 @@
         <td><%=company1.industry%></td>
         <td><%=company1.name%></td>
         <td><%=company1.nameCode%></td>
-        <td><a href="/province1.jsp?id=<%=user.id%>&rank=<%=user.rank%>&companyid=<%=company1.id%>">查看</a></td>
+        <td><a href="/province1.jsp?id=<%=userid%>&rank=<%=rank%>&companyid=<%=company1.id%>">查看</a></td>
     </tr>
     <%}%>
 </table>

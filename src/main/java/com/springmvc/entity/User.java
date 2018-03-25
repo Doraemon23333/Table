@@ -15,4 +15,5 @@ public class User {
     public String accompanyName;//用户名称
     public String area;
     public String areaCode;
+    public int roleId;
 }

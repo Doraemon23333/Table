@@ -42,7 +42,7 @@ content varchar(100)) default charset=utf8;
 
 		String sql = "insert into browserTable(browserYear, browserMonth, browserDay, content,id, rank) " +
 				"values(?,?,?,?,?,?)";
-		System.out.println(sql);
+		//System.out.println(sql);
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);

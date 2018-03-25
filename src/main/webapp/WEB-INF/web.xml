@@ -100,6 +100,15 @@
     <url-pattern>/com/springmvc/controller/ManageDataServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>NotificationServlet</servlet-name>
+    <servlet-class>com.springmvc.controller.NotificationServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NotificationServlet</servlet-name>
+    <url-pattern>/com/springmvc/controller/NotificationServlet</url-pattern>
+  </servlet-mapping>
+
   <!-- 配置springmvc的前端控制器 指向spring-mvc.xml 程序在启动的时候就加载springmvc 可以接受所有请求 load-on-startup：表示启动容器时初始化该Servlet； -->
   <servlet>
     <servlet-name>springServlet</servlet-name>

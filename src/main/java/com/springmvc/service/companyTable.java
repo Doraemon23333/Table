@@ -99,6 +99,43 @@ email varchar(50)) default charset = utf8;
         }
     }
 
+    public boolean findbyId(Company com){
+        String sql = "select * from companyTable where id=" + com.id;
+        int ch = 0;
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                com.name = rs.getString("name");
+                com.nameCode = rs.getString("nameCode");
+                com.enterprisesNature = rs.getString("enterprisesNature");
+                com.industry = rs.getString("industry");
+                com.mainBusiness = rs.getString("mainBusiness");
+                com.People = rs.getString("People");
+                com.Address = rs.getString("Address");
+                com.postalCode = rs.getString("postalCode");
+                com.telephone = rs.getString("telephone");
+                com.fax = rs.getString("fax");
+                com.email = rs.getString("email");
+                com.originalArea = rs.getString("originalArea");
+                ch++;
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        if(ch == 0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public boolean updateS(int id, String name, String data){//更新  false为失败 true为成功
         int ch = 0;
         if (name.equals("name") || name.equals("nameCode")){

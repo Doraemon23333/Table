@@ -283,7 +283,7 @@
                                 //]]>
                             </script>
 
-                            <form id="mformforum" autocomplete="off" action="post.php" method="post" accept-charset="utf-8" class="mform" onsubmit="try { var myValidator = validate_mod_forum_post_form; } catch(e) { return true; } return myValidator(this);">
+                            <form id="mformforum" autocomplete="off" action="/com/springmvc/controller/NotificationServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post" accept-charset="utf-8" class="mform" onsubmit="try { var myValidator = validate_mod_forum_post_form; } catch(e) { return true; } return myValidator(this);">
                                 <div style="display: none;"><div class="hide"><input type="text" class="ignoredirty" /><input type="password" class="ignoredirty" /></div><input name="timestart" type="hidden" value="0" />
                                     <input name="timeend" type="hidden" value="0" />
                                     <input name="course" type="hidden" value="1214" />
@@ -307,62 +307,6 @@
 
                                         <div id="fitem_id_subject" class="fitem required fitem_ftext "><div class="fitemtitle"><label for="id_subject">主题<img class="req" title="此处不能为空。" alt="此处不能为空。" src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/req" /> </label></div><div class="felement ftext"><input size="48" name="subject" type="text" value="" onblur="validate_mod_forum_post_form_subject(this, 'subject')" onchange="validate_mod_forum_post_form_subject(this, 'subject')" id="id_subject" /></div></div>
                                         <div id="fitem_id_message" class="fitem required fitem_feditor "><div class="fitemtitle"><label for="id_message">正文<img class="req" title="此处不能为空。" alt="此处不能为空。" src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/req" /> </label></div><div class="felement feditor"><div><div><textarea id="id_message" name="message[text]" rows="15" cols="80" spellcheck="true" onblur="validate_mod_forum_post_form_message_5btext_5d(this, 'message_5btext_5d')" onchange="validate_mod_forum_post_form_message_5btext_5d(this, 'message_5btext_5d')"></textarea></div><div><input name="message[format]" type="hidden" value="1" /></div><input type="hidden" name="message[itemid]" value="456390648" /><noscript><div><object type='text/html' data='http://online.bit.edu.cn/moodle/repository/draftfiles_manager.php?action=browse&amp;env=editor&amp;itemid=456390648&amp;subdirs=0&amp;maxbytes=209715200&amp;areamaxbytes=-1&amp;maxfiles=-1&amp;ctx_id=164104&amp;course=1214&amp;sesskey=l0UGWxnYpq' height='160' width='600' style='border:1px solid #000'></object></div></noscript></div></div></div>
-                                        <div id="fitem_id_attachments" class="fitem fitem_ffilemanager "><div class="fitemtitle"><label for="id_attachments">附件 </label><span class="helptooltip"></span></div><div class="felement ffilemanager">
-                                            <div id="filemanager-5aaa33187143c" class="filemanager fm-loading">
-                                                <div class="fp-restrictions">
-                                                    <span>新文件的最大尺寸： 1MB ，最多附件：9</span>
-                                                    <span class="dnduploadnotsupported-message"> - 不支持拖曳<span class="helptooltip"><a href="http://online.bit.edu.cn/moodle/help.php?component=moodle&amp;identifier=dndnotsupported&amp;lang=zh_cn" title="关于“不支持拖曳”的帮助" aria-haspopup="true" target="_blank"><img src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/help" alt="关于“不支持拖曳”的帮助" class="iconhelp" /></a></span> </span>
-                                                </div>
-                                                <div class="fp-navbar">
-                                                    <div class="filemanager-toolbar">
-                                                        <div class="fp-toolbar">
-                                                            <div class="fp-btn-add">
-                                                                <a role="button" title="添加..." href="#">
-                                                                    <img src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/a/add_file" alt="添加文件" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="fp-btn-mkdir">
-                                                                <a role="button" title="新建文件夹" href="#">
-                                                                    <img src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/a/create_folder" alt="创建文件夹" />
-                                                                </a>
-                                                            </div>
-                                                            <div class="fp-btn-download">
-                                                                <a role="button" title="下载全部" href="#">
-                                                                    <img src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/a/download_all" alt="下载所有文件" />
-                                                                </a>
-                                                            </div>
-                                                            <img class="fp-img-downloading" src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/i/loading_small" alt="" />
-                                                        </div>
-                                                        <div class="fp-viewbar">
-                                                            <a title="以文件图标显示文件夹内容" class="fp-vb-icons" href="#">
-                                                                <img alt="显示为文件图标" src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/theme/1510491239/fp/view_icon_active" />
-                                                            </a>
-                                                            <a title="以文件详细信息显示文件夹内容" class="fp-vb-details" href="#">
-                                                                <img alt="显示文件为详情" src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/theme/1510491239/fp/view_list_active" />
-                                                            </a>
-                                                            <a title="以文件树状结构显示文件夹内容" class="fp-vb-tree" href="#">
-                                                                <img alt="显示为文件树" src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/theme/1510491239/fp/view_tree_active" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="fp-pathbar">
-                                                        <span class="fp-path-folder"><a class="fp-path-folder-name" href="#"></a></span>
-                                                    </div>
-                                                </div>
-                                                <div class="filemanager-loading mdl-align"><img class="smallicon" alt="加载中..." title="加载中..." src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/i/loading_small" /></div>
-                                                <div class="filemanager-container" >
-                                                    <div class="fm-content-wrapper">
-                                                        <div class="fp-content"></div>
-                                                        <div class="fm-empty-container">
-                                                            <div class="dndupload-message">您可以通过拖放文件到此处来添加文件。<br/><div class="dndupload-arrow"></div></div>
-                                                        </div>
-                                                        <div class="dndupload-target">拖放文件到此处进行上传<br/><div class="dndupload-arrow"></div></div>
-                                                        <div class="dndupload-progressbars"></div>
-                                                        <div class="dndupload-uploadinprogress"><img class="smallicon" alt="加载中..." title="加载中..." src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/i/loading_small" /></div>
-                                                    </div>
-                                                    <div class="filemanager-updating"><img class="smallicon" alt="加载中..." title="加载中..." src="http://online.bit.edu.cn/moodle/theme/image.php/lambda/core/1510491239/i/loading_small" /></div>
-                                                </div>
-                                            </div><noscript><div><object type='text/html' data='http://online.bit.edu.cn/moodle/repository/draftfiles_manager.php?env=filemanager&amp;action=browse&amp;itemid=950929203&amp;subdirs=0&amp;maxbytes=1048576&amp;areamaxbytes=-1&amp;maxfiles=9&amp;ctx_id=164104&amp;course=1214&amp;sesskey=l0UGWxnYpq' height='160' width='600' style='border:1px solid #000'></object></div></noscript><input value="950929203" name="attachments" type="hidden" /><input value="" id="id_attachments" type="hidden" /></div></div>
 
                                     </div>
 

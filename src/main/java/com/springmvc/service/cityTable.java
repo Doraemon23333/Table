@@ -13,6 +13,7 @@ public class cityTable {
     /*
  * create table cityTable(
 id int NOT NULL primary key auto_increment,
+roleId int,
 usingCondition varchar(20)  NOT NULL,
 rank int NOT NULL,
 password varchar(20),
@@ -46,10 +47,11 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
             Connection connection = getConnection();
             String sql = "insert into cityTable(accompanyName,password,account,usingCondition,registerYear,registerMonth,registerDay,unregisterYear" +
                     ",unregisterMonth,unregisterDay,rank,area,areaCode)" +
-                    " values(?,?,?,?,?,?,?,?,?,?,?)";
+                    " values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
+            month++;
             int day = c.get(Calendar.DAY_OF_MONTH);
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             ps.setString(1, user.accompanyName);
@@ -75,7 +77,7 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
                 for (int i = length; i < 6; i++){
                     account = "0" + account;
                 }
-                account = "1" + account;
+                account = "2" + account;
                 boolean end = updateS("account", account, user.id);
                 if (end)
                     return true;
@@ -111,6 +113,7 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
                 user.rank = rs.getInt("rank");
                 user.account = rs.getString("area");
                 user.areaCode = rs.getString("areaCode");
+                user.roleId = rs.getInt("roleId");
                 row++;
             }
             //System.out.println(row);
@@ -167,6 +170,25 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
             String sql = "update cityTable set " + name + "=? where id=?";
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             ps.setString(1, data);
+            ps.setInt(2, id);
+            int row = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            if (row > 0){
+                return true;
+            }else return false;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateI(String name, int data, int id){
+        try {
+            Connection conn = getConnection();
+            String sql = "update cityTable set " + name + "=? where id=?";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setInt(1, data);
             ps.setInt(2, id);
             int row = ps.executeUpdate();
             ps.close();

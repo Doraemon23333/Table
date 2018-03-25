@@ -13,6 +13,7 @@ public class userTable {
 /*
  * create table userTable(
 id int NOT NULL primary key auto_increment,
+roleId int,
 usingCondition varchar(20)  NOT NULL,
 rank int NOT NULL,
 password varchar(20),
@@ -48,6 +49,7 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
             Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
+            month++;
             int day = c.get(Calendar.DAY_OF_MONTH);
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             ps.setString(1, user.accompanyName);
@@ -105,6 +107,7 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
                 user.unregisterMonth = rs.getInt("unregisterMonth");
                 user.unregisterDay = rs.getInt("unregisterDay");
                 user.rank = rs.getInt("rank");
+                user.roleId = rs.getInt("roleId");
                 row++;
             }
             //System.out.println(row);
@@ -165,6 +168,26 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
             String sql = "update userTable set " + name + "=? where id=?";
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             ps.setString(1, data);
+            ps.setInt(2, id);
+            int row = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            if (row > 0){
+                return true;
+            }else return false;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateI(String name, int data, int id){
+        try {
+            Connection conn = getConnection();
+            String sql = "update userTable set " + name + "=? where id=?";
+            System.out.println(sql);
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setInt(1, data);
             ps.setInt(2, id);
             int row = ps.executeUpdate();
             ps.close();

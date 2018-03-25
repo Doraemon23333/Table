@@ -75,7 +75,7 @@
             <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">所有用户信息</a></li>
             <li><a href="newUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">新增用户信息</a></li>
             <li><a href="deleteUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">删除用户信息</a></li>
-            <li><a href="alterUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>">修改用户信息</a></li>
+            <li><a href="alterUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>&choose=0">修改用户信息</a></li>
         </ul>
     </li>
     <li>

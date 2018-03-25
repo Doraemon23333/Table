@@ -14,6 +14,7 @@ public class provinceTable {
 create table provinceTable(
 id int NOT NULL primary key auto_increment,
 usingCondition varchar(20)  NOT NULL,
+roleId int,
 rank int NOT NULL,
 password varchar(20),
 account varchar(20) NOT NULL,
@@ -48,6 +49,7 @@ public Connection getConnection() {
             Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
+            month++;
             int day = c.get(Calendar.DAY_OF_MONTH);
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             ps.setString(1, user.accompanyName);
@@ -87,7 +89,7 @@ public Connection getConnection() {
         try {
             Connection connection = getConnection();
             String sql = "select * from provinceTable where " + name +"='" + data + "'";
-            //System.out.println(sql);
+            System.out.println(sql);
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -105,6 +107,7 @@ public Connection getConnection() {
                 user.unregisterMonth = rs.getInt("unregisterMonth");
                 user.unregisterDay = rs.getInt("unregisterDay");
                 user.rank = 3;
+                user.roleId = rs.getInt("roleId");
                 row++;
             }
             //System.out.println(row);
@@ -143,6 +146,7 @@ public Connection getConnection() {
                 user.unregisterMonth = rs.getInt("unregisterMonth");
                 user.unregisterDay = rs.getInt("unregisterDay");
                 user.rank = rs.getInt("rank");
+                user.roleId = rs.getInt("roleId");
                 row++;
             }
             //System.out.println(row);
@@ -161,6 +165,25 @@ public Connection getConnection() {
             String sql = "update provinceTable set " + name + "=? where id=?";
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             ps.setString(1, data);
+            ps.setInt(2, id);
+            int row = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            if (row > 0){
+                return true;
+            }else return false;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateI(String name, int data, int id){
+        try {
+            Connection conn = getConnection();
+            String sql = "update provinceTable set " + name + "=? where id=?";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setInt(1, data);
             ps.setInt(2, id);
             int row = ps.executeUpdate();
             ps.close();

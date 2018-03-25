@@ -2,7 +2,9 @@ package com.springmvc.controller;
 
 import com.springmvc.entity.Browser;
 import com.springmvc.entity.CompanyData;
+import com.springmvc.entity.Role;
 import com.springmvc.entity.User;
+import com.springmvc.service.RoleTable;
 import com.springmvc.service.browserTable;
 import com.springmvc.service.companyDataTable;
 import com.springmvc.service.userTable;
@@ -47,27 +49,33 @@ public class CompanyDataServlet extends HttpServlet{
         if(companyData.csPeople.equals("") || companyData.surveyPeople.equals("") || companyData.addition.equals("")){
             out.println("Error, something needed to be written");
         }else {
-            boolean end = dataTable.insert(companyData);
-            if (end){
-                User user = new User();
-                userTable table = new userTable();
-                table.findById(Integer.parseInt(id), user);
-                Browser browser = new Browser();
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                browser.broswerDay = day;
-                browser.broswerYear = year;
-                browser.broswerMonth = month;
-                browser.id = Integer.parseInt(id);
-                browser.rank = 1;
-                browser.content = user.accompanyName + "提交了一个新的企业数据";
-                browserTable table1 = new browserTable();
-                table1.insert(browser);
-                out.println("插入成功");
-            }
-            else out.println("插入失败");
+            User user = new User();
+            userTable table = new userTable();
+            table.findById(Integer.parseInt(id), user);
+            Role role = new Role();
+            role.RoleNum = user.roleId;
+            RoleTable roleTable = new RoleTable();
+            roleTable.find(role);
+            if (role.SetUser == 1 || role.ifroot == 1){
+                boolean end = dataTable.insert(companyData);
+                if (end){
+                    Browser browser = new Browser();
+                    Calendar c = Calendar.getInstance();
+                    int year = c.get(Calendar.YEAR);
+                    int month = c.get(Calendar.MONTH);
+                    int day = c.get(Calendar.DAY_OF_MONTH);
+                    browser.broswerDay = day;
+                    browser.broswerYear = year;
+                    browser.broswerMonth = month;
+                    browser.id = Integer.parseInt(id);
+                    browser.rank = 1;
+                    browser.content = user.accompanyName + "提交了一个新的企业数据";
+                    browserTable table1 = new browserTable();
+                    table1.insert(browser);
+                    out.println("插入成功");
+                }
+                else out.println("插入失败");
+            }else out.println("您没有这个权限");
         }
     }
 }

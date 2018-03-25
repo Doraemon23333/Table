@@ -100,7 +100,7 @@
 <!--leftnav end-->
 
 <div class="div2">
-    <form action="com/springmvc/controller/RegisterServlet?id=<%=request.getParameter("id")%>&rank=<%=rank%>&rank2=1" method="post">
+    <form action="com/springmvc/controller/RegisterServlet?id=<%=request.getParameter("id")%>&rank=<%=rank%>" method="post">
     <table>
         <tr>
             <td>用户名：</td>
@@ -109,6 +109,16 @@
         <tr>
             <td>默认密码：</td>
             <td><input type="text" id="password" name="password" value=""></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <select name="rank2" id="rank2">
+                    <option value="1">企业</option>
+                    <option value="2">市</option>
+                    <option value="3">省</option>
+                </select>
+            </td>
         </tr>
     </table>
     <div class="form-actions" style="margin: 20px 100px ;">

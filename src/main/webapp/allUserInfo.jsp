@@ -112,66 +112,159 @@
     <!--数据库返回所有信息-->
 <%!
     User user = new User();
-    List <Company> companies;
+    List <User> users;
 %>
 <%
-    userTable table = new userTable();
-    cityTable table1 = new cityTable();
-    table1.findById(Integer.parseInt(id), user);
     if (rank.equals("3")){
-        companies = new ArrayList<Company>();
+        userTable table = new userTable();
+        companyTable table1 = new companyTable();
+        users = new ArrayList<User>();
         Connection conn = table.getConnection();
-        String sql = "select * from companyTable";
+        String sql = "select * from userTable";
         PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
         Statement stmt = (Statement) conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while(rs.next()){
-            Company com = new Company();
             User userC = new User();
-            com.originalArea = rs.getString("originalArea");
-            com.id = rs.getInt("id");
-            table.findById(com.id, userC);
-            com.name = rs.getString("name");
-            com.nameCode = rs.getString("nameCode");
-            com.enterprisesNature = rs.getString("enterprisesNature");
-            com.industry = rs.getString("industry");
-            com.mainBusiness = rs.getString("mainBusiness");
-            com.People = rs.getString("People");
-            com.Address = rs.getString("Address");
-            com.postalCode = rs.getString("postalCode");
-            com.telephone = rs.getString("telephone");
-            com.fax = rs.getString("fax");
-            com.email = rs.getString("email");
-            if (userC.rank == 1 && userC.usingCondition.equals("online"))
-                companies.add(com);
+            userC.id = rs.getInt("id");
+            userC.account = rs.getString("account");
+            userC.accompanyName = rs.getString("accompanyName");
+            userC.password = rs.getString("password");
+            userC.usingCondition = rs.getString("usingCondition");
+            userC.registerYear = rs.getInt("registerYear");
+            userC.registerMonth = rs.getInt("registerMonth");
+            userC.registerDay = rs.getInt("registerDay");
+            userC.unregisterYear = rs.getInt("unregisterYear");
+            userC.unregisterMonth = rs.getInt("unregisterMonth");
+            userC.unregisterDay = rs.getInt("unregisterDay");
+            userC.rank = rs.getInt("rank");
+            Company company = new Company();
+            company.id = userC.id;
+            table1.findbyId(company);
+            userC.area = company.originalArea;
+            users.add(userC);
         }
+        rs.close();
+        stmt.close();
+        ps.close();
+        conn.close();
+
+        Connection conn1 = table.getConnection();
+        String sql1 = "select * from cityTable";
+        PreparedStatement ps1 = (PreparedStatement) conn1.prepareStatement(sql1);
+        Statement stmt1 = (Statement) conn1.createStatement();
+        ResultSet rs1 = stmt1.executeQuery(sql1);
+        while(rs1.next()){
+            User userC = new User();
+            userC.id = rs1.getInt("id");
+            userC.account = rs1.getString("account");
+            userC.accompanyName = rs1.getString("accompanyName");
+            userC.password = rs1.getString("password");
+            userC.usingCondition = rs1.getString("usingCondition");
+            userC.registerYear = rs1.getInt("registerYear");
+            userC.registerMonth = rs1.getInt("registerMonth");
+            userC.registerDay = rs1.getInt("registerDay");
+            userC.unregisterYear = rs1.getInt("unregisterYear");
+            userC.unregisterMonth = rs1.getInt("unregisterMonth");
+            userC.unregisterDay = rs1.getInt("unregisterDay");
+            userC.rank = rs1.getInt("rank");
+            userC.area = rs1.getString("area");
+            users.add(userC);
+        }
+        rs1.close();
+        stmt1.close();
+        ps1.close();
+        conn1.close();
+
+        Connection conn2 = table.getConnection();
+        String sql2 = "select * from provinceTable";
+        PreparedStatement ps2 = (PreparedStatement) conn2.prepareStatement(sql2);
+        Statement stmt2 = (Statement) conn2.createStatement();
+        ResultSet rs2 = stmt2.executeQuery(sql2);
+        while(rs2.next()){
+            User userC = new User();
+            userC.id = rs2.getInt("id");
+            userC.account = rs2.getString("account");
+            userC.accompanyName = rs2.getString("accompanyName");
+            userC.password = rs2.getString("password");
+            userC.usingCondition = rs2.getString("usingCondition");
+            userC.registerYear = rs2.getInt("registerYear");
+            userC.registerMonth = rs2.getInt("registerMonth");
+            userC.registerDay = rs2.getInt("registerDay");
+            userC.unregisterYear = rs2.getInt("unregisterYear");
+            userC.unregisterMonth = rs2.getInt("unregisterMonth");
+            userC.unregisterDay = rs2.getInt("unregisterDay");
+            userC.rank = rs2.getInt("rank");
+            userC.area = "山东省";
+            users.add(userC);
+        }
+        rs2.close();
+        stmt2.close();
+        ps2.close();
+        conn2.close();
     }else if (rank.equals("2")){
-        companies = new ArrayList<Company>();
+        users = new ArrayList<User>();
+        userTable table = new userTable();
+        cityTable table2 = new cityTable();
+        table2.findById(Integer.parseInt(id), user);
+        companyTable table1 = new companyTable();
         Connection conn = table.getConnection();
-        String sql = "select * from companyTable";
+        String sql = "select * from userTable";
         PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
         Statement stmt = (Statement) conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while(rs.next()){
-            Company com = new Company();
-            com.originalArea = rs.getString("originalArea");
-            com.id = rs.getInt("id");
             User userC = new User();
-            table.findById(com.id, userC);
-            com.name = rs.getString("name");
-            com.nameCode = rs.getString("nameCode");
-            com.enterprisesNature = rs.getString("enterprisesNature");
-            com.industry = rs.getString("industry");
-            com.mainBusiness = rs.getString("mainBusiness");
-            com.People = rs.getString("People");
-            com.Address = rs.getString("Address");
-            com.postalCode = rs.getString("postalCode");
-            com.telephone = rs.getString("telephone");
-            com.fax = rs.getString("fax");
-            com.email = rs.getString("email");
-            if (userC.rank == 1 && com.originalArea.equals(user.area) && userC.usingCondition.equals("online"))
-                companies.add(com);
+            userC.id = rs.getInt("id");
+            userC.account = rs.getString("account");
+            userC.accompanyName = rs.getString("accompanyName");
+            userC.password = rs.getString("password");
+            userC.usingCondition = rs.getString("usingCondition");
+            userC.registerYear = rs.getInt("registerYear");
+            userC.registerMonth = rs.getInt("registerMonth");
+            userC.registerDay = rs.getInt("registerDay");
+            userC.unregisterYear = rs.getInt("unregisterYear");
+            userC.unregisterMonth = rs.getInt("unregisterMonth");
+            userC.unregisterDay = rs.getInt("unregisterDay");
+            userC.rank = rs.getInt("rank");
+            Company company = new Company();
+            company.id = userC.id;
+            table1.findbyId(company);
+            if (userC.rank == 1 && company.originalArea.equals(user.area)){
+                users.add(userC);
+            }
         }
+        rs.close();
+        stmt.close();
+        ps.close();
+        conn.close();
+
+        Connection conn1 = table.getConnection();
+        String sql1 = "select * from cityTable";
+        PreparedStatement ps1 = (PreparedStatement) conn1.prepareStatement(sql1);
+        Statement stmt1 = (Statement) conn1.createStatement();
+        ResultSet rs1 = stmt1.executeQuery(sql1);
+        while(rs1.next()){
+            User userC = new User();
+            userC.id = rs1.getInt("id");
+            userC.account = rs1.getString("account");
+            userC.accompanyName = rs1.getString("accompanyName");
+            userC.password = rs1.getString("password");
+            userC.usingCondition = rs1.getString("usingCondition");
+            userC.registerYear = rs1.getInt("registerYear");
+            userC.registerMonth = rs1.getInt("registerMonth");
+            userC.registerDay = rs1.getInt("registerDay");
+            userC.unregisterYear = rs1.getInt("unregisterYear");
+            userC.unregisterMonth = rs1.getInt("unregisterMonth");
+            userC.unregisterDay = rs1.getInt("unregisterDay");
+            userC.rank = rs1.getInt("rank");
+            userC.area = rs1.getString("area");
+            users.add(userC);
+        }
+        rs1.close();
+        stmt1.close();
+        ps1.close();
+        conn1.close();
     }else {
 
     }
@@ -181,23 +274,43 @@
 
 <table border="2" align="center" width="1000">
     <tr>
-        <td>城市</td>
-        <td>企业性质</td>
-        <td>所属行业</td>
-        <td>企业名称</td>
-        <td>企业编码</td>
+        <td>地区</td>
+        <td>名称</td>
+        <td>等级</td>
+        <td>注册时间</td>
+        <td>在线情况</td>
         <td>详细信息</td>
     </tr>
     <%
-        for (Company company1: companies){
+        for (User userC: users){
+            String usingCondition = null, rank1 = null;
+            if (userC.usingCondition.equals("online")){
+                usingCondition = "在线";
+            }else {
+                usingCondition = "已注销";
+            }
+            if (userC.rank == 1){
+                rank1 = "企业";
+            }else if (userC.rank == 2){
+                rank1 = "市";
+            }else if (userC.rank == 3){
+                rank1 = "省";
+            }
     %>
     <tr>
-        <td><%=company1.originalArea%></td>
-        <td><%=company1.enterprisesNature%></td>
-        <td><%=company1.industry%></td>
-        <td><%=company1.name%></td>
-        <td><%=company1.nameCode%></td>
-        <td><a href="/province1.jsp?id=<%=user.id%>&rank=<%=user.rank%>&companyid=<%=company1.id%>">查看</a></td>
+        <td><%=userC.area%></td>
+        <td><%=userC.accompanyName%></td>
+        <td><%=rank1%></td>
+        <td><%=userC.registerYear%>-<%=userC.registerMonth%>-<%=userC.registerDay%></td>
+        <td><%=usingCondition%></td>
+        <%
+            if (userC.rank == 1){
+        %>
+        <td><a href="/province1.jsp?id=<%=userid%>&rank=<%=rank%>&companyid=<%=userC.id%>">查看</a></td>
+        <%
+        }else{%>
+                <td></td>
+        <%}%>
     </tr>
     <%}%>
 </table>

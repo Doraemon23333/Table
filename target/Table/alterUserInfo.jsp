@@ -135,6 +135,12 @@
                 company.id = user.id;
                 table.show(company);
                 if (end){
+                    String usingCondition = null;
+                    if (user.usingCondition.equals("online")){
+                        usingCondition = "在线";
+                    }else {
+                        usingCondition = "已注销";
+                    }
         %>
         <tr>
             <td>用户名: </td>
@@ -147,6 +153,10 @@
         <tr>
             <td>企业代号: </td>
             <td><%=company.nameCode%></td>
+        </tr>
+        <tr>
+            <td>在线情况: </td>
+            <td><%=usingCondition%></td>
         </tr>
         <%
                 }

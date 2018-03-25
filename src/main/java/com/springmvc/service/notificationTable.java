@@ -10,7 +10,7 @@ public class notificationTable {
     /*
 
 create table notificationTable(
-notification_id int NOT NULL primary key,
+notification_id int NOT NULL primary key auto_increment,
 title varchar(50) NOT NULL,
 content varchar(4000) NOT NULL,
 publishYear int NOT NULL,
@@ -33,19 +33,18 @@ id int NOT NULL) default charset = utf8;
     }
 
     public void insert(Notification notification){
-        String sql = "insert into userTable(notification_id,title,content,publishYear,publishMonth,publishDay,id) " +
-                "values(?,?,?,?,?,?,?)";
+        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay) " +
+                "values(?,?,?,?,?,?)";
         System.out.println(sql);
         try {
             Connection conn = getConnection();
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setInt(1, notification.notification_id);
+            ps.setInt(1, notification.id);
             ps.setString(2, notification.title);
             ps.setString(3, notification.content);
             ps.setInt(4, notification.publishYear);
             ps.setInt(5, notification.publishMonth);
             ps.setInt(6, notification.publishDay);
-            ps.setInt(7, notification.id);
             int row = ps.executeUpdate();
             ps.close();
             conn.close();

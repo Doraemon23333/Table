@@ -1,6 +1,8 @@
 package com.springmvc.controller;
 
 import com.springmvc.entity.Company;
+import com.springmvc.entity.Role;
+import com.springmvc.service.RoleTable;
 import com.springmvc.service.companyTable;
 
 import javax.servlet.ServletException;

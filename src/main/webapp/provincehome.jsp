@@ -74,7 +74,9 @@
             请按时上报就业数据</a></div>
 
     </div>
+<%
 
+%>
     <!--切换新闻 start-->
     <div class="index-header">
         <div id="switchable" class="container">
@@ -90,7 +92,7 @@
                                     <div class="slider-text">
                                         <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a>
                                             &nbsp;&nbsp;&nbsp;
-                                            <i class="icon-new"></i><a href="provinceannouncement.jsp" a target="_blank" style="color:#296b9b">发布通知</a>
+                                            <i class="icon-new"></i><a href="provinceannouncement.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>" a target="_blank" style="color:#296b9b">发布通知</a>
                                         </h3>
                                         <ul class="news-list">
                                             <li>&nbsp;<span class="span1"><a  target="_blank">山东省省级创业型城市（县区）和创业型街道（乡镇）创建评估认定项目采购竞争性磋商公告</a></span><span class="span2">03-09</span></li>
