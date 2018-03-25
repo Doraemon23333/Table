@@ -1,4 +1,12 @@
-<%--
+<%@ page import="com.springmvc.service.browserTable" %>
+<%@ page import="com.springmvc.entity.Browser" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.springmvc.service.userTable" %>
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page import="com.springmvc.service.cityTable" %>
+<%@ page import="com.springmvc.service.provinceTable" %>
+<%@ page import="java.util.Collections" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018
@@ -99,29 +107,53 @@
 <script src="js/systemNav.js"></script>
 <!--leftnav end-->
 <%
-
+    browserTable table = new browserTable();
+    List<Browser> browsers = new ArrayList<Browser>();
+    table.find(browsers);
 %>
-<div class="div2">
-    <table>
-        <tr>
-            <td>CPU： </td>
-            <td><!--返回cpu信息--></td>
-        </tr>
-        <tr>
-            <td>内存： </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>硬盘： </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>应用系统： </td>
-            <td></td>
-        </tr>
-    </table>
-</div>
-
+<table border="2" align="center" width="1000">
+    <tr>
+        <td>名称</td>
+        <td>用户等级</td>
+        <td>时间</td>
+        <td>内容</td>
+    </tr>
+<%
+    Collections.reverse(browsers);
+    for (Browser browser: browsers){
+        String name = null, time = null, rank = null;
+        if (browser.rank == 1){
+            rank = "企业";
+            time = browser.broswerYear + "-" + browser.broswerMonth + "-" + browser.broswerDay;
+            userTable table1 = new userTable();
+            User user = new User();
+            table1.findById(browser.id, user);
+            name = user.accompanyName;
+        }else if (browser.rank == 2){
+            rank = "市";
+            time = browser.broswerYear + "-" + browser.broswerMonth + "-" + browser.broswerDay;
+            cityTable table1 = new cityTable();
+            User user = new User();
+            table1.findById(browser.id, user);
+            name = user.accompanyName;
+        }else if (browser.rank == 3){
+            rank = "省";
+            time = browser.broswerYear + "-" + browser.broswerMonth + "-" + browser.broswerDay;
+            provinceTable table1 = new provinceTable();
+            User user = new User();
+            table1.findById(browser.id, user);
+            name = user.accompanyName;
+        }%>
+    <tr>
+        <td><%=name%></td>
+        <td><%=rank%></td>
+        <td><%=time%></td>
+        <td><%=browser.content%></td>
+    </tr>
+    <%
+    }
+%>
+</table>
 <!--footer start-->
 <div class="footer-box">
     <!--<div class="footer-link clearfix">

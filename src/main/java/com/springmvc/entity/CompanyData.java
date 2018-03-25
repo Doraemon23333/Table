@@ -2,6 +2,7 @@ package com.springmvc.entity;
 
 public class CompanyData {
     public int id;
+    public Company company;
     public String csPeople;//建档期就业人数
     public String surveyPeople;//调查期就业人数
     public String addition;//其他原因
