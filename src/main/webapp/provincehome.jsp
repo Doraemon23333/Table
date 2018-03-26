@@ -123,7 +123,7 @@
                                         <ul class="news-list">
                                             <%
                                                 for (Notification notification: notifications){%>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank" href="/com/springmvc/controller/NewsServlet?id=<%=userid%>&rank=<%=rank%>&notification_id=<%=notification.notification_id%>" methods="post"><%=notification.title%></a></span><span class="span2"><%=notification.publishYear%>-<%=notification.publishMonth%>-<%=notification.publishDay%></span></li>
+                                            <li>&nbsp;<span class="span1"><a  target="_blank" href="/notification2.jsp?id=<%=userid%>&rank=<%=rank%>&notification_id=<%=notification.notification_id%>" methods="post"><%=notification.title%></a></span><span class="span2"><%=notification.publishYear%>-<%=notification.publishMonth%>-<%=notification.publishDay%></span></li>
                                                 <%}
                                             %>
                                         </ul>

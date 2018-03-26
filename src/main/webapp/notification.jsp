@@ -1,21 +1,16 @@
+<%@ page import="java.io.PrintWriter" %>
 <%@ page import="com.springmvc.entity.Notification" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.springmvc.service.notificationTable" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="com.springmvc.service.notificationTable" %><%--
   Created by IntelliJ IDEA.
   User: zfr
-  Date: 2018/3/13
-  Time: 10:07
+  Date: 2018/3/25
+  Time: 10:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head lang="en">
-    <title>山东省人力资源市场数据采集系统</title>
+    <title>消息详情页面</title>
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/tool.css" type="text/css">
     <link rel="stylesheet" href="css/communal.css" type="text/css">
@@ -47,10 +42,17 @@
 </div>
 <!--header end-->
 <%! String userid = null;
-    List<Notification> notifications = null;%>
+    Notification notification = null;%>
 <%
     String id = request.getParameter("id");
     userid = id;
+    String rank = request.getParameter("rank");
+    String noid = request.getParameter("notification_id");
+    notification = new Notification();
+    notification.notification_id = Integer.parseInt(noid);
+    //out.println(notification.notification_id);
+    notificationTable table = new notificationTable();
+    table.find(notification);
 %>
 <!--nav start-->
 <div class="nav-box">
@@ -62,40 +64,10 @@
         <li><a href="/">退出</a></li>
     </ul>
 </div>
-<!--nav end-->
-<!--body start-->
+
 <div class="index-main index_box pt15">
-    <div class="index_top_one">
 
-        <div style="border-bottom:1px solid #c91006" class="title">
-            <a style="text-decoration:none;" target="_blank" href="/"  title="" >
-            请尽快完善企业备案信息</a></div>
-        <div  class="title">
-            <a style="text-decoration:none;" target="_blank" href="/"  title="" >
-            请按时上报就业数据</a></div>
 
-    </div>
-    <%
-        notifications = new ArrayList<Notification>();
-        notificationTable table = new notificationTable();
-        Connection connection = table.getConnection();
-        String sql = "SELECT * FROM notificationTable WHERE receiverId=0 OR receiverId=" + Integer.parseInt(userid);
-        PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
-        Statement stmt = (Statement) connection.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-        while (rs.next()){
-            Notification notification = new Notification();
-            notification.receiverId = rs.getInt("receiverId");
-            notification.notification_id = rs.getInt("notification_id");
-            notification.publishDay = rs.getInt("publishDay");
-            notification.publishMonth = rs.getInt("publishMonth");
-            notification.publishYear = rs.getInt("publishYear");
-            notification.title = rs.getString("title");
-            notification.content = rs.getString("content");
-            notification.id = rs.getInt("id");
-            notifications.add(notification);
-        }
-    %>
     <!--切换新闻 start-->
     <div class="index-header">
 
@@ -106,18 +78,13 @@
                     <li>
                         <ul>
                             <li>
-                               &nbsp;
+                                &nbsp;
                                 <div class="clearfix">
-                                     <div class="slider-img"></div>
+                                    <div class="slider-img"></div>
                                     <div class="slider-text">
-                                        <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a></h3>
-                                        <ul class="news-list">
-                                            <%
-                                                for (Notification notification: notifications){%>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank" href="/notification.jsp?id=<%=userid%>&rank=1&notification_id=<%=notification.notification_id%>" methods="post"><%=notification.title%></a></span><span class="span2"><%=notification.publishYear%>-<%=notification.publishMonth%>-<%=notification.publishDay%></span></li>
-                                            <%}
-                                            %>
-                                        </ul>
+                                        <h3 class="title-h3" align="center"><a style="color:#296b9b"><%=notification.title%></a></h3>
+                                        <p><font size="3"><%=notification.content%></font></p>
+
                                     </div>
                                 </div>
                             </li>
@@ -166,17 +133,11 @@
                 <p>系统名称：山东省人力资源市场数据采集系统 版权所有：宫烨的组</p>
                 <p>技术支持：宫烨的组</p>
                 <p>编号123456789</p>
-          </div>
+            </div>
         </div>
     </div>
 </div>
-<!--悬浮 start-->
-<!--<div class="left-fixed-tool"> <a class="top-a" href="#">索引<br>
-  	服务</a> <a class="box-a" href="#">站点<br>
-  	日历</a> <a class="box-b" href="#">智能<br>
-  	人社</a> <a class="bottom-a" href="#">渠道<br>
-  	媒体</a></div>-->
-<!--悬浮 end-->
+
 <script>
     function searchsy(){
         var searchContent=document.getElementById("serachAllsy").value;
