@@ -8,4 +8,5 @@ public class Notification {
     public int publishMonth;//月
     public int publishDay;//日
     public int id;//发布者id
+    public int receiverId;//接受者id
 }

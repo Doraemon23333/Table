@@ -1,4 +1,11 @@
-<%--
+<%@ page import="com.springmvc.entity.Notification" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.springmvc.service.notificationTable" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: zfr
   Date: 2018/3/13
@@ -39,7 +46,8 @@
     </div>
 </div>
 <!--header end-->
-<%! String userid = null;%>
+<%! String userid = null;
+    List<Notification> notifications = null;%>
 <%
     String id = request.getParameter("id");
     userid = id;
@@ -67,7 +75,27 @@
             请按时上报就业数据</a></div>
 
     </div>
-
+    <%
+        notifications = new ArrayList<Notification>();
+        notificationTable table = new notificationTable();
+        Connection connection = table.getConnection();
+        String sql = "SELECT * FROM notificationTable WHERE receiverId=0 OR receiverId=" + Integer.parseInt(userid);
+        PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        while (rs.next()){
+            Notification notification = new Notification();
+            notification.receiverId = rs.getInt("receiverId");
+            notification.notification_id = rs.getInt("notification_id");
+            notification.publishDay = rs.getInt("publishDay");
+            notification.publishMonth = rs.getInt("publishMonth");
+            notification.publishYear = rs.getInt("publishYear");
+            notification.title = rs.getString("title");
+            notification.content = rs.getString("content");
+            notification.id = rs.getInt("id");
+            notifications.add(notification);
+        }
+    %>
     <!--切换新闻 start-->
     <div class="index-header">
 
@@ -84,12 +112,11 @@
                                     <div class="slider-text">
                                         <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a></h3>
                                         <ul class="news-list">
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">山东省省级创业型城市（县区）和创业型街道（乡镇）创建评估认定项目采购竞争性磋商公告</a></span><span class="span2">03-09</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">以更高境界更强担当全力推进高层次人才服务体系建设</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a target="_blank">我省“新时代生态文明与地理发展”主题论坛入选全国博士后学术交流计划</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">关于公开征集山东省高层次人才绿色通道服务统一标识的通知</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">就业鲁渝行——“春风送岗助脱贫”活动在重庆市云阳县酉阳县同步启动</a></span><span class="span2">03-07</span></li>
-                                            <li>&nbsp;<span class="span1"><a  target="_blank">全省引进国外人才智力工作联席会议召开</a></span><span class="span2">03-05</span></li>
+                                            <%
+                                                for (Notification notification: notifications){%>
+                                            <li>&nbsp;<span class="span1"><a  target="_blank" href="/com/springmvc/controller/NewsServlet?id=<%=userid%>&rank=1&notification_id=<%=notification.notification_id%>" methods="post"><%=notification.title%></a></span><span class="span2"><%=notification.publishYear%>-<%=notification.publishMonth%>-<%=notification.publishDay%></span></li>
+                                            <%}
+                                            %>
                                         </ul>
                                     </div>
                                 </div>

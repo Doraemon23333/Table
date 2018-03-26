@@ -1,10 +1,12 @@
 package com.springmvc.service;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 import com.springmvc.entity.Notification;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 
 public class notificationTable {
     /*
@@ -16,7 +18,8 @@ content varchar(4000) NOT NULL,
 publishYear int NOT NULL,
 publishMonth int NOT NULL,
 publishDay int NOT NULL,
-id int NOT NULL) default charset = utf8;
+id int NOT NULL,
+receiverId int NOT NULL) default charset = utf8;
  */
     public Connection getConnection() {
         Connection conn = null;
@@ -33,8 +36,8 @@ id int NOT NULL) default charset = utf8;
     }
 
     public void insert(Notification notification){
-        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay) " +
-                "values(?,?,?,?,?,?)";
+        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay,receiverId) " +
+                "values(?,?,?,?,?,?,?)";
         System.out.println(sql);
         try {
             Connection conn = getConnection();
@@ -45,6 +48,7 @@ id int NOT NULL) default charset = utf8;
             ps.setInt(4, notification.publishYear);
             ps.setInt(5, notification.publishMonth);
             ps.setInt(6, notification.publishDay);
+            ps.setInt(7, notification.receiverId);
             int row = ps.executeUpdate();
             ps.close();
             conn.close();
@@ -58,5 +62,37 @@ id int NOT NULL) default charset = utf8;
         }
     }
 
-
+    public boolean find(Notification notification){
+        try {
+            Connection connection = getConnection();
+            String sql = "select * from notificationTable where notification_id=" + notification.notification_id;
+            System.out.println(sql);
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            Statement stmt = (Statement) connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            int row = 0;
+            while (rs.next()){
+                notification.id = rs.getInt("id");
+                notification.title = rs.getString("title");
+                notification.content = rs.getString("content");
+                notification.publishYear = rs.getInt("publishYear");
+                notification.publishMonth = rs.getInt("publishMonth");
+                notification.publishDay = rs.getInt("publishDay");
+                notification.notification_id = rs.getInt("notification_id");
+                notification.receiverId = rs.getInt("receiverId");
+                row++;
+            }
+            //System.out.println(row);
+            rs.close();
+            stmt.close();
+            ps.close();
+            connection.close();
+            if (row > 0){
+                return true;
+            }else return false;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -41,6 +41,7 @@ public class NotificationServlet extends HttpServlet{
         notification.id = Integer.parseInt(id);
         notification.content = content;
         notification.title = title;
+        notification.receiverId = 0;
 
         Browser browser = new Browser();
         browser.broswerDay = day;
