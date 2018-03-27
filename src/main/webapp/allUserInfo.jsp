@@ -260,6 +260,9 @@
             userC.unregisterDay = rs1.getInt("unregisterDay");
             userC.rank = rs1.getInt("rank");
             userC.area = rs1.getString("area");
+            if (userC.area.equals(user.area)){
+                users.add(userC);
+            }
             users.add(userC);
         }
         rs1.close();

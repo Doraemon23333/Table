@@ -6,6 +6,7 @@
 <%@ page import="com.mysql.jdbc.PreparedStatement" %>
 <%@ page import="com.mysql.jdbc.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Collections" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
@@ -86,7 +87,7 @@
     notifications = new ArrayList<Notification>();
     notificationTable table = new notificationTable();
     Connection connection = table.getConnection();
-    String sql = "SELECT * FROM notificationTable WHERE receiverId=0 OR receiverId=" + Integer.parseInt(userid);
+    String sql = "SELECT * FROM notificationTable WHERE receiverRank=0 OR (receiverId=" + Integer.parseInt(userid) + " AND receiverRank=" + rank + ")";
     PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
     Statement stmt = (Statement) connection.createStatement();
     ResultSet rs = stmt.executeQuery(sql);
@@ -122,6 +123,7 @@
                                         </h3>
                                         <ul class="news-list">
                                             <%
+                                                Collections.reverse(notifications);
                                                 for (Notification notification: notifications){%>
                                             <li>&nbsp;<span class="span1"><a  target="_blank" href="/notification2.jsp?id=<%=userid%>&rank=<%=rank%>&notification_id=<%=notification.notification_id%>" methods="post"><%=notification.title%></a></span><span class="span2"><%=notification.publishYear%>-<%=notification.publishMonth%>-<%=notification.publishDay%></span></li>
                                                 <%}

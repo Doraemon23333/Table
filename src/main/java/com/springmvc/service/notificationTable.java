@@ -19,7 +19,9 @@ publishYear int NOT NULL,
 publishMonth int NOT NULL,
 publishDay int NOT NULL,
 id int NOT NULL,
-receiverId int NOT NULL) default charset = utf8;
+rank int NOT NULL,
+receiverId int NOT NULL,
+receiverRank int NOT NULL)default charset = utf8;
  */
     public Connection getConnection() {
         Connection conn = null;
@@ -36,8 +38,8 @@ receiverId int NOT NULL) default charset = utf8;
     }
 
     public void insert(Notification notification){
-        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay,receiverId) " +
-                "values(?,?,?,?,?,?,?)";
+        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay,rank,receiverId,receiverRank) " +
+                "values(?,?,?,?,?,?,?,?,?)";
         System.out.println(sql);
         try {
             Connection conn = getConnection();
@@ -48,7 +50,9 @@ receiverId int NOT NULL) default charset = utf8;
             ps.setInt(4, notification.publishYear);
             ps.setInt(5, notification.publishMonth);
             ps.setInt(6, notification.publishDay);
-            ps.setInt(7, notification.receiverId);
+            ps.setInt(7, notification.rank);
+            ps.setInt(8, notification.receiverId);
+            ps.setInt(9, notification.receiverRank);
             int row = ps.executeUpdate();
             ps.close();
             conn.close();
@@ -73,13 +77,13 @@ receiverId int NOT NULL) default charset = utf8;
             int row = 0;
             while (rs.next()){
                 notification.id = rs.getInt("id");
+                notification.rank = rs.getInt("rank");
                 notification.title = rs.getString("title");
                 notification.content = rs.getString("content");
                 notification.publishYear = rs.getInt("publishYear");
                 notification.publishMonth = rs.getInt("publishMonth");
                 notification.publishDay = rs.getInt("publishDay");
                 notification.notification_id = rs.getInt("notification_id");
-                notification.receiverId = rs.getInt("receiverId");
                 row++;
             }
             //System.out.println(row);

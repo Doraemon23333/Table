@@ -4,10 +4,7 @@ import com.springmvc.entity.Browser;
 import com.springmvc.entity.Notification;
 import com.springmvc.entity.Role;
 import com.springmvc.entity.User;
-import com.springmvc.service.RoleTable;
-import com.springmvc.service.browserTable;
-import com.springmvc.service.notificationTable;
-import com.springmvc.service.provinceTable;
+import com.springmvc.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,9 +36,9 @@ public class NotificationServlet extends HttpServlet{
         notification.publishMonth = month;
         notification.publishDay = day;
         notification.id = Integer.parseInt(id);
+        notification.rank = Integer.parseInt(rank);
         notification.content = content;
         notification.title = title;
-        notification.receiverId = 0;
 
         Browser browser = new Browser();
         browser.broswerDay = day;
@@ -69,6 +66,10 @@ public class NotificationServlet extends HttpServlet{
             }else {
                 out.println("您没有该权限");
             }
+        }else{
+            User city = new User();
+            cityTable table = new cityTable();
+            table.findById(Integer.parseInt(id), city);
         }
     }
 }

@@ -92,12 +92,12 @@
 <!--header end-->
 <!--nav start-->
 <%!
-    String userid = null;
+    int userid = 0;
     int rank = 0;
 %>
 <%
     String id = request.getParameter("id");
-    userid = id;
+    userid = Integer.parseInt(id);
     String a = request.getParameter("rank");
     rank = Integer.parseInt(a);
 %>
@@ -194,10 +194,11 @@
         }
     }else if (rank == 2){
         cityTable table1 = new cityTable();
-        table1.findById(Integer.parseInt(id), user);
+        table1.findById(userid, user);
         companies = new ArrayList<Company>();
         Connection conn = table.getConnection();
-        String sql = "select * from companyTable";
+        String sql = "select * from companyTable WHERE originalArea='" + user.area + "'";
+        System.out.println(sql);
         PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
         Statement stmt = (Statement) conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
@@ -218,7 +219,7 @@
             com.telephone = rs.getString("telephone");
             com.fax = rs.getString("fax");
             com.email = rs.getString("email");
-            if (userC.rank == 1 && com.originalArea.equals(user.area) && userC.usingCondition.equals("online"))
+            if (userC.usingCondition.equals("online"))
             companies.add(com);
         }
     }else {

@@ -5,7 +5,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Collections" %><%--
   Created by IntelliJ IDEA.
   User: zfr
   Date: 2018/3/13
@@ -46,11 +47,11 @@
     </div>
 </div>
 <!--header end-->
-<%! String userid = null;
+<%! int userid = 0;
     List<Notification> notifications = null;%>
 <%
     String id = request.getParameter("id");
-    userid = id;
+    userid = Integer.parseInt(id);
 %>
 <!--nav start-->
 <div class="nav-box">
@@ -79,13 +80,12 @@
         notifications = new ArrayList<Notification>();
         notificationTable table = new notificationTable();
         Connection connection = table.getConnection();
-        String sql = "SELECT * FROM notificationTable WHERE receiverId=0 OR receiverId=" + Integer.parseInt(userid);
+        String sql = "SELECT * FROM notificationTable WHERE id=" + userid + " or (receiverId=" + userid + " AND receiverRank=1) OR receiverRank=0";
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
         Statement stmt = (Statement) connection.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         while (rs.next()){
             Notification notification = new Notification();
-            notification.receiverId = rs.getInt("receiverId");
             notification.notification_id = rs.getInt("notification_id");
             notification.publishDay = rs.getInt("publishDay");
             notification.publishMonth = rs.getInt("publishMonth");
@@ -113,6 +113,7 @@
                                         <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a></h3>
                                         <ul class="news-list">
                                             <%
+        Collections.reverse(notifications);
                                                 for (Notification notification: notifications){%>
                                             <li>&nbsp;<span class="span1"><a  target="_blank" href="/notification.jsp?id=<%=userid%>&rank=1&notification_id=<%=notification.notification_id%>" methods="post"><%=notification.title%></a></span><span class="span2"><%=notification.publishYear%>-<%=notification.publishMonth%>-<%=notification.publishDay%></span></li>
                                             <%}

@@ -9,15 +9,15 @@
 <html>
 <head lang="en">
     <title>登录界面</title>
-    <link rel="stylesheet" href="css/reset.css" type="text/css">
-    <link rel="stylesheet" href="css/tool.css" type="text/css">
-    <link rel="stylesheet" href="css/communal.css" type="text/css">
-    <link rel="stylesheet" href="css/index.css" type="text/css">
-    <link rel="stylesheet" href="css/index_3.8.css" type="text/css">
-    <link rel="stylesheet" href="css/index_10.14.css" type="text/css">
-    <script src="js/jquery-1.7.2.min.js"></script>
-    <script src="js/jquery.placehold.min.js"></script>
-    <script type="text/javascript" src="js/koala.min.1.5.js"></script>
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css">
+    <link rel="stylesheet" href="../../css/tool.css" type="text/css">
+    <link rel="stylesheet" href="../../css/communal.css" type="text/css">
+    <link rel="stylesheet" href="../../css/index.css" type="text/css">
+    <link rel="stylesheet" href="../../css/index_3.8.css" type="text/css">
+    <link rel="stylesheet" href="../../css/index_10.14.css" type="text/css">
+    <script src="../../js/jquery-1.7.2.min.js"></script>
+    <script src="../../js/jquery.placehold.min.js"></script>
+    <script type="text/javascript" src="../../js/koala.min.1.5.js"></script>
     <style type="text/css">
         * {
             margin:0px 0px;
@@ -218,7 +218,7 @@
     <div class="container">
         <a class="logo" ></a>
         <div class="header-tool mr30 pt15">
-            <div class="top_test"><img src="images/top_test.gif" width="280" height="110" alt=""/></div>
+            <div class="top_test"><img src="../../images/top_test.gif" width="280" height="110" alt=""/></div>
         </div>
     </div>
 </div>
@@ -340,10 +340,10 @@
         window.location.href='/includes/search_all.html?title='+escape(e);
     }
 </script>
-<script src="js/switchable.js"></script>
-<script src="js/forweb.js"></script>
-<script src="js/sdrs.js"></script>
-<script src="js/title.js"></script>
+<script src="../../js/switchable.js"></script>
+<script src="../../js/forweb.js"></script>
+<script src="../../js/sdrs.js"></script>
+<script src="../../js/title.js"></script>
 <!--footer end-->
 </body>
 

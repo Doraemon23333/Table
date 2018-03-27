@@ -20,7 +20,6 @@ SetRole INT DEFAULT 0 ,
 SetSystem INT DEFAULT 0 ,
 SetUser INT DEFAULT 0 ,
 ifroot INT DEFAULT 0,
-rank INT NOT NULL,
 id int NOT NULL) default charset=utf8;
 */
     public Connection getConnection() {
@@ -40,8 +39,8 @@ id int NOT NULL) default charset=utf8;
     public boolean insert(Role role){
         try {
             Connection connection = getConnection();
-            String sql = "insert into RoleTable(SearchCompany,SearchData,CreateNews,SetDate,SetRole,SetSystem,SetUser,rank,id,ifroot) values"
-                    + "(?,?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into RoleTable(SearchCompany,SearchData,CreateNews,SetDate,SetRole,SetSystem,SetUser,id,ifroot) values"
+                    + "(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             ps.setInt(1, role.SearchCompany);
             ps.setInt(2, role.SearchData);
@@ -50,9 +49,8 @@ id int NOT NULL) default charset=utf8;
             ps.setInt(5, role.SetRole);
             ps.setInt(6, role.SetSystem);
             ps.setInt(7, role.SetUser);
-            ps.setInt(8, role.rank);
-            ps.setInt(9, role.id);
-            ps.setInt(10, role.ifroot);
+            ps.setInt(8, role.id);
+            ps.setInt(8, role.ifroot);
             int row = ps.executeUpdate();
             ps.close();
             connection.close();
@@ -82,7 +80,6 @@ id int NOT NULL) default charset=utf8;
                 role.SetRole = rs.getInt("SetRole");
                 role.SetSystem = rs.getInt("SetSystem");
                 role.SetUser = rs.getInt("SetUser");
-                role.rank = rs.getInt("rank");
                 role.ifroot = rs.getInt("ifroot");
                 role.id = rs.getInt("id");
                 row++;
@@ -99,7 +96,7 @@ id int NOT NULL) default charset=utf8;
     public boolean findbyId(Role role){
         try{
             Connection connection = getConnection();
-            String sql = "select * from RoleTable where id=" + role.id + " and rank=" + role.rank;
+            String sql = "select * from RoleTable where id=" + role.id;
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -113,7 +110,6 @@ id int NOT NULL) default charset=utf8;
                 role.SetRole = rs.getInt("SetRole");
                 role.SetSystem = rs.getInt("SetSystem");
                 role.SetUser = rs.getInt("SetUser");
-                role.rank = rs.getInt("rank");
                 role.ifroot = rs.getInt("ifroot");
                 role.id = rs.getInt("id");
                 row++;

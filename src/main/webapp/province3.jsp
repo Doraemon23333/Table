@@ -8,7 +8,10 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="com.springmvc.service.companyDataTable" %>
 <%@ page import="com.springmvc.entity.CompanyData" %>
-<%@ page import="com.springmvc.other.AreaCode" %><%--
+<%@ page import="com.springmvc.other.AreaCode" %>
+<%@ page import="com.springmvc.service.userTable" %>
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page import="com.springmvc.service.cityTable" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/23
@@ -163,6 +166,7 @@
 <%
     String choose = request.getParameter("choose");
     if (choose.equals("1")){
+        User user = new User();
         String place = request.getParameter("placecode");
         String enterpriseNature = request.getParameter("enterpriseNaturecode");
         String industry = request.getParameter("industrycode");
@@ -194,7 +198,14 @@
             com.telephone = rs.getString("telephone");
             com.fax = rs.getString("fax");
             com.email = rs.getString("email");
-            companies.add(com);
+            if (rank == 2){
+                cityTable citytable = new cityTable();
+                citytable.findById(Integer.parseInt(userid), user);
+                if (com.originalArea.equals(user.area))
+                    companies.add(com);
+            }else {
+                companies.add(com);
+            }
         }
         rs.close();
         stmt.close();

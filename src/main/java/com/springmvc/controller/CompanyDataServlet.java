@@ -1,13 +1,7 @@
 package com.springmvc.controller;
 
-import com.springmvc.entity.Browser;
-import com.springmvc.entity.CompanyData;
-import com.springmvc.entity.Role;
-import com.springmvc.entity.User;
-import com.springmvc.service.RoleTable;
-import com.springmvc.service.browserTable;
-import com.springmvc.service.companyDataTable;
-import com.springmvc.service.userTable;
+import com.springmvc.entity.*;
+import com.springmvc.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +17,12 @@ public class CompanyDataServlet extends HttpServlet{
         PrintWriter out = response.getWriter();
         response.setContentType("text/html;charset=utf-8");
         String id = request.getParameter("id");
+
+        userTable table = new userTable();
+        cityTable citytable = new cityTable();
         companyDataTable dataTable = new companyDataTable();
+        companyTable tableC = new companyTable();
+
         CompanyData companyData = new CompanyData();
         companyData.id = Integer.parseInt(id);
         companyData.csPeople = request.getParameter("RecordNum");
@@ -50,32 +49,48 @@ public class CompanyDataServlet extends HttpServlet{
             out.println("Error, something needed to be written");
         }else {
             User user = new User();
-            userTable table = new userTable();
             table.findById(Integer.parseInt(id), user);
-            Role role = new Role();
-            role.RoleNum = user.roleId;
-            RoleTable roleTable = new RoleTable();
-            roleTable.find(role);
-            if (role.SetUser == 1 || role.ifroot == 1){
-                boolean end = dataTable.insert(companyData);
-                if (end){
-                    Browser browser = new Browser();
-                    Calendar c = Calendar.getInstance();
-                    int year = c.get(Calendar.YEAR);
-                    int month = c.get(Calendar.MONTH);
-                    int day = c.get(Calendar.DAY_OF_MONTH);
-                    browser.broswerDay = day;
-                    browser.broswerYear = year;
-                    browser.broswerMonth = month;
-                    browser.id = Integer.parseInt(id);
-                    browser.rank = 1;
-                    browser.content = user.accompanyName + "提交了一个新的企业数据";
-                    browserTable table1 = new browserTable();
-                    table1.insert(browser);
-                    out.println("插入成功");
-                }
-                else out.println("插入失败");
-            }else out.println("您没有这个权限");
+            Company company = new Company();
+            company.id = user.id;
+            tableC.findbyId(company);
+            User city = new User();
+            citytable.find("area", company.originalArea, city);
+
+            boolean end = dataTable.insert(companyData);
+            if (end){
+                Browser browser = new Browser();
+                Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                browser.broswerDay = day;
+                browser.broswerYear = year;
+                browser.broswerMonth = month;
+                browser.id = Integer.parseInt(id);
+                browser.rank = 1;
+                browser.content = user.accompanyName + "提交了一个新的企业数据";
+                browserTable table1 = new browserTable();
+                table1.insert(browser);
+                out.println("插入成功");
+
+                Notification notification = new Notification();
+                notification.publishYear = year;
+                notification.publishMonth = month;
+                notification.publishDay = day;
+                notification.id = Integer.parseInt(id);
+                notification.rank = 1;
+                notification.receiverRank = 2;
+                notification.receiverId = city.id;
+                notification.content = "<p>建档期就业人数: "+ companyData.csPeople + "</p><p>调查期就业人数: " + companyData.surveyPeople
+                        + "</p><p>其他原因: " + companyData.addition + "</p><p>就业人数减少类型: " + companyData.reduceType
+                        + "</p><p>主要原因: " + companyData.mainReason + "</p><p>主要原因说明: " + companyData.mR_instruction
+                        + "</p><p>次要原因: " + companyData.secondReason + "</p><p>次要原因说明: " + companyData.sR_instruction
+                        + "</p><p>第三原因: " + companyData.thirdReason + "</p><p>第三原因说明: " + companyData.tR_instruction + "</p>";
+                notification.title = user.accompanyName + "提交了一份企业数据有待审核";
+                notificationTable table2 = new notificationTable();
+                table2.insert(notification);
+            }
+            else out.println("插入失败");
         }
     }
 }

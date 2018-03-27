@@ -80,40 +80,33 @@ public class CompanyServlet extends HttpServlet{
             browser.id = Integer.parseInt(id);
             browser.rank = 1;
 
-            Role role = new Role();
-            role.RoleNum = user.roleId;
-            RoleTable roleTable = new RoleTable();
-            roleTable.find(role);
-
-            if (role.SetUser == 1 || role.ifroot == 1){
-                if (table.find(company.id)){
-                    table.insert(company);
-                    browser.content = user.accompanyName + "提交了企业备案";
-                    table1.insert(browser);
-                    out.print("添加成功");
-                }else {
-                    if (company1.originalArea.equals("山东")){
-                        table.updateS(company.id, "originalArea", company.name);
-                    }
-                    table.updateS(company.id, "nameCode", company.nameCode);
-                    table.updateS(company.id, "name", company.name);
-                    table.updateS(company.id, "industry", company.industry);
-                    table.updateS(company.id, "enterprisesNature", company.enterprisesNature);
-                    table.updateS(company.id, "mainBusiness", company.mainBusiness);
-                    table.updateS(company.id, "People", company.People);
-                    table.updateS(company.id, "Address", company.Address);
-                    table.updateS(company.id, "postalCode", company.postalCode);
-                    table.updateS(company.id, "telephone", company.telephone);
-                    table.updateS(company.id, "fax", company.fax);
-                    if (company.email.equals("")){
-                    }else {
-                        table.updateS(company.id, "email", company.email);
-                    }
-                    browser.content = user.accompanyName + "更新了企业备案";
-                    table1.insert(browser);
-                    out.print("更新成功");
+            if (table.find(company.id)){
+                table.insert(company);
+                browser.content = user.accompanyName + "提交了企业备案";
+                table1.insert(browser);
+                out.print("添加成功");
+            }else {
+                if (company1.originalArea.equals("山东")){
+                    table.updateS(company.id, "originalArea", company.name);
                 }
-            }else out.println("您没有该权限");
+                table.updateS(company.id, "nameCode", company.nameCode);
+                table.updateS(company.id, "name", company.name);
+                table.updateS(company.id, "industry", company.industry);
+                table.updateS(company.id, "enterprisesNature", company.enterprisesNature);
+                table.updateS(company.id, "mainBusiness", company.mainBusiness);
+                table.updateS(company.id, "People", company.People);
+                table.updateS(company.id, "Address", company.Address);
+                table.updateS(company.id, "postalCode", company.postalCode);
+                table.updateS(company.id, "telephone", company.telephone);
+                table.updateS(company.id, "fax", company.fax);
+                if (company.email.equals("")){
+                }else {
+                    table.updateS(company.id, "email", company.email);
+                }
+                browser.content = user.accompanyName + "更新了企业备案";
+                table1.insert(browser);
+                out.print("更新成功");
+            }
         }
     }
 }

@@ -13,7 +13,6 @@ public class userTable {
 /*
  * create table userTable(
 id int NOT NULL primary key auto_increment,
-roleId int,
 usingCondition varchar(20)  NOT NULL,
 rank int NOT NULL,
 password varchar(20),
@@ -107,7 +106,6 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
                 user.unregisterMonth = rs.getInt("unregisterMonth");
                 user.unregisterDay = rs.getInt("unregisterDay");
                 user.rank = rs.getInt("rank");
-                user.roleId = rs.getInt("roleId");
                 row++;
             }
             //System.out.println(row);

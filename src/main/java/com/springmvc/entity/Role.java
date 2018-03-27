@@ -9,7 +9,6 @@ public class Role {
     public int SetRole;//
     public int SetSystem;
     public int SetUser;
-    public int rank;
     public int ifroot;
     public int id;
 }

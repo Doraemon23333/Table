@@ -21,15 +21,6 @@ public class DataSelectServlet extends HttpServlet{
         String year = time.substring(0, 4);
         String mouth = time.substring(5, 7);
         String day = time.substring(8);
-        userTable table = new userTable();
-        User user = new User();
-        table.findById(Integer.parseInt(id), user);
-        Role role = new Role();
-        role.RoleNum = user.roleId;
-        RoleTable roleTable = new RoleTable();
-        roleTable.find(role);
-        if (role.SetDate == 1 || role.ifroot == 1)
         response.sendRedirect("/companyDataSelect.jsp?id=" + id + "&choose=1&year=" + year + "&mouth=" + mouth + "&day=" + day);
-        else out.println("您没有该权限");
     }
 }
