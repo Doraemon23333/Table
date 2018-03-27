@@ -107,6 +107,7 @@
 <%!
     Company company;
     User user;
+    int companyid = 0;
 %>
 <div class="div2">
     <table>
@@ -146,6 +147,7 @@
                         String usingCondition = null;
                         if (user.usingCondition.equals("online")){
                             usingCondition = "在线";
+                            companyid = user.id;
                         }else {
                             usingCondition = "已注销";
                         }
@@ -185,18 +187,18 @@
         <tr>
             <td style="color: #0e90d2">修改后：</td>
         </tr>
-        <form action="" method="post">
+        <form action="/com/springmvc/controller/ChangeCompanyServlet?id=<%=request.getParameter("id")%>&rank=<%=rank%>&companyid=<%=companyid%>" method="post">
         <tr>
             <td>用户名：</td>
-            <td><input type="text" id="aftername" value=""></td>
+            <td><input type="text" id="aftername" name="name" value=""></td>
         </tr>
         <tr>
             <td>密码：</td>
-            <td><input type="text" id="afterpwd" value=""></td>
+            <td><input type="text" id="afterpwd" name="password" value=""></td>
         </tr>
         <tr>
             <td>企业代号：</td>
-            <td><input type="text" id="afterid" value=""></td>
+            <td><input type="text" id="afterid" name="nameCode" value=""></td>
         </tr>
         <tr>
             <td colspan="2" align="center"><input type="submit" value="修改"></td>
