@@ -263,7 +263,6 @@
             if (userC.area.equals(user.area)){
                 users.add(userC);
             }
-            users.add(userC);
         }
         rs1.close();
         stmt1.close();

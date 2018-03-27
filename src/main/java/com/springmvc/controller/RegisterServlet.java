@@ -34,7 +34,7 @@ public class RegisterServlet extends HttpServlet{
             role.RoleNum = province.roleId;
             RoleTable roleTable = new RoleTable();
             roleTable.find(role);
-            out.println("SetUser = " + role.SetUser + ", ifroot = " + role.ifroot);
+            //out.println("SetUser = " + role.SetUser + ", ifroot = " + role.ifroot);
             if ((role.SetUser == 1 || role.ifroot == 1) && (name.equals("") == false) && password.equals("") == false){
                 Browser browser = new Browser();
                 Calendar c = Calendar.getInstance();
