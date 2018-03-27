@@ -1,15 +1,13 @@
 <%@ page import="com.springmvc.entity.Company" %>
-<%@ page import="com.springmvc.service.companyTable" %>
 <%@ page import="com.springmvc.entity.User" %>
-<%@ page import="com.springmvc.service.userTable" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="com.mysql.jdbc.PreparedStatement" %>
 <%@ page import="com.mysql.jdbc.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.springmvc.service.cityTable" %>
-<%@ page import="com.springmvc.service.provinceTable" %><%--
+<%@ page import="com.springmvc.entity.Role" %>
+<%@ page import="com.springmvc.service.*" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -164,33 +162,45 @@
 <%
     userTable table = new userTable();
     if (rank == 3){
-        provinceTable table1 = new provinceTable();
-        table1.findById(Integer.parseInt(id), user);
-        companies = new ArrayList<Company>();
-        Connection conn = table.getConnection();
-        String sql = "select * from companyTable";
-        PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-        Statement stmt = (Statement) conn.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-        while(rs.next()){
-            Company com = new Company();
-            User userC = new User();
-            com.originalArea = rs.getString("originalArea");
-            com.id = rs.getInt("id");
-            table.findById(com.id, userC);
-            com.name = rs.getString("name");
-            com.nameCode = rs.getString("nameCode");
-            com.enterprisesNature = rs.getString("enterprisesNature");
-            com.industry = rs.getString("industry");
-            com.mainBusiness = rs.getString("mainBusiness");
-            com.People = rs.getString("People");
-            com.Address = rs.getString("Address");
-            com.postalCode = rs.getString("postalCode");
-            com.telephone = rs.getString("telephone");
-            com.fax = rs.getString("fax");
-            com.email = rs.getString("email");
-            if (userC.rank == 1 && userC.usingCondition.equals("online"))
-            companies.add(com);
+        RoleTable roleTable = new RoleTable();
+        Role role = new Role();
+        userTable tableU = new userTable();
+        User user = new User();
+        tableU.findById(Integer.parseInt(id), user);
+        role.id = user.id;
+        roleTable.findbyId(role);
+        if (role.ifroot == 1 || role.SearchCompany == 1){
+            provinceTable table1 = new provinceTable();
+            table1.findById(Integer.parseInt(id), user);
+            companies = new ArrayList<Company>();
+            Connection conn = table.getConnection();
+            String sql = "select * from companyTable";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Company com = new Company();
+                User userC = new User();
+                com.originalArea = rs.getString("originalArea");
+                com.id = rs.getInt("id");
+                table.findById(com.id, userC);
+                com.name = rs.getString("name");
+                com.nameCode = rs.getString("nameCode");
+                com.enterprisesNature = rs.getString("enterprisesNature");
+                com.industry = rs.getString("industry");
+                com.mainBusiness = rs.getString("mainBusiness");
+                com.People = rs.getString("People");
+                com.Address = rs.getString("Address");
+                com.postalCode = rs.getString("postalCode");
+                com.telephone = rs.getString("telephone");
+                com.fax = rs.getString("fax");
+                com.email = rs.getString("email");
+                if (userC.rank == 1 && userC.usingCondition.equals("online"))
+                    companies.add(com);
+            }
+        }
+        else {
+
         }
     }else if (rank == 2){
         cityTable table1 = new cityTable();

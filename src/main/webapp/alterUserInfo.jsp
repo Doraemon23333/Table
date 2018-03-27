@@ -2,6 +2,8 @@
 <%@ page import="com.springmvc.entity.Company" %>
 <%@ page import="com.springmvc.service.userTable" %>
 <%@ page import="com.springmvc.entity.User" %>
+<%@ page import="com.springmvc.entity.Role" %>
+<%@ page import="com.springmvc.service.RoleTable" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
@@ -124,21 +126,30 @@
             choose = request.getParameter("choose");
             if (choose.equals("0")){
             }else if (choose.equals("1")){
-                companyTable table = new companyTable();
-                userTable table1 = new userTable();
-                String name = request.getParameter("beforename");
-                company = new Company();
-                user = new User();
-                boolean end = table1.find("accompanyName", name, user);
-                company.id = user.id;
-                table.show(company);
-                if (end){
-                    String usingCondition = null;
-                    if (user.usingCondition.equals("online")){
-                        usingCondition = "在线";
-                    }else {
-                        usingCondition = "已注销";
-                    }
+                RoleTable roleTable = new RoleTable();
+                Role role = new Role();
+                userTable tableU = new userTable();
+                User user = new User();
+                tableU.findById(Integer.parseInt(id), user);
+                role.id = user.id;
+                roleTable.findbyId(role);
+                if (role.ifroot == 1 || role.SearchCompany == 1){
+                    companyTable table = new companyTable();
+                    userTable table1 = new userTable();
+                    String name = request.getParameter("beforename");
+                    company = new Company();
+                    user = new User();
+                    boolean end = table1.find("accompanyName", name, user);
+                    company.id = user.id;
+                    table.show(company);
+                    if (end){
+                        String usingCondition = null;
+                        if (user.usingCondition.equals("online")){
+                            usingCondition = "在线";
+                        }else {
+                            usingCondition = "已注销";
+                        }
+
         %>
         <tr>
             <td>用户名: </td>
@@ -162,7 +173,13 @@
         <tr>
             <td>未发现该用户</td>
         </tr>
-        <%}
+        <%          }
+                }
+                else {%>
+        <tr>
+            <td>您没有搜查用户权限</td>
+        </tr>
+                <%}
             }
         %>
         <tr>

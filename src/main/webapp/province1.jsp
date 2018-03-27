@@ -1,5 +1,9 @@
 <%@ page import="com.springmvc.service.companyTable" %>
-<%@ page import="com.springmvc.entity.Company" %><%--
+<%@ page import="com.springmvc.entity.Company" %>
+<%@ page import="com.springmvc.service.RoleTable" %>
+<%@ page import="com.springmvc.entity.Role" %>
+<%@ page import="com.springmvc.service.userTable" %>
+<%@ page import="com.springmvc.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -51,15 +55,30 @@
     String id2 = request.getParameter("companyid");
     company.id = Integer.parseInt(id2);
     companyTable table = new companyTable();
-    table.show(company);
     String a = request.getParameter("rank");
     rank = Integer.parseInt(a);
+    if (rank == 2){
+        table.show(company);
+    }else if (rank == 3){
+        RoleTable roleTable = new RoleTable();
+        Role role = new Role();
+        userTable tableU = new userTable();
+        User user = new User();
+        tableU.findById(Integer.parseInt(id), user);
+        role.id = user.id;
+        roleTable.findbyId(role);
+        if (role.ifroot == 1 || role.SearchCompany == 1){
+            table.show(company);
+        }else {
+            company.originalArea = "您没有相关权限";
+        }
+    }
 %>
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
-        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">岗位数据</a></li>
+        <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
     </ul>
 </div>

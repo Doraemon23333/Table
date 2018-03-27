@@ -1,6 +1,10 @@
 package com.springmvc.controller;
 
+import com.springmvc.entity.Role;
+import com.springmvc.entity.User;
 import com.springmvc.other.AreaCode;
+import com.springmvc.service.RoleTable;
+import com.springmvc.service.userTable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,15 +35,40 @@ public class ManageDataServlet extends HttpServlet{
             month++;
         }else {
         }
-        //out.print("place = " + place + ",enterpriseNature = " + enterpriseNature + "industry = " + industry);
-        if(name.equals("") || name.equals("企业名称或编号")){
-            AreaCode areaCode = new AreaCode();
-            String placecode = areaCode.toCode(place);
-            String enterpriseNaturecode = areaCode.enterpriseNatureToCode(enterpriseNature);
-            String industrycode = areaCode.industryToCode(industry);
-            response.sendRedirect("/province3.jsp?id=" + id + "&rank=" + rank + "&industrycode=" + industrycode + "&placecode=" + placecode
-            + "&enterpriseNaturecode=" + enterpriseNaturecode + "&year=" + year + "&month=" + month + "&choose=1");
+
+        if (rank.equals("3")){
+            RoleTable roleTable = new RoleTable();
+            Role role = new Role();
+            userTable table = new userTable();
+            User user = new User();
+            table.findById(Integer.parseInt(id), user);
+            role.id = user.id;
+            roleTable.findbyId(role);
+            if (role.SearchData == 1 || role.ifroot == 1){
+                if(name.equals("") || name.equals("企业名称或编号")){
+                    AreaCode areaCode = new AreaCode();
+                    String placecode = areaCode.toCode(place);
+                    String enterpriseNaturecode = areaCode.enterpriseNatureToCode(enterpriseNature);
+                    String industrycode = areaCode.industryToCode(industry);
+                    response.sendRedirect("/province3.jsp?id=" + id + "&rank=" + rank + "&industrycode=" + industrycode + "&placecode=" + placecode
+                            + "&enterpriseNaturecode=" + enterpriseNaturecode + "&year=" + year + "&month=" + month + "&choose=1");
+                }else {
+                    out.println("您没有查看企业数据的权限");
+                }
+            }
         }else {
+            if(name.equals("") || name.equals("企业名称或编号")){
+                AreaCode areaCode = new AreaCode();
+                String placecode = areaCode.toCode(place);
+                String enterpriseNaturecode = areaCode.enterpriseNatureToCode(enterpriseNature);
+                String industrycode = areaCode.industryToCode(industry);
+                response.sendRedirect("/province3.jsp?id=" + id + "&rank=" + rank + "&industrycode=" + industrycode + "&placecode=" + placecode
+                        + "&enterpriseNaturecode=" + enterpriseNaturecode + "&year=" + year + "&month=" + month + "&choose=1");
+            }else {
+            }
         }
+
+        //out.print("place = " + place + ",enterpriseNature = " + enterpriseNature + "industry = " + industry);
+
     }
 }

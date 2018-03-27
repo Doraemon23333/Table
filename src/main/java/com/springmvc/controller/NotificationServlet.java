@@ -70,6 +70,12 @@ public class NotificationServlet extends HttpServlet{
             User city = new User();
             cityTable table = new cityTable();
             table.findById(Integer.parseInt(id), city);
+
+            browser.content = city.accompanyName + "发布了一条新的通知";
+            browserTable table1 = new browserTable();
+            table1.insert(browser);
+            notificationTable table2 = new notificationTable();
+            table2.insert(notification);
         }
     }
 }

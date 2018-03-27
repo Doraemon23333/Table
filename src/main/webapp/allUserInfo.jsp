@@ -8,7 +8,10 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.springmvc.service.cityTable" %><
+<%@ page import="com.springmvc.service.cityTable" %>
+<%@ page import="com.springmvc.entity.Role" %>
+<%@ page import="com.springmvc.service.RoleTable" %>
+<
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
@@ -115,92 +118,103 @@
 %>
 <%
     if (rank.equals("3")){
-        userTable table = new userTable();
-        companyTable table1 = new companyTable();
-        users = new ArrayList<User>();
-        Connection conn = table.getConnection();
-        String sql = "select * from userTable";
-        PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-        Statement stmt = (Statement) conn.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-        while(rs.next()){
-            User userC = new User();
-            userC.id = rs.getInt("id");
-            userC.account = rs.getString("account");
-            userC.accompanyName = rs.getString("accompanyName");
-            userC.password = rs.getString("password");
-            userC.usingCondition = rs.getString("usingCondition");
-            userC.registerYear = rs.getInt("registerYear");
-            userC.registerMonth = rs.getInt("registerMonth");
-            userC.registerDay = rs.getInt("registerDay");
-            userC.unregisterYear = rs.getInt("unregisterYear");
-            userC.unregisterMonth = rs.getInt("unregisterMonth");
-            userC.unregisterDay = rs.getInt("unregisterDay");
-            userC.rank = rs.getInt("rank");
-            Company company = new Company();
-            company.id = userC.id;
-            table1.findbyId(company);
-            userC.area = company.originalArea;
-            users.add(userC);
-        }
-        rs.close();
-        stmt.close();
-        ps.close();
-        conn.close();
+        RoleTable roleTable = new RoleTable();
+        Role role = new Role();
+        userTable tableU = new userTable();
+        User user = new User();
+        tableU.findById(Integer.parseInt(id), user);
+        role.id = user.id;
+        roleTable.findbyId(role);
+        if (role.ifroot == 1 || role.SearchCompany == 1){
+            userTable table = new userTable();
+            companyTable table1 = new companyTable();
+            users = new ArrayList<User>();
+            Connection conn = table.getConnection();
+            String sql = "select * from userTable";
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            Statement stmt = (Statement) conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                User userC = new User();
+                userC.id = rs.getInt("id");
+                userC.account = rs.getString("account");
+                userC.accompanyName = rs.getString("accompanyName");
+                userC.password = rs.getString("password");
+                userC.usingCondition = rs.getString("usingCondition");
+                userC.registerYear = rs.getInt("registerYear");
+                userC.registerMonth = rs.getInt("registerMonth");
+                userC.registerDay = rs.getInt("registerDay");
+                userC.unregisterYear = rs.getInt("unregisterYear");
+                userC.unregisterMonth = rs.getInt("unregisterMonth");
+                userC.unregisterDay = rs.getInt("unregisterDay");
+                userC.rank = rs.getInt("rank");
+                Company company = new Company();
+                company.id = userC.id;
+                table1.findbyId(company);
+                userC.area = company.originalArea;
+                users.add(userC);
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
 
-        Connection conn1 = table.getConnection();
-        String sql1 = "select * from cityTable";
-        PreparedStatement ps1 = (PreparedStatement) conn1.prepareStatement(sql1);
-        Statement stmt1 = (Statement) conn1.createStatement();
-        ResultSet rs1 = stmt1.executeQuery(sql1);
-        while(rs1.next()){
-            User userC = new User();
-            userC.id = rs1.getInt("id");
-            userC.account = rs1.getString("account");
-            userC.accompanyName = rs1.getString("accompanyName");
-            userC.password = rs1.getString("password");
-            userC.usingCondition = rs1.getString("usingCondition");
-            userC.registerYear = rs1.getInt("registerYear");
-            userC.registerMonth = rs1.getInt("registerMonth");
-            userC.registerDay = rs1.getInt("registerDay");
-            userC.unregisterYear = rs1.getInt("unregisterYear");
-            userC.unregisterMonth = rs1.getInt("unregisterMonth");
-            userC.unregisterDay = rs1.getInt("unregisterDay");
-            userC.rank = rs1.getInt("rank");
-            userC.area = rs1.getString("area");
-            users.add(userC);
-        }
-        rs1.close();
-        stmt1.close();
-        ps1.close();
-        conn1.close();
+            Connection conn1 = table.getConnection();
+            String sql1 = "select * from cityTable";
+            PreparedStatement ps1 = (PreparedStatement) conn1.prepareStatement(sql1);
+            Statement stmt1 = (Statement) conn1.createStatement();
+            ResultSet rs1 = stmt1.executeQuery(sql1);
+            while(rs1.next()){
+                User userC = new User();
+                userC.id = rs1.getInt("id");
+                userC.account = rs1.getString("account");
+                userC.accompanyName = rs1.getString("accompanyName");
+                userC.password = rs1.getString("password");
+                userC.usingCondition = rs1.getString("usingCondition");
+                userC.registerYear = rs1.getInt("registerYear");
+                userC.registerMonth = rs1.getInt("registerMonth");
+                userC.registerDay = rs1.getInt("registerDay");
+                userC.unregisterYear = rs1.getInt("unregisterYear");
+                userC.unregisterMonth = rs1.getInt("unregisterMonth");
+                userC.unregisterDay = rs1.getInt("unregisterDay");
+                userC.rank = rs1.getInt("rank");
+                userC.area = rs1.getString("area");
+                users.add(userC);
+            }
+            rs1.close();
+            stmt1.close();
+            ps1.close();
+            conn1.close();
 
-        Connection conn2 = table.getConnection();
-        String sql2 = "select * from provinceTable";
-        PreparedStatement ps2 = (PreparedStatement) conn2.prepareStatement(sql2);
-        Statement stmt2 = (Statement) conn2.createStatement();
-        ResultSet rs2 = stmt2.executeQuery(sql2);
-        while(rs2.next()){
-            User userC = new User();
-            userC.id = rs2.getInt("id");
-            userC.account = rs2.getString("account");
-            userC.accompanyName = rs2.getString("accompanyName");
-            userC.password = rs2.getString("password");
-            userC.usingCondition = rs2.getString("usingCondition");
-            userC.registerYear = rs2.getInt("registerYear");
-            userC.registerMonth = rs2.getInt("registerMonth");
-            userC.registerDay = rs2.getInt("registerDay");
-            userC.unregisterYear = rs2.getInt("unregisterYear");
-            userC.unregisterMonth = rs2.getInt("unregisterMonth");
-            userC.unregisterDay = rs2.getInt("unregisterDay");
-            userC.rank = rs2.getInt("rank");
-            userC.area = "山东省";
-            users.add(userC);
+            Connection conn2 = table.getConnection();
+            String sql2 = "select * from provinceTable";
+            PreparedStatement ps2 = (PreparedStatement) conn2.prepareStatement(sql2);
+            Statement stmt2 = (Statement) conn2.createStatement();
+            ResultSet rs2 = stmt2.executeQuery(sql2);
+            while(rs2.next()){
+                User userC = new User();
+                userC.id = rs2.getInt("id");
+                userC.account = rs2.getString("account");
+                userC.accompanyName = rs2.getString("accompanyName");
+                userC.password = rs2.getString("password");
+                userC.usingCondition = rs2.getString("usingCondition");
+                userC.registerYear = rs2.getInt("registerYear");
+                userC.registerMonth = rs2.getInt("registerMonth");
+                userC.registerDay = rs2.getInt("registerDay");
+                userC.unregisterYear = rs2.getInt("unregisterYear");
+                userC.unregisterMonth = rs2.getInt("unregisterMonth");
+                userC.unregisterDay = rs2.getInt("unregisterDay");
+                userC.rank = rs2.getInt("rank");
+                userC.area = "山东省";
+                users.add(userC);
+            }
+            rs2.close();
+            stmt2.close();
+            ps2.close();
+            conn2.close();
+        }else {
+
         }
-        rs2.close();
-        stmt2.close();
-        ps2.close();
-        conn2.close();
     }else if (rank.equals("2")){
         users = new ArrayList<User>();
         userTable table = new userTable();

@@ -2,8 +2,10 @@ package com.springmvc.controller;
 
 import com.springmvc.entity.Company;
 import com.springmvc.entity.Role;
+import com.springmvc.entity.User;
 import com.springmvc.service.RoleTable;
 import com.springmvc.service.companyTable;
+import com.springmvc.service.userTable;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,42 +28,61 @@ public class SearchCompanyServlet extends HttpServlet{
         company.industry = request.getParameter("hy");
         String choose = request.getParameter("num");
         PrintWriter out = response.getWriter();
-        //out.print("originalArea = " + company.originalArea);
-        //out.print("enterprisesNature = " + company.enterprisesNature);
-        //out.print("industry = " + company.industry);
-        //out.print("choose = " + choose);
-        companyTable table = new companyTable();
-        List<Company> companyList = new ArrayList<Company>();
-        table.search(company, companyList, choose, Integer.parseInt(id));
-        //out.print("搜到结果" + companyList.size());
-        if (rank.equals("2") && companyList.size() > 0){
-            Company city = new Company();
-            city.id = Integer.parseInt(id);
-            table.show(city);
-            for (Company c: companyList){
-                if (c.originalArea.equals(city.originalArea)){
+
+        if (rank.equals("3")){
+            RoleTable roleTable = new RoleTable();
+            Role role = new Role();
+            userTable tableU = new userTable();
+            User user = new User();
+            tableU.findById(Integer.parseInt(id), user);
+            role.id = user.id;
+            roleTable.findbyId(role);
+            if (role.ifroot == 1 || role.SearchData == 1){
+                companyTable table = new companyTable();
+                List<Company> companyList = new ArrayList<Company>();
+                table.search(company, companyList, choose, Integer.parseInt(id));
+                if (companyList.size() == 0){
+                    out.print("没有找到符合条件的企业");
+                }else if (companyList.size() == 1){
+                    Company com = null;
+                    for (Company company1: companyList){
+                        com = company1;
+                    }
+                    String direction = "/province1.jsp?id=" + id + "&companyid=" + com.id + "&rank=" + rank;
+                    response.sendRedirect(direction);
                 }else {
-                    companyList.remove(c);
+                    out.print("Error, company number more than one");
+                }
+            }else {
+                out.println("您没有查看企业备案的权限");
+            }
+        }else {
+            companyTable table = new companyTable();
+            List<Company> companyList = new ArrayList<Company>();
+            table.search(company, companyList, choose, Integer.parseInt(id));
+            if (companyList.size() > 0){
+                Company city = new Company();
+                city.id = Integer.parseInt(id);
+                table.show(city);
+                for (Company c: companyList){
+                    if (c.originalArea.equals(city.originalArea)){
+                    }else {
+                        companyList.remove(c);
+                    }
                 }
             }
-        }
-        if (companyList.size() == 0){
-            out.print("没有找到符合条件的企业");
-        }else if (companyList.size() == 1){
-            Company com = null;
-            for (Company company1: companyList){
-                com = company1;
+            if (companyList.size() == 0){
+                out.print("没有找到符合条件的企业");
+            }else if (companyList.size() == 1){
+                Company com = null;
+                for (Company company1: companyList){
+                    com = company1;
+                }
+                String direction = "/province1.jsp?id=" + id + "&companyid=" + com.id + "&rank=" + rank;
+                response.sendRedirect(direction);
+            }else {
+                out.print("Error, company number more than one");
             }
-            String direction = "/province1.jsp?id=" + id + "&companyid=" + com.id + "&rank=" + rank;
-            response.sendRedirect(direction);
-            /*for(Company company1: companyList){
-                out.print("originalArea = " + company1.originalArea);
-                out.print("enterprisesNature = " + company1.enterprisesNature);
-                out.print("industry = " + company1.industry);
-                out.print("<br>");
-            }*/
-        }else {
-            out.print("Error, company number more than one");
         }
     }
 }
