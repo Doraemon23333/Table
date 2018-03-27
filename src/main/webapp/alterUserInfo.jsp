@@ -87,9 +87,7 @@
         <li>
             <div class="link">角色管理</div>
             <ul class="submenu">
-                <li><a href="#">定义角色</a></li>
-                <li><a href="#">修改角色</a></li>
-                <li><a href="#">删除角色</a></li>
+                <li><a href="role.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">系统角色</a></li>
             </ul>
         </li>
         <li><div class="link">系统监控</div>
