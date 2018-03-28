@@ -34,8 +34,8 @@ publishId int NOT NULL) default charset=utf8;
     public boolean insert(Investigation investigation){
         try {
             Connection connection = getConnection();
-            String sql = "insert into userTable()" +
-                    " values()";
+            String sql = "insert into userTable(investigationYear,investigationMonth,investigationDay,usingCondition,publishId)" +
+                    " values(?,?,?,?,?)";
             Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);

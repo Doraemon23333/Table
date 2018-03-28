@@ -113,4 +113,37 @@ accountSeason int NOT NULL) default charset = utf8;
             e.printStackTrace();
         }
     }
+
+    public void find(CompanyData companyData){
+        try{
+            Connection connection = getConnection();
+            String sql = "SELECT * FROM companyDataTable WHERE id=" + companyData.companyDataId;
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            Statement stmt = (Statement) connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                companyData.companyDataId = rs.getInt("companyDataId");
+                companyData.csPeople = rs.getString("csPeople");
+                companyData.surveyPeople = rs.getString("surveyPeople");
+                companyData.addition = rs.getString("addition");
+                companyData.reduceType = rs.getString("reduceType");
+                companyData.mainReason = rs.getString("mainReason");
+                companyData.mR_instruction = rs.getString("mR_instruction");
+                companyData.secondReason = rs.getString("secondReason");
+                companyData.sR_instruction = rs.getString("sR_instruction");
+                companyData.thirdReason = rs.getString("thirdReason");
+                companyData.tR_instruction = rs.getString("tR_instruction");
+                companyData.accountYear = rs.getInt("accountYear");
+                companyData.accountMonth = rs.getInt("accountMonth");
+                companyData.accountDay = rs.getInt("accountDay");
+                companyData.companyDataId = rs.getInt("companyDataId");
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
