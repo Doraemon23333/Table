@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>企业备案信息</title>
+    <title>请完善企业备案信息</title>
 
     <meta name="description" content="This is page-header (.page-header &amp;gt; h1)"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -52,15 +52,6 @@
     companyTable table = new companyTable();
     table.show(company);
 %>
-<div class="nav-box">
-    <ul class="container nav">
-        <li><a href="companyhome.jsp?id=<%=request.getParameter("id")%>">首页</a></li>
-        <li><a href="companyRecordInfo.jsp?id=<%=request.getParameter("id")%>">备案信息</a></li>
-        <li><a href="companyDataInsert.jsp?id=<%=request.getParameter("id")%>">数据填报</a></li>
-        <li><a href="companyDataSelect.jsp?id=<%=request.getParameter("id")%>&choose=0">数据查询</a></li>
-        <li><a href="/">退出</a></li>
-    </ul>
-</div>
 
 <div class="main-container container no-sidebar">
     <div class="main-content">

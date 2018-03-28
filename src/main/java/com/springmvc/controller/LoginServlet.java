@@ -1,11 +1,9 @@
 package com.springmvc.controller;
 
 import com.springmvc.entity.Browser;
+import com.springmvc.entity.Company;
 import com.springmvc.entity.User;
-import com.springmvc.service.browserTable;
-import com.springmvc.service.cityTable;
-import com.springmvc.service.provinceTable;
-import com.springmvc.service.userTable;
+import com.springmvc.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,23 +29,31 @@ public class LoginServlet extends HttpServlet {
             userTable table = new userTable();
             boolean end = table.find("account", account, user);
             if (end){
-                if (user.password.equals(password)){
-                    browserTable table1 = new browserTable();
-                    Browser browser = new Browser();
-                    Calendar c = Calendar.getInstance();
-                    int year = c.get(Calendar.YEAR);
-                    int month = c.get(Calendar.MONTH);
-                    int day = c.get(Calendar.DAY_OF_MONTH);
-                    browser.broswerDay = day;
-                    browser.broswerYear = year;
-                    browser.broswerMonth = month + 1;
-                    browser.content = user.accompanyName + "登录了系统";
-                    browser.id = user.id;
-                    browser.rank = user.rank;
-                    table1.insert(browser);
-                    response.sendRedirect("/companyhome.jsp?id=" + user.id);
+                Company company = new Company();
+                company.id = user.id;
+                companyTable tableC = new companyTable();
+                tableC.findbyId(company);
+                if (company.originalArea.equals("山东")){
+                    response.sendRedirect("/companyRecordInfo(waiting).jsp?id=" + user.id);
                 }else {
-                    out.print("登陆有误");
+                    if (user.password.equals(password)){
+                        browserTable table1 = new browserTable();
+                        Browser browser = new Browser();
+                        Calendar c = Calendar.getInstance();
+                        int year = c.get(Calendar.YEAR);
+                        int month = c.get(Calendar.MONTH);
+                        int day = c.get(Calendar.DAY_OF_MONTH);
+                        browser.broswerDay = day;
+                        browser.broswerYear = year;
+                        browser.broswerMonth = month + 1;
+                        browser.content = user.accompanyName + "登录了系统";
+                        browser.id = user.id;
+                        browser.rank = user.rank;
+                        table1.insert(browser);
+                        response.sendRedirect("/companyhome.jsp?id=" + user.id);
+                    }else {
+                        out.print("登陆有误");
+                    }
                 }
             }else {
                 out.print("登陆有误");

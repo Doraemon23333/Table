@@ -15,6 +15,7 @@ create table notificationTable(
 notification_id int NOT NULL primary key auto_increment,
 title varchar(50) NOT NULL,
 content varchar(4000) NOT NULL,
+type int NOT NULL,
 publishYear int NOT NULL,
 publishMonth int NOT NULL,
 publishDay int NOT NULL,
@@ -38,8 +39,8 @@ receiverRank int NOT NULL)default charset = utf8;
     }
 
     public void insert(Notification notification){
-        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay,rank,receiverId,receiverRank) " +
-                "values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay,rank,receiverId,receiverRank,type) " +
+                "values(?,?,?,?,?,?,?,?,?,?)";
         System.out.println(sql);
         try {
             Connection conn = getConnection();
@@ -53,6 +54,7 @@ receiverRank int NOT NULL)default charset = utf8;
             ps.setInt(7, notification.rank);
             ps.setInt(8, notification.receiverId);
             ps.setInt(9, notification.receiverRank);
+            ps.setInt(10, notification.type);
             int row = ps.executeUpdate();
             ps.close();
             conn.close();
@@ -84,6 +86,9 @@ receiverRank int NOT NULL)default charset = utf8;
                 notification.publishMonth = rs.getInt("publishMonth");
                 notification.publishDay = rs.getInt("publishDay");
                 notification.notification_id = rs.getInt("notification_id");
+                notification.receiverId = rs.getInt("receiverId");
+                notification.receiverRank = rs.getInt("receiverRank");
+                notification.type = rs.getInt("type");
                 row++;
             }
             //System.out.println(row);

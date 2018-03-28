@@ -69,6 +69,7 @@
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>" >系统管理</a></li>
         <li><a href="bingtu.jsp?id=<%=request.getParameter("id") %>&rank=<%=request.getParameter("rank")%>">取样分析</a></li>
         <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
+        <li><a href="/">退出</a></li>
     </ul>
 </div>
 <!--nav end-->
@@ -121,7 +122,7 @@
                                     <div class="slider-text">
                                         <h3 class="title-h3"><i class="icon-new"></i><a target="_blank" style="color:#296b9b">消息通知</a>
                                             &nbsp;&nbsp;&nbsp;
-                                            <i class="icon-new"></i><a href="provinceannouncement.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>" a target="_blank" style="color:#296b9b">发布通知</a>
+                                            <i class="icon-new"></i><a href="provinceannouncement.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>&type=0" a target="_blank" style="color:#296b9b">发布通知</a>
                                         </h3>
                                         <ul class="news-list">
                                             <%

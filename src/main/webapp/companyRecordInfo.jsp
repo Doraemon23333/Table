@@ -84,7 +84,7 @@
                             <tr class="">
                                 <td>所属地市、市县、区域：</td>
                                 <td>
-                                    <input type="text" id="owned" name="owned" style="height: 30px;" value="<%=company.originalArea%>(无法修改)" onfocus="javascript:if(this.value=='提交后不可修改')this.value='';"/>
+                                    <input type="text" id="owned" name="owned" style="height: 30px;" value="<%=company.originalArea%>" onfocus="javascript:if(this.value=='提交后不可修改')this.value='';"/>
                                     <b class="red">*为必填</b>
                                 </td>
                             </tr>

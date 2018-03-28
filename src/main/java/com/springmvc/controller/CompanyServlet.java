@@ -84,10 +84,10 @@ public class CompanyServlet extends HttpServlet{
                 table.insert(company);
                 browser.content = user.accompanyName + "提交了企业备案";
                 table1.insert(browser);
-                out.print("添加成功");
+                out.print("添加成功, 请重新登陆");
             }else {
                 if (company1.originalArea.equals("山东")){
-                    table.updateS(company.id, "originalArea", company.name);
+                    table.updateS(company.id, "originalArea", company.originalArea);
                 }
                 table.updateS(company.id, "nameCode", company.nameCode);
                 table.updateS(company.id, "name", company.name);

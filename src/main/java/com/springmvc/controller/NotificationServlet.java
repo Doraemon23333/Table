@@ -21,6 +21,7 @@ public class NotificationServlet extends HttpServlet{
         String id = request.getParameter("id");
         String rank = request.getParameter("rank");
         String title = request.getParameter("subject");
+        String type = request.getParameter("type");
         String content = request.getParameter("message[text]");
         PrintWriter out = response.getWriter();
         //out.print(title + "," + content + "," + id);
@@ -39,6 +40,8 @@ public class NotificationServlet extends HttpServlet{
         notification.rank = Integer.parseInt(rank);
         notification.content = content;
         notification.title = title;
+        notification.type = Integer.parseInt(type);
+
 
         Browser browser = new Browser();
         browser.broswerDay = day;
@@ -63,6 +66,7 @@ public class NotificationServlet extends HttpServlet{
                 table1.insert(browser);
                 notificationTable table2 = new notificationTable();
                 table2.insert(notification);
+                out.println("发布成功");
             }else {
                 out.println("您没有该权限");
             }
@@ -76,6 +80,7 @@ public class NotificationServlet extends HttpServlet{
             table1.insert(browser);
             notificationTable table2 = new notificationTable();
             table2.insert(notification);
+            out.println("发布成功");
         }
     }
 }

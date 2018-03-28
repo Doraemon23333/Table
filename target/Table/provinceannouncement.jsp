@@ -101,11 +101,13 @@
 <%!
     String rank = null;
     String userid = null;
+    int type = 0;
 %>
 <%
     String id = request.getParameter("id");
     userid = id;
     rank = request.getParameter("rank");
+    type = Integer.parseInt(request.getParameter("type"));
 %>
 <div class="nav-box">
     <ul class="container nav">
@@ -114,6 +116,8 @@
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
         <li><a href="bingtu.jsp?id=<%=request.getParameter("id") %>&rank=<%=request.getParameter("rank")%>">取样分析</a></li>
+        <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
+        <li><a href="/">退出</a></li>
     </ul>
 </div>
 <!--nav end-->
@@ -284,7 +288,7 @@
                                 //]]>
                             </script>
 
-                            <form id="mformforum" autocomplete="off" action="/com/springmvc/controller/NotificationServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post" accept-charset="utf-8" class="mform" onsubmit="try { var myValidator = validate_mod_forum_post_form; } catch(e) { return true; } return myValidator(this);">
+                            <form id="mformforum" autocomplete="off" action="/com/springmvc/controller/NotificationServlet?id=<%=request.getParameter("id")%>&type=<%=type%>&rank=<%=request.getParameter("rank")%>" method="post" accept-charset="utf-8" class="mform" onsubmit="try { var myValidator = validate_mod_forum_post_form; } catch(e) { return true; } return myValidator(this);">
                                 <div style="display: none;"><div class="hide"><input type="text" class="ignoredirty" /><input type="password" class="ignoredirty" /></div><input name="timestart" type="hidden" value="0" />
                                     <input name="timeend" type="hidden" value="0" />
                                     <input name="course" type="hidden" value="1214" />
