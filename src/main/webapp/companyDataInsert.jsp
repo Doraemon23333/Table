@@ -76,7 +76,7 @@
                             <tr class="">
                                 <td>建档期就业人数</td>
                                 <td>
-                                    <input type="text" id="recordNum" name="RecordNum" style="height: 30px;"value="初次建档时监测点就业人数" onfocus="javascript:if(this.value=='初次建档时监测点就业人数')this.value='';"/>
+                                    <input type="number" id="recordNum" name="RecordNum" style="height: 30px;"value="初次建档时监测点就业人数" onfocus="javascript:if(this.value=='初次建档时监测点就业人数')this.value='';"/>
                                     <b class="red">*为必填</b>
                                 </td>
                             </tr>
@@ -84,7 +84,7 @@
                             <tr class="">
                                 <td>调查期就业人数</td>
                                 <td>
-                                    <input type="text" id="resNum" name="resNum" style="height: 30px;"value="本次调查期当时的监测点就业人数" onfocus="javascript:if(this.value=='本次调查期当时的监测点就业人数')this.value='';"/>
+                                    <input type="number" id="resNum" name="resNum" style="height: 30px;"value="本次调查期当时的监测点就业人数" onfocus="javascript:if(this.value=='本次调查期当时的监测点就业人数')this.value='';"/>
                                     <b class="red">*</b>
                                 </td>
                             </tr>

@@ -88,6 +88,16 @@
                                         <p><font size="3"><%=notification.content%></font></p>
 
                                     </div>
+                                    <%
+                                        if (notification.type == 1){%>
+                                            <table border="0" align="center" width="500">
+                                                <tr>
+                                                    <td><a href="/com/springmvc/controller/CityJudgeDataServlet?end=1&id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&notificationId=<%=notification.notification_id%>">批准</a></td>
+                                                    <td><a href="/com/springmvc/controller/CityJudgeDataServlet?end=0&id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&notificationId=<%=notification.notification_id%>">退回</a></td>
+                                                </tr>
+                                            </table>
+                                        <%}
+                                    %>
                                 </div>
                             </li>
                         </ul>

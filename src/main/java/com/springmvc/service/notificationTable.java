@@ -16,6 +16,7 @@ notification_id int NOT NULL primary key auto_increment,
 title varchar(50) NOT NULL,
 content varchar(4000) NOT NULL,
 type int NOT NULL,
+companyDataId int,
 publishYear int NOT NULL,
 publishMonth int NOT NULL,
 publishDay int NOT NULL,
@@ -39,8 +40,8 @@ receiverRank int NOT NULL)default charset = utf8;
     }
 
     public void insert(Notification notification){
-        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay,rank,receiverId,receiverRank,type) " +
-                "values(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into notificationTable(id,title,content,publishYear,publishMonth,publishDay,rank,receiverId,receiverRank,type,companyDataId) " +
+                "values(?,?,?,?,?,?,?,?,?,?,?)";
         System.out.println(sql);
         try {
             Connection conn = getConnection();
@@ -55,6 +56,7 @@ receiverRank int NOT NULL)default charset = utf8;
             ps.setInt(8, notification.receiverId);
             ps.setInt(9, notification.receiverRank);
             ps.setInt(10, notification.type);
+            ps.setInt(11, notification.companyDataId);
             int row = ps.executeUpdate();
             ps.close();
             conn.close();
@@ -89,6 +91,7 @@ receiverRank int NOT NULL)default charset = utf8;
                 notification.receiverId = rs.getInt("receiverId");
                 notification.receiverRank = rs.getInt("receiverRank");
                 notification.type = rs.getInt("type");
+                notification.companyDataId = rs.getInt("companyDataId");
                 row++;
             }
             //System.out.println(row);
@@ -102,6 +105,19 @@ receiverRank int NOT NULL)default charset = utf8;
         }catch (Exception e){
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public void delete(Notification notification){
+        try {
+            Connection connection = getConnection();
+            String sql = "DELETE FROM notificationTable WHERE notification_id=" + notification.notification_id;
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            ps.executeUpdate();
+            ps.close();
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

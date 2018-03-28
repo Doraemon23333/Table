@@ -23,7 +23,8 @@ registerDay int NOT NULL,
 unregisterYear int,
 unregisterMonth int,
 unregisterDay int,
-accompanyName varchar(100) NOT NULL) default charset=utf8;
+accompanyName varchar(100) NOT NULL,
+companyDataId int default 0) default charset=utf8;
 */
     public Connection getConnection() {
         Connection conn = null;
@@ -182,11 +183,9 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
     public boolean updateI(String name, int data, int id){
         try {
             Connection conn = getConnection();
-            String sql = "update userTable set " + name + "=? where id=?";
+            String sql = "update userTable set " + name + "=" + data + " where id=" + id;
             System.out.println(sql);
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setInt(1, data);
-            ps.setInt(2, id);
             int row = ps.executeUpdate();
             ps.close();
             conn.close();

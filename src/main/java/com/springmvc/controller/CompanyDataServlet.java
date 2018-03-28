@@ -65,13 +65,16 @@ public class CompanyDataServlet extends HttpServlet{
                 int day = c.get(Calendar.DAY_OF_MONTH);
                 browser.broswerDay = day;
                 browser.broswerYear = year;
+                month++;
                 browser.broswerMonth = month;
                 browser.id = Integer.parseInt(id);
                 browser.rank = 1;
                 browser.content = user.accompanyName + "提交了一个新的企业数据";
                 browserTable table1 = new browserTable();
                 table1.insert(browser);
-                out.println("插入成功");
+                out.println("提交成功");
+
+                dataTable.findId(companyData);
 
                 Notification notification = new Notification();
                 notification.publishYear = year;
@@ -81,6 +84,8 @@ public class CompanyDataServlet extends HttpServlet{
                 notification.rank = 1;
                 notification.receiverRank = 2;
                 notification.receiverId = city.id;
+                notification.type = 1;
+                notification.companyDataId = companyData.companyDataId;
                 notification.content = "<p>建档期就业人数: "+ companyData.csPeople + "</p><p>调查期就业人数: " + companyData.surveyPeople
                         + "</p><p>其他原因: " + companyData.addition + "</p><p>就业人数减少类型: " + companyData.reduceType
                         + "</p><p>主要原因: " + companyData.mainReason + "</p><p>主要原因说明: " + companyData.mR_instruction

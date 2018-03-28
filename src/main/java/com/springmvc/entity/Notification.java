@@ -5,6 +5,7 @@ public class Notification {
     public String title;//标题
     public String content;//内容
     public int type;//0为普通消息，1为数据审批消息
+    public int companyDataId;
     public int publishYear;//年
     public int publishMonth;//月
     public int publishDay;//日

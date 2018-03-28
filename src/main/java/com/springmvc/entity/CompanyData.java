@@ -1,6 +1,7 @@
 package com.springmvc.entity;
 
 public class CompanyData {
+    public int companyDataId;
     public int id;
     public Company company;
     public String csPeople;//建档期就业人数

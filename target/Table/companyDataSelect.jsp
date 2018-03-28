@@ -88,6 +88,82 @@
 
                         </table>
                     </form>
+                    <%
+                        String choose = request.getParameter("choose");
+                        if (choose.equals("0")){
+
+                        }else {
+                            String y = request.getParameter("year");
+                            String m = request.getParameter("mouth");
+                            String d = request.getParameter("day");
+                            int year = Integer.parseInt(y);
+                            int mouth = Integer.parseInt(m);
+                            int day = Integer.parseInt(d);
+                            companyDataTable table = new companyDataTable();
+                            List<CompanyData> companyDataList = new ArrayList<CompanyData>();
+                            String sql = "SELECT * FROM companyDataTable WHERE accountYear=" + year + " AND accountMonth=" + mouth + " AND accountDay=" + day + " AND id=" + request.getParameter("id");
+                            System.out.println(sql);
+                            try{
+                                Connection conn = table.getConnection();
+                                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+                                Statement stmt = (Statement) conn.createStatement();
+                                ResultSet rs = stmt.executeQuery(sql);
+                                while (rs.next()){
+                                    CompanyData companyData = new CompanyData();
+                                    companyData.csPeople = rs.getString("csPeople");
+                                    companyData.surveyPeople = rs.getString("surveyPeople");
+                                    companyData.addition = rs.getString("addition");
+                                    companyData.reduceType = rs.getString("reduceType");
+                                    companyData.mainReason = rs.getString("mainReason");
+                                    companyData.mR_instruction = rs.getString("mR_instruction");
+                                    companyData.secondReason = rs.getString("secondReason");
+                                    companyData.sR_instruction = rs.getString("sR_instruction");
+                                    companyData.thirdReason = rs.getString("thirdReason");
+                                    companyData.tR_instruction = rs.getString("tR_instruction");
+                                    companyData.accountSeason = rs.getInt("accountSeason");
+                                    companyDataList.add(companyData);
+                                }
+                                if (companyDataList.size() == 0){%>
+                    未发现任何数据
+                    <%}else {%>
+                    <table border="2" align="center" width="1000">
+                        <tr>
+                            <td>建档期就业人数</td>
+                            <td>调查期就业人数</td>
+                            <td>其他原因</td>
+                            <td>就业人数减少类型</td>
+                            <td>主要原因</td>
+                            <td>主要原因说明</td>
+                            <td>次要原因</td>
+                            <td>次要原因说明</td>
+                            <td>第三原因</td>
+                            <td>第三原因说明</td>
+                            <td>本年度季度</td>
+                        </tr>
+                        <%
+                            for (CompanyData companyData: companyDataList){
+                        %>
+                        <tr>
+                            <td><%=companyData.csPeople%></td>
+                            <td><%=companyData.surveyPeople%></td>
+                            <td><%=companyData.addition%></td>
+                            <td><%=companyData.reduceType%></td>
+                            <td><%=companyData.mainReason%></td>
+                            <td><%=companyData.mR_instruction%></td>
+                            <td><%=companyData.secondReason%></td>
+                            <td><%=companyData.sR_instruction%></td>
+                            <td><%=companyData.thirdReason%></td>
+                            <td><%=companyData.tR_instruction%></td>
+                            <td><%=companyData.accountSeason%></td>
+                        </tr>
+                        <%}%>
+                    </table>
+                    <%}
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    }
+                    %>
                 </div>
                 <!--PAGE CONTENT ENDS HERE-->
             </div><!--/row-->
@@ -95,82 +171,6 @@
 
     </div><!--/#main-content-->
 </div><!--/.fluid-container#main-container-->
-<%
-    String choose = request.getParameter("choose");
-    if (choose.equals("0")){
-
-    }else {
-        String y = request.getParameter("year");
-        String m = request.getParameter("mouth");
-        String d = request.getParameter("day");
-        int year = Integer.parseInt(y);
-        int mouth = Integer.parseInt(m);
-        int day = Integer.parseInt(d);
-        companyDataTable table = new companyDataTable();
-        List<CompanyData> companyDataList = new ArrayList<CompanyData>();
-        String sql = "SELECT * FROM companyDataTable WHERE accountYear=" + year + " AND accountMonth=" + mouth + " AND accountDay=" + day + " AND id=" + request.getParameter("id");
-        System.out.println(sql);
-        try{
-            Connection conn = table.getConnection();
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()){
-                CompanyData companyData = new CompanyData();
-                companyData.csPeople = rs.getString("csPeople");
-                companyData.surveyPeople = rs.getString("surveyPeople");
-                companyData.addition = rs.getString("addition");
-                companyData.reduceType = rs.getString("reduceType");
-                companyData.mainReason = rs.getString("mainReason");
-                companyData.mR_instruction = rs.getString("mR_instruction");
-                companyData.secondReason = rs.getString("secondReason");
-                companyData.sR_instruction = rs.getString("sR_instruction");
-                companyData.thirdReason = rs.getString("thirdReason");
-                companyData.tR_instruction = rs.getString("tR_instruction");
-                companyData.accountSeason = rs.getInt("accountSeason");
-                companyDataList.add(companyData);
-            }
-            if (companyDataList.size() == 0){%>
-                未发现任何数据
-            <%}else {%>
-<table border="2" align="center" width="1500">
-    <tr>
-        <td>建档期就业人数</td>
-        <td>调查期就业人数</td>
-        <td>其他原因</td>
-        <td>就业人数减少类型</td>
-        <td>主要原因</td>
-        <td>主要原因说明</td>
-        <td>次要原因</td>
-        <td>次要原因说明</td>
-        <td>第三原因</td>
-        <td>第三原因说明</td>
-        <td>本年度季度</td>
-    </tr>
-    <%
-        for (CompanyData companyData: companyDataList){
-    %>
-    <tr>
-        <td><%=companyData.csPeople%></td>
-        <td><%=companyData.surveyPeople%></td>
-        <td><%=companyData.addition%></td>
-        <td><%=companyData.reduceType%></td>
-        <td><%=companyData.mainReason%></td>
-        <td><%=companyData.mR_instruction%></td>
-        <td><%=companyData.secondReason%></td>
-        <td><%=companyData.sR_instruction%></td>
-        <td><%=companyData.thirdReason%></td>
-        <td><%=companyData.tR_instruction%></td>
-        <td><%=companyData.accountSeason%></td>
-    </tr>
-    <%}%>
-</table>
-            <%}
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-%>
 <div class="footer-box">
     <!--<div class="footer-link clearfix">
     </div>-->

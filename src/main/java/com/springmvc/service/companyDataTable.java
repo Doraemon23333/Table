@@ -1,16 +1,19 @@
 package com.springmvc.service;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 import com.springmvc.entity.CompanyData;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.util.Calendar;
 
 public class companyDataTable {
     /*
 	 *
 create table companyDataTable(
+companyDataId int NOT NULL primary key auto_increment,
 id int NOT NULL,
 csPeople int NOT NULL,
 surveyPeople int NOT NULL,
@@ -90,5 +93,24 @@ accountSeason int NOT NULL) default charset = utf8;
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void findId(CompanyData companyData){
+        try{
+            Connection connection = getConnection();
+            String sql = "SELECT * FROM companyDataTable WHERE id=" + companyData.id + " AND companyDataId>" + companyData.companyDataId;
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            Statement stmt = (Statement) connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                companyData.companyDataId = rs.getInt("companyDataId");
+            }
+            rs.close();
+            stmt.close();
+            ps.close();
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -41,6 +41,7 @@ public class NotificationServlet extends HttpServlet{
         notification.content = content;
         notification.title = title;
         notification.type = Integer.parseInt(type);
+        notification.companyDataId = 0;
 
 
         Browser browser = new Browser();
@@ -71,16 +72,7 @@ public class NotificationServlet extends HttpServlet{
                 out.println("您没有该权限");
             }
         }else{
-            User city = new User();
-            cityTable table = new cityTable();
-            table.findById(Integer.parseInt(id), city);
-
-            browser.content = city.accompanyName + "发布了一条新的通知";
-            browserTable table1 = new browserTable();
-            table1.insert(browser);
-            notificationTable table2 = new notificationTable();
-            table2.insert(notification);
-            out.println("发布成功");
+            out.println("您没有该权限");
         }
     }
 }

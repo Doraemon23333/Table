@@ -125,8 +125,6 @@
 
 <body>
     <div>
-        <ul class="mytitle">企业角色</ul>
-        <ul class="mytitle">市角色</ul>
         <ul class="mytitle">省角色</ul>
         <%
             RoleTable table = new RoleTable();
@@ -163,6 +161,7 @@
                         <td>设置角色</td>
                         <td>系统监控</td>
                         <td>用户管理</td>
+                        <td>是否管理员</td>
                     </tr>
             <%
                 for (Role myrole:RoleList){
@@ -176,6 +175,7 @@
                 <td><%=myrole.SetRole%></td>
                 <td><%=myrole.SetSystem%></td>
                 <td><%=myrole.SetUser%></td>
+                <td><%=myrole.ifroot%></td>
             </tr>
                 <%}%>
         </table>

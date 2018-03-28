@@ -90,7 +90,13 @@
     notifications = new ArrayList<Notification>();
     notificationTable table = new notificationTable();
     Connection connection = table.getConnection();
-    String sql = "SELECT * FROM notificationTable WHERE receiverRank=0 OR (receiverId=" + Integer.parseInt(userid) + " AND receiverRank=" + rank + ")";
+    String sql = null;
+    rank = Integer.parseInt(request.getParameter("rank"));
+    if (rank == 2)
+    sql = "SELECT * FROM notificationTable WHERE receiverRank=0 OR (receiverId=" + Integer.parseInt(userid) + " AND receiverRank=" + rank + ")";
+    else if (rank == 3){
+        sql = "SELECT * FROM notificationTable WHERE receiverRank=0 OR receiverRank=3";
+    }
     PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
     Statement stmt = (Statement) connection.createStatement();
     ResultSet rs = stmt.executeQuery(sql);
