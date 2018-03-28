@@ -102,7 +102,14 @@
     <table>
         <tr>
             <td>新增一个调查期：</td>
-            <td><input type="date" value="2018-03-15"></td>
+        </tr>
+        <tr>
+            <td>开始时间：</td>
+            <td><input type="date" value="2018-03-15" name="begin"></td>
+        </tr>
+        <tr>
+            <td>结束时间：</td>
+            <td><input type="date" value="2018-03-15" name="end"></td>
         </tr>
     </table>
     <div class="form-actions" style="margin: 20px 100px ;">

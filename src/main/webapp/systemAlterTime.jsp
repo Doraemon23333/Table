@@ -102,11 +102,28 @@
     <table>
         <tr>
             <td>修改前的调查期：</td>
+        </tr>
+        <tr>
+            <td>开始时间：</td>
             <td><input type="date" value="2018-03-15"></td>
         </tr>
         <tr>
-            <td>修改后的调查期：</td>
+            <td>结束时间：</td>
             <td><input type="date" value="2018-03-15"></td>
+        </tr>
+    </table>
+    <form action="" method="post">
+    <table>
+        <tr>
+            <td>修改后的调查期：</td>
+        </tr>
+        <tr>
+            <td>开始时间：</td>
+            <td><input type="date" value="2018-03-15" name="begin"></td>
+        </tr>
+        <tr>
+            <td>结束时间：</td>
+            <td><input type="date" value="2018-03-15" name="end"></td>
         </tr>
     </table>
     <div class="form-actions" style="margin: 20px 100px ;">
@@ -115,6 +132,7 @@
             修改
         </button>
     </div>
+    </form>
 </div>
 
 <!--footer start-->
