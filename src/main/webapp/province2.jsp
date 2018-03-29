@@ -7,7 +7,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.springmvc.entity.Role" %>
-<%@ page import="com.springmvc.service.*" %><%--
+<%@ page import="com.springmvc.service.*" %>
+<%@ page import="com.springmvc.other.AreaCode" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/15
@@ -92,6 +93,7 @@
 <%!
     int userid = 0;
     int rank = 0;
+    String choose = null;
 %>
 <%
     String id = request.getParameter("id");
@@ -102,7 +104,7 @@
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
-        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">企业信息</a></li>
+        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">企业信息</a></li>
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
         <li><a href="bingtu.jsp?id=<%=request.getParameter("id") %>&rank=<%=request.getParameter("rank")%>">取样分析</a></li>
@@ -163,29 +165,69 @@
     List <Company> companies;
 %>
 <%
+    choose = request.getParameter("choose");
     userTable table = new userTable();
-    if (rank == 3){
-        RoleTable roleTable = new RoleTable();
-        Role role = new Role();
-        userTable tableU = new userTable();
-        User user = new User();
-        tableU.findById(Integer.parseInt(id), user);
-        role.id = user.id;
-        roleTable.findbyId(role);
-        if (role.ifroot == 1 || role.SearchCompany == 1){
-            provinceTable table1 = new provinceTable();
-            table1.findById(Integer.parseInt(id), user);
+    if (choose.equals("0")){
+        if (rank == 3){
+            RoleTable roleTable = new RoleTable();
+            Role role = new Role();
+            userTable tableU = new userTable();
+            User user = new User();
+            tableU.findById(Integer.parseInt(id), user);
+            role.id = user.id;
+            roleTable.findbyId(role);
+            if (role.ifroot == 1 || role.SearchCompany == 1){
+                provinceTable table1 = new provinceTable();
+                table1.findById(Integer.parseInt(id), user);
+                companies = new ArrayList<Company>();
+                Connection conn = table.getConnection();
+                String sql = "select * from companyTable";
+                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+                Statement stmt = (Statement) conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while(rs.next()){
+                    Company com = new Company();
+                    User userC = new User();
+                    com.originalArea = rs.getString("originalArea");
+                    com.id = rs.getInt("id");
+                    table.findById(com.id, userC);
+                    com.name = rs.getString("name");
+                    com.nameCode = rs.getString("nameCode");
+                    com.enterprisesNature = rs.getString("enterprisesNature");
+                    com.industry = rs.getString("industry");
+                    com.mainBusiness = rs.getString("mainBusiness");
+                    com.People = rs.getString("People");
+                    com.Address = rs.getString("Address");
+                    com.postalCode = rs.getString("postalCode");
+                    com.telephone = rs.getString("telephone");
+                    com.fax = rs.getString("fax");
+                    com.email = rs.getString("email");
+                    if (userC.rank == 1 && userC.usingCondition.equals("online"))
+                        companies.add(com);
+                }
+                rs.close();
+                stmt.close();
+                ps.close();
+                conn.close();
+            }
+            else {
+
+            }
+        }else if (rank == 2){
+            cityTable table1 = new cityTable();
+            table1.findById(userid, user);
             companies = new ArrayList<Company>();
             Connection conn = table.getConnection();
-            String sql = "select * from companyTable";
+            String sql = "select * from companyTable WHERE originalArea='" + user.area + "'";
+            System.out.println(sql);
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
             Statement stmt = (Statement) conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 Company com = new Company();
-                User userC = new User();
                 com.originalArea = rs.getString("originalArea");
                 com.id = rs.getInt("id");
+                User userC = new User();
                 table.findById(com.id, userC);
                 com.name = rs.getString("name");
                 com.nameCode = rs.getString("nameCode");
@@ -198,45 +240,104 @@
                 com.telephone = rs.getString("telephone");
                 com.fax = rs.getString("fax");
                 com.email = rs.getString("email");
-                if (userC.rank == 1 && userC.usingCondition.equals("online"))
+                if (userC.usingCondition.equals("online"))
                     companies.add(com);
             }
+            rs.close();
+            stmt.close();
+            ps.close();
+            conn.close();
         }
-        else {
+    }else if (choose.equals("1")){
+        AreaCode areaCode = new AreaCode();
+        String originalArea = areaCode.toChinese(request.getParameter("originalArea"));
+        String enterprisesNature = areaCode.codeToEnterpriseNature(request.getParameter("enterprisesNature"));
+        String industry = areaCode.codiToIndustry(request.getParameter("industry"));
+        if (rank == 3){
+            RoleTable roleTable = new RoleTable();
+            Role role = new Role();
+            userTable tableU = new userTable();
+            User user = new User();
+            tableU.findById(Integer.parseInt(id), user);
+            role.id = user.id;
+            roleTable.findbyId(role);
+            if (role.ifroot == 1 || role.SearchCompany == 1){
+                provinceTable table1 = new provinceTable();
+                table1.findById(Integer.parseInt(id), user);
+                companies = new ArrayList<Company>();
+                Connection conn = table.getConnection();
+                String sql = "select * from companyTable WHERE originalArea='" + originalArea + "' AND enterprisesNature='" +
+                        enterprisesNature + "' AND industry='" + industry + "'";
+                System.out.println(sql);
+                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+                Statement stmt = (Statement) conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while(rs.next()){
+                    Company com = new Company();
+                    User userC = new User();
+                    com.originalArea = rs.getString("originalArea");
+                    com.id = rs.getInt("id");
+                    table.findById(com.id, userC);
+                    com.name = rs.getString("name");
+                    com.nameCode = rs.getString("nameCode");
+                    com.enterprisesNature = rs.getString("enterprisesNature");
+                    com.industry = rs.getString("industry");
+                    com.mainBusiness = rs.getString("mainBusiness");
+                    com.People = rs.getString("People");
+                    com.Address = rs.getString("Address");
+                    com.postalCode = rs.getString("postalCode");
+                    com.telephone = rs.getString("telephone");
+                    com.fax = rs.getString("fax");
+                    com.email = rs.getString("email");
+                    if (userC.rank == 1 && userC.usingCondition.equals("online"))
+                        companies.add(com);
+                }
+                rs.close();
+                stmt.close();
+                ps.close();
+                conn.close();
+            }
+            else {
 
+            }
+        }else if (rank == 2){
+            cityTable table1 = new cityTable();
+            table1.findById(userid, user);
+            companies = new ArrayList<Company>();
+            if (user.area.equals(originalArea)){
+                Connection conn = table.getConnection();
+                String sql = "select * from companyTable WHERE originalArea='" + user.area + "' AND enterprisesNature='" +
+                        enterprisesNature + "' AND industry='" + industry + "'";
+                System.out.println(sql);
+                PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+                Statement stmt = (Statement) conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while(rs.next()){
+                    Company com = new Company();
+                    com.originalArea = rs.getString("originalArea");
+                    com.id = rs.getInt("id");
+                    User userC = new User();
+                    table.findById(com.id, userC);
+                    com.name = rs.getString("name");
+                    com.nameCode = rs.getString("nameCode");
+                    com.enterprisesNature = rs.getString("enterprisesNature");
+                    com.industry = rs.getString("industry");
+                    com.mainBusiness = rs.getString("mainBusiness");
+                    com.People = rs.getString("People");
+                    com.Address = rs.getString("Address");
+                    com.postalCode = rs.getString("postalCode");
+                    com.telephone = rs.getString("telephone");
+                    com.fax = rs.getString("fax");
+                    com.email = rs.getString("email");
+                    if (userC.usingCondition.equals("online"))
+                        companies.add(com);
+                }
+                rs.close();
+                stmt.close();
+                ps.close();
+                conn.close();
+            }
         }
-    }else if (rank == 2){
-        cityTable table1 = new cityTable();
-        table1.findById(userid, user);
-        companies = new ArrayList<Company>();
-        Connection conn = table.getConnection();
-        String sql = "select * from companyTable WHERE originalArea='" + user.area + "'";
-        System.out.println(sql);
-        PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-        Statement stmt = (Statement) conn.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-        while(rs.next()){
-            Company com = new Company();
-            com.originalArea = rs.getString("originalArea");
-            com.id = rs.getInt("id");
-            User userC = new User();
-            table.findById(com.id, userC);
-            com.name = rs.getString("name");
-            com.nameCode = rs.getString("nameCode");
-            com.enterprisesNature = rs.getString("enterprisesNature");
-            com.industry = rs.getString("industry");
-            com.mainBusiness = rs.getString("mainBusiness");
-            com.People = rs.getString("People");
-            com.Address = rs.getString("Address");
-            com.postalCode = rs.getString("postalCode");
-            com.telephone = rs.getString("telephone");
-            com.fax = rs.getString("fax");
-            com.email = rs.getString("email");
-            if (userC.usingCondition.equals("online"))
-            companies.add(com);
-        }
-    }else {
-
     }
 %>
 

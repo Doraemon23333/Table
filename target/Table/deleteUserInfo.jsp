@@ -49,7 +49,7 @@
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>%>&rank=<%=rank%>">首页</a></li>
-        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>%>&rank=<%=rank%>">企业信息</a></li>
+        <li><a href="province2.jsp?id=<%=request.getParameter("id")%>%>&rank=<%=rank%>&choose=0">企业信息</a></li>
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=rank%>" >系统管理</a></li>
         <li><a href="bingtu.jsp?id=<%=request.getParameter("id") %>&rank=<%=request.getParameter("rank")%>">取样分析</a></li>
