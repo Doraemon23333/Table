@@ -132,4 +132,34 @@ public class AreaCode {
             return "服务业";
         }else return "fail";
     }
+
+    public String checkYear(int year){
+        String year1= String.valueOf(year);
+        if (year1.length() < 4){
+            for (; year1.length() < 4;){
+                year1 = "0" + year1;
+            }
+        }
+        return year1;
+    }
+
+    public String checkMonth(int month){
+        String month1 = String.valueOf(month);
+        if (month1.length() < 2){
+            for (; month1.length() < 2;){
+                month1 = "0" + month1;
+            }
+        }
+        return month1;
+    }
+
+    public String checkDay(int day){
+        String day1 = String.valueOf(day);
+        if (day1.length() < 2){
+            for (; day1.length() < 2;){
+                day1 = "0" + day1;
+            }
+        }
+        return day1;
+    }
 }
