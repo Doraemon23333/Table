@@ -1,12 +1,10 @@
 package com.springmvc.controller;
 
+import com.springmvc.entity.Browser;
 import com.springmvc.entity.Investigation;
 import com.springmvc.entity.Role;
 import com.springmvc.entity.User;
-import com.springmvc.service.InvestigationTable;
-import com.springmvc.service.RoleTable;
-import com.springmvc.service.provinceTable;
-import com.springmvc.service.userTable;
+import com.springmvc.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 
 public class SetInvestigationServlet extends HttpServlet{
     @Override
@@ -53,8 +52,23 @@ public class SetInvestigationServlet extends HttpServlet{
 
                 InvestigationTable investigationTable = new InvestigationTable();
                 boolean message =investigationTable.insert(investigation);
-                if (message)
-                out.println("新增调查期成功");
+                if (message){
+                    Browser browser = new Browser();
+                    Calendar c = Calendar.getInstance();
+                    int year = c.get(Calendar.YEAR);
+                    int month = c.get(Calendar.MONTH);
+                    int day = c.get(Calendar.DAY_OF_MONTH);
+                    browser.broswerDay = day;
+                    browser.broswerYear = year;
+                    browser.broswerMonth = month;
+                    browser.content = province.accompanyName;
+                    browser.rank = Integer.parseInt(rank);
+                    browser.id = Integer.parseInt(id);
+                    browser.content = province.accompanyName + "添加了调查期";
+                    browserTable table1 = new browserTable();
+                    table1.insert(browser);
+                    out.println("新增调查期成功");
+                }
                 else {
                     out.println("新增调查期失败，可能该调查期已经建立");
                 }

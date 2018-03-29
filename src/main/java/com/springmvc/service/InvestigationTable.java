@@ -37,6 +37,8 @@ publishId int NOT NULL) default charset=utf8;
 
     public boolean insert(Investigation investigation){
         if (findTheSame(investigation)){
+            return false;
+        }else{
             try {
                 Connection connection = getConnection();
                 String sql = "insert into investigationTable(beginYear,beginMonth,beginDay,publishId,endYear,endMonth,endDay)" +
@@ -59,7 +61,7 @@ publishId int NOT NULL) default charset=utf8;
                 e.printStackTrace();
                 return false;
             }
-        }else return false;
+        }
     }
 
     public boolean lastData(Investigation investigation){
@@ -135,6 +137,30 @@ publishId int NOT NULL) default charset=utf8;
             }
             rs.close();
             stmt.close();
+            ps.close();
+            connection.close();
+            if (row > 0){
+                return true;
+            }else return false;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean update(Investigation investigation){
+        try {
+            Connection connection = getConnection();
+            String sql = "update investigationTable set beginYear="+ investigation.beginYear
+                    + ",beginMonth=" + investigation.beginMonth
+                    + ",beginDay=" + investigation.beginDay
+                    + ",endYear=" + investigation.endYear
+                    + ",endMonth=" + investigation.endMonth
+                    + ",endDay=" + investigation.endDay
+                    + " WHERE investigationId=" + investigation.investigationId;
+            System.out.println(sql);
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            int row = ps.executeUpdate();
             ps.close();
             connection.close();
             if (row > 0){

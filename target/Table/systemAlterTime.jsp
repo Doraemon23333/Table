@@ -48,6 +48,7 @@
 <%!
     int rank = 0;
     String userid = null;
+    List<Investigation> investigations = null;
 %>
 <%
     String id = request.getParameter("id");
@@ -112,9 +113,19 @@
     InvestigationTable investigationTable = new InvestigationTable();
     Investigation investigation = new Investigation();
     investigationTable.lastData(investigation);
-    List<Investigation> investigations = new ArrayList<Investigation>();
+    investigations = new ArrayList<Investigation>();
 
     AreaCode areaCode = new AreaCode();
+
+    Calendar c = Calendar.getInstance();
+    int year = c.get(Calendar.YEAR);
+    int month = c.get(Calendar.MONTH);
+    month++;
+    int day = c.get(Calendar.DAY_OF_MONTH);
+
+    String year1 = areaCode.checkYear(year);
+    String month1 = areaCode.checkMonth(month);
+    String day1 = areaCode.checkDay(day);
 
     Connection connection = investigationTable.getConnection();
     try {
@@ -124,14 +135,16 @@
         ResultSet rs = stmt.executeQuery(sql);
         int row = 0;
         while (rs.next()){
-            investigation.endDay = rs.getInt("endDay");
-            investigation.endMonth = rs.getInt("endMonth");
-            investigation.endYear = rs.getInt("endYear");
-            investigation.investigationId = rs.getInt("investigationId");
-            investigation.publishId = rs.getInt("publishId");
-            investigation.beginYear = rs.getInt("beginYear");
-            investigation.beginMonth = rs.getInt("beginMonth");
-            investigation.beginDay = rs.getInt("beginDay");
+            Investigation investigationC = new Investigation();
+            investigationC.endDay = rs.getInt("endDay");
+            investigationC.endMonth = rs.getInt("endMonth");
+            investigationC.endYear = rs.getInt("endYear");
+            investigationC.investigationId = rs.getInt("investigationId");
+            investigationC.publishId = rs.getInt("publishId");
+            investigationC.beginYear = rs.getInt("beginYear");
+            investigationC.beginMonth = rs.getInt("beginMonth");
+            investigationC.beginDay = rs.getInt("beginDay");
+            investigations.add(investigationC);
             row++;
         }
         rs.close();
@@ -143,19 +156,15 @@
     }
 %>
 <div class="div2">
-    <table>
-        <tr>
-            <td>修改前的调查期(标准时间格式yyyy-mm-dd)：</td>
-            <select name="choose" id="choose">
-                <%
-                    for (Investigation investigation1: investigations){
-                        
-                    }
-                %>
-            </select>
-        </tr>
-    </table>
-    <form action="" method="post">
+    <form action="/com/springmvc/controller/EditInvestigationServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
+        <td>修改前的调查期：</td>
+        <select name="choose" id="choose" class="City">
+            <%
+                for (Investigation investigation1: investigations){%>
+            <option value="<%=investigation1.investigationId%>"><%=investigation1.beginYear%>-<%=investigation1.beginMonth%>-<%=investigation1.beginDay%>: <%=investigation1.endYear%>-<%=investigation1.endMonth%>-<%=investigation1.endDay%></option>
+            <%}
+            %>
+        </select>
     <table>
         <tr>
             <td>修改后的调查期(标准时间格式yyyy-mm-dd)：</td>
@@ -166,7 +175,7 @@
         </tr>
         <tr>
             <td>结束时间：</td>
-            <td><input type="date" value="<%=year2%>-<%=month2%>-<%=day2%>" name="end"></td>
+            <td><input type="date" value="<%=year1%>-<%=month1%>-<%=day1%>" name="end"></td>
         </tr>
     </table>
     <div class="form-actions" style="margin: 20px 100px ;">
