@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.Calendar" %>
+<%@ page import="com.springmvc.entity.Investigation" %>
+<%@ page import="com.springmvc.service.InvestigationTable" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/15 0015
@@ -98,18 +100,45 @@
 <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
 <script src="js/systemNav.js"></script>
 <!--leftnav end-->
+<%
+    Calendar c = Calendar.getInstance();
+    int year = c.get(Calendar.YEAR);
+    int month = c.get(Calendar.MONTH);
+    month++;
+    int day = c.get(Calendar.DAY_OF_MONTH);
+    String year1= String.valueOf(year);
+    if (year1.length() < 4){
+        for (; year1.length() < 4;){
+            year1 = "0" + year1;
+        }
+    }
+    String month1 = String.valueOf(month);
+    if (month1.length() < 2){
+        for (; month1.length() < 2;){
+            month1 = "0" + month1;
+        }
+    }
+    String day1 = String.valueOf(day);
+    if (day1.length() < 2){
+        for (; day1.length() < 2;){
+            day1 = "0" + day1;
+        }
+    }
+
+%>
+<form method="post" action="/com/springmvc/controller/SetInvestigationServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">
 <div class="div2">
     <table>
         <tr>
-            <td>新增一个调查期：</td>
+            <td>新增一个调查期(标准时间格式yyyy-mm-dd)：</td>
         </tr>
         <tr>
             <td>开始时间：</td>
-            <td><input type="date" value="2018-03-15" name="begin"></td>
+            <td><input type="date" value="<%=year1%>-<%=month1%>-<%=day1%>" name="begin"></td>
         </tr>
         <tr>
             <td>结束时间：</td>
-            <td><input type="date" value="2018-03-15" name="end"></td>
+            <td><input type="date" value="<%=year1%>-<%=month1%>-<%=day1%>" name="end"></td>
         </tr>
     </table>
     <div class="form-actions" style="margin: 20px 100px ;">
@@ -119,6 +148,7 @@
         </button>
     </div>
 </div>
+</form>
 
 <!--footer start-->
 <div class="footer-box">

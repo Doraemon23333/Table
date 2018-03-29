@@ -1,4 +1,14 @@
-<%--
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.springmvc.service.InvestigationTable" %>
+<%@ page import="com.springmvc.entity.Investigation" %>
+<%@ page import="com.springmvc.other.AreaCode" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.mysql.jdbc.PreparedStatement" %>
+<%@ page import="com.mysql.jdbc.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/15 0015
@@ -98,31 +108,65 @@
 <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
 <script src="js/systemNav.js"></script>
 <!--leftnav end-->
+<%
+    InvestigationTable investigationTable = new InvestigationTable();
+    Investigation investigation = new Investigation();
+    investigationTable.lastData(investigation);
+    List<Investigation> investigations = new ArrayList<Investigation>();
+
+    AreaCode areaCode = new AreaCode();
+
+    Connection connection = investigationTable.getConnection();
+    try {
+        String sql = "select * from investigationTable";
+        PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        int row = 0;
+        while (rs.next()){
+            investigation.endDay = rs.getInt("endDay");
+            investigation.endMonth = rs.getInt("endMonth");
+            investigation.endYear = rs.getInt("endYear");
+            investigation.investigationId = rs.getInt("investigationId");
+            investigation.publishId = rs.getInt("publishId");
+            investigation.beginYear = rs.getInt("beginYear");
+            investigation.beginMonth = rs.getInt("beginMonth");
+            investigation.beginDay = rs.getInt("beginDay");
+            row++;
+        }
+        rs.close();
+        stmt.close();
+        ps.close();
+        connection.close();
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+%>
 <div class="div2">
     <table>
         <tr>
-            <td>修改前的调查期：</td>
-        </tr>
-        <tr>
-            <td>开始时间：</td>
-            <td><input type="date" value="2018-03-15"></td>
-        </tr>
-        <tr>
-            <td>结束时间：</td>
-            <td><input type="date" value="2018-03-15"></td>
+            <td>修改前的调查期(标准时间格式yyyy-mm-dd)：</td>
+            <select name="choose" id="choose">
+                <%
+                    for (Investigation investigation1: investigations){
+                        
+                    }
+                %>
+            </select>
         </tr>
     </table>
+    <form action="" method="post">
     <table>
         <tr>
-            <td>修改后的调查期：</td>
+            <td>修改后的调查期(标准时间格式yyyy-mm-dd)：</td>
         </tr>
         <tr>
             <td>开始时间：</td>
-            <td><input type="date" value="2018-03-15" name="begin"></td>
+            <td><input type="date" value="<%=year1%>-<%=month1%>-<%=day1%>" name="begin"></td>
         </tr>
         <tr>
             <td>结束时间：</td>
-            <td><input type="date" value="2018-03-15" name="end"></td>
+            <td><input type="date" value="<%=year2%>-<%=month2%>-<%=day2%>" name="end"></td>
         </tr>
     </table>
     <div class="form-actions" style="margin: 20px 100px ;">
@@ -131,6 +175,7 @@
             修改
         </button>
     </div>
+    </form>
 </div>
 
 <!--footer start-->
