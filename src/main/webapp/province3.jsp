@@ -113,6 +113,17 @@
 </div>
 <!--nav end-->
 <!--body start-->
+<div class="main-container container no-sidebar">
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="row-fluid">
+                <!--PAGE CONTENT BEGINS HERE-->
+                <div class="content">
+                    <div >
+
+                    </div>
+                    <div id="container" style="width: 1000px; height: 400px; margin: 0 auto">
 <div class="choose"><td>请选择您要查找的数据</td></div>
 <div class="info">
     <form action="/com/springmvc/controller/ManageDataServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
@@ -286,6 +297,36 @@ if (companyDataList.size()>0){%>
         }
     }
 %>
-</table>
+</table></div>
+                </div>
+                <!--PAGE CONTENT ENDS HERE-->
+            </div><!--/row-->
+        </div><!--/#page-content-->
+
+    </div><!--/#main-content-->
+</div><!--/.fluid-container#main-container-->
+<div class="footer-box">
+    <!--<div class="footer-link clearfix">
+    </div>-->
+    <div class="copyright">
+        <div class="container" style="overflwo:hidden;height:95px;">
+            <div style="float:left;margin-left:200px;display:inline;width:110px; text-align:center; overflow:hidden;padding-top:12px;">
+            </div>
+            <div style="float:left;display:inline;width:500px; text-align:center; overflow:hidden;">
+                <p>系统名称：山东省人力资源市场数据采集系统 版权所有：宫烨的组</p>
+                <p>技术支持：宫烨的组</p>
+                <p>编号123456789</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+    返回顶部
+</a>-->
+<script src="js/companyJs0.js" type="text/javascript" ></script>
+<script src="js/companyJs1.js" type="text/javascript" ></script>
+<script src="js/companyJs2.js" type="text/javascript" ></script>
+<script src="js/companyJs3.js" type="text/javascript" ></script>
+
 </body>
 </html>
