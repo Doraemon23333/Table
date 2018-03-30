@@ -105,6 +105,7 @@
 <script src="js/systemNav.js"></script>
 <!--leftnav end-->
 <%
+    if (rank == 3){
     User province = new User();
     provinceTable table  = new provinceTable();
     table.findById(Integer.parseInt(request.getParameter("id")), province);
@@ -235,6 +236,7 @@
     else{%>
         您没有查看系统运行情况的权限
     <%}
+    }
 %>
 
 

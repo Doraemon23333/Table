@@ -1,4 +1,3 @@
-<%@ page import="com.springmvc.service.companyTable" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.springmvc.entity.Company" %>
 <%@ page import="java.util.ArrayList" %>
@@ -6,12 +5,11 @@
 <%@ page import="com.mysql.jdbc.PreparedStatement" %>
 <%@ page import="com.mysql.jdbc.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.springmvc.service.companyDataTable" %>
 <%@ page import="com.springmvc.entity.CompanyData" %>
 <%@ page import="com.springmvc.other.AreaCode" %>
-<%@ page import="com.springmvc.service.userTable" %>
 <%@ page import="com.springmvc.entity.User" %>
-<%@ page import="com.springmvc.service.cityTable" %><%--
+<%@ page import="com.springmvc.service.*" %>
+<%@ page import="com.springmvc.entity.Role" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/23
@@ -93,6 +91,7 @@
 <%!
     String userid = null;
     int rank = 0;
+    List<CompanyData> companyDataList = null;
 %>
 <%
     String id = request.getParameter("id");
@@ -189,6 +188,22 @@
 </div>
 <%
     String choose = request.getParameter("choose");
+    int ch = 0;
+    if (rank == 3){
+        User province = new User();
+        provinceTable table  = new provinceTable();
+        table.findById(Integer.parseInt(request.getParameter("id")), province);
+        Role role = new Role();
+        role.RoleNum = province.roleId;
+        RoleTable roleTable = new RoleTable();
+        roleTable.find(role);
+        if (role.SearchData == 1 || role.ifroot == 1){
+            ch = 1;
+        }
+    }else if (rank == 2){
+        ch = 1;
+    }
+    if (ch == 1){
     if (choose.equals("1")){
         User user = new User();
         String place = request.getParameter("placecode");
@@ -237,7 +252,7 @@
         connection.close();
 
         companyDataTable table1 = new companyDataTable();
-        List<CompanyData> companyDataList = new ArrayList<CompanyData>();
+        companyDataList = new ArrayList<CompanyData>();
         for (Company company: companies){
             Connection connection1 = table1.getConnection();
             String sql1 = "select * from companyDataTable where id=" + company.id;
@@ -272,7 +287,39 @@
             ps1.close();
             connection1.close();
         }
-if (companyDataList.size()>0){%>
+    }else if (choose.equals("0")){
+        companyDataTable table1 = new companyDataTable();
+        Connection connection1 = table1.getConnection();
+        String sql1 = "select * from companyDataTable";
+        System.out.println(sql1);
+        PreparedStatement ps1 = (PreparedStatement) connection1.prepareStatement(sql1);
+        Statement stmt1 = (Statement) connection1.createStatement();
+        ResultSet rs1 = stmt1.executeQuery(sql1);
+        while (rs1.next()){
+            CompanyData companyData = new CompanyData();
+            companyData.id = rs1.getInt("id");
+            companyData.csPeople = rs1.getString("csPeople");
+            companyData.surveyPeople = rs1.getString("surveyPeople");
+            companyData.addition = rs1.getString("addition");
+            companyData.reduceType = rs1.getString("reduceType");
+            companyData.mainReason = rs1.getString("mainReason");
+            companyData.mR_instruction = rs1.getString("mR_instruction");
+            companyData.secondReason = rs1.getString("secondReason");
+            companyData.sR_instruction = rs1.getString("sR_instruction");
+            companyData.thirdReason = rs1.getString("thirdReason");
+            companyData.tR_instruction = rs1.getString("tR_instruction");
+            companyData.accountYear = rs1.getInt("accountYear");
+            companyData.accountMonth = rs1.getInt("accountMonth");
+            companyData.accountDay = rs1.getInt("accountDay");
+            companyData.accountSeason = rs1.getInt("accountSeason");
+            companyDataList.add(companyData);
+        }
+        rs1.close();
+        stmt1.close();
+        ps1.close();
+        connection1.close();
+    }
+    if (companyDataList != null && companyDataList.size()>0){%>
 <table border="2" align="center" width="1200">
     <tr>
         <td>企业名称</td>
@@ -287,9 +334,9 @@ if (companyDataList.size()>0){%>
         <td>日</td>
         <td>详细信息</td>
     </tr>
-<%
+    <%
         for (CompanyData companyData: companyDataList){
-%>
+    %>
     <tr>
         <td><%=companyData.company.name%></td>
         <td><%=companyData.company.enterprisesNature%></td>
@@ -304,9 +351,10 @@ if (companyDataList.size()>0){%>
         <td><a href="#">查看</a></td>
     </tr>
     <%}
-        }
     }
-%>
+    }else {
+        out.print("您没有该权限");
+    }%>
 </table></div>
                 </div>
                 <!--PAGE CONTENT ENDS HERE-->

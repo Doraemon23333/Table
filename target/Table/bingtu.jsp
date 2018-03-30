@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.springmvc.service.RoleTable" %>
+<%@ page import="com.springmvc.entity.Role" %>
+<%@ page import="com.springmvc.service.provinceTable" %>
+<%@ page import="com.springmvc.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: zfr
   Date: 2018/3/26
