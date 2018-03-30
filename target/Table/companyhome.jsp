@@ -80,7 +80,7 @@
         notifications = new ArrayList<Notification>();
         notificationTable table = new notificationTable();
         Connection connection = table.getConnection();
-        String sql = "SELECT * FROM notificationTable WHERE id=" + userid + " or (receiverId=" + userid + " AND receiverRank=1) OR receiverRank=0";
+        String sql = "SELECT * FROM notificationTable WHERE (id=" + userid + " AND rank=" + request.getParameter("rank") + ") or (receiverId=" + userid + " AND receiverRank=1) OR receiverRank=0";
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
         Statement stmt = (Statement) connection.createStatement();
         ResultSet rs = stmt.executeQuery(sql);

@@ -119,6 +119,7 @@
 <div class="info">
     <td>城市：</td>
     <select class="City" name="Place" id="thisPlace" >
+        <option value=""></option>
         <option value="济南" >济南</option>
         <option value="青岛" >青岛</option>
         <option value="淄博">淄博</option>
@@ -140,6 +141,7 @@
 
     <td>&nbsp;&nbsp;&nbsp;&nbsp;企业性质：</td>
     <select class="Xingzhi" name="xz" id="xz" >
+        <option value=""></option>
         <option value="国有企业" >国有企业</option>
         <option value="集体企业" >集体企业</option>
         <option value="联营企业">联营企业</option>
@@ -152,6 +154,7 @@
 
     <td>&nbsp;&nbsp;&nbsp;&nbsp;所属行业：</td>
     <select class="Hangye" name="hy" id="hy" >
+        <option value=""></option>
         <option value="制造业" >制造业</option>
         <option value="服务业" >服务业</option>
     </select>

@@ -28,8 +28,11 @@ public class ManageDataServlet extends HttpServlet{
         String rank = request.getParameter("rank");
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
-        int month;
+        int month = 0;
         out.print(name);
+        if (startTime.equals("")){
+
+        }else
         month = Integer.parseInt(startTime);
 
         if (rank.equals("3")){

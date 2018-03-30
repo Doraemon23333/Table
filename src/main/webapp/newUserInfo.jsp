@@ -113,66 +113,11 @@
             <td><input type="text" id="password" name="password" value=""></td>
         </tr>
         <tr>
-            <td>用户类型：</td>
+            <td></td>
             <td>
                 <select name="rank2" id="rank2">
                     <option value="1">企业</option>
                     <option value="2">市</option>
-                    <option value="3">省</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>查询企业：</td>
-            <td>
-                <select class="SearchCompany" name="SearchCompany" id="sc" >
-                    <option value="0" >否</option>
-                    <option value="1" >是</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>查询数据：</td>
-            <td>
-                <select class="SearchData" name="SearchData" id="sd" >
-                    <option value="0" >否</option>
-                    <option value="1" >是</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>发布通知：</td>
-            <td>
-                <select class="CreateNews" name="CreateNews" id="cn" >
-                    <option value="0" >否</option>
-                    <option value="1" >是</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>设置调查期：</td>
-            <td>
-                <select class="SetDate" name="SetDate" id="sdate" >
-                    <option value="0" >否</option>
-                    <option value="1" >是</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>设置角色：</td>
-            <td>
-                <select class="SetRole" name="SetRole" id="sr" >
-                    <option value="0" >否</option>
-                    <option value="1" >是</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>系统监控：</td>
-            <td>
-                <select class="SetSystem" name="SetSystem" id="ss" >
-                    <option value="0" >否</option>
-                    <option value="1" >是</option>
                 </select>
             </td>
         </tr>

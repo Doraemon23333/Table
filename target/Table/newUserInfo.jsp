@@ -86,6 +86,7 @@
             <div class="link">角色管理</div>
             <ul class="submenu">
                 <li><a href="role.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">系统角色</a></li>
+                <li><a href="createrole.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">创建角色</a></li>
             </ul>
         </li>
         <li><div class="link">系统监控</div>
@@ -117,7 +118,6 @@
                 <select name="rank2" id="rank2">
                     <option value="1">企业</option>
                     <option value="2">市</option>
-                    <option value="3">省</option>
                 </select>
             </td>
         </tr>

@@ -1,23 +1,14 @@
-<%@ page import="com.springmvc.entity.Role" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.springmvc.service.RoleTable" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 工业
-  Date: 2018/3/24
-  Time: 11:28
+  Date: 2018/3/30
+  Time: 15:04
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>角色管理</title>
+    <title>创建角色</title>
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="css/tool.css" type="text/css">
     <link rel="stylesheet" href="css/communal.css" type="text/css">
@@ -30,29 +21,28 @@
 
     <link rel="stylesheet" href="css/systemNav.css" media="screen" type="text/css">
     <link href="css/companyRecord4.css" type="text/css" rel="stylesheet" media="screen, projection" />
+
     <style>
-        .mytitle{
-            font-size: 20px;
-            font-family: 华文宋体;
-            color:#0b6cbc;
+        .RoleText{
+            top: 20px;
+            font-size: 30px;
+            font-family: "微软雅黑 Light";
+            text-align: center;
+            color: #1e347b;
             position: relative;
-            left: 30px;
-            top:20px;
+            height: 50px;
         }
-
-
+        .MyRole{
+            top: 20px;
+            font-size: 15px;
+            font-family: "微软雅黑 Light";
+            text-align: center;
+            position: relative;
+            height: 50px;
+        }
     </style>
 </head>
-<!--header start-->
-<script>
-    function search(){
-        var searchContent=document.getElementById("searchAll").value;
-        window.location.href='/includes/search_all.html?title='+escape(searchContent);
-    }
-    function search2(e){
-        window.location.href='/includes/search_all.html?title='+escape(e);
-    }
-</script>
+
 <div class="header-box">
     <div class="container">
         <a class="logo" ></a>
@@ -61,7 +51,7 @@
         </div>
     </div>
 </div>
-<!--header end-->
+
 <!--nav start-->
 <%!
     String userid = null;
@@ -85,6 +75,7 @@
     </ul>
 </div>
 <!--nav end-->
+
 <!--leftnav start-->
 <div style="float:left;margin-left: 150px;">
     <ul id="accordion" class="accordion">
@@ -123,68 +114,46 @@
 <script src="js/systemNav.js"></script>
 <!--leftnav end-->
 
-
 <body>
-    <div>
-        <ul class="mytitle">省角色</ul>
-        <%
-            RoleTable table = new RoleTable();
-            List<Role> RoleList = new ArrayList<Role>();
-            String sql = "SELECT * FROM roletable where rank = 3 ";
-            System.out.println(sql);
-        try{
-            Connection conn = table.getConnection();
-            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            Statement stmt = (Statement) conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()){
-            Role myrole = new Role();
-            myrole.RoleNum = rs.getInt("RoleNum");
-            myrole.SearchCompany=rs.getInt("SearchCompany");
-            myrole.SearchData=rs.getInt("SearchData");
-            myrole.SetDate=rs.getInt("SetDate");
-            myrole.SetRole=rs.getInt("SetRole");
-            myrole.SetSystem=rs.getInt("SetSystem");
-            myrole.SetUser=rs.getInt("SetUser");
-            myrole.CreateNews=rs.getInt("CreateNews");
-            myrole.ifroot = rs.getInt("ifroot");
-            myrole.id = rs.getInt("id");
-            RoleList.add(myrole);
-            }
-        %>
-            <table border="2" align="center" width="1000">
-                    <tr>
-                        <td>角色编号</td>
-                        <td>查询企业</td>
-                        <td>查询数据</td>
-                        <td>发布通知</td>
-                        <td>设置调查期</td>
-                        <td>设置角色</td>
-                        <td>系统监控</td>
-                        <td>用户管理</td>
-                        <td>是否管理员</td>
-                    </tr>
-            <%
-                for (Role myrole:RoleList){
-            %>
-            <tr>
-                <td><%=myrole.RoleNum%></td>
-                <td><%=myrole.SearchCompany%></td>
-                <td><%=myrole.SearchData%></td>
-                <td><%=myrole.CreateNews%></td>
-                <td><%=myrole.SetDate%></td>
-                <td><%=myrole.SetRole%></td>
-                <td><%=myrole.SetSystem%></td>
-                <td><%=myrole.SetUser%></td>
-                <td><%=myrole.ifroot%></td>
-            </tr>
-                <%}%>
-        </table>
-        <%
-            }catch (Exception e){
-            e.printStackTrace();
-            }
-        %>
+    <div class="RoleText"><td>请选择您赋予的权限</td></div>
+    <div class="MyRole">
+        <td>查询企业</td>
+        <select class="SearchCompany" name="SearchCompany" id="sc" >
+            <option value="0" >否</option>
+            <option value="1" >是</option>
+        </select>
+
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;查询数据</td>
+        <select class="SearchData" name="SearchData" id="sd" >
+            <option value="0" >否</option>
+            <option value="1" >是</option>
+        </select>
+
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;发布通知</td>
+        <select class="CreateNews" name="CreateNews" id="cn" >
+            <option value="0" >否</option>
+            <option value="1" >是</option>
+        </select>
+
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;设置调查期</td>
+        <select class="SetDate" name="SetDate" id="sdate" >
+            <option value="0" >否</option>
+            <option value="1" >是</option>
+        </select>
+
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;设置角色</td>
+        <select class="SetRole" name="SetRole" id="sr" >
+            <option value="0" >否</option>
+            <option value="1" >是</option>
+        </select>
+
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;系统监控</td>
+        <select class="SetSystem" name="SetSystem" id="ss" >
+            <option value="0" >否</option>
+            <option value="1" >是</option>
+        </select>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <button class="btn btn-primary">创建</button>
     </div>
 </body>
 </html>

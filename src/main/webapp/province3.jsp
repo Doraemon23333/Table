@@ -129,6 +129,7 @@
     <form action="/com/springmvc/controller/ManageDataServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
     <td>城市：</td>
     <select class="City" name="Place" id="thisPlace" >
+        <option value=""></option>
         <option value="济南" >济南</option>
         <option value="青岛" >青岛</option>
         <option value="淄博">淄博</option>
@@ -149,6 +150,7 @@
     </select>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;企业性质：</td>
     <select class="Xingzhi" name="xz" id="xz" >
+        <option value=""></option>
         <option value="国有企业" >国有企业</option>
         <option value="集体企业" >集体企业</option>
         <option value="联营企业">联营企业</option>
@@ -160,12 +162,13 @@
     </select>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;所属行业：</td>
     <select class="Hangye" name="hy" id="hy" >
+        <option value=""></option>
         <option value="制造业" >制造业</option>
         <option value="服务业" >服务业</option>
     </select>
-
     <td>&nbsp;&nbsp;&nbsp;&nbsp;开始时间：</td>
     <select class="Start" name="ks" id="ks" >
+        <option value=""></option>
         <option value="1" >1月</option>
         <option value="2" >2月</option>
         <option value="3" >3月</option>
@@ -179,9 +182,6 @@
         <option value="11" >11月</option>
         <option value="12" >12月</option>
     </select>
-
-
-
     <td>&nbsp;&nbsp;&nbsp;&nbsp;精确查找：</td>
     <input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/>
     <button class="search" type="submit">查找</button>
