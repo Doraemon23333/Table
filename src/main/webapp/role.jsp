@@ -128,10 +128,10 @@
     <div>
         <ul class="mytitle">省角色</ul>
         <%
+            if (rank == 3){
             RoleTable table = new RoleTable();
             List<Role> RoleList = new ArrayList<Role>();
-            String sql = "SELECT * FROM roletable where rank = 3 ";
-            System.out.println(sql);
+            String sql = "SELECT * FROM roleTable";
         try{
             Connection conn = table.getConnection();
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
@@ -162,27 +162,76 @@
                         <td>设置角色</td>
                         <td>系统监控</td>
                         <td>用户管理</td>
-                        <td>是否管理员</td>
+                        <td>addition</td>
                     </tr>
             <%
                 for (Role myrole:RoleList){
             %>
+                <form action="/com/springmvc/controller/RoleServlet?id=<%=id%>&rank=<%=rank%>&roleNum=<%=myrole.RoleNum%>" method="post">
             <tr>
-                <td><%=myrole.RoleNum%></td>
-                <td><%=myrole.SearchCompany%></td>
-                <td><%=myrole.SearchData%></td>
-                <td><%=myrole.CreateNews%></td>
-                <td><%=myrole.SetDate%></td>
-                <td><%=myrole.SetRole%></td>
-                <td><%=myrole.SetSystem%></td>
-                <td><%=myrole.SetUser%></td>
-                <td><%=myrole.ifroot%></td>
+                <td align="center">
+                    <%=myrole.RoleNum%>
+                </td>
+                <td align="center">
+                    <select class="City" name="SearchCompany">
+                        <option value="<%=myrole.SearchCompany%>">默认</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+                <td align="center">
+                    <select class="City" name="SearchData">
+                        <option value="<%=myrole.SearchData%>">默认</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+                <td align="center">
+                    <select class="City" name="CreateNews">
+                        <option value="<%=myrole.CreateNews%>">默认</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+                <td align="center">
+                    <select class="City" name="SetDate">
+                        <option value="<%=myrole.SetDate%>">默认</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+                <td align="center">
+                    <select class="City" name="SetRole">
+                        <option value="<%=myrole.SetRole%>">默认</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+                <td align="center">
+                    <select class="City" name="SetSystem">
+                        <option value="<%=myrole.SetSystem%>">默认</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+                <td align="center">
+                    <select class="City" name="SetUser">
+                        <option value="<%=myrole.SetUser%>">默认</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </select>
+                </td>
+                <td align="center">
+                    <button class="search" type="submit">保存</button>
+                </td>
             </tr>
+                </form>
                 <%}%>
         </table>
         <%
             }catch (Exception e){
             e.printStackTrace();
+            }
             }
         %>
     </div>

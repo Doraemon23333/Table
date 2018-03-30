@@ -126,10 +126,9 @@ id int NOT NULL) default charset=utf8;
     public boolean updateI(String name, int data, int id){
         try {
             Connection conn = getConnection();
-            String sql = "update userTable set " + name + "=? where id=?";
+            String sql = "update roleTable set " + name + "=" + data + " where RoleNum=" + id;
+            System.out.println(sql);
             PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setInt(1, data);
-            ps.setInt(2, id);
             int row = ps.executeUpdate();
             ps.close();
             conn.close();

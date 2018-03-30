@@ -17,7 +17,7 @@ import java.util.Calendar;
 public class RegisterServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("application/json;charset=GBK");
+        response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
 
         String id = request.getParameter("id");

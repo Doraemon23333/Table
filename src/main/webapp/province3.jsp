@@ -288,13 +288,16 @@
             connection1.close();
         }
     }else if (choose.equals("0")){
+        companyDataList = new ArrayList<CompanyData>();
         companyDataTable table1 = new companyDataTable();
+        companyTable table2 = new companyTable();
         Connection connection1 = table1.getConnection();
         String sql1 = "select * from companyDataTable";
         System.out.println(sql1);
         PreparedStatement ps1 = (PreparedStatement) connection1.prepareStatement(sql1);
         Statement stmt1 = (Statement) connection1.createStatement();
         ResultSet rs1 = stmt1.executeQuery(sql1);
+        int row = 0;
         while (rs1.next()){
             CompanyData companyData = new CompanyData();
             companyData.id = rs1.getInt("id");
@@ -312,7 +315,14 @@
             companyData.accountMonth = rs1.getInt("accountMonth");
             companyData.accountDay = rs1.getInt("accountDay");
             companyData.accountSeason = rs1.getInt("accountSeason");
+            companyData.companyDataId = rs1.getInt("companyDataId");
+            Company company = new Company();
+            company.id = companyData.id;
+            table2.findbyId(company);
+            companyData.company = company;
             companyDataList.add(companyData);
+            row++;
+            if (row > 20) break;
         }
         rs1.close();
         stmt1.close();
@@ -348,7 +358,7 @@
         <td><%=companyData.accountYear%></td>
         <td><%=companyData.accountMonth%></td>
         <td><%=companyData.accountDay%></td>
-        <td><a href="#">查看</a></td>
+        <td><a href="province4.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&companyDataId=<%=companyData.companyDataId%>">查看</a></td>
     </tr>
     <%}
     }
@@ -363,6 +373,33 @@
 
     </div><!--/#main-content-->
 </div><!--/.fluid-container#main-container-->
+<div class="result"></div>
+<!--body end-->
+<!--footer start-->
+<link rel="stylesheet" href="/css/nav.css?var=123456789" type="text/css">
+<script type="text/javascript">
+    $(document).ready(function() {
+
+
+        //导航
+        $(".mainProNav dl dt").click(function() {
+            $(".mainProNav dl").removeClass("dlHover");
+            $(this).parent().addClass("dlHover");
+            $("#of_whole").removeClass("of_whole2");
+            $("#of_whole").addClass("of_whole");
+        })
+        $(".mainProNav").hover(function() {
+            $(this).addClass("mainProNavHover");
+        },function() {
+            $(this).removeClass("mainProNavHover");
+            $(".mainProNav dl").removeClass("dlHover");
+            $("#of_whole").removeClass("of_whole");
+            $("#of_whole").addClass("of_whole2");
+        })
+
+    });
+
+</script>
 <div class="footer-box">
     <!--<div class="footer-link clearfix">
     </div>-->
@@ -378,13 +415,26 @@
         </div>
     </div>
 </div>
-<!--<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-    返回顶部
-</a>-->
-<script src="js/companyJs0.js" type="text/javascript" ></script>
-<script src="js/companyJs1.js" type="text/javascript" ></script>
-<script src="js/companyJs2.js" type="text/javascript" ></script>
-<script src="js/companyJs3.js" type="text/javascript" ></script>
+<!--悬浮 start-->
+<!--<div class="left-fixed-tool"> <a class="top-a" href="#">索引<br>
+  	服务</a> <a class="box-a" href="#">站点<br>
+  	日历</a> <a class="box-b" href="#">智能<br>
+  	人社</a> <a class="bottom-a" href="#">渠道<br>
+  	媒体</a></div>-->
+<!--悬浮 end-->
+<script>
+    function searchsy(){
+        var searchContent=document.getElementById("serachAllsy").value;
+        window.location.href='/includes/search_all.html?title='+escape(searchContent);
+    }
+    function search2(e){
+        window.location.href='/includes/search_all.html?title='+escape(e);
+    }
+</script>
+<script src="js/switchable.js"></script>
+<script src="js/forweb.js"></script>
+<script src="js/sdrs.js"></script>
+<script src="js/title.js"></script>
 
 </body>
 </html>

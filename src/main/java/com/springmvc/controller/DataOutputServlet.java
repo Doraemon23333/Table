@@ -23,7 +23,7 @@ import java.sql.ResultSet;
 public class DataOutputServlet extends HttpServlet{//数据输出api
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=utf-8");
+        response.setContentType("application/json;charset=utf-8");
         PrintWriter out = response.getWriter();
         String id = request.getParameter("id");
         String rank = request.getParameter("rank");
@@ -66,10 +66,14 @@ public class DataOutputServlet extends HttpServlet{//数据输出api
                         jsonObject.put("account", user.account);
                         jsonObject.put("accompanyName", user.account);
                         jsonObject.put("password", user.password);
-                        jsonObject.put("registerTime", user.registerYear + "-" + user.registerMonth + "-" + user.registerDay);
+                        jsonObject.put("registerYear", user.registerYear);
+                        jsonObject.put("registerMonth", user.registerMonth);
+                        jsonObject.put("registerDay", user.registerDay);
                         jsonObject.put("usingCondition", user.usingCondition);
                         jsonObject.put("rank", user.rank);
-                        jsonObject.put("unregisterTime", user.unregisterYear + "-" + user.unregisterMonth + "-" + user.unregisterDay);
+                        jsonObject.put("unregisterYear", user.unregisterYear);
+                        jsonObject.put("unregisterMonth", user.unregisterMonth);
+                        jsonObject.put("unregisterDay", user.unregisterDay);
                         company.id = user.id;
                         tableC.findbyId(company);
                         jsonObject.put("area", company.originalArea);
