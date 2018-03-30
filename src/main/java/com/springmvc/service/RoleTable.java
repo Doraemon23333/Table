@@ -50,7 +50,7 @@ id int NOT NULL) default charset=utf8;
             ps.setInt(6, role.SetSystem);
             ps.setInt(7, role.SetUser);
             ps.setInt(8, role.id);
-            ps.setInt(8, role.ifroot);
+            ps.setInt(9, role.ifroot);
             int row = ps.executeUpdate();
             ps.close();
             connection.close();

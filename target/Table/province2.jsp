@@ -356,6 +356,7 @@
         <td>详细信息</td>
     </tr>
     <%
+        if (companies != null)
         for (Company company1: companies){
     %>
     <tr>

@@ -29,9 +29,7 @@ public class ManageDataServlet extends HttpServlet{
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = 0;
-        out.print(name);
         if (startTime.equals("")){
-
         }else
         month = Integer.parseInt(startTime);
 
@@ -51,9 +49,9 @@ public class ManageDataServlet extends HttpServlet{
                     String industrycode = areaCode.industryToCode(industry);
                     response.sendRedirect("/province3.jsp?id=" + id + "&rank=" + rank + "&industrycode=" + industrycode + "&placecode=" + placecode
                             + "&enterpriseNaturecode=" + enterpriseNaturecode + "&year=" + year + "&month=" + month + "&choose=1");
-                }else {
-                    out.println("您没有查看企业数据的权限");
                 }
+            }else {
+                out.println("您没有查看企业数据的权限");
             }
         }else {
             if(name.equals("") || name.equals("企业名称或编号")){

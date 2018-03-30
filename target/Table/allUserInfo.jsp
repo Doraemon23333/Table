@@ -301,6 +301,7 @@
         <td>详细信息</td>
     </tr>
     <%
+        if (users != null)
         for (User userC: users){
             String usingCondition = null, rank1 = null;
             if (userC.usingCondition.equals("online")){

@@ -115,8 +115,12 @@
 <!--leftnav end-->
 
 <body>
+<form action="com/springmvc/controller/RegisterServlet?id=<%=request.getParameter("id")%>&rank=<%=rank%>&rank2=3" method="post">
     <div class="RoleText"><td>请选择您赋予的权限</td></div>
     <div class="MyRole">
+        <td>默认密码：</td>
+        <td><input type="password" id="password" name="password" value=""></td>
+
         <td>查询企业</td>
         <select class="SearchCompany" name="SearchCompany" id="sc" >
             <option value="0" >否</option>
@@ -141,8 +145,8 @@
             <option value="1" >是</option>
         </select>
 
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;设置角色</td>
-        <select class="SetRole" name="SetRole" id="sr" >
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;设置用户</td>
+        <select class="SetRole" name="SetUser" id="sr" >
             <option value="0" >否</option>
             <option value="1" >是</option>
         </select>
@@ -155,5 +159,6 @@
         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <button class="btn btn-primary">创建</button>
     </div>
+</form>
 </body>
 </html>

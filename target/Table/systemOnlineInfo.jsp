@@ -1,4 +1,8 @@
-<%--
+<%@ page import="com.springmvc.entity.Role" %>
+<%@ page import="com.springmvc.service.RoleTable" %>
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page import="com.springmvc.service.userTable" %>
+<%@ page import="com.springmvc.service.provinceTable" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/18 0018
@@ -100,7 +104,15 @@
 <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
 <script src="js/systemNav.js"></script>
 <!--leftnav end-->
-
+<%
+    User province = new User();
+    provinceTable table  = new provinceTable();
+    table.findById(Integer.parseInt(request.getParameter("id")), province);
+    Role role = new Role();
+    role.RoleNum = province.roleId;
+    RoleTable roleTable = new RoleTable();
+    roleTable.find(role);
+    if (role.SetSystem == 1){%>
 <div class="div2">
     <script>
         var info = allinfo();
@@ -219,6 +231,12 @@
         }
     </script>
 </div>
+    <%}
+    else{%>
+        您没有查看系统运行情况的权限
+    <%}
+%>
+
 
 <!--footer start-->
 <div class="footer-box">
