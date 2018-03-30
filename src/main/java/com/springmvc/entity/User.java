@@ -16,4 +16,5 @@ public class User {
     public String area;
     public String areaCode;
     public int roleId;
+    public int companyDataId;
 }
