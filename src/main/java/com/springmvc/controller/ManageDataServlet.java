@@ -28,13 +28,9 @@ public class ManageDataServlet extends HttpServlet{
         String rank = request.getParameter("rank");
         Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month;
         out.print(name);
-        if (startTime.equals("本月")){
-            month++;
-        }else {
-        }
+        month = Integer.parseInt(startTime);
 
         if (rank.equals("3")){
             RoleTable roleTable = new RoleTable();

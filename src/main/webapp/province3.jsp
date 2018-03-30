@@ -106,7 +106,7 @@
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">企业信息</a></li>
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">系统管理</a></li>
-        <li><a href="bingtu.jsp?id=<%=request.getParameter("id") %>&rank=<%=request.getParameter("rank")%>">取样分析</a></li>
+        <li><a href="/com/springmvc/controller/BingtuServlet?id=<%=request.getParameter("id") %>&rank=<%=request.getParameter("rank")%>">取样分析</a></li>
         <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
         <li><a href="/">退出</a></li>
     </ul>
@@ -155,8 +155,18 @@
 
     <td>&nbsp;&nbsp;&nbsp;&nbsp;开始时间：</td>
     <select class="Start" name="ks" id="ks" >
-        <option value="本月" >本月</option>
-        <option value="上个月" >上个月</option>
+        <option value="1" >1月</option>
+        <option value="2" >2月</option>
+        <option value="3" >3月</option>
+        <option value="4" >4月</option>
+        <option value="5" >5月</option>
+        <option value="6" >6月</option>
+        <option value="7" >7月</option>
+        <option value="8" >8月</option>
+        <option value="9" >9月</option>
+        <option value="10" >10月</option>
+        <option value="11" >11月</option>
+        <option value="12" >12月</option>
     </select>
 
 
@@ -218,7 +228,6 @@
         companyDataTable table1 = new companyDataTable();
         List<CompanyData> companyDataList = new ArrayList<CompanyData>();
         for (Company company: companies){
-            CompanyData companyData = new CompanyData();
             Connection connection1 = table1.getConnection();
             String sql1 = "select * from companyDataTable where id=" + company.id;
             System.out.println(sql1);
@@ -226,6 +235,7 @@
             Statement stmt1 = (Statement) connection1.createStatement();
             ResultSet rs1 = stmt1.executeQuery(sql1);
             while (rs1.next()){
+                CompanyData companyData = new CompanyData();
                 companyData.id = rs1.getInt("id");
                 companyData.csPeople = rs1.getString("csPeople");
                 companyData.surveyPeople = rs1.getString("surveyPeople");
@@ -272,7 +282,7 @@ if (companyDataList.size()>0){%>
     <tr>
         <td><%=companyData.company.name%></td>
         <td><%=companyData.company.enterprisesNature%></td>
-        <td><%=companyData.company.enterprisesNature%></td>
+        <td><%=companyData.company.industry%></td>
         <td><%=companyData.csPeople%></td>
         <td><%=companyData.surveyPeople%></td>
         <td><%=companyData.addition%></td>
