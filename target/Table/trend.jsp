@@ -1,4 +1,14 @@
-<%--
+<%@ page import="com.springmvc.service.InvestigationTable" %>
+<%@ page import="com.springmvc.entity.Investigation" %>
+<%@ page import="com.springmvc.other.AreaCode" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.springmvc.entity.CompanyData" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/27 0027
@@ -38,7 +48,17 @@
         </div>
     </div>
 </div>
-
+<%!
+    String userid = null;
+    int rank = 0;
+    List<Investigation> investigations = null;
+%>
+<%
+    String id = request.getParameter("id");
+    userid = id;
+    String a = request.getParameter("rank");
+    rank = Integer.parseInt(a);
+%>
 <div class="nav-box">
     <ul class="container nav">
         <li><a href="provincehome.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">首页</a></li>
@@ -46,12 +66,55 @@
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
         <li><a href="/com/springmvc/controller/BingtuServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >取样分析</a></li>
-        <li><a href="/com/springmvc/controller/TrendServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
+        <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
         <li><a href="compareAnalysis.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >对比分析</a></li>
         <li><a href="/">退出</a></li>
     </ul>
 </div>
+<%
+    InvestigationTable investigationTable = new InvestigationTable();
+    Investigation investigation = new Investigation();
+    investigationTable.lastData(investigation);
+    investigations = new ArrayList<Investigation>();
 
+    AreaCode areaCode = new AreaCode();
+
+    Calendar c = Calendar.getInstance();
+    int year = c.get(Calendar.YEAR);
+    int month = c.get(Calendar.MONTH);
+    month++;
+    int day = c.get(Calendar.DAY_OF_MONTH);
+
+    String year1 = areaCode.checkYear(year);
+    String month1 = areaCode.checkMonth(month);
+    String day1 = areaCode.checkDay(day);
+
+    Connection connection0 = investigationTable.getConnection();
+    try {
+        String sql0 = "select * from investigationTable";
+        PreparedStatement ps0 = (PreparedStatement) connection0.prepareStatement(sql0);
+        Statement stmt0 = (Statement) connection0.createStatement();
+        ResultSet rs0 = stmt0.executeQuery(sql0);
+        while (rs0.next()){
+            Investigation investigationC = new Investigation();
+            investigationC.endDay = rs0.getInt("endDay");
+            investigationC.endMonth = rs0.getInt("endMonth");
+            investigationC.endYear = rs0.getInt("endYear");
+            investigationC.investigationId = rs0.getInt("investigationId");
+            investigationC.publishId = rs0.getInt("publishId");
+            investigationC.beginYear = rs0.getInt("beginYear");
+            investigationC.beginMonth = rs0.getInt("beginMonth");
+            investigationC.beginDay = rs0.getInt("beginDay");
+            investigations.add(investigationC);
+        }
+        rs0.close();
+        stmt0.close();
+        ps0.close();
+        connection0.close();
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+%>
 <div class="main-container container no-sidebar">
     <div class="main-content">
 
@@ -60,17 +123,19 @@
                 <!--PAGE CONTENT BEGINS HERE-->
                 <div class="content">
                     <div>
+                        <form action="/com/springmvc/controller/TrendServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
                         <table>
                             <tr>
-                                <td>请输入开始时间：</td>
+                                <td>请输入开始时间(标准时间格式yyyy-mm-dd)：</td>
                                 <td><input style="width: 150px;" type="date" value=""></td>
                             </tr>
                             <tr>
-                                <td>请输入结束时间：</td>
+                                <td>请输入结束时间(标准时间格式yyyy-mm-dd)：</td>
                                 <td><input style="width: 150px;" type="date" value=""></td>
                             </tr>
                         </table>
                         <button type="submit" >确认</button>
+                        </form>
                     </div>
                     <div style="margin: 20px 0 20px 0">
                             <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->

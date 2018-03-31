@@ -146,4 +146,17 @@ accountSeason int NOT NULL) default charset = utf8;
             e.printStackTrace();
         }
     }
+
+    public void delete(CompanyData companyData){
+        try {
+            Connection connection = getConnection();
+            String sql = "DELETE FROM companyDataTable WHERE companyDataId=" + companyData.companyDataId;
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            ps.executeUpdate();
+            ps.close();
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

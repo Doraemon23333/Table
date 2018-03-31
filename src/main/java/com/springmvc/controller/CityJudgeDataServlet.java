@@ -117,6 +117,11 @@ public class CityJudgeDataServlet extends HttpServlet{
                 table1.insert(browser);
                 tableN.delete(notification);
                 out.println("处理成功");
+
+                CompanyData companyData = new CompanyData();
+                companyData.companyDataId = notification.companyDataId;
+                companyDataTable table = new companyDataTable();
+                table.delete(companyData);
             }
         }else if (rank.equals("3")){
             if (end.equals("1")){
@@ -223,6 +228,11 @@ public class CityJudgeDataServlet extends HttpServlet{
                 table1.insert(browser);
                 tableN.delete(notification);
                 out.println("处理成功");
+
+                CompanyData companyData = new CompanyData();
+                companyData.companyDataId = notification.companyDataId;
+                companyDataTable table = new companyDataTable();
+                table.delete(companyData);
             }
         }
     }

@@ -57,7 +57,7 @@
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
         <li><a href="/com/springmvc/controller/BingtuServlet?id=<%=request.getParameter("id") %>&rank=<%=request.getParameter("rank")%>">取样分析</a></li>
-        <li><a href="/com/springmvc/controller/TrendServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
+        <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
         <li><a href="compareAnalysis.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >对比分析</a></li>
         <li><a href="/">退出</a></li>
     </ul>
@@ -114,7 +114,7 @@
     role.RoleNum = province.roleId;
     RoleTable roleTable = new RoleTable();
     roleTable.find(role);
-    if (role.SetSystem == 1){%>
+    if (role.SetSystem == 1 || role.ifroot == 1){%>
 <div class="div2">
     <script>
         var info = allinfo();
