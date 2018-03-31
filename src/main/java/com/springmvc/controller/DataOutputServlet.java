@@ -7,6 +7,7 @@ import com.springmvc.entity.Company;
 import com.springmvc.entity.CompanyData;
 import com.springmvc.entity.Role;
 import com.springmvc.entity.User;
+import com.springmvc.other.Excel;
 import com.springmvc.service.*;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -24,6 +25,8 @@ public class DataOutputServlet extends HttpServlet{//数据输出api
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
+        Excel excel = new Excel();
+        excel.outputDataToExcel();
         PrintWriter out = response.getWriter();
         String id = request.getParameter("id");
         String rank = request.getParameter("rank");

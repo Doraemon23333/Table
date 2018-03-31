@@ -14,12 +14,11 @@ public class TrendServlet extends HttpServlet{
         String id = request.getParameter("id");
         String rank = request.getParameter("rank");
         String beginTime = request.getParameter("beginTime");
-        String endTime = request.getParameter("endTime");
         PrintWriter out = response.getWriter();
-        if (beginTime.equals("") || endTime.equals("")){
+        if (beginTime.equals("")){
             out.println("请输入时间");
         }else {
-            String url = "trend.jsp?id=" + id + "&rank=" + rank + "&beginTime=" + beginTime + "&endTime=" + endTime + "&choose=1";
+            String url = "/trend.jsp?id=" + id + "&rank=" + rank + "&beginTime=" + beginTime + "&choose=1";
             response.sendRedirect(url);
         }
     }
