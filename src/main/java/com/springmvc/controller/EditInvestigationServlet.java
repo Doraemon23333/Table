@@ -1,14 +1,8 @@
 package com.springmvc.controller;
 
-import com.springmvc.entity.Browser;
-import com.springmvc.entity.Investigation;
-import com.springmvc.entity.Role;
-import com.springmvc.entity.User;
+import com.springmvc.entity.*;
 import com.springmvc.other.AreaCode;
-import com.springmvc.service.InvestigationTable;
-import com.springmvc.service.RoleTable;
-import com.springmvc.service.browserTable;
-import com.springmvc.service.provinceTable;
+import com.springmvc.service.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -84,6 +78,22 @@ public class EditInvestigationServlet extends HttpServlet{
                         table1.insert(browser);
 
                         out.println("调查期更新成功");
+
+                        notificationTable tableN = new notificationTable();
+                        Notification notification = new Notification();
+                        notification.title = "修改了调查期，请尽快填报";
+                        notification.content = investigation.beginYear + "-" + investigation.beginMonth + "-" + investigation.beginDay + " 至 " +
+                                investigation.endYear + "-" + investigation.endMonth + "-" + investigation.endDay;
+                        notification.type = 0;
+                        notification.rank = 3;
+                        notification.id = Integer.parseInt(id);
+                        notification.receiverId = 0;
+                        notification.receiverRank = 0;
+                        notification.publishDay = day;
+                        notification.publishMonth = month;
+                        notification.publishYear = year;
+                        notification.companyDataId = 0;
+                        tableN.insert(notification);
                     }
                     else out.println("更新失败");
                 }

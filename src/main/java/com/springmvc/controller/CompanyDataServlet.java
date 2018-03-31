@@ -1,6 +1,9 @@
 package com.springmvc.controller;
 
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 import com.springmvc.entity.*;
+import com.springmvc.other.AreaCode;
 import com.springmvc.service.*;
 
 import javax.servlet.ServletException;
@@ -9,7 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CompanyDataServlet extends HttpServlet{
     @Override
@@ -45,6 +54,15 @@ public class CompanyDataServlet extends HttpServlet{
         //out.println("thirdReason = " + companyData.thirdReason);
         companyData.tR_instruction = request.getParameter("thirdReasonExplain");
         //out.println("tR_instruction = " + companyData.tR_instruction);
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        AreaCode areaCode = new AreaCode();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        month++;
+        String data = areaCode.checkYear(year) + "-" + areaCode.checkMonth(month) + "-" + areaCode.checkDay(day);
+
         if(companyData.csPeople.equals("") || companyData.surveyPeople.equals("") || companyData.addition.equals("")){
             out.println("Error, something needed to be written");
         }else {
@@ -56,46 +74,69 @@ public class CompanyDataServlet extends HttpServlet{
             User city = new User();
             citytable.find("area", company.originalArea, city);
 
-            boolean end = dataTable.insert(companyData);
-            if (end){
-                Browser browser = new Browser();
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                browser.broswerDay = day;
-                browser.broswerYear = year;
-                month++;
-                browser.broswerMonth = month;
-                browser.id = Integer.parseInt(id);
-                browser.rank = 1;
-                browser.content = user.accompanyName + "提交了一个新的企业数据";
-                browserTable table1 = new browserTable();
-                table1.insert(browser);
-                out.println("提交成功");
-
-                dataTable.findId(companyData);
-
-                Notification notification = new Notification();
-                notification.publishYear = year;
-                notification.publishMonth = month;
-                notification.publishDay = day;
-                notification.id = Integer.parseInt(id);
-                notification.rank = 1;
-                notification.receiverRank = 2;
-                notification.receiverId = city.id;
-                notification.type = 1;
-                notification.companyDataId = companyData.companyDataId;
-                notification.content = "<p>建档期就业人数: "+ companyData.csPeople + "</p><p>调查期就业人数: " + companyData.surveyPeople
-                        + "</p><p>其他原因: " + companyData.addition + "</p><p>就业人数减少类型: " + companyData.reduceType
-                        + "</p><p>主要原因: " + companyData.mainReason + "</p><p>主要原因说明: " + companyData.mR_instruction
-                        + "</p><p>次要原因: " + companyData.secondReason + "</p><p>次要原因说明: " + companyData.sR_instruction
-                        + "</p><p>第三原因: " + companyData.thirdReason + "</p><p>第三原因说明: " + companyData.tR_instruction + "</p>";
-                notification.title = user.accompanyName + "提交了一份企业数据有待审核";
-                notificationTable table2 = new notificationTable();
-                table2.insert(notification);
+            int ch = 0;
+            InvestigationTable investigationTable = new InvestigationTable();
+            try {
+                Date date = df.parse(data);
+                Connection connection = investigationTable.getConnection();
+                String sql = "select * from investigationTable";
+                PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+                Statement stmt = (Statement) connection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while (rs.next()){
+                    String yearb = areaCode.checkYear(rs.getInt("beginYear"));
+                    String monthb = areaCode.checkMonth(rs.getInt("beginMonth"));
+                    String dayb = areaCode.checkDay(rs.getInt("beginDay"));
+                    String yeare = areaCode.checkYear(rs.getInt("endYear"));
+                    String monthe = areaCode.checkMonth(rs.getInt("endMonth"));
+                    String daye = areaCode.checkDay(rs.getInt("endDay"));
+                    String beginC = yearb + "-" + monthb + "-" + dayb;
+                    String endC = yeare + "-" + monthe + "-" + daye;
+                    Date begin = df.parse(beginC);
+                    Date end = df.parse(endC);
+                    if (date.getTime() >= begin.getTime() && date.getTime() <= end.getTime()){
+                        ch = 1;
+                        break;
+                    }
+                }
+            }catch (Exception e){
+                e.printStackTrace();
             }
-            else out.println("插入失败");
+            if (ch > 0){
+                if (dataTable.insert(companyData)){
+                    Browser browser = new Browser();
+                    browser.broswerDay = day;
+                    browser.broswerYear = year;
+                    browser.broswerMonth = month;
+                    browser.id = Integer.parseInt(id);
+                    browser.rank = 1;
+                    browser.content = user.accompanyName + "提交了一个新的企业数据";
+                    browserTable table1 = new browserTable();
+                    table1.insert(browser);
+                    out.println("提交成功");
+
+                    dataTable.findId(companyData);
+
+                    Notification notification = new Notification();
+                    notification.publishYear = year;
+                    notification.publishMonth = month;
+                    notification.publishDay = day;
+                    notification.id = Integer.parseInt(id);
+                    notification.rank = 1;
+                    notification.receiverRank = 2;
+                    notification.receiverId = city.id;
+                    notification.type = 1;
+                    notification.companyDataId = companyData.companyDataId;
+                    notification.content = "<p>建档期就业人数: "+ companyData.csPeople + "</p><p>调查期就业人数: " + companyData.surveyPeople
+                            + "</p><p>其他原因: " + companyData.addition + "</p><p>就业人数减少类型: " + companyData.reduceType
+                            + "</p><p>主要原因: " + companyData.mainReason + "</p><p>主要原因说明: " + companyData.mR_instruction
+                            + "</p><p>次要原因: " + companyData.secondReason + "</p><p>次要原因说明: " + companyData.sR_instruction
+                            + "</p><p>第三原因: " + companyData.thirdReason + "</p><p>第三原因说明: " + companyData.tR_instruction + "</p>";
+                    notification.title = user.accompanyName + "提交了一份企业数据有待审核";
+                    notificationTable table2 = new notificationTable();
+                    table2.insert(notification);
+                }else out.println("插入失败");
+            }else out.println("调查期外无法更新企业数据");
         }
     }
 }
