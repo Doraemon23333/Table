@@ -109,7 +109,7 @@
                                 <td>企业性质：</td>
                                 <td>
                                     <select name="property" id="property" >
-                                        <option value="<%=company.enterprisesNature%>" ><%=company.enterprisesNature%></option>
+                                        <option value="<%=company.enterprisesNature%>" >当前为：<%=company.enterprisesNature%></option>
                                         <option value="国有企业" >国有企业</option>
                                         <option value="集体企业" >集体企业</option>
                                         <option value="联营企业">联营企业</option>
@@ -127,7 +127,7 @@
                                 <td>所属行业：</td>
                                 <td>
                                     <select name="industry" id="industry" >
-                                        <option value="<%=company.industry%>" ><%=company.industry%></option>
+                                        <option value="<%=company.industry%>" >当前为：<%=company.industry%></option>
                                         <option value="制造业" >制造业</option>
                                         <option value="服务业" >服务业</option>
                                     </select>
@@ -160,7 +160,7 @@
                                 <td>联系地址：</td>
                                 <td>
                                     <select name="place" id="place" >
-                                        <option value="<%=company.Address%>" ><%=company.Address%></option>
+                                        <option value="<%=company.Address%>" >当前为：<%=company.Address%></option>
                                         <option value="济南" >济南</option>
                                         <option value="青岛" >青岛</option>
                                         <option value="烟台">烟台</option>
