@@ -66,7 +66,7 @@
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
         <li><a href="/com/springmvc/controller/BingtuServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >取样分析</a></li>
-        <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
+        <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0" >趋势分析</a></li>
         <li><a href="compareAnalysis.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >对比分析</a></li>
         <li><a href="/">退出</a></li>
     </ul>
@@ -114,7 +114,9 @@
     }catch (Exception e){
         e.printStackTrace();
     }
-%>
+
+    String choose = request.getParameter("choose");
+    if (choose.equals("0")){%>
 <div class="main-container container no-sidebar">
     <div class="main-content">
 
@@ -124,34 +126,34 @@
                 <div class="content">
                     <div>
                         <form action="/com/springmvc/controller/TrendServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
-                        <table>
-                            <tr>
-                                <td>请输入开始时间(标准时间格式yyyy-mm-dd)：</td>
-                                <td><input style="width: 150px;" type="date" value=""></td>
-                            </tr>
-                            <tr>
-                                <td>请输入结束时间(标准时间格式yyyy-mm-dd)：</td>
-                                <td><input style="width: 150px;" type="date" value=""></td>
-                            </tr>
-                        </table>
-                        <button type="submit" >确认</button>
+                            <table>
+                                <tr>
+                                    <td>请输入开始时间(标准时间格式yyyy-mm-dd)：</td>
+                                    <td><input style="width: 150px;" type="date" value="" name="beginTime"></td>
+                                </tr>
+                                <tr>
+                                    <td>请输入结束时间(标准时间格式yyyy-mm-dd)：</td>
+                                    <td><input style="width: 150px;" type="date" value="" name="endTime"></td>
+                                </tr>
+                            </table>
+                            <button type="submit" >确认</button>
                         </form>
                     </div>
                     <div style="margin: 20px 0 20px 0">
-                            <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
-                       <table border="1" width="600px" style="text-align: center;">
+                        <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
+                        <table border="1" width="600px" style="text-align: center;">
                             <tr>
                                 <td>3月1日-3月29日</td>
                                 <td>4月1日-4月28日</td>
                                 <td>5月1日-5月29日</td>
                                 <td>6月1日-6月28日</td>
                             </tr>
-                           <tr>
-                               <td>7.0%</td>
-                               <td>6.9%</td>
-                               <td>9.5%</td>
-                               <td>14.5%</td>
-                           </tr>
+                            <tr>
+                                <td>7.0%</td>
+                                <td>6.9%</td>
+                                <td>9.5%</td>
+                                <td>14.5%</td>
+                            </tr>
                         </table>
                     </div>
                     <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
@@ -218,9 +220,113 @@
 
     </div><!--/#main-content-->
 </div><!--/.fluid-container#main-container-->
+<%}else if (choose.equals("1")){
 
-<%
+%>
+<div class="main-container container no-sidebar">
+    <div class="main-content">
 
+        <div class="page-content">
+            <div class="row-fluid">
+                <!--PAGE CONTENT BEGINS HERE-->
+                <div class="content">
+                    <div>
+                        <form action="/com/springmvc/controller/TrendServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
+                            <table>
+                                <tr>
+                                    <td>请输入开始时间(标准时间格式yyyy-mm-dd)：</td>
+                                    <td><input style="width: 150px;" type="date" value="<%=request.getParameter("startTime")%>" name="beginTime"></td>
+                                </tr>
+                                <tr>
+                                    <td>请输入结束时间(标准时间格式yyyy-mm-dd)：</td>
+                                    <td><input style="width: 150px;" type="date" value="<%=request.getParameter("endTime")%>" name="endTime"></td>
+                                </tr>
+                            </table>
+                            <button type="submit" >确认</button>
+                        </form>
+                    </div>
+                    <div style="margin: 20px 0 20px 0">
+                        <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
+                        <table border="1" width="600px" style="text-align: center;">
+                            <tr>
+                                <td>3月1日-3月29日</td>
+                                <td>4月1日-4月28日</td>
+                                <td>5月1日-5月29日</td>
+                                <td>6月1日-6月28日</td>
+                            </tr>
+                            <tr>
+                                <td>7.0%</td>
+                                <td>6.9%</td>
+                                <td>9.5%</td>
+                                <td>14.5%</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+                    <script language="JavaScript">
+                        $(document).ready(function() {
+                            var title = {
+                                text: '山东省企业岗位变动情况'
+                            };
+                            var subtitle = {
+                                text:''
+                            };
+                            var xAxis = {
+                                categories: ['3月1日-3月29日', '4月1日-4月28日', '5月1日-5月29日', '6月1日-6月28日']
+                            };
+                            var yAxis = {
+                                title: {
+                                    text: '岗位变化数量占比(%)'
+                                },
+                                plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#808080'
+                                }]
+                            };
+
+                            var tooltip = {
+                                valueSuffix: '%'
+                            }
+
+                            var legend = {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle',
+                                borderWidth: 0
+                            };
+
+                            var series =  [
+                                {
+                                    name: '岗位数量变化占比',
+                                    data: [7.0, 6.9, 9.5, 14.5]
+                                }
+
+
+                            ];
+
+                            var json = {};
+
+                            json.title = title;
+                            json.subtitle = subtitle;
+                            json.xAxis = xAxis;
+                            json.yAxis = yAxis;
+                            json.tooltip = tooltip;
+                            json.legend = legend;
+                            json.series = series;
+
+                            $('#container').highcharts(json);
+                        });
+                    </script>
+                    <!--<div class="hr dotted"></div>-->
+                </div>
+                <!--PAGE CONTENT ENDS HERE-->
+            </div><!--/row-->
+        </div><!--/#page-content-->
+
+    </div><!--/#main-content-->
+</div><!--/.fluid-container#main-container-->
+    <%}
 %>
 
 
