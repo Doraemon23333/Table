@@ -1,21 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: cheyl
-  Date: 2018/3/27 0027
-  Time: 15:23
+  Date: 2018/3/28 0028
+  Time: 10:58
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>趋势分析</title>
+    <title>对比分析</title>
 
     <meta name="description" content="This is page-header (.page-header &amp;gt; h1)"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="js/companyRecordInfo.js" type="text/javascript" ></script>
     <link href="css/companyRecordInfo.css" type="text/css" rel="stylesheet" media="screen, projection" />
-    <!--<link href="css/companyRecord2.css" type="text/css" rel="stylesheet" media="screen, projection" />
-    <link href="css/companyRecord3.css" type="text/css" rel="stylesheet" media="screen, projection" />-->
+
     <link href="css/companyRecord4.css" type="text/css" rel="stylesheet" media="screen, projection" />
 
     <link rel="stylesheet" href="css/reset.css" type="text/css">
@@ -45,8 +44,9 @@
         <li><a href="province2.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">企业信息</a></li>
         <li><a href="province3.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>&choose=0">岗位数据</a></li>
         <li><a href="allUserInfo.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >系统管理</a></li>
-        <li><a href="/com/springmvc/controller/BingtuServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >取样分析</a></li>
+        <li><a href="bingtu.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >取样分析</a></li>
         <li><a href="trend.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >趋势分析</a></li>
+        <li><a href="compareAnalysis.jsp?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" >对比分析</a></li>
         <li><a href="/">退出</a></li>
     </ul>
 </div>
@@ -61,33 +61,119 @@
                     <div>
                         <table>
                             <tr>
-                                <td>请输入开始时间：</td>
-                                <td><input style="width: 150px;" type="date" value=""></td>
+                                <td>请输入第一个调查期：</td>
+                                <td><input style="width: 150px;" type="date" value="">-<input style="width: 150px;" type="date" value=""></td>
                             </tr>
                             <tr>
-                                <td>请输入结束时间：</td>
-                                <td><input style="width: 150px;" type="date" value=""></td>
+                                <td>请输入第二个调查期：</td>
+                                <td><input style="width: 150px;" type="date" value="">-<input style="width: 150px;" type="date" value=""></td>
+                            </tr>
+                            <tr>
+                                <td>请选择分析方式：</td>
+                                <td>
+                                    <select  style="width: 100px" name="analyze" id="analyze">
+                                        <option value="地区">地区</option>
+                                        <option value="企业性质">企业性质</option>
+                                        <option value="行业">行业</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>请选择分析指标：</td>
+                                <td>
+                                    <select  style="width: 170px" name="property" id="property">
+                                        <option value="企业总数">企业总数</option>
+                                        <option value="建档期总岗位数">建档期总岗位数</option>
+                                        <option value="调查期总岗位数">调查期总岗位数</option>
+                                        <option value="岗位变化总数">岗位变化总数</option>
+                                        <option value="岗位减少总数">岗位减少总数</option>
+                                        <option value="岗位变化数量占比">岗位变化数量占比</option>
+                                    </select>
+                                </td>
                             </tr>
                         </table>
                         <button type="submit" >确认</button>
                     </div>
                     <div style="margin: 20px 0 20px 0">
-                            <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
-                       <table border="1" width="600px" style="text-align: center;">
+                        <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
+                        <table border="1" width="600px" style="text-align: center;">
+                            <!--此行为选择的分析方式-->
+                            <!--通过设置-->
+                            <!--<tr>
+                                <td>济南</td>
+                                <td>青岛</td>
+                                <td>烟台</td>
+                                <td>淄博</td>
+                                <td>德州</td>
+                                <td>潍坊</td>
+                                <td>济宁</td>
+                                <td>泰安</td>
+                                <td>临沂</td>
+                                <td>菏泽</td>
+                                <td>滨州</td>
+                                <td>东营</td>
+                                <td>威海</td>
+                                <td>枣庄</td>
+                                <td>日照</td>
+                                <td>莱芜</td>
+                                <td>聊城</td>
+                            </tr>
+
                             <tr>
+                                <td> 国有企业</td>
+                                <td>集体企业</td>
+                                <td>联营企业</td>
+                                <td>股份合作制企业</td>
+                                <td>私营企业</td>
+                                <td>个体户</td>
+                                <td>合伙企业</td>
+                                <td>有限责任公司</td>
+                                <td>股份有限公司</td>
+                            </tr>
+                            <tr>
+                                <td>制造业</td>
+                                <td>服务业</td>
+                            </tr>-->
+
+                            <tr>
+                                <td></td>
                                 <td>3月1日-3月29日</td>
                                 <td>4月1日-4月28日</td>
-                                <td>5月1日-5月29日</td>
-                                <td>6月1日-6月28日</td>
                             </tr>
-                           <tr>
-                               <td>7.0%</td>
-                               <td>6.9%</td>
-                               <td>9.5%</td>
-                               <td>14.5%</td>
-                           </tr>
+                            <tr>
+                                <td>制造业</td>
+                                <td>10000</td>
+                                <td>12000</td>
+                            </tr>
+                            <tr>
+                                <td>服务业</td>
+                                <td>100000</td>
+                                <td>129000</td>
+                            </tr>
+                            <!--<tr>
+                                <td>调查期总岗位数</td>
+                                <td>1200</td>
+                                <td>1400</td>
+                            </tr>
+                            <tr>
+                                <td>岗位变化总数</td>
+                                <td>200</td>
+                                <td>110</td>
+                            </tr>
+                            <tr>
+                                <td>岗位减少总数</td>
+                                <td>7.0%</td>
+                                <td>6.9%</td>
+                            </tr>
+                            <tr>
+                                <td>岗位变化数量占比</td>
+                                <td>7.0%</td>
+                                <td>6.9%</td>
+                            </tr>-->
+
                         </table>
                     </div>
+                    <!--折线图部分-->
                     <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
                     <script language="JavaScript">
                         $(document).ready(function() {
@@ -98,11 +184,11 @@
                                 text:''
                             };
                             var xAxis = {
-                                categories: ['3月1日-3月29日', '4月1日-4月28日', '5月1日-5月29日', '6月1日-6月28日']
+                                categories: ['制造业', '服务业']   //选择的分析方式
                             };
                             var yAxis = {
                                 title: {
-                                    text: '岗位变化数量占比(%)'
+                                    text: '企业总数'  //选择的分析指标
                                 },
                                 plotLines: [{
                                     value: 0,
@@ -112,7 +198,7 @@
                             };
 
                             var tooltip = {
-                                valueSuffix: '%'
+                                valueSuffix: '个'
                             }
 
                             var legend = {
@@ -124,11 +210,13 @@
 
                             var series =  [
                                 {
-                                    name: '岗位数量变化占比',
-                                    data: [7.0, 6.9, 9.5, 14.5]
+                                    name: '3月1日-3月29日',
+                                    data: [1000, 1200]
+                                },
+                                {
+                                    name:'4月1日-4月28日',
+                                    data:[1200, 1400]
                                 }
-
-
                             ];
 
                             var json = {};
@@ -144,7 +232,7 @@
                             $('#container').highcharts(json);
                         });
                     </script>
-                    <!--<div class="hr dotted"></div>-->
+
                 </div>
                 <!--PAGE CONTENT ENDS HERE-->
             </div><!--/row-->

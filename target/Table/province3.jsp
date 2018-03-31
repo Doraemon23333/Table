@@ -1,15 +1,16 @@
 <%@ page import="java.util.List" %>
-<%@ page import="com.springmvc.entity.Company" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="com.mysql.jdbc.PreparedStatement" %>
 <%@ page import="com.mysql.jdbc.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="com.springmvc.entity.CompanyData" %>
 <%@ page import="com.springmvc.other.AreaCode" %>
-<%@ page import="com.springmvc.entity.User" %>
 <%@ page import="com.springmvc.service.*" %>
-<%@ page import="com.springmvc.entity.Role" %><%--
+<%@ page import="com.springmvc.entity.*" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %><%--
   Created by IntelliJ IDEA.
   User: 工业
   Date: 2018/3/23
@@ -92,6 +93,7 @@
     String userid = null;
     int rank = 0;
     List<CompanyData> companyDataList = null;
+    List<Investigation> investigations = null;
 %>
 <%
     String id = request.getParameter("id");
@@ -125,6 +127,50 @@
                     <div id="container" style="width: 1000px; height: 400px; margin: 0 auto">
 <div class="choose"><td>请选择您要查找的数据</td></div>
 <div class="info">
+<%
+    InvestigationTable investigationTable = new InvestigationTable();
+    Investigation investigation = new Investigation();
+    investigationTable.lastData(investigation);
+    investigations = new ArrayList<Investigation>();
+
+    AreaCode areaCode = new AreaCode();
+
+    Calendar c = Calendar.getInstance();
+    int year = c.get(Calendar.YEAR);
+    int month = c.get(Calendar.MONTH);
+    month++;
+    int day = c.get(Calendar.DAY_OF_MONTH);
+
+    String year1 = areaCode.checkYear(year);
+    String month1 = areaCode.checkMonth(month);
+    String day1 = areaCode.checkDay(day);
+
+    Connection connection0 = investigationTable.getConnection();
+    try {
+        String sql0 = "select * from investigationTable";
+        PreparedStatement ps0 = (PreparedStatement) connection0.prepareStatement(sql0);
+        Statement stmt0 = (Statement) connection0.createStatement();
+        ResultSet rs0 = stmt0.executeQuery(sql0);
+        while (rs0.next()){
+            Investigation investigationC = new Investigation();
+            investigationC.endDay = rs0.getInt("endDay");
+            investigationC.endMonth = rs0.getInt("endMonth");
+            investigationC.endYear = rs0.getInt("endYear");
+            investigationC.investigationId = rs0.getInt("investigationId");
+            investigationC.publishId = rs0.getInt("publishId");
+            investigationC.beginYear = rs0.getInt("beginYear");
+            investigationC.beginMonth = rs0.getInt("beginMonth");
+            investigationC.beginDay = rs0.getInt("beginDay");
+            investigations.add(investigationC);
+        }
+        rs0.close();
+        stmt0.close();
+        ps0.close();
+        connection0.close();
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+%>
     <form action="/com/springmvc/controller/ManageDataServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
     <td>城市：</td>
     <select class="City" name="Place" id="thisPlace" >
@@ -168,18 +214,10 @@
     <td>&nbsp;&nbsp;&nbsp;&nbsp;开始时间：</td>
     <select class="Start" name="ks" id="ks" >
         <option value=""></option>
-        <option value="1" >1月</option>
-        <option value="2" >2月</option>
-        <option value="3" >3月</option>
-        <option value="4" >4月</option>
-        <option value="5" >5月</option>
-        <option value="6" >6月</option>
-        <option value="7" >7月</option>
-        <option value="8" >8月</option>
-        <option value="9" >9月</option>
-        <option value="10" >10月</option>
-        <option value="11" >11月</option>
-        <option value="12" >12月</option>
+        <%
+            for (Investigation investigation1: investigations){%>
+        <option value="<%=investigation1.investigationId%>"><%=investigation1.beginYear%>-<%=investigation1.beginMonth%>-<%=investigation1.beginDay%>: <%=investigation1.endYear%>-<%=investigation1.endMonth%>-<%=investigation1.endDay%></option>
+        <%}%>
     </select>
     <td>&nbsp;&nbsp;&nbsp;&nbsp;精确查找：</td>
     <input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/>
@@ -209,16 +247,35 @@
         String place = request.getParameter("placecode");
         String enterpriseNature = request.getParameter("enterpriseNaturecode");
         String industry = request.getParameter("industrycode");
-        int year = Integer.parseInt(request.getParameter("year"));
-        int month = Integer.parseInt(request.getParameter("month"));
+        String investigationId = request.getParameter("investigationId");
+        //System.out.println(investigationId + ", " + place + ", " + enterpriseNature + ", " + industry);
         companyTable table = new companyTable();
         List<Company> companies = new ArrayList<Company>();
         Connection connection = table.getConnection();
-        AreaCode areaCode = new AreaCode();
-        String sql = "select * from companyTable where enterprisesNature='" + areaCode.codeToEnterpriseNature(enterpriseNature) +
-                "' and industry='" + areaCode.codiToIndustry(industry) +
-                "' and originalArea='" + areaCode.toChinese(place) + "'";
-        //System.out.println(sql);
+        String sql = null;
+        if((place.equals("fail") == false) && (enterpriseNature.equals("fail") == false) && (industry.equals("fail") == false)){
+            sql = "select * from companyTable where enterprisesNature='" + areaCode.codeToEnterpriseNature(enterpriseNature) +
+                    "' and industry='" + areaCode.codiToIndustry(industry) +
+                    "' and originalArea='" + areaCode.toChinese(place) + "'";
+        }else if ((place.equals("fail") == false) && (enterpriseNature.equals("fail") == false) && industry.equals("fail")){
+            sql = "select * from companyTable where enterprisesNature='" + areaCode.codeToEnterpriseNature(enterpriseNature) +
+                    "' and originalArea='" + areaCode.toChinese(place) + "'";
+        }else if ((place.equals("fail") == false) && enterpriseNature.equals("fail") && (industry.equals("fail") == false)){
+            sql = "select * from companyTable industry='" + areaCode.codiToIndustry(industry) +
+                    "' and originalArea='" + areaCode.toChinese(place) + "'";
+        }else if (place.equals("fail") && (enterpriseNature.equals("fail") == false) && (industry.equals("fail") == false)){
+            sql = "select * from companyTable where enterprisesNature='" + areaCode.codeToEnterpriseNature(enterpriseNature) +
+                    "' and industry='" + areaCode.codiToIndustry(industry) + "'";
+        }else if (place.equals("fail") && enterpriseNature.equals("fail") && (industry.equals("fail") == false)){
+            sql = "select * from companyTable where industry='" + areaCode.codiToIndustry(industry) + "'";
+        }else if (place.equals("fail") && (enterpriseNature.equals("fail") == false) && industry.equals("fail")){
+            sql = "select * from companyTable where enterprisesNature='" + areaCode.codeToEnterpriseNature(enterpriseNature) + "'";
+        }else if ((place.equals("fail") == false) && enterpriseNature.equals("fail") && industry.equals("fail")){
+            sql = "select * from companyTable WHERE originalArea='" + areaCode.toChinese(place) + "'";
+        }else {
+            sql = "select * from companyTable";
+        }
+        System.out.println(sql);
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
         Statement stmt = (Statement) connection.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
@@ -256,7 +313,7 @@
         for (Company company: companies){
             Connection connection1 = table1.getConnection();
             String sql1 = "select * from companyDataTable where id=" + company.id;
-            System.out.println(sql1);
+            //System.out.println(sql1);
             PreparedStatement ps1 = (PreparedStatement) connection1.prepareStatement(sql1);
             Statement stmt1 = (Statement) connection1.createStatement();
             ResultSet rs1 = stmt1.executeQuery(sql1);
@@ -278,8 +335,34 @@
                 companyData.accountDay = rs1.getInt("accountDay");
                 companyData.accountSeason = rs1.getInt("accountSeason");
                 companyData.company = company;
-                if (companyData.accountYear == year && companyData.accountMonth == month){
+                if (investigationId.equals("0")){
                     companyDataList.add(companyData);
+                }else {
+                    Investigation investigation1 = new Investigation();
+                    investigation1.investigationId = Integer.parseInt(investigationId);
+                    investigationTable.findById(investigation1);
+                    String yearb = areaCode.checkYear(investigation1.beginYear);
+                    String monthb = areaCode.checkMonth(investigation1.beginMonth);
+                    String dayb = areaCode.checkDay(investigation1.beginDay);
+                    String yeare = areaCode.checkYear(investigation1.endYear);
+                    String monthe = areaCode.checkMonth(investigation1.endMonth);
+                    String daye = areaCode.checkDay(investigation1.endDay);
+                    String beginC = yearb + "-" + monthb + "-" + dayb;
+                    String endC = yeare + "-" + monthe + "-" + daye;
+
+                    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                    Date begin = df.parse(beginC);
+                    Date end = df.parse(endC);
+
+                    String yearD = areaCode.checkYear(companyData.accountYear);
+                    String monthD = areaCode.checkMonth(companyData.accountMonth);
+                    String dayD = areaCode.checkDay(companyData.accountDay);
+                    String data = yearD + "-" + monthD + "-" + dayD;
+                    Date date = df.parse(data);
+
+                    if (date.getTime() >= begin.getTime() && date.getTime() <= end.getTime()){
+                        companyDataList.add(companyData);
+                    }
                 }
             }
             rs1.close();

@@ -26,12 +26,9 @@ public class ManageDataServlet extends HttpServlet{
         String name = request.getParameter("num");
         String id = request.getParameter("id");
         String rank = request.getParameter("rank");
-        Calendar c = Calendar.getInstance();
-        int year = c.get(Calendar.YEAR);
-        int month = 0;
         if (startTime.equals("")){
-        }else
-        month = Integer.parseInt(startTime);
+            startTime = "0";
+        }
 
         if (rank.equals("3")){
             RoleTable roleTable = new RoleTable();
@@ -48,7 +45,7 @@ public class ManageDataServlet extends HttpServlet{
                     String enterpriseNaturecode = areaCode.enterpriseNatureToCode(enterpriseNature);
                     String industrycode = areaCode.industryToCode(industry);
                     response.sendRedirect("/province3.jsp?id=" + id + "&rank=" + rank + "&industrycode=" + industrycode + "&placecode=" + placecode
-                            + "&enterpriseNaturecode=" + enterpriseNaturecode + "&year=" + year + "&month=" + month + "&choose=1");
+                            + "&enterpriseNaturecode=" + enterpriseNaturecode + "&choose=1&investigationId=" + startTime);
                 }
             }else {
                 out.println("您没有查看企业数据的权限");
@@ -60,12 +57,9 @@ public class ManageDataServlet extends HttpServlet{
                 String enterpriseNaturecode = areaCode.enterpriseNatureToCode(enterpriseNature);
                 String industrycode = areaCode.industryToCode(industry);
                 response.sendRedirect("/province3.jsp?id=" + id + "&rank=" + rank + "&industrycode=" + industrycode + "&placecode=" + placecode
-                        + "&enterpriseNaturecode=" + enterpriseNaturecode + "&year=" + year + "&month=" + month + "&choose=1");
+                        + "&enterpriseNaturecode=" + enterpriseNaturecode + "&choose=1&investigationId=" + startTime);
             }else {
             }
         }
-
-        //out.print("place = " + place + ",enterpriseNature = " + enterpriseNature + "industry = " + industry);
-
     }
 }

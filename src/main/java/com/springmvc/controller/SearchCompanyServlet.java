@@ -39,16 +39,18 @@ public class SearchCompanyServlet extends HttpServlet{
             role.id = user.id;
             roleTable.findbyId(role);
             if (role.ifroot == 1 || role.SearchData == 1){
+                AreaCode areaCode = new AreaCode();
+                String originalArea = areaCode.toCode(company.originalArea);
+                String enterprisesNature = areaCode.enterpriseNatureToCode(company.enterprisesNature);
+                String industry = areaCode.industryToCode(company.industry);
                 if (choose.equals("") || choose.equals("企业名称或编号")){
-                    AreaCode areaCode = new AreaCode();
-                    String originalArea = areaCode.toCode(company.originalArea);
-                    String enterprisesNature = areaCode.enterpriseNatureToCode(company.enterprisesNature);
-                    String industry = areaCode.industryToCode(company.industry);
                     String direction = "/province2.jsp?id=" + id + "&rank=" + rank + "&choose=1&originalArea="
                             + originalArea + "&enterprisesNature=" + enterprisesNature
                             + "&industry=" + industry;
                     response.sendRedirect(direction);
-                }else {
+                }else if (originalArea.equals("fail") || enterprisesNature.equals("fail") || industry.equals("fail")){
+                    out.println("请输入该企业的详细信息");
+                } else {
                     companyTable table = new companyTable();
                     List<Company> companyList = new ArrayList<Company>();
                     table.search(company, companyList, choose, Integer.parseInt(id));

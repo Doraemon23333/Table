@@ -244,12 +244,12 @@
             <div class="float_l waps" style="margin-top:60px; width:600px; color:white; text-align:left; font-size:13px; border:1px solid #CCC; border-radius: 4px 4px 4px 4px; padding:10px 10px;">
                 <div class="con">
                     <p>
-                        <a href="http://10.0.0.54:8800/news" target='_blank'>通知列表：</a>
-                        <br>注意：
-                        <br>1、企业用户登录时
-                        <br>2、市用户登录时
-                        <br>3、省用户登录时
-                        <br>4、管理员登录时
+                        <a target='_blank'>注意事项：</a>
+                        <br>1、本系统用户的初始密码由系统内置，请用户登录后尽快修改密码
+                        <br>2、企业用户登录后应尽快完善企业备案信息，按时上报就业数据
+                        <br>3、市用户登录后应尽快处理并上报企业就业数据，对有误的企业就业信息进行退回
+                        <br>4、省用户登录后应尽快处理市上报的数据，对有误的信息进行退回
+                        <br>5、管理员登录后应维护系统的正常运行，谨慎进行数据修改
                     </p>
                 </div>
             </div>
