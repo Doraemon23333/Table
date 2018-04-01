@@ -1,4 +1,13 @@
-<%--
+<%@ page import="com.springmvc.service.InvestigationTable" %>
+<%@ page import="com.springmvc.entity.Investigation" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.springmvc.other.AreaCode" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/28 0028
@@ -50,7 +59,51 @@
         <li><a href="/">退出</a></li>
     </ul>
 </div>
+<%
+    List<Investigation> investigations = null;
+    InvestigationTable investigationTable = new InvestigationTable();
+    Investigation investigation = new Investigation();
+    investigationTable.lastData(investigation);
+    investigations = new ArrayList<Investigation>();
 
+    AreaCode areaCode = new AreaCode();
+
+    Calendar c = Calendar.getInstance();
+    int year = c.get(Calendar.YEAR);
+    int month = c.get(Calendar.MONTH);
+    month++;
+    int day = c.get(Calendar.DAY_OF_MONTH);
+
+    String year1 = areaCode.checkYear(year);
+    String month1 = areaCode.checkMonth(month);
+    String day1 = areaCode.checkDay(day);
+
+    Connection connection0 = investigationTable.getConnection();
+    try {
+        String sql0 = "select * from investigationTable";
+        PreparedStatement ps0 = (PreparedStatement) connection0.prepareStatement(sql0);
+        Statement stmt0 = (Statement) connection0.createStatement();
+        ResultSet rs0 = stmt0.executeQuery(sql0);
+        while (rs0.next()){
+            Investigation investigationC = new Investigation();
+            investigationC.endDay = rs0.getInt("endDay");
+            investigationC.endMonth = rs0.getInt("endMonth");
+            investigationC.endYear = rs0.getInt("endYear");
+            investigationC.investigationId = rs0.getInt("investigationId");
+            investigationC.publishId = rs0.getInt("publishId");
+            investigationC.beginYear = rs0.getInt("beginYear");
+            investigationC.beginMonth = rs0.getInt("beginMonth");
+            investigationC.beginDay = rs0.getInt("beginDay");
+            investigations.add(investigationC);
+        }
+        rs0.close();
+        stmt0.close();
+        ps0.close();
+        connection0.close();
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+%>
 <div class="main-container container no-sidebar">
     <div class="main-content">
 
@@ -61,17 +114,34 @@
                     <div>
                         <table>
                             <tr>
-                                <td>请输入第一个调查期：</td>
-                                <td><input style="width: 150px;" type="date" value="">-<input style="width: 150px;" type="date" value=""></td>
+                                <td>请选择第一个调查期：</td>
+                                <td>
+                                    <select class="Start" name="ks" id="first" >
+                                        <option value=""></option>
+                                        <%
+                                            for (Investigation investigation1: investigations){%>
+                                        <option value="<%=investigation1.investigationId%>"><%=investigation1.beginYear%>-<%=investigation1.beginMonth%>-<%=investigation1.beginDay%>: <%=investigation1.endYear%>-<%=investigation1.endMonth%>-<%=investigation1.endDay%></option>
+                                        <%}%>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
-                                <td>请输入第二个调查期：</td>
-                                <td><input style="width: 150px;" type="date" value="">-<input style="width: 150px;" type="date" value=""></td>
+                                <td>请选择第二个调查期：</td>
+                                <td>
+                                    <select class="Start" name="ks" id="second" >
+                                        <option value=""></option>
+                                        <%
+                                            for (Investigation investigation1: investigations){%>
+                                        <option value="<%=investigation1.investigationId%>"><%=investigation1.beginYear%>-<%=investigation1.beginMonth%>-<%=investigation1.beginDay%>: <%=investigation1.endYear%>-<%=investigation1.endMonth%>-<%=investigation1.endDay%></option>
+                                        <%}%>
+                                    </select>
+                            </tr>
                             </tr>
                             <tr>
                                 <td>请选择分析方式：</td>
                                 <td>
                                     <select  style="width: 100px" name="analyze" id="analyze">
+                                        <option value=""></option>
                                         <option value="地区">地区</option>
                                         <option value="企业性质">企业性质</option>
                                         <option value="行业">行业</option>
@@ -82,6 +152,7 @@
                                 <td>请选择分析指标：</td>
                                 <td>
                                     <select  style="width: 170px" name="property" id="property">
+                                        <option value=""></option>
                                         <option value="企业总数">企业总数</option>
                                         <option value="建档期总岗位数">建档期总岗位数</option>
                                         <option value="调查期总岗位数">调查期总岗位数</option>

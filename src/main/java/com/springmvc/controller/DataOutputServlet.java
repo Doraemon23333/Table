@@ -23,7 +23,7 @@ import java.sql.ResultSet;
 
 public class DataOutputServlet extends HttpServlet{//数据输出api
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json;charset=utf-8");
         Excel excel = new Excel();
         excel.outputDataToExcel();
@@ -116,10 +116,10 @@ public class DataOutputServlet extends HttpServlet{//数据输出api
                     e.printStackTrace();
                 }
             }else {
-                out.println("Error");
+                out.println("您无此权限");
             }
         }else {
-            out.println("Error");
+            out.println("您无此权限");
         }
     }
 }
