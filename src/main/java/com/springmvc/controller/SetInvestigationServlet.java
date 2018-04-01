@@ -55,6 +55,7 @@ public class SetInvestigationServlet extends HttpServlet{
                     Calendar c = Calendar.getInstance();
                     int year = c.get(Calendar.YEAR);
                     int month = c.get(Calendar.MONTH);
+                    month++;
                     int day = c.get(Calendar.DAY_OF_MONTH);
                     browser.broswerDay = day;
                     browser.broswerYear = year;
