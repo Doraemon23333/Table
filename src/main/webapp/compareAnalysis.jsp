@@ -112,6 +112,7 @@
                 <!--PAGE CONTENT BEGINS HERE-->
                 <div class="content">
                     <div>
+                        <form action="/com/springmvc/controller/AnalysisServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
                         <table>
                             <tr>
                                 <td>请选择第一个调查期：</td>
@@ -164,6 +165,7 @@
                             </tr>
                         </table>
                         <button type="submit" >确认</button>
+                        </form>
                     </div>
                     <div style="margin: 20px 0 20px 0">
                         <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
