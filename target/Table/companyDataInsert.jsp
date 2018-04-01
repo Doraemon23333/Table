@@ -63,7 +63,7 @@
                 <div class="content">
 
                     <!--<div class="hr dotted"></div>-->
-                    <form action="/com/springmvc/controller/CompanyDataServlet?id=<%=userid%>" method="post" class="form-horizontal" >
+                    <form action="/com/springmvc/controller/CompanyDataServlet?id=<%=userid%>&rank=1" method="post" class="form-horizontal" >
 
                         <input type="hidden" name="version" value="0" id="version" />
                         <table class="table table-striped">
