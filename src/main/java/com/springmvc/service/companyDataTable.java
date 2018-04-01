@@ -117,14 +117,15 @@ accountSeason int NOT NULL) default charset = utf8;
     public void find(CompanyData companyData){
         try{
             Connection connection = getConnection();
-            String sql = "SELECT * FROM companyDataTable WHERE id=" + companyData.companyDataId;
+            String sql = "SELECT * FROM companyDataTable WHERE companyDataId=" + companyData.companyDataId;
+            System.out.println(sql);
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
                 companyData.companyDataId = rs.getInt("companyDataId");
-                companyData.csPeople = rs.getString("csPeople");
-                companyData.surveyPeople = rs.getString("surveyPeople");
+                companyData.csPeople = String.valueOf(rs.getInt("csPeople"));
+                companyData.surveyPeople = String.valueOf(rs.getInt("surveyPeople"));
                 companyData.addition = rs.getString("addition");
                 companyData.reduceType = rs.getString("reduceType");
                 companyData.mainReason = rs.getString("mainReason");

@@ -127,7 +127,7 @@ companyDataId int default 0) default charset=utf8;
         try {
             Connection connection = getConnection();
             String sql = "select * from userTable where id=" + id;
-            //System.out.println(sql);
+            System.out.println(sql);
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -145,6 +145,7 @@ companyDataId int default 0) default charset=utf8;
                 user.unregisterMonth = rs.getInt("unregisterMonth");
                 user.unregisterDay = rs.getInt("unregisterDay");
                 user.rank = rs.getInt("rank");
+                user.companyDataId = rs.getInt("companyDataId");
                 row++;
             }
             //System.out.println(row);

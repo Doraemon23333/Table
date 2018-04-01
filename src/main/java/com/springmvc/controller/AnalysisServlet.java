@@ -43,12 +43,6 @@ public class AnalysisServlet extends HttpServlet{
                     choose = 12;
                 }else if (property.equals("调查期总岗位数")){
                     choose = 13;
-                }else if (property.equals("岗位变化总数")){
-                    choose = 14;
-                }else if (property.equals("岗位减少总数")){
-                    choose = 15;
-                }else if (property.equals("岗位变化数量占比")){
-                    choose = 16;
                 }
             }else if (analyze.equals("企业性质")){
                 if (property.equals("企业总数")){
@@ -57,12 +51,6 @@ public class AnalysisServlet extends HttpServlet{
                     choose = 22;
                 }else if (property.equals("调查期总岗位数")){
                     choose = 23;
-                }else if (property.equals("岗位变化总数")){
-                    choose = 24;
-                }else if (property.equals("岗位减少总数")){
-                    choose = 25;
-                }else if (property.equals("岗位变化数量占比")){
-                    choose = 26;
                 }
             }else if (analyze.equals("行业")){
                 if (property.equals("企业总数")){
@@ -71,12 +59,6 @@ public class AnalysisServlet extends HttpServlet{
                     choose = 32;
                 }else if (property.equals("调查期总岗位数")){
                     choose = 33;
-                }else if (property.equals("岗位变化总数")){
-                    choose = 34;
-                }else if (property.equals("岗位减少总数")){
-                    choose = 35;
-                }else if (property.equals("岗位变化数量占比")){
-                    choose = 36;
                 }
             }
             response.sendRedirect("/compareAnalysis.jsp?id=" + id + "&rank=" + rank + "&choose=" + choose

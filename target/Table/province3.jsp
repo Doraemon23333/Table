@@ -66,6 +66,10 @@
         <script src="js/jquery-1.7.2.min.js"></script>
         <script src="js/jquery.placehold.min.js"></script>
         <script type="text/javascript" src="js/koala.min.1.5.js"></script>
+
+        <link rel="stylesheet" href="css/systemNav.css" media="screen" type="text/css">
+        <link href="css/companyRecord4.css" type="text/css" rel="stylesheet" media="screen, projection" />
+
     </head>
 </head>
 <body>
@@ -173,6 +177,7 @@
     }
 %>
     <form action="/com/springmvc/controller/ManageDataServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
+
     <td>城市：</td>
     <select class="City" name="Place" id="thisPlace" >
         <option value=""></option>
@@ -220,15 +225,20 @@
         <option value="<%=investigation1.investigationId%>"><%=investigation1.beginYear%>-<%=investigation1.beginMonth%>-<%=investigation1.beginDay%>: <%=investigation1.endYear%>-<%=investigation1.endMonth%>-<%=investigation1.endDay%></option>
         <%}%>
     </select>
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;精确查找：</td>
-    <input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/>
-    <button class="search" type="submit">查找</button>
+        <table>
+    <tr>
+        <td>精确查找：</td>
+    <td><input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/></td>
+
+    </tr>
+        </table>
+        <button class="search" type="submit">查找</button>
     </form>
-    <td>
-        <form action="/getData?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
-            <button class="search" type="submit">导出数据</button>
+
+        <form class="form-actions" action="/getData?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
+            <button style="margin: 10px 50%;width: 100px" type="submit" class="btn btn-primary">导出数据</button>
         </form>
-    </td>
+
 </div>
 <%
     String choose = request.getParameter("choose");

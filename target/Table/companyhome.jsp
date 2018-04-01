@@ -69,11 +69,11 @@
     <div class="index_top_one">
 
         <div style="border-bottom:1px solid #c91006" class="title">
-            <a style="text-decoration:none;" target="_blank" href="/"  title="" >
-            请尽快完善企业备案信息</a></div>
+
+            请尽快完善企业备案信息</div>
         <div  class="title">
-            <a style="text-decoration:none;" target="_blank" href="/"  title="" >
-            请按时上报就业数据</a></div>
+
+            请按时上报就业数据</div>
 
     </div>
     <%
