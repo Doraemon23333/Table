@@ -223,6 +223,8 @@
     <td>&nbsp;&nbsp;&nbsp;&nbsp;精确查找：</td>
     <input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/>
     <button class="search" type="submit">查找</button>
+    <button><a href="getData?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>">导出数据</a></button>
+        <button>上报数据</button>
     </form>
 </div>
 <%
