@@ -122,6 +122,7 @@
         <td>内容</td>
     </tr>
 <%
+    if (rank == 3){
     Collections.reverse(browsers);
     for (Browser browser: browsers){
         String name = null, time = null, rank = null;
@@ -154,6 +155,8 @@
         <td><%=browser.content%></td>
     </tr>
     <%
+    }}else {
+        out.print("您没有权限查看系统日志");
     }
 %>
 </table>
