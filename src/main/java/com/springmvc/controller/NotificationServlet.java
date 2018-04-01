@@ -1,9 +1,8 @@
 package com.springmvc.controller;
 
-import com.springmvc.entity.Browser;
-import com.springmvc.entity.Notification;
-import com.springmvc.entity.Role;
-import com.springmvc.entity.User;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
+import com.springmvc.entity.*;
 import com.springmvc.service.*;
 
 import javax.servlet.ServletException;
@@ -12,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.Calendar;
 
 public class NotificationServlet extends HttpServlet{
@@ -42,6 +43,7 @@ public class NotificationServlet extends HttpServlet{
         notification.title = title;
         notification.type = Integer.parseInt(type);
         notification.companyDataId = 0;
+        notification.receiverRank = 1;
 
 
         Browser browser = new Browser();
@@ -71,8 +73,33 @@ public class NotificationServlet extends HttpServlet{
             }else {
                 out.println("您没有该权限");
             }
-        }else{
-            out.println("您没有该权限");
+        }else if(rank.equals("2")){
+            User city = new User();
+            cityTable tableC = new cityTable();
+            tableC.findById(Integer.parseInt(id), city);
+            companyTable table1 = new companyTable();
+            try {
+                Connection connection = table1.getConnection();
+                String sql = "select * from companyTable";
+                PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+                Statement stmt = (Statement) connection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while (rs.next()){
+                    if (rs.getString("originalArea").equals(city.area)){
+                        notification.receiverId = rs.getInt("id");
+                        notificationTable table2 = new notificationTable();
+                        table2.insert(notification);
+                    }
+                }
+                rs.close();
+                stmt.close();
+                ps.close();
+                connection.close();
+                out.println("发布成功");
+            }catch (Exception e){
+                e.printStackTrace();
+                out.println("发布失败");
+            }
         }
     }
 }
