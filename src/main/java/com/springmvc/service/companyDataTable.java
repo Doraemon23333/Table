@@ -159,4 +159,30 @@ accountSeason int NOT NULL) default charset = utf8;
             e.printStackTrace();
         }
     }
+
+    public void updateS(String name, String data, int companyDataId){
+        try {
+            Connection conn = getConnection();
+            String sql = "update companyDataTable set " + name + "='" + data + "' where companyDataId=" + companyDataId;
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            int row = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void updateI(String name, int data, int companyDataId){
+        try {
+            Connection conn = getConnection();
+            String sql = "update companyDataTable set " + name + "=" + data + " where companyDataId=" + companyDataId;
+            PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+            int row = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

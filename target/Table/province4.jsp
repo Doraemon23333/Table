@@ -75,39 +75,54 @@
 <!--nav end-->
 
 <div class="main-container container no-sidebar">
+    <<div class="main-container container no-sidebar">
     <div class="main-content">
+
         <div class="page-content">
             <div class="row-fluid">
                 <!--PAGE CONTENT BEGINS HERE-->
                 <div class="content">
+
                     <!--<div class="hr dotted"></div>-->
-                    <form action="" method="post" class="form-horizontal" >
+                    <form action="/com/springmvc/controller/CompanyDataServlet?id=<%=userid%>&rank=<%=request.getParameter("rank")%>&companyDataId=<%=companyData.companyDataId%>" method="post" class="form-horizontal" >
 
                         <input type="hidden" name="version" value="0" id="version" />
                         <table class="table table-striped">
                             <tr class="">
 
-                                <td><b class="blue">提交数据</b></td>
+                                <td><b class="blue">数据项</b></td>
                                 <td></td>
                             </tr>
 
                             <tr class="">
                                 <td>建档期就业人数</td>
-                                <td><%=companyData.csPeople%></td>
+                                <td>
+                                    <input type="text" id="recordNum" name="RecordNum" style="height: 30px;"value="<%=companyData.csPeople%>" onfocus="javascript:if(this.value=='初次建档时监测点就业人数')this.value='';"/>
+                                    <b class="red">*为必填</b>
+                                </td>
                             </tr>
 
                             <tr class="">
                                 <td>调查期就业人数</td>
-                                <td><%=companyData.surveyPeople%> </td>
+                                <td>
+                                    <input type="text" id="resNum" name="resNum" style="height: 30px;"value="<%=companyData.surveyPeople%>" onfocus="javascript:if(this.value=='本次调查期当时的监测点就业人数')this.value='';"/>
+                                    <b class="red">*</b>
+                                </td>
                             </tr>
+
                             <tr class="">
-                                <td>附加</td>
-                                <td><%=companyData.addition%></td>
+                                <td>其他原因</td>
+                                <td>
+                                    <input type="text" id="otherReason" name="otherReason" style="height: 30px;"value="<%=companyData.addition%>" />
+                                    <b class="red">*</b>
+                                </td>
                             </tr>
 
                             <tr class="">
                                 <td>就业人数减少类型</td>
-                                <td><%=companyData.reduceType%></td>
+                                <td>
+                                    <input type="text" id="decType" name="otherReason" style="height: 30px;"value="<%=companyData.reduceType%>" />
+                                </td>
                             </tr>
 
                             <tr class="">
@@ -119,35 +134,107 @@
                             <tr class="">
 
                                 <td>主要原因</td>
-                                <td><%=companyData.mainReason%></td>
+                                <td>
+                                    <select name="mainReason" id="mainReason" >
+                                        <option value="<%=companyData.mainReason%>" >当前为：<%=companyData.mainReason%></option>
+                                        <option value="产业结构调整" >产业结构调整</option>
+                                        <option value="重大技术改革" >重大技术改革</option>
+                                        <option value="节能减排、淘汰落后产能">节能减排、淘汰落后产能</option>
+                                        <option value="订单不足">订单不足</option>
+                                        <option value="原材料涨价">原材料涨价</option>
+                                        <option value="工资、社保等用工成本上升">工资、社保等用工成本上升</option>
+                                        <option value="自然减员">自然减员</option>
+                                        <option value="经营资金困难">经营资金困难</option>
+                                        <option value="税收政策变化（包括税负增加或出口退税减少等）">税收政策变化（包括税负增加或出口退税减少等）</option>
+                                        <option value="季节性用工">季节性用工</option>
+                                        <option value="自行离职">自行离职</option>
+                                        <option value="工作调动、企业内部调剂">工作调动、企业内部调剂</option>
+                                        <option value="劳动关系转移、劳务派遣">劳动关系转移、劳务派遣</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr class="">
 
                                 <td>主要原因说明</td>
-                                <td><%=companyData.mR_instruction%></td>
+                                <td>
+                                    <input type="text" name="mainReasonExplain" value="<%=companyData.mR_instruction%>" id="mainReasonExplain"style="height: 30px;"/>
+                                </td>
                             </tr>
                             <tr class="">
 
                                 <td>次要原因</td>
-                                <td><%=companyData.secondReason%></td>
+                                <td>
+
+                                    <select name="secReason" id="secReason" >
+                                        <option value="<%=companyData.secondReason%>" >当前为：<%=companyData.secondReason%></option>
+                                        <option value="产业结构调整" >产业结构调整</option>
+                                        <option value="重大技术改革" >重大技术改革</option>
+                                        <option value="节能减排、淘汰落后产能">节能减排、淘汰落后产能</option>
+                                        <option value="订单不足">订单不足</option>
+                                        <option value="原材料涨价">原材料涨价</option>
+                                        <option value="工资、社保等用工成本上升">工资、社保等用工成本上升</option>
+                                        <option value="自然减员">自然减员</option>
+                                        <option value="经营资金困难">经营资金困难</option>
+                                        <option value="税收政策变化（包括税负增加或出口退税减少等）">税收政策变化（包括税负增加或出口退税减少等）</option>
+                                        <option value="季节性用工">季节性用工</option>
+                                        <option value="自行离职">自行离职</option>
+                                        <option value="工作调动、企业内部调剂">工作调动、企业内部调剂</option>
+                                        <option value="劳动关系转移、劳务派遣">劳动关系转移、劳务派遣</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr class="">
 
                                 <td>次要原因说明</td>
-                                <td><%=companyData.sR_instruction%></td>
+                                <td>
+                                    <input type="text" name="secReasonExplain" value="<%=companyData.sR_instruction%>" id="secReasonExplain" style="height: 30px;"/>
+                                </td>
                             </tr>
                             <tr class="">
 
                                 <td>第三原因</td>
-                                <td><%=companyData.thirdReason%></td>
+                                <td>
+                                    <select name="thirdReason" id="thirdReason" >
+                                        <option value="<%=companyData.thirdReason%>" >当前为：<%=companyData.thirdReason%></option>
+                                        <option value="产业结构调整" >产业结构调整</option>
+                                        <option value="重大技术改革" >重大技术改革</option>
+                                        <option value="节能减排、淘汰落后产能">节能减排、淘汰落后产能</option>
+                                        <option value="订单不足">订单不足</option>
+                                        <option value="原材料涨价">原材料涨价</option>
+                                        <option value="工资、社保等用工成本上升">工资、社保等用工成本上升</option>
+                                        <option value="自然减员">自然减员</option>
+                                        <option value="经营资金困难">经营资金困难</option>
+                                        <option value="税收政策变化（包括税负增加或出口退税减少等）">税收政策变化（包括税负增加或出口退税减少等）</option>
+                                        <option value="季节性用工">季节性用工</option>
+                                        <option value="自行离职">自行离职</option>
+                                        <option value="工作调动、企业内部调剂">工作调动、企业内部调剂</option>
+                                        <option value="劳动关系转移、劳务派遣">劳动关系转移、劳务派遣</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr class="">
 
                                 <td>第三原因说明</td>
-                                <td><%=companyData.tR_instruction%></td>
+                                <td>
+                                    <input type="text" name="thirdReasonExplain" value="<%=companyData.tR_instruction%>" id="thirdReasonExplain" style="height: 30px;"/>
+                                </td>
                             </tr>
 
                         </table>
+
+
+
+                        <div class="form-actions">
+
+                            <button type="submit" class="btn btn-primary">
+                                保存
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
                 <!--PAGE CONTENT ENDS HERE-->
             </div><!--/row-->
