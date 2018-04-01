@@ -7,156 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5b6c1f3-956b-47c9-b83f-0d833ca73dd9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/createrole.jsp" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table.war" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/META-INF/MANIFEST.MF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/generator.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/generatorConfig.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/jdbc.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/spring/applicationContext.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/activation-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/avalon-framework-4.1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-beanutils-1.8.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-codec-1.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-collections-3.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-dbcp-1.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-httpclient-3.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-lang-2.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-logging-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/commons-pool-1.5.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/ezmorph-1.0.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/jackson-annotations-2.7.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/jackson-core-2.7.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/jackson-databind-2.7.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/json-lib-2.4-jdk15.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/jsr250-api-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/log4j-1.2.12.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/logkit-1.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/mybatis-3.2.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/mybatis-spring-1.2.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/mysql-connector-java-5.1.29.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/slf4j-api-1.6.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/slf4j-log4j12-1.6.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-aop-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-beans-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-context-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-context-support-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-core-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-expression-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-jdbc-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-oxm-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-test-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-tx-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-web-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/spring-webmvc-4.2.5.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/lib/standard-1.1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/views/index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/views/login.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/allUserInfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/alterUserInfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/bingtu.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/company.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/companyDataInsert.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/companyDataSelect.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/companyRecordInfo(waiting).jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/companyRecordInfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/companyhome.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/communal.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/companyRecord2.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/companyRecord3.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/companyRecord4.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/companyRecordInfo.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/index.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/index_10.14.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/index_3.8.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/reset.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/systemNav.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/css/tool.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/deleteUserInfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/Thumbs.db" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/fuwu_right.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/header-right-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/icon-new-title.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/index_bei.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/new-list-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/top_test.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/zxzx/IMG6733.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/zxzx/IMG6751.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/zxzx/IMG6776.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/zxzx/IMG6786.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/images/zxzx/Thumbs.db" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/companyJs0.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/companyJs1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/companyJs2.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/companyJs3.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/companyRecordInfo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/forweb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/highcharts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/jquery-1.7.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/jquery.placehold.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/koala.min.1.5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/sdrs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/switchable.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/systemNav.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/terminator2.2.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/js/title.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/newUserInfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/notification.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/notification2.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/province1.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/province2.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/province3.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/provinceannouncement.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/provincehome.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/role.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/static/bootstrap-3.3.7-dist/js/npm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/js/npm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/systemAlterTime.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/systemInfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/systemNewTime.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/systemOnlineInfo.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/Table/trend.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/classes/generator.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/classes/generatorConfig.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/classes/jdbc.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/classes/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Table/target/classes/spring/applicationContext.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Table/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/InvestigationTable.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/InvestigationTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/RoleTable.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/RoleTable.java" />
@@ -169,15 +20,23 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/userTable.java" afterPath="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/userTable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/resources/generator.properties" afterPath="$PROJECT_DIR$/../Table/src/main/resources/generator.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties" afterPath="$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/allUserInfo.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/allUserInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/alterUserInfo.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/alterUserInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/deleteUserInfo.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/deleteUserInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/newUserInfo.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/newUserInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/role.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/role.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/systemAlterTime.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/systemAlterTime.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/systemInfo.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/systemInfo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/systemNewTime.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/systemNewTime.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/systemOnlineInfo.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/systemOnlineInfo.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/src/main/webapp/province3.jsp" afterPath="$PROJECT_DIR$/../Table/src/main/webapp/province3.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/../Table/target/Table/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/generator.properties" afterPath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/generator.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/jdbc.properties" afterPath="$PROJECT_DIR$/../Table/target/Table/WEB-INF/classes/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/province2.jsp" afterPath="$PROJECT_DIR$/../Table/target/Table/province2.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/province3.jsp" afterPath="$PROJECT_DIR$/../Table/target/Table/province3.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.min.css" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap-theme.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.css" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.js" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/js/bootstrap.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/Table/styles/js/npm.js" afterPath="$PROJECT_DIR$/../Table/target/Table/styles/js/npm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/classes/generator.properties" afterPath="$PROJECT_DIR$/../Table/target/classes/generator.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Table/target/classes/jdbc.properties" afterPath="$PROJECT_DIR$/../Table/target/classes/jdbc.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/../Table/out/" />
     <ignored path="$PROJECT_DIR$/../Table/target/" />
@@ -206,33 +65,29 @@
         <item name="company@localhost" type="e3449647:DbNodeDescriptor" />
         <item name="company" type="e3449647:DbNodeDescriptor" />
       </path>
-      <path>
-        <item name="" type="eadb38e5:DatabaseStructure$Root" />
-        <item name="company@localhost" type="e3449647:DbNodeDescriptor" />
-        <item name="company" type="e3449647:DbNodeDescriptor" />
-        <item name="roletable" type="e3449647:DbNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="createrole.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/createrole.jsp">
+      <file leaf-file-name="province3.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province3.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="newUserInfo.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/newUserInfo.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="181" column="52" lean-forward="false" selection-start-line="181" selection-start-column="37" selection-end-line="181" selection-end-column="52" />
-              <folding />
+            <state relative-caret-position="13068">
+              <caret line="484" column="0" lean-forward="false" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
+              <folding>
+                <marker date="1522499793261" expanded="true" signature="5337:5369" ph="select * fro... investigationTable" />
+                <marker date="1522499793261" expanded="true" signature="10126:10386" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="10533:10716" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="10863:11015" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="11162:11349" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="11485:11570" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="11706:11816" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="11952:12033" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="12071:12097" ph="select * fro... companyTable" />
+                <marker date="1522499793261" expanded="true" signature="13756:13796" ph="select * fro... companyDataTable" />
+                <marker date="1522499793261" expanded="true" signature="17377:17407" ph="select * fro... companyDataTable" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -240,13 +95,53 @@
       <file leaf-file-name="province2.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret line="162" column="3" lean-forward="false" selection-start-line="162" selection-start-column="3" selection-end-line="162" selection-end-column="3" />
+            <state relative-caret-position="1026">
+              <caret line="38" column="20" lean-forward="false" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
               <folding>
-                <marker date="1522390336581" expanded="true" signature="6679:6705" ph="select * fro... companyTable" />
-                <marker date="1522390336581" expanded="true" signature="8444:8509" ph="select * fro... companyTable" />
-                <marker date="1522390336581" expanded="true" signature="10878:11052" ph="select * fro... companyTable" />
-                <marker date="1522390336581" expanded="true" signature="12889:13060" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="6925:6951" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="8690:8755" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="11439:11645" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="11816:11962" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="12133:12255" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="12426:12564" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="12724:12784" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="12944:13022" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="13182:13250" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="13304:13341" ph="select * fro... companyTable" />
+                <marker date="1522499868794" expanded="true" signature="15196:15367" ph="select * fro... companyTable" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="companytable" pinned="false" current-in-tab="false">
+        <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.companytable">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="roletable" pinned="false" current-in-tab="true">
+        <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.roletable">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="companyDataTable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyDataTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+              <folding>
+                <marker date="1522499450669" expanded="true" signature="1332:1617" ph="insert into companyDataTable... " />
+                <marker date="1522499450669" expanded="true" signature="3511:3592" ph="SELECT * FRO... companyDataTable" />
+                <marker date="1522499450669" expanded="true" signature="4276:4316" ph="SELECT * FRO... companyDataTable" />
+                <marker date="1522499450669" expanded="true" signature="5995:6044" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -289,8 +184,6 @@
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/companyRecordInfo.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/WEB-INF/Test.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/Test.jsp" />
-        <option value="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
-        <option value="$PROJECT_DIR$/../Table/src/main/webapp/province3.jsp" />
         <option value="$PROJECT_DIR$/../Table/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/controller/RoleServlet.java" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/entity/Role.java" />
@@ -298,11 +191,9 @@
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/provincehome.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/browserTable.java" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/cityTable.java" />
-        <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyDataTable.java" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyTable.java" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/notificationTable.java" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/provinceTable.java" />
-        <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/RoleTable.java" />
         <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/userTable.java" />
         <option value="$PROJECT_DIR$/../Table/src/main/resources/generator.properties" />
         <option value="$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties" />
@@ -317,6 +208,10 @@
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/deleteUserInfo.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/newUserInfo.jsp" />
         <option value="$PROJECT_DIR$/../Table/src/main/webapp/createrole.jsp" />
+        <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/RoleTable.java" />
+        <option value="$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyDataTable.java" />
+        <option value="$PROJECT_DIR$/../Table/src/main/webapp/province3.jsp" />
+        <option value="$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp" />
       </list>
     </option>
   </component>
@@ -374,6 +269,9 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -439,9 +337,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -664,7 +559,11 @@
       <workItem from="1522330822587" duration="2225000" />
       <workItem from="1522380130445" duration="60000" />
       <workItem from="1522380866637" duration="670000" />
-      <workItem from="1522390255116" duration="4215000" />
+      <workItem from="1522390255116" duration="4445000" />
+      <workItem from="1522397649799" duration="1954000" />
+      <workItem from="1522461594671" duration="5353000" />
+      <workItem from="1522499257606" duration="1499000" />
+      <workItem from="1522547941502" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="ceshi">
       <created>1520687227326</created>
@@ -729,37 +628,45 @@
       <option name="project" value="LOCAL" />
       <updated>1521967486047</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="新建角色_前端">
+      <created>1522396356065</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1522396356065</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94647000" />
+    <option name="totallyTimeSpent" value="104570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14370546" sideWeight="0.38066953" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.72684085" sideWeight="0.27699783" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.122030236" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20356372" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20788337" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.023752969" sideWeight="0.4697624" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5273159" sideWeight="0.46544278" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14370546" sideWeight="0.61933047" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.121140145" sideWeight="0.4773218" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35985747" sideWeight="0.47084233" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30522564" sideWeight="0.72300214" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897863" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23110151" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24298055" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -842,7 +749,8 @@
     <MESSAGE value="增加了公司搜索页面 （后续数据搜索页面建议保持相同格式）" />
     <MESSAGE value="省的数据查询主页面" />
     <MESSAGE value="增加了角色表 角色显示" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了角色表 角色显示" />
+    <MESSAGE value="新建角色_前端" />
+    <option name="LAST_COMMIT_MESSAGE" value="新建角色_前端" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -855,6 +763,133 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.companytable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyDataTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding>
+            <marker date="1522499450669" expanded="true" signature="1332:1617" ph="insert into companyDataTable... " />
+            <marker date="1522499450669" expanded="true" signature="3511:3592" ph="SELECT * FRO... companyDataTable" />
+            <marker date="1522499450669" expanded="true" signature="4276:4316" ph="SELECT * FRO... companyDataTable" />
+            <marker date="1522499450669" expanded="true" signature="5995:6044" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.roletable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/notification2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="85" column="44" lean-forward="false" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.notificationtable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.provincetable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.companytable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5130">
+          <caret line="190" column="45" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="190" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.investigationtable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/createrole.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4293">
+          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/newUserInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4887">
+          <caret line="181" column="52" lean-forward="false" selection-start-line="181" selection-start-column="37" selection-end-line="181" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4374">
+          <caret line="162" column="3" lean-forward="false" selection-start-line="162" selection-start-column="3" selection-end-line="162" selection-end-column="3" />
+          <folding>
+            <marker date="1522499868794" expanded="true" signature="6925:6951" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="8690:8755" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="11439:11645" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="11816:11962" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12133:12255" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12426:12564" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12724:12784" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12944:13022" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="13182:13250" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="13304:13341" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="15196:15367" ph="select * fro... companyTable" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province3.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1522499793261" expanded="true" signature="5337:5369" ph="select * fro... investigationTable" />
+            <marker date="1522499793261" expanded="true" signature="10126:10386" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="10533:10716" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="10863:11015" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11162:11349" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11485:11570" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11706:11816" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11952:12033" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="12071:12097" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="13756:13796" ph="select * fro... companyDataTable" />
+            <marker date="1522499793261" expanded="true" signature="17377:17407" ph="select * fro... companyDataTable" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/InvestigationTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -866,34 +901,6 @@
             <marker date="1522381070631" expanded="true" signature="4675:4985" ph="select * fro... investigationTable" />
             <marker date="1522381070631" expanded="true" signature="5763:6174" ph="update inves... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/provinceTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/InvestigationTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="67" column="13" lean-forward="false" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-          <folding>
-            <marker date="1522381070631" expanded="true" signature="1279:1425" ph="insert into investigationTable... " />
-            <marker date="1522381070631" expanded="true" signature="2392:2431" ph="select count... investigationTable" />
-            <marker date="1522381070631" expanded="true" signature="3300:3355" ph="select * fro... investigationTable" />
-            <marker date="1522381070631" expanded="true" signature="4675:4985" ph="select * fro... investigationTable" />
-            <marker date="1522381070631" expanded="true" signature="5763:6174" ph="update inves... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.companydatatable">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -905,22 +912,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/role.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="111" column="17" lean-forward="false" selection-start-line="108" selection-start-column="11" selection-end-line="111" selection-end-column="17" />
-          <folding>
-            <marker date="1522393866205" expanded="true" signature="5676:5714" ph="SELECT * FRO... roletable" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/systemAlterTime.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="99" column="17" lean-forward="false" selection-start-line="99" selection-start-column="17" selection-end-line="99" selection-end-column="17" />
           <folding>
-            <marker date="1522393865971" expanded="true" signature="5872:5904" ph="select * fro... investigationTable" />
+            <marker date="1522499420714" expanded="true" signature="6012:6044" ph="select * fro... investigationTable" />
           </folding>
         </state>
       </provider>
@@ -946,10 +943,10 @@
         <state relative-caret-position="297">
           <caret line="89" column="17" lean-forward="false" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
           <folding>
-            <marker date="1522393865768" expanded="true" signature="5795:5813" ph="..." />
-            <marker date="1522393865768" expanded="true" signature="6869:6887" ph="..." />
-            <marker date="1522393865768" expanded="true" signature="8431:8449" ph="..." />
-            <marker date="1522393865768" expanded="true" signature="9097:9115" ph="..." />
+            <marker date="1522499420739" expanded="true" signature="5955:5973" ph="..." />
+            <marker date="1522499420739" expanded="true" signature="7029:7047" ph="..." />
+            <marker date="1522499420739" expanded="true" signature="8591:8609" ph="..." />
+            <marker date="1522499420739" expanded="true" signature="9257:9275" ph="..." />
           </folding>
         </state>
       </provider>
@@ -975,23 +972,16 @@
         <state relative-caret-position="351">
           <caret line="103" column="17" lean-forward="false" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
           <folding>
-            <marker date="1522394068858" expanded="true" signature="6142:6165" ph="select * fro... userTable" />
-            <marker date="1522394068858" expanded="true" signature="7593:7616" ph="select * fro... cityTable" />
-            <marker date="1522394068858" expanded="true" signature="8940:8967" ph="select * fro... provinceTable" />
-            <marker date="1522394068858" expanded="true" signature="10553:10576" ph="select * fro... userTable" />
-            <marker date="1522394068858" expanded="true" signature="11935:11958" ph="select * fro... cityTable" />
+            <marker date="1522499420581" expanded="true" signature="6142:6165" ph="select * fro... userTable" />
+            <marker date="1522499420581" expanded="true" signature="7593:7616" ph="select * fro... cityTable" />
+            <marker date="1522499420581" expanded="true" signature="8940:8967" ph="select * fro... provinceTable" />
+            <marker date="1522499420581" expanded="true" signature="10553:10576" ph="select * fro... userTable" />
+            <marker date="1522499420581" expanded="true" signature="12122:12145" ph="select * fro... cityTable" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/company.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/company.jsp" />
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/alterUserInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-810">
@@ -1002,30 +992,280 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/newUserInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
+        <state relative-caret-position="384">
           <caret line="181" column="52" lean-forward="false" selection-start-line="181" selection-start-column="37" selection-end-line="181" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/notification2.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="162" column="3" lean-forward="false" selection-start-line="162" selection-start-column="3" selection-end-line="162" selection-end-column="3" />
+        <state relative-caret-position="0">
+          <caret line="85" column="44" lean-forward="false" selection-start-line="85" selection-start-column="44" selection-end-line="85" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province1.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="190" column="45" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="190" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.notificationtable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.provincetable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.citytable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.browsertable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.usertable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/browserTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <marker date="1522390336581" expanded="true" signature="6679:6705" ph="select * fro... companyTable" />
-            <marker date="1522390336581" expanded="true" signature="8444:8509" ph="select * fro... companyTable" />
-            <marker date="1522390336581" expanded="true" signature="10878:11052" ph="select * fro... companyTable" />
-            <marker date="1522390336581" expanded="true" signature="12889:13060" ph="select * fro... companyTable" />
+            <marker date="1522331982166" expanded="true" signature="1005:1115" ph="insert into browserTable... " />
+            <marker date="1522331982166" expanded="true" signature="1753:1779" ph="select * fro... browserTable" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/cityTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-135">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <marker date="1522331982196" expanded="true" signature="1317:1572" ph="insert into cityTable... " />
+            <marker date="1522331982196" expanded="true" signature="3314:3370" ph="select * fro... cityTable" />
+            <marker date="1522331982196" expanded="true" signature="5032:5065" ph="select * fro... cityTable" />
+            <marker date="1522331982196" expanded="true" signature="6630:6676" ph="update cityT... " />
+            <marker date="1522331982196" expanded="true" signature="7258:7304" ph="update cityT... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <marker date="1522331982138" expanded="true" signature="1395:1645" ph="insert into companyTable... " />
+            <marker date="1522331982138" expanded="true" signature="2787:2823" ph="select * fro... companyTable" />
+            <marker date="1522331982138" expanded="true" signature="3521:3557" ph="select * fro... companyTable" />
+            <marker date="1522331982138" expanded="true" signature="5270:5319" ph="update compa... " />
+            <marker date="1522331982138" expanded="true" signature="6398:6424" ph="select * FRO... companyTable" />
+            <marker date="1522331982138" expanded="true" signature="8304:8340" ph="select * fro... companyTable" />
+            <marker date="1522331982138" expanded="true" signature="9800:9838" ph="select * fro... companyTable" />
+            <marker date="1522331982138" expanded="true" signature="10394:10436" ph="select * fro... companyTable" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/InvestigationTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="67" column="13" lean-forward="false" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
+          <folding>
+            <marker date="1522381070631" expanded="true" signature="1279:1425" ph="insert into investigationTable... " />
+            <marker date="1522381070631" expanded="true" signature="2392:2431" ph="select count... investigationTable" />
+            <marker date="1522381070631" expanded="true" signature="3300:3355" ph="select * fro... investigationTable" />
+            <marker date="1522381070631" expanded="true" signature="4675:4985" ph="select * fro... investigationTable" />
+            <marker date="1522381070631" expanded="true" signature="5763:6174" ph="update inves... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/provinceTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="34" column="41" lean-forward="false" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+          <folding>
+            <marker date="1522332043033" expanded="true" signature="1264:1505" ph="insert into provinceTable... " />
+            <marker date="1522332043033" expanded="true" signature="3161:3221" ph="select * fro... provinceTable" />
+            <marker date="1522332043033" expanded="true" signature="4808:4845" ph="select * fro... provinceTable" />
+            <marker date="1522332043033" expanded="true" signature="6353:6403" ph="update provi... " />
+            <marker date="1522332043033" expanded="true" signature="6985:7035" ph="update provi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/resources/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/resources/generator.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/role.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="230" column="10" lean-forward="true" selection-start-line="230" selection-start-column="10" selection-end-line="230" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/userTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4535">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <marker date="1522332076062" expanded="true" signature="1284:1521" ph="insert into userTable... " />
+            <marker date="1522332076062" expanded="true" signature="3177:3233" ph="select * fro... userTable" />
+            <marker date="1522332076062" expanded="true" signature="4790:4823" ph="select * fro... userTable" />
+            <marker date="1522332076062" expanded="true" signature="6393:6439" ph="update userT... " />
+            <marker date="1522332076062" expanded="true" signature="7021:7077" ph="update userT... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/RoleTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="36" column="5" lean-forward="false" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <marker date="1522461992727" expanded="true" signature="1164:1317" ph="insert into RoleTable... " />
+            <marker date="1522461992727" expanded="true" signature="2196:2234" ph="select * fro... RoleTable" />
+            <marker date="1522461992727" expanded="true" signature="3427:3460" ph="select * fro... RoleTable" />
+            <marker date="1522461992727" expanded="true" signature="4662:4723" ph="update roleT... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/createrole.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+        <state relative-caret-position="588">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="23" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/notificationTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <marker date="1522331982065" expanded="true" signature="1188:1370" ph="insert into notificationTable... " />
+            <marker date="1522331982065" expanded="true" signature="2562:2616" ph="select * fro... notificationTable" />
+            <marker date="1522331982065" expanded="true" signature="4253:4305" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.investigationtable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.companydatatable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/java/com/springmvc/service/companyDataTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+          <folding>
+            <marker date="1522499450669" expanded="true" signature="1332:1617" ph="insert into companyDataTable... " />
+            <marker date="1522499450669" expanded="true" signature="3511:3592" ph="SELECT * FRO... companyDataTable" />
+            <marker date="1522499450669" expanded="true" signature="4276:4316" ph="SELECT * FRO... companyDataTable" />
+            <marker date="1522499450669" expanded="true" signature="5995:6044" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province3.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13068">
+          <caret line="484" column="0" lean-forward="false" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
+          <folding>
+            <marker date="1522499793261" expanded="true" signature="5337:5369" ph="select * fro... investigationTable" />
+            <marker date="1522499793261" expanded="true" signature="10126:10386" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="10533:10716" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="10863:11015" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11162:11349" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11485:11570" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11706:11816" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="11952:12033" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="12071:12097" ph="select * fro... companyTable" />
+            <marker date="1522499793261" expanded="true" signature="13756:13796" ph="select * fro... companyDataTable" />
+            <marker date="1522499793261" expanded="true" signature="17377:17407" ph="select * fro... companyDataTable" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Table/src/main/webapp/province2.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="38" column="20" lean-forward="false" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          <folding>
+            <marker date="1522499868794" expanded="true" signature="6925:6951" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="8690:8755" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="11439:11645" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="11816:11962" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12133:12255" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12426:12564" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12724:12784" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="12944:13022" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="13182:13250" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="13304:13341" ph="select * fro... companyTable" />
+            <marker date="1522499868794" expanded="true" signature="15196:15367" ph="select * fro... companyTable" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.companytable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/23fe85f9/b731930d-3c1a-40dd-9061-2544520b94f2/company.roletable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

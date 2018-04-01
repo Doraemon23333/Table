@@ -52,7 +52,6 @@
             height: 25px;
         }
         .result{
-            height: 400px;
         }
     </style>
     <head lang="en">
@@ -483,21 +482,7 @@
     });
 
 </script>
-<div class="footer-box">
-    <!--<div class="footer-link clearfix">
-    </div>-->
-    <div class="copyright">
-        <div class="container" style="overflwo:hidden;height:95px;">
-            <div style="float:left;margin-left:200px;display:inline;width:110px; text-align:center; overflow:hidden;padding-top:12px;">
-            </div>
-            <div style="float:left;display:inline;width:500px; text-align:center; overflow:hidden;">
-                <p>系统名称：山东省人力资源市场数据采集系统 版权所有：宫烨的组</p>
-                <p>技术支持：宫烨的组</p>
-                <p>编号123456789</p>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!--悬浮 start-->
 <!--<div class="left-fixed-tool"> <a class="top-a" href="#">索引<br>
   	服务</a> <a class="box-a" href="#">站点<br>

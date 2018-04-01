@@ -36,7 +36,7 @@
             font-family: "微软雅黑 Light";
             color: #1e347b;
             position: relative;
-            left: 70px;
+            left: 200px;
         }
         .Xingzhi{
             width: 150px;
