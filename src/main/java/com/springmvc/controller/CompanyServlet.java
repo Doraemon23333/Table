@@ -4,6 +4,7 @@ import com.springmvc.entity.Browser;
 import com.springmvc.entity.Company;
 import com.springmvc.entity.Role;
 import com.springmvc.entity.User;
+import com.springmvc.other.AreaCode;
 import com.springmvc.service.RoleTable;
 import com.springmvc.service.browserTable;
 import com.springmvc.service.companyTable;
@@ -55,6 +56,8 @@ public class CompanyServlet extends HttpServlet{
         company.email = request.getParameter("email");
         //out.println("email = " + company.email);
         companyTable table = new companyTable();
+        AreaCode areaCode = new AreaCode();
+
         if (company.fax.equals("") || company.telephone.equals("") || company.postalCode.equals("") || company.Address.equals("") || company.People.equals("") ||
                 company.mainBusiness.equals("") ||
                 company.enterprisesNature.equals("") ||
@@ -64,7 +67,9 @@ public class CompanyServlet extends HttpServlet{
                 company.originalArea.equals("") ||
                 company.id < 1){
             out.print("Error!!!, something needed to be written");
-        }else {
+        }else if (areaCode.toCode(company.originalArea).equals("fail")){
+            out.println("请输入正确地级市名称");
+        }else{
             browserTable table1 = new browserTable();
             userTable table2 = new userTable();
             User user = new User();
@@ -86,8 +91,10 @@ public class CompanyServlet extends HttpServlet{
                 table1.insert(browser);
                 out.print("添加成功, 请重新登陆");
             }else {
+                int ch = 0;
                 if (company1.originalArea.equals("山东")){
                     table.updateS(company.id, "originalArea", company.originalArea);
+                    ch ++;
                 }
                 table.updateS(company.id, "nameCode", company.nameCode);
                 table.updateS(company.id, "name", company.name);
@@ -106,6 +113,9 @@ public class CompanyServlet extends HttpServlet{
                 browser.content = user.accompanyName + "更新了企业备案";
                 table1.insert(browser);
                 out.print("更新成功");
+                if (ch > 0){
+                    response.sendRedirect("/companyhome.jsp?id=" + id);
+                }
             }
         }
     }
