@@ -224,6 +224,11 @@
     <input type="text" id="num" name="num" style="height: 30px;"value="企业名称或编号" onfocus="javascript:if(this.value=='企业名称或编号')this.value='';"/>
     <button class="search" type="submit">查找</button>
     </form>
+    <td>
+        <form action="/getData?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
+            <button class="search" type="submit">导出数据</button>
+        </form>
+    </td>
 </div>
 <%
     String choose = request.getParameter("choose");
