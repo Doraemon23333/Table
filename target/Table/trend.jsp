@@ -8,7 +8,10 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page import="com.springmvc.service.provinceTable" %>
+<%@ page import="com.springmvc.service.companyDataTable" %><%--
   Created by IntelliJ IDEA.
   User: cheyl
   Date: 2018/3/27 0027
@@ -128,12 +131,8 @@
                         <form action="/com/springmvc/controller/TrendServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
                             <table>
                                 <tr>
-                                    <td>请输入开始时间(标准时间格式yyyy-mm-dd)：</td>
-                                    <td><input style="width: 150px;" type="date" value="" name="beginTime"></td>
-                                </tr>
-                                <tr>
-                                    <td>请输入结束时间(标准时间格式yyyy-mm-dd)：</td>
-                                    <td><input style="width: 150px;" type="date" value="" name="endTime"></td>
+                                    <td>请输入年份：</td>
+                                    <td><input style="width: 150px;" type="number" value="" name="beginTime"></td>
                                 </tr>
                             </table>
                             <button type="submit" >确认</button>
@@ -141,22 +140,38 @@
                     </div>
                     <div style="margin: 20px 0 20px 0">
                         <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
-                        <table border="1" width="600px" style="text-align: center;">
+                        <table border="1" width="1500px" style="text-align: center;">
                             <tr>
-                                <td>3月1日-3月29日</td>
-                                <td>4月1日-4月28日</td>
-                                <td>5月1日-5月29日</td>
-                                <td>6月1日-6月28日</td>
+                                <td>1月1日-2月1日</td>
+                                <td>2月1日-3月1日</td>
+                                <td>3月1日-4月1日</td>
+                                <td>4月1日-5月1日</td>
+                                <td>5月1日-6月1日</td>
+                                <td>6月1日-7月1日</td>
+                                <td>7月1日-8月1日</td>
+                                <td>8月1日-9月1日</td>
+                                <td>9月1日-10月1日</td>
+                                <td>10月1日-11月1日</td>
+                                <td>11月1日-12月1日</td>
+                                <td>12月1日-1月1日</td>
                             </tr>
                             <tr>
-                                <td>7.0%</td>
-                                <td>6.9%</td>
-                                <td>9.5%</td>
-                                <td>14.5%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
+                                <td>0.0%</td>
                             </tr>
                         </table>
                     </div>
-                    <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+                    <div id="container" style="width: 1000px; height: 400px; margin: 0 auto"></div>
                     <script language="JavaScript">
                         $(document).ready(function() {
                             var title = {
@@ -166,7 +181,9 @@
                                 text:''
                             };
                             var xAxis = {
-                                categories: ['3月1日-3月29日', '4月1日-4月28日', '5月1日-5月29日', '6月1日-6月28日']
+                                categories: ['1月1日-2月1日', '2月1日-3月1日', '3月1日-4月1日', '4月1日-5月1日',
+                                    '5月1日-6月1日','6月1日-7月1日','7月1日-8月1日','8月1日-9月1日',
+                                    '9月1日-10月1日','10月1日-11月1日','11月1日-12月1日','12月1日-1月1日']
                             };
                             var yAxis = {
                                 title: {
@@ -193,7 +210,7 @@
                             var series =  [
                                 {
                                     name: '岗位数量变化占比',
-                                    data: [7.0, 6.9, 9.5, 14.5]
+                                    data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
                                 }
 
 
@@ -221,7 +238,83 @@
     </div><!--/#main-content-->
 </div><!--/.fluid-container#main-container-->
 <%}else if (choose.equals("1")){
-
+    String startTime = request.getParameter("beginTime");
+    int start = Integer.parseInt(startTime);
+    companyDataTable tableD = new companyDataTable();
+    String sql = null;
+    float data1 = 0,data2 = 0,data3 = 0,data4 = 0,data5 = 0,data6 = 0,data7 = 0,data8 = 0,data9 = 0,data10 = 0,data11 = 0,data12 = 0;
+    float sum1 = 0, sum2 = 0, sum3 = 0, sum4 = 0, sum5 = 0, sum6 = 0, sum7 = 0, sum8 = 0, sum9 = 0, sum10 = 0, sum11 = 0, sum12 = 0;
+    float cur1 = 0, cur2 = 0, cur3 = 0, cur4 = 0, cur5 = 0, cur6 = 0, cur7 = 0, cur8 = 0, cur9 = 0, cur10 = 0, cur11 = 0, cur12 = 0;
+    if(rank == 3){
+        User province = new User();
+        provinceTable table = new provinceTable();
+        table.findById(Integer.parseInt(id), province);
+        try {
+            Connection connection = tableD.getConnection();
+            sql = "select * FROM companyDataTable WHERE accountYear=" + start;
+            com.mysql.jdbc.PreparedStatement ps = (com.mysql.jdbc.PreparedStatement) connection.prepareStatement(sql);
+            com.mysql.jdbc.Statement stmt = (com.mysql.jdbc.Statement) connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                if(rs.getInt("accountMonth") == 1){
+                    sum1 =sum1 + rs.getInt("csPeople");
+                    cur1 = cur1 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 2){
+                    sum2 =sum2 + rs.getInt("csPeople");
+                    cur2 = cur2 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 3){
+                    sum3 =sum3 + rs.getInt("csPeople");
+                    cur3 = cur3 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 4){
+                    sum4 =sum4 + rs.getInt("csPeople");
+                    cur4 = cur4 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 5){
+                    sum5 =sum5 + rs.getInt("csPeople");
+                    cur5 = cur5 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 6){
+                    sum6 =sum6 + rs.getInt("csPeople");
+                    cur6 = cur6 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 7){
+                    sum7 =sum7 + rs.getInt("csPeople");
+                    cur7 = cur7 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 8){
+                    sum8 =sum8 + rs.getInt("csPeople");
+                    cur8 = cur8 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 9){
+                    sum9 =sum9 + rs.getInt("csPeople");
+                    cur9 = cur9 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 10){
+                    sum10 =sum10 + rs.getInt("csPeople");
+                    cur10 = cur10 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 11){
+                    sum11 =sum11 + rs.getInt("csPeople");
+                    cur11 = cur11 + rs.getInt("surveyPeople");
+                }else if (rs.getInt("accountMonth") == 12){
+                    sum12 =sum12 + rs.getInt("csPeople");
+                    cur12 = cur12 + rs.getInt("surveyPeople");
+                }
+            }
+            ps.close();
+            stmt.close();
+            ps.close();
+            connection.close();
+            data1 = (cur1 - sum1) / sum1;
+            data2 = (cur2 - sum2) / sum2;
+            data3 = (cur3 - sum3) / sum3;
+            data4 = (cur4 - sum4) / sum4;
+            data5 = (cur5 - sum5) / sum5;
+            data6 = (cur6 - sum6) / sum6;
+            data7 = (cur7 - sum7) / sum7;
+            data8 = (cur8 - sum8) / sum8;
+            data9 = (cur9 - sum9) / sum9;
+            data10 = (cur10 - sum10) / sum10;
+            data11 = (cur11 - sum11) / sum11;
+            data12 = (cur12 - sum12) / sum12;
+            System.out.println();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 %>
 <div class="main-container container no-sidebar">
     <div class="main-content">
@@ -234,12 +327,8 @@
                         <form action="/com/springmvc/controller/TrendServlet?id=<%=request.getParameter("id")%>&rank=<%=request.getParameter("rank")%>" method="post">
                             <table>
                                 <tr>
-                                    <td>请输入开始时间(标准时间格式yyyy-mm-dd)：</td>
-                                    <td><input style="width: 150px;" type="date" value="<%=request.getParameter("startTime")%>" name="beginTime"></td>
-                                </tr>
-                                <tr>
-                                    <td>请输入结束时间(标准时间格式yyyy-mm-dd)：</td>
-                                    <td><input style="width: 150px;" type="date" value="<%=request.getParameter("endTime")%>" name="endTime"></td>
+                                    <td>请输入年份：</td>
+                                    <td><input style="width: 150px;" value="" type="number" name="beginTime"></td>
                                 </tr>
                             </table>
                             <button type="submit" >确认</button>
@@ -247,22 +336,38 @@
                     </div>
                     <div style="margin: 20px 0 20px 0">
                         <!--展示一个这个时间段内所有调查期的岗位就业人数数据的列表，例如-->
-                        <table border="1" width="600px" style="text-align: center;">
+                        <table border="1" width="1500px" style="text-align: center;">
                             <tr>
-                                <td>3月1日-3月29日</td>
-                                <td>4月1日-4月28日</td>
-                                <td>5月1日-5月29日</td>
-                                <td>6月1日-6月28日</td>
+                                <td>1月1日-2月1日</td>
+                                <td>2月1日-3月1日</td>
+                                <td>3月1日-4月1日</td>
+                                <td>4月1日-5月1日</td>
+                                <td>5月1日-6月1日</td>
+                                <td>6月1日-7月1日</td>
+                                <td>7月1日-8月1日</td>
+                                <td>8月1日-9月1日</td>
+                                <td>9月1日-10月1日</td>
+                                <td>10月1日-11月1日</td>
+                                <td>11月1日-12月1日</td>
+                                <td>12月1日-1月1日</td>
                             </tr>
                             <tr>
-                                <td>7.0%</td>
-                                <td>6.9%</td>
-                                <td>9.5%</td>
-                                <td>14.5%</td>
+                                <td><%=data1 * 100%>%</td>
+                                <td><%=data2 * 100%>%</td>
+                                <td><%=data3 * 100%>%</td>
+                                <td><%=data4 * 100%>%</td>
+                                <td><%=data5 * 100%>%</td>
+                                <td><%=data6 * 100%>%</td>
+                                <td><%=data7 * 100%>%</td>
+                                <td><%=data8 * 100%>%</td>
+                                <td><%=data9 * 100%>%</td>
+                                <td><%=data10 * 100%>%</td>
+                                <td><%=data11 * 100%>%</td>
+                                <td><%=data12 * 100%>%</td>
                             </tr>
                         </table>
                     </div>
-                    <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+                    <div id="container" style="width: 1000px; height: 400px; margin: 0 auto"></div>
                     <script language="JavaScript">
                         $(document).ready(function() {
                             var title = {
@@ -272,7 +377,9 @@
                                 text:''
                             };
                             var xAxis = {
-                                categories: ['3月1日-3月29日', '4月1日-4月28日', '5月1日-5月29日', '6月1日-6月28日']
+                                categories: ['1月1日-2月1日', '2月1日-3月1日', '3月1日-4月1日', '4月1日-5月1日',
+                                    '5月1日-6月1日','6月1日-7月1日','7月1日-8月1日','8月1日-9月1日',
+                                    '9月1日-10月1日','10月1日-11月1日','11月1日-12月1日','12月1日-1月1日']
                             };
                             var yAxis = {
                                 title: {
@@ -299,7 +406,8 @@
                             var series =  [
                                 {
                                     name: '岗位数量变化占比',
-                                    data: [7.0, 6.9, 9.5, 14.5]
+                                    data: [<%=data1 * 100%>,<%=data2 * 100%>,<%=data3 * 100%>,<%=data4 * 100%>,<%=data5 * 100%>,<%=data6 * 100%>
+                                    ,<%=data7 * 100%>,<%=data8 * 100%>,<%=data9 * 100%>,<%=data10 * 100%>,<%=data11 * 100%>,<%=data12 * 100%>]
                                 }
 
 
@@ -326,7 +434,9 @@
 
     </div><!--/#main-content-->
 </div><!--/.fluid-container#main-container-->
-    <%}
+<%}else {
+        out.print("您没有该功能权限");
+}
 %>
 
 
