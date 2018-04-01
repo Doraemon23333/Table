@@ -111,6 +111,10 @@
         notification.id = rs.getInt("id");
         notifications.add(notification);
     }
+    rs.close();
+    stmt.close();
+    ps.close();
+    connection.close();
 %>
     <!--切换新闻 start-->
     <div class="index-header">

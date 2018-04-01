@@ -43,7 +43,7 @@ public class NotificationServlet extends HttpServlet{
         notification.title = title;
         notification.type = Integer.parseInt(type);
         notification.companyDataId = 0;
-        notification.receiverRank = 1;
+        notification.receiverRank = 0;
 
 
         Browser browser = new Browser();
