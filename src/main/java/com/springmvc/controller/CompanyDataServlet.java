@@ -68,7 +68,8 @@ public class CompanyDataServlet extends HttpServlet{
         }else {
             int inte1 = Integer.parseInt(companyData.csPeople);
             int inte2 = Integer.parseInt(companyData.surveyPeople);
-            if (inte1 <= inte2 || (inte1 > inte2 && (companyData.reduceType.equals("") == false))){
+            int check = inte1 - inte2;
+            if (check >= 0 || (check < 0 && companyData.reduceType.equals("") == false)){
                 if (rank.equals("1")){
                     User user = new User();
                     table.findById(Integer.parseInt(id), user);

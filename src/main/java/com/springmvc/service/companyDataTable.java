@@ -35,7 +35,7 @@ accountSeason int NOT NULL) default charset = utf8;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/company";
-            String username = "wpy";
+            String username = "root";
             String password = "22003x";
             conn = DriverManager.getConnection(url, username, password);
         }catch(Exception e) {
