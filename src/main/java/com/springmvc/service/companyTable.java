@@ -194,8 +194,7 @@ email varchar(50)) default charset = utf8;
                 com.telephone = rs.getString("telephone");
                 com.fax = rs.getString("fax");
                 com.email = rs.getString("email");
-                if ((com.nameCode.equals(choose) || com.name.equals(choose)) && com.industry.equals(company.industry) && com.enterprisesNature.equals(
-                        company.enterprisesNature) && com.originalArea.equals(company.originalArea)){
+                if ((com.nameCode.equals(choose) || com.name.equals(choose))){
                     if (user.rank == 2){
                         if (com.originalArea.equals(com1.originalArea)){
                             companies.add(com);

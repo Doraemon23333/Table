@@ -426,6 +426,145 @@
         stmt1.close();
         ps1.close();
         connection1.close();
+    }else if (choose.equals("2")){
+        String name = request.getParameter("name");
+        if (rank == 3){
+            companyDataTable table1 = new companyDataTable();
+            companyDataList = new ArrayList<CompanyData>();
+            companyTable table2 = new companyTable();
+            try {
+                Connection connection = table2.getConnection();
+                String sql = "select * from companyTable where name='" + name + "' or nameCode='" + name + "'";
+                System.out.println(sql);
+                PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+                Statement stmt = (Statement) connection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while (rs.next()){
+                    Company com = new Company();
+                    com.originalArea = rs.getString("originalArea");
+                    com.id = rs.getInt("id");
+                    com.name = rs.getString("name");
+                    com.nameCode = rs.getString("nameCode");
+                    com.enterprisesNature = rs.getString("enterprisesNature");
+                    com.industry = rs.getString("industry");
+                    com.mainBusiness = rs.getString("mainBusiness");
+                    com.People = rs.getString("People");
+                    com.Address = rs.getString("Address");
+                    com.postalCode = rs.getString("postalCode");
+                    com.telephone = rs.getString("telephone");
+                    com.fax = rs.getString("fax");
+                    com.email = rs.getString("email");
+
+                    Connection connection1 = table1.getConnection();
+                    String sql1 = "select * from companyDataTable where id=" + rs.getInt("id");
+                    System.out.println(sql1);
+                    PreparedStatement ps1 = (PreparedStatement) connection1.prepareStatement(sql1);
+                    Statement stmt1 = (Statement) connection1.createStatement();
+                    ResultSet rs1 = stmt1.executeQuery(sql1);
+                    while (rs1.next()){
+                        CompanyData companyData = new CompanyData();
+                        companyData.id = rs1.getInt("id");
+                        companyData.csPeople = rs1.getString("csPeople");
+                        companyData.surveyPeople = rs1.getString("surveyPeople");
+                        companyData.addition = rs1.getString("addition");
+                        companyData.reduceType = rs1.getString("reduceType");
+                        companyData.mainReason = rs1.getString("mainReason");
+                        companyData.mR_instruction = rs1.getString("mR_instruction");
+                        companyData.secondReason = rs1.getString("secondReason");
+                        companyData.sR_instruction = rs1.getString("sR_instruction");
+                        companyData.thirdReason = rs1.getString("thirdReason");
+                        companyData.tR_instruction = rs1.getString("tR_instruction");
+                        companyData.accountYear = rs1.getInt("accountYear");
+                        companyData.accountMonth = rs1.getInt("accountMonth");
+                        companyData.accountDay = rs1.getInt("accountDay");
+                        companyData.accountSeason = rs1.getInt("accountSeason");
+                        companyData.companyDataId = rs1.getInt("companyDataId");
+                        companyData.company = com;
+                        companyDataList.add(companyData);
+                    }
+                    rs1.close();
+                    stmt1.close();
+                    ps1.close();
+                    connection1.close();
+                }
+                rs.close();
+                stmt.close();
+                ps.close();
+                connection.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }else if (rank == 2){
+            companyDataTable table1 = new companyDataTable();
+            companyDataList = new ArrayList<CompanyData>();
+            companyTable table2 = new companyTable();
+            cityTable table = new cityTable();
+            User city = new User();
+            table.findById(Integer.parseInt(id), city);
+            try {
+                Connection connection = table2.getConnection();
+                String sql = "select * from companyTable where (name='" + name + "' or nameCode='" + name + "') AND originalArea='" +
+                        city.area + "'";
+                System.out.println(sql);
+                PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+                Statement stmt = (Statement) connection.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                while (rs.next()){
+                    Company com = new Company();
+                    com.originalArea = rs.getString("originalArea");
+                    com.id = rs.getInt("id");
+                    com.name = rs.getString("name");
+                    com.nameCode = rs.getString("nameCode");
+                    com.enterprisesNature = rs.getString("enterprisesNature");
+                    com.industry = rs.getString("industry");
+                    com.mainBusiness = rs.getString("mainBusiness");
+                    com.People = rs.getString("People");
+                    com.Address = rs.getString("Address");
+                    com.postalCode = rs.getString("postalCode");
+                    com.telephone = rs.getString("telephone");
+                    com.fax = rs.getString("fax");
+                    com.email = rs.getString("email");
+
+                    Connection connection1 = table1.getConnection();
+                    String sql1 = "select * from companyDataTable where id=" + rs.getInt("id");
+                    System.out.println(sql1);
+                    PreparedStatement ps1 = (PreparedStatement) connection1.prepareStatement(sql1);
+                    Statement stmt1 = (Statement) connection1.createStatement();
+                    ResultSet rs1 = stmt1.executeQuery(sql1);
+                    while (rs1.next()){
+                        CompanyData companyData = new CompanyData();
+                        companyData.id = rs1.getInt("id");
+                        companyData.csPeople = rs1.getString("csPeople");
+                        companyData.surveyPeople = rs1.getString("surveyPeople");
+                        companyData.addition = rs1.getString("addition");
+                        companyData.reduceType = rs1.getString("reduceType");
+                        companyData.mainReason = rs1.getString("mainReason");
+                        companyData.mR_instruction = rs1.getString("mR_instruction");
+                        companyData.secondReason = rs1.getString("secondReason");
+                        companyData.sR_instruction = rs1.getString("sR_instruction");
+                        companyData.thirdReason = rs1.getString("thirdReason");
+                        companyData.tR_instruction = rs1.getString("tR_instruction");
+                        companyData.accountYear = rs1.getInt("accountYear");
+                        companyData.accountMonth = rs1.getInt("accountMonth");
+                        companyData.accountDay = rs1.getInt("accountDay");
+                        companyData.accountSeason = rs1.getInt("accountSeason");
+                        companyData.companyDataId = rs1.getInt("companyDataId");
+                        companyData.company = com;
+                        companyDataList.add(companyData);
+                    }
+                    rs1.close();
+                    stmt1.close();
+                    ps1.close();
+                    connection1.close();
+                }
+                rs.close();
+                stmt.close();
+                ps.close();
+                connection.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
     if (companyDataList != null && companyDataList.size()>0){%>
 <table border="2" align="center" width="1200">

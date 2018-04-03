@@ -48,9 +48,7 @@ public class SearchCompanyServlet extends HttpServlet{
                             + originalArea + "&enterprisesNature=" + enterprisesNature
                             + "&industry=" + industry;
                     response.sendRedirect(direction);
-                }else if (originalArea.equals("fail") || enterprisesNature.equals("fail") || industry.equals("fail")){
-                    out.println("请输入该企业的详细信息");
-                } else {
+                }else {
                     companyTable table = new companyTable();
                     List<Company> companyList = new ArrayList<Company>();
                     table.search(company, companyList, choose, Integer.parseInt(id));
@@ -94,9 +92,7 @@ public class SearchCompanyServlet extends HttpServlet{
                         + originalArea + "&enterprisesNature=" + enterprisesNature
                         + "&industry=" + industry;
                 response.sendRedirect(direction);
-            }else if (originalArea.equals("fail") || enterprisesNature.equals("fail") || industry.equals("fail")){
-                out.println("请输入该企业的详细信息");
-            } else {
+            }else {
                 if (companyList.size() == 0){
                     out.print("没有找到符合条件的企业");
                 }else if (companyList.size() == 1){
