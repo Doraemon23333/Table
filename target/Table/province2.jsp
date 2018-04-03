@@ -330,10 +330,31 @@
             cityTable table1 = new cityTable();
             table1.findById(userid, user);
             companies = new ArrayList<Company>();
-            if (user.area.equals(originalArea)){
+            if (user.area.equals(originalArea) || originalArea.equals("fail")){
                 Connection conn = table.getConnection();
-                String sql = "select * from companyTable WHERE originalArea='" + user.area + "' AND enterprisesNature='" +
-                        enterprisesNature + "' AND industry='" + industry + "'";
+                String sql = null;
+                if((originalArea.equals("fail") == false) && (enterprisesNature.equals("fail") == false) && (industry.equals("fail") == false)){
+                    sql = "select * from companyTable where enterprisesNature='" + enterprisesNature +
+                            "' and industry='" + industry +
+                            "' and originalArea='" + originalArea + "' AND originalArea='" + user.area + "'";
+                }else if ((originalArea.equals("fail") == false) && (enterprisesNature.equals("fail") == false) && industry.equals("fail")){
+                    sql = "select * from companyTable where enterprisesNature='" + enterprisesNature +
+                            "' and originalArea='" + originalArea + "' AND originalArea='" + user.area + "'";
+                }else if ((originalArea.equals("fail") == false) && enterprisesNature.equals("fail") && (industry.equals("fail") == false)){
+                    sql = "select * from companyTable industry='" + industry +
+                            "' and originalArea='" + originalArea + "' AND originalArea='" + user.area + "'";
+                }else if (originalArea.equals("fail") && (enterprisesNature.equals("fail") == false) && (industry.equals("fail") == false)){
+                    sql = "select * from companyTable where enterprisesNature='" + enterprisesNature +
+                            "' and industry='" + industry + "' AND originalArea='" + user.area + "'";
+                }else if (originalArea.equals("fail") && enterprisesNature.equals("fail") && (industry.equals("fail") == false)){
+                    sql = "select * from companyTable where industry='" + industry + "' AND originalArea='" + user.area + "'";
+                }else if (originalArea.equals("fail") && (enterprisesNature.equals("fail") == false) && industry.equals("fail")){
+                    sql = "select * from companyTable where enterprisesNature='" + enterprisesNature + "' AND originalArea='" + user.area + "'";
+                }else if ((originalArea.equals("fail") == false) && enterprisesNature.equals("fail") && industry.equals("fail")){
+                    sql = "select * from companyTable WHERE originalArea='" + originalArea + "' AND originalArea='" + user.area + "'";
+                }else {
+                    sql = "select * from companyTable WHERE id=0 AND originalArea='" + user.area + "'";
+                }
                 System.out.println(sql);
                 PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
                 Statement stmt = (Statement) conn.createStatement();

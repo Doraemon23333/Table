@@ -84,7 +84,8 @@
                             <tr class="">
                                 <td>所属地市、市县、区域：</td>
                                 <td>
-                                    <%=company.originalArea%>
+                                    <input type="text" id="owned" name="owned" style="height: 30px;" value="<%=company.originalArea%>" />
+                                    <b class="red">不会修改*</b>
                                 </td>
                             </tr>
 

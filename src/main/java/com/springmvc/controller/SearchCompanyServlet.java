@@ -70,7 +70,7 @@ public class SearchCompanyServlet extends HttpServlet{
             }else {
                 out.println("您没有查看企业备案的权限");
             }
-        }else {
+        }else if(rank.equals("2")){
             companyTable table = new companyTable();
             List<Company> companyList = new ArrayList<Company>();
             table.search(company, companyList, choose, Integer.parseInt(id));
@@ -85,16 +85,18 @@ public class SearchCompanyServlet extends HttpServlet{
                     }
                 }
             }
+            AreaCode areaCode = new AreaCode();
+            String originalArea = areaCode.toCode(company.originalArea);
+            String enterprisesNature = areaCode.enterpriseNatureToCode(company.enterprisesNature);
+            String industry = areaCode.industryToCode(company.industry);
             if (choose.equals("") || choose.equals("企业名称或编号")){
-                AreaCode areaCode = new AreaCode();
-                String originalArea = areaCode.toCode(company.originalArea);
-                String enterprisesNature = areaCode.enterpriseNatureToCode(company.enterprisesNature);
-                String industry = areaCode.industryToCode(company.industry);
                 String direction = "/province2.jsp?id=" + id + "&rank=" + rank + "&choose=1&originalArea="
                         + originalArea + "&enterprisesNature=" + enterprisesNature
                         + "&industry=" + industry;
                 response.sendRedirect(direction);
-            }else {
+            }else if (originalArea.equals("fail") || enterprisesNature.equals("fail") || industry.equals("fail")){
+                out.println("请输入该企业的详细信息");
+            } else {
                 if (companyList.size() == 0){
                     out.print("没有找到符合条件的企业");
                 }else if (companyList.size() == 1){
