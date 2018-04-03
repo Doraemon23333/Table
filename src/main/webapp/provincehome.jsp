@@ -92,7 +92,7 @@
     String sql = null;
     rank = Integer.parseInt(request.getParameter("rank"));
     if (rank == 2)
-    sql = "SELECT * FROM notificationTable WHERE receiverRank=0 OR (receiverId=" + Integer.parseInt(userid) + " AND receiverRank=" + rank + ")";
+    sql = "SELECT * FROM notificationTable WHERE receiverRank=0 OR (receiverId=" + Integer.parseInt(userid) + " AND receiverRank=" + rank + ") or (id=" + userid + " AND rank=2)";
     else if (rank == 3){
         sql = "SELECT * FROM notificationTable WHERE receiverRank=0 OR receiverRank=3";
     }

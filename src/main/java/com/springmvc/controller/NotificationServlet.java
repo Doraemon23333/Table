@@ -78,6 +78,7 @@ public class NotificationServlet extends HttpServlet{
             cityTable tableC = new cityTable();
             tableC.findById(Integer.parseInt(id), city);
             companyTable table1 = new companyTable();
+            notification.receiverRank = 1;
             try {
                 Connection connection = table1.getConnection();
                 String sql = "select * from companyTable";
