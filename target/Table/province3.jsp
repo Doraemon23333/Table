@@ -419,7 +419,16 @@
             company.id = companyData.id;
             table2.findbyId(company);
             companyData.company = company;
+            if (rank == 3)
             companyDataList.add(companyData);
+            else if (rank == 2){
+                User city = new User();
+                cityTable table = new cityTable();
+                table.findById(Integer.parseInt(id), city);
+                if (company.originalArea.equals(city.area)){
+                    companyDataList.add(companyData);
+                }
+            }
             row++;
         }
         rs1.close();
