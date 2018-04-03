@@ -132,7 +132,7 @@ accompanyName varchar(100) NOT NULL) default charset=utf8;
         try {
             Connection connection = getConnection();
             String sql = "select * from cityTable where id=" + id;
-            //System.out.println(sql);
+            System.out.println(sql);
             PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
             Statement stmt = (Statement) connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);

@@ -97,6 +97,10 @@
             notification.title = rs.getString("title");
             notification.content = rs.getString("content");
             notification.id = rs.getInt("id");
+            notification.rank = rs.getInt("rank");
+            notification.type = rs.getInt("type");
+            notification.receiverId = rs.getInt("receiverId");
+            notification.receiverRank = rs.getInt("receiverRank");
             if (notification.id == userid && notification.rank == 1)
             notifications.add(notification);
             else if (notification.receiverRank == 1 && notification.receiverId == userid){
