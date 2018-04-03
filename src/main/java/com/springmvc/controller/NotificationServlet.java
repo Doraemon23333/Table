@@ -79,28 +79,10 @@ public class NotificationServlet extends HttpServlet{
             tableC.findById(Integer.parseInt(id), city);
             companyTable table1 = new companyTable();
             notification.receiverRank = 1;
-            try {
-                Connection connection = table1.getConnection();
-                String sql = "select * from companyTable";
-                PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
-                Statement stmt = (Statement) connection.createStatement();
-                ResultSet rs = stmt.executeQuery(sql);
-                while (rs.next()){
-                    if (rs.getString("originalArea").equals(city.area)){
-                        notification.receiverId = rs.getInt("id");
-                        notificationTable table2 = new notificationTable();
-                        table2.insert(notification);
-                    }
-                }
-                rs.close();
-                stmt.close();
-                ps.close();
-                connection.close();
-                out.println("发布成功");
-            }catch (Exception e){
-                e.printStackTrace();
-                out.println("发布失败");
-            }
+            notification.receiverId = 0;
+            notificationTable table2 = new notificationTable();
+            table2.insert(notification);
+            out.println("发布成功");
         }
     }
 }

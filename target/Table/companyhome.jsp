@@ -6,7 +6,11 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.util.Collections" %><%--
+<%@ page import="java.util.Collections" %>
+<%@ page import="com.springmvc.service.cityTable" %>
+<%@ page import="com.springmvc.entity.User" %>
+<%@ page import="com.springmvc.entity.Company" %>
+<%@ page import="com.springmvc.service.companyTable" %><%--
   Created by IntelliJ IDEA.
   User: zfr
   Date: 2018/3/13
@@ -80,7 +84,7 @@
         notifications = new ArrayList<Notification>();
         notificationTable table = new notificationTable();
         Connection connection = table.getConnection();
-        String sql = "SELECT * FROM notificationTable WHERE (id=" + userid + " AND rank=1) or (receiverId=" + userid + " AND receiverRank=1) OR receiverRank=0";
+        String sql = "SELECT * FROM notificationTable";
         PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
         Statement stmt = (Statement) connection.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
@@ -93,7 +97,24 @@
             notification.title = rs.getString("title");
             notification.content = rs.getString("content");
             notification.id = rs.getInt("id");
+            if (notification.id == userid && notification.rank == 1)
             notifications.add(notification);
+            else if (notification.receiverRank == 1 && notification.receiverId == userid){
+                notifications.add(notification);
+            }else if (notification.receiverRank == 0){
+                notifications.add(notification);
+            }else if (notification.receiverRank == 1 && notification.receiverId == 0 && notification.rank == 2){
+                cityTable table1 = new cityTable();
+                User city = new User();
+                table1.findById(notification.id, city);
+                Company company = new Company();
+                companyTable table2 = new companyTable();
+                company.id = userid;
+                table2.findbyId(company);
+                if (city.area.equals(company.originalArea)){
+                    notifications.add(notification);
+                }
+            }
         }
     %>
     <!--切换新闻 start-->
