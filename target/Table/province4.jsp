@@ -97,7 +97,7 @@
                             <tr class="">
                                 <td>建档期就业人数</td>
                                 <td>
-                                    <input type="text" id="recordNum" name="RecordNum" style="height: 30px;"value="初次建档时监测点就业人数" onfocus="javascript:if(this.value=='初次建档时监测点就业人数')this.value='';"/>
+                                    <input type="text" id="recordNum" name="RecordNum" style="height: 30px;"value="<%=companyData.csPeople%>" onfocus="javascript:if(this.value=='初次建档时监测点就业人数')this.value='';"/>
                                     <b class="red">*为必填</b>
                                 </td>
                             </tr>
